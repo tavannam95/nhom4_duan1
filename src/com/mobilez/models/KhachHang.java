@@ -28,7 +28,7 @@ public class KhachHang {
 
     @Override
     public String toString() {
-        return "KhachHang{" + "MaKH=" + MaKH + '}';
+        return this.MaKH;
     }
 
    
