@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  * @author ASUS
  */
 public class Msgbox {
-    public static void alert(Component parent, String message){
+      public static void alert(Component parent, String message){
         JOptionPane.showMessageDialog(parent, message,"Hệ thống quản lý cửa hàng điện thoại",JOptionPane.INFORMATION_MESSAGE);
     }
     public static boolean confirm(Component parent,String message){
