@@ -19,11 +19,11 @@ import javax.swing.JOptionPane;
 public class NhanVienDAO extends MainDAO<NhanVien, String> {
 
     String insertSQL = "INSERT INTO NHANVIEN\n"
-            + "VALUES (?,?,?,?,?,?,?,?,?)";
+            + "VALUES (?,?,?,?,?,?,?,?,?,?)";
     String updateSQL = "UPDATE NHANVIEN SET HOTEN = ?,\n"
             + "GIOITINH = ?, NGAYSINH = ?, SOCCCD = ?,\n"
             + "DIACHI = ?, SODT = ?, VAITRO = ?, \n"
-            + "HINHNV  = ? WHERE MANV = ?";
+            + "HINHNV  = ?, MATKHAU = ? WHERE MANV = ?";
     String deleteSQL = "delete NHANVIEN where MANV like ?";
     String selectAllSQL = "select * from NHANVIEN";
     String selectByIdSQL = "select * from NHANVIEN where MANV like ?";
