@@ -30,7 +30,9 @@ public class NhanVienDAO extends MainDAO<NhanVien, String> {
 
     @Override
     public void insert(NhanVien entity) {
-        int s = JdbcHelper.update(insertSQL, entity);
+        int s = JdbcHelper.update(insertSQL, entity.getMaNV(),entity.getHoTen(),entity.isGioiTinh(),
+                entity.getSoCCCD(),entity.getDiaChi(),entity.getSoDienThoai(),
+                entity.isVaiTro(),entity.getHinhNV());
         if (s <= 0) {
             JOptionPane.showMessageDialog(null, "Thêm thất bại!");
             return;
