@@ -31,8 +31,9 @@ public class NhanVienDAO extends MainDAO<NhanVien, String> {
     @Override
     public void insert(NhanVien entity) {
         int s = JdbcHelper.update(insertSQL, entity.getMaNV(),entity.getHoTen(),entity.isGioiTinh(),
+                entity.getNgaysinh(),
                 entity.getSoCCCD(),entity.getDiaChi(),entity.getSoDienThoai(),
-                entity.isVaiTro(),entity.getHinhNV());
+                entity.isVaiTro(),entity.getHinhNV(),entity.getMatKhau());
         if (s <= 0) {
             JOptionPane.showMessageDialog(null, "Thêm thất bại!");
             return;
@@ -41,7 +42,10 @@ public class NhanVienDAO extends MainDAO<NhanVien, String> {
 
     @Override
     public void update(NhanVien entity) {
-        int s = JdbcHelper.update(updateSQL, entity);
+        int s = JdbcHelper.update(updateSQL, entity.getHoTen(),entity.isGioiTinh(),
+                entity.getNgaysinh(),
+                entity.getSoCCCD(),entity.getDiaChi(),entity.getSoDienThoai(),
+                entity.isVaiTro(),entity.getHinhNV(),entity.getMatKhau(),entity.getMaNV());
         if (s <= 0) {
             JOptionPane.showMessageDialog(null, "Cập nhật thất bại!");
             return;
@@ -81,7 +85,8 @@ public class NhanVienDAO extends MainDAO<NhanVien, String> {
             while (rs.next()) {
                 NhanVien cd = new NhanVien(
                         rs.getString(1), rs.getString(2), rs.getBoolean(3), rs.getDate(4),
-                        rs.getString(5), rs.getString(6), rs.getString(7), rs.getBoolean(8), rs.getString(9)
+                        rs.getString(5), rs.getString(6), rs.getString(7), rs.getBoolean(8), rs.getString(9),
+                        rs.getString(10)
                 );
                 lstNV.add(cd);
             }
