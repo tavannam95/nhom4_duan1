@@ -21,11 +21,12 @@ public class ChiTietMatHang {
     private String maMH;
     private double giamua;
     private double giaban;
+    private int soluong;
 
     public ChiTietMatHang() {
     }
 
-    public ChiTietMatHang(String ram, String dungluong, String mausac, Date ngaycapnhat, String maQG, String maMH, double giamua, double giaban) {
+    public ChiTietMatHang(String ram, String dungluong, String mausac, Date ngaycapnhat, String maQG, String maMH, double giamua, double giaban, int soluong) {
         this.ram = ram;
         this.dungluong = dungluong;
         this.mausac = mausac;
@@ -34,6 +35,7 @@ public class ChiTietMatHang {
         this.maMH = maMH;
         this.giamua = giamua;
         this.giaban = giaban;
+        this.soluong = soluong;
     }
 
     public String getRam() {
@@ -100,9 +102,20 @@ public class ChiTietMatHang {
         this.giaban = giaban;
     }
 
+    public int getSoluong() {
+        return soluong;
+    }
+
+    public void setSoluong(int soluong) {
+        this.soluong = soluong;
+    }
+
     @Override
     public String toString() {
-        return "ChiTietMatHang{" + "maQG=" + maQG + ", maMH=" + maMH + '}';
+        return "ChiTietMatHang{" + "ram=" + ram + ", dungluong=" 
+                + dungluong + ", mausac=" 
+                + mausac + ", ngaycapnhat=" + ngaycapnhat 
+                + ", maQG=" + maQG + ", maMH=" + maMH + '}';
     }
     
 }
