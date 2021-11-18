@@ -24,12 +24,12 @@ public class NhaCungCapDao extends MainDAO<NhaCungCap, String>{
 
     @Override
     public void insert(NhaCungCap ncc) {
-        JdbcHelper.update(INSERT, ncc.getMaNcc(),ncc.getTenNcc(),ncc.getDiaChi(),ncc.getSODT(),ncc.getFAX(),ncc.getEmail(),ncc.getWEBSITE());
+        JdbcHelper.update(INSERT, ncc.getMaNcc(),ncc.getTenNcc(),ncc.getDiaChi(),ncc.getSodt(),ncc.getFax(),ncc.getEmail(),ncc.getWebsite());
     }
 
     @Override
     public void update(NhaCungCap ncc) {
-       JdbcHelper.update(UPDATE, ncc.getTenNcc(),ncc.getDiaChi(),ncc.getSODT(),ncc.getFAX(),ncc.getEmail(),ncc.getWEBSITE(),ncc.getMaNcc());
+       JdbcHelper.update(UPDATE, ncc.getTenNcc(),ncc.getDiaChi(),ncc.getSodt(),ncc.getFax(),ncc.getEmail(),ncc.getWebsite(),ncc.getMaNcc());
     }
 
     @Override
@@ -61,10 +61,10 @@ public class NhaCungCapDao extends MainDAO<NhaCungCap, String>{
                 ncc.setMaNcc(rs.getString("MANCC"));
                 ncc.setTenNcc(rs.getString("TENNCC"));
                 ncc.setDiaChi(rs.getString("DIACHI"));
-                ncc.setSODT(rs.getString("SODT"));
-                ncc.setFAX(rs.getString("FAX"));
+                ncc.setSodt(rs.getString("SODT"));
+                ncc.setFax(rs.getString("FAX"));
                 ncc.setEmail(rs.getString("EMAIL"));
-                ncc.setWEBSITE(rs.getString("WEBSITE"));
+                ncc.setWebsite(rs.getString("WEBSITE"));
                 
                 list.add(ncc);
             }
