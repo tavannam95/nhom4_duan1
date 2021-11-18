@@ -56,7 +56,7 @@ public class NhanVienDAO extends MainDAO<NhanVien, String> {
     public void delete(String id) {
         int s = JdbcHelper.update(deleteSQL, id);
         if (s <= 0) {
-            JOptionPane.showMessageDialog(null, "Xó thất bại!");
+            JOptionPane.showMessageDialog(null, "Xóa thất bại!");
             return;
         }
     }
