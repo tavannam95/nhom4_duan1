@@ -13,7 +13,7 @@ public class NhaCungCap {
         private String maNcc;
         private String tenNcc;
         private String diaChi;
-        private String sodt;
+        private String soDT;
         private String fax;
         private String email;
         private String website;
@@ -25,7 +25,7 @@ public class NhaCungCap {
         this.maNcc = maNcc;
         this.tenNcc = tenNcc;
         this.diaChi = diaChi;
-        this.sodt = sodt;
+        this.soDT = sodt;
         this.fax = fax;
         this.email = email;
         this.website = website;
@@ -56,11 +56,11 @@ public class NhaCungCap {
     }
 
     public String getSodt() {
-        return sodt;
+        return soDT;
     }
 
     public void setSodt(String sodt) {
-        this.sodt = sodt;
+        this.soDT = sodt;
     }
 
     public String getFax() {
