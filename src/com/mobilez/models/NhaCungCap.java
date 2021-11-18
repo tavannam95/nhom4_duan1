@@ -10,49 +10,49 @@ package com.mobilez.models;
  * @author ASUS
  */
 public class NhaCungCap {
-        private String MANCC;
-        private String TENNCC;
-        private String DIACHI;
+        private String maNcc;
+        private String tenNcc;
+        private String diaChi;
         private String SODT;
         private String FAX;
-        private String EMAIL;
+        private String Email;
         private String WEBSITE;
 
     public NhaCungCap() {
     }
 
-    public NhaCungCap(String MANCC, String TENNCC, String DIACHI, String SODT, String FAX, String EMAIL, String WEBSITE) {
-        this.MANCC = MANCC;
-        this.TENNCC = TENNCC;
-        this.DIACHI = DIACHI;
+    public NhaCungCap(String maNcc, String tenNcc, String diaChi, String SODT, String FAX, String Email, String WEBSITE) {
+        this.maNcc = maNcc;
+        this.tenNcc = tenNcc;
+        this.diaChi = diaChi;
         this.SODT = SODT;
         this.FAX = FAX;
-        this.EMAIL = EMAIL;
+        this.Email = Email;
         this.WEBSITE = WEBSITE;
     }
 
-    public String getMANCC() {
-        return MANCC;
+    public String getMaNcc() {
+        return maNcc;
     }
 
-    public void setMANCC(String MANCC) {
-        this.MANCC = MANCC;
+    public void setMaNcc(String maNcc) {
+        this.maNcc = maNcc;
     }
 
-    public String getTENNCC() {
-        return TENNCC;
+    public String getTenNcc() {
+        return tenNcc;
     }
 
-    public void setTENNCC(String TENNCC) {
-        this.TENNCC = TENNCC;
+    public void setTenNcc(String tenNcc) {
+        this.tenNcc = tenNcc;
     }
 
-    public String getDIACHI() {
-        return DIACHI;
+    public String getDiaChi() {
+        return diaChi;
     }
 
-    public void setDIACHI(String DIACHI) {
-        this.DIACHI = DIACHI;
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
     }
 
     public String getSODT() {
@@ -71,12 +71,12 @@ public class NhaCungCap {
         this.FAX = FAX;
     }
 
-    public String getEMAIL() {
-        return EMAIL;
+    public String getEmail() {
+        return Email;
     }
 
-    public void setEMAIL(String EMAIL) {
-        this.EMAIL = EMAIL;
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
 
     public String getWEBSITE() {
@@ -89,8 +89,12 @@ public class NhaCungCap {
 
     @Override
     public String toString() {
-        return MANCC;
+        return maNcc;
     }
+        
+        
+
+   
          
         
 }
