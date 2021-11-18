@@ -32,6 +32,7 @@ public class MatHangDAO extends MainDAO<MatHang, String>{
 
     String INSERT_SQL = "INSERT INTO MATHANG (MAMH ,MAQH ,MAHSX ,TENMH ,HINHMH ,DONVITINH ,SOLUONG ,TGBH ) VALUES(?,?,?,?,?,?,?,?)";
     String UPDATE_SQL = "UPDATE MATHANG SET MAMH=?, MAQH=?, MAHSX=?, TENMH=?, HINHMH=?, DONVITINH=?, SOLUONG=?, TGBH=? WHERE MaMH=?";
+    String UPDATE_SQL = "UPDATE MATHANG SET MAQH=?, MAHSX=?, TENMH=?, HINHMH=?, DONVITINH=?, SOLUONG=?, TGBH=? WHERE MaMH=?";
     String DELETE_SQL = "DELETE FROM ChuyenDe WHERE MAMH=?";
     String SELECT_ALL_SQL = "SELECT*FROM MATHANG";
     String SELECT_BY_ID_SQL = "SELECT*FROM MATHANG WHERE MAMH=?";
@@ -91,5 +92,9 @@ public class MatHangDAO extends MainDAO<MatHang, String>{
             throw new RuntimeException();
         }
     }
-  
+   public MatHang findById(String mamh) {
+            String sql = "SELECT * FROM MATHANG WHERE MAMH=?";
+            List<MatHang> list = selectBySql(sql, mamh);
+            return list.size() > 0 ? list.get(0) : null;
+        }
 }
