@@ -13,22 +13,22 @@ public class NhaCungCap {
         private String maNcc;
         private String tenNcc;
         private String diaChi;
-        private String SODT;
-        private String FAX;
-        private String Email;
-        private String WEBSITE;
+        private String soDT;
+        private String fax;
+        private String email;
+        private String website;
 
     public NhaCungCap() {
     }
 
-    public NhaCungCap(String maNcc, String tenNcc, String diaChi, String SODT, String FAX, String Email, String WEBSITE) {
+    public NhaCungCap(String maNcc, String tenNcc, String diaChi, String sodt, String fax, String email, String website) {
         this.maNcc = maNcc;
         this.tenNcc = tenNcc;
         this.diaChi = diaChi;
-        this.SODT = SODT;
-        this.FAX = FAX;
-        this.Email = Email;
-        this.WEBSITE = WEBSITE;
+        this.soDT = sodt;
+        this.fax = fax;
+        this.email = email;
+        this.website = website;
     }
 
     public String getMaNcc() {
@@ -55,37 +55,39 @@ public class NhaCungCap {
         this.diaChi = diaChi;
     }
 
-    public String getSODT() {
-        return SODT;
+    public String getSodt() {
+        return soDT;
     }
 
-    public void setSODT(String SODT) {
-        this.SODT = SODT;
+    public void setSodt(String sodt) {
+        this.soDT = sodt;
     }
 
-    public String getFAX() {
-        return FAX;
+    public String getFax() {
+        return fax;
     }
 
-    public void setFAX(String FAX) {
-        this.FAX = FAX;
+    public void setFax(String fax) {
+        this.fax = fax;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
-    public void setEmail(String Email) {
-        this.Email = Email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getWEBSITE() {
-        return WEBSITE;
+    public String getWebsite() {
+        return website;
     }
 
-    public void setWEBSITE(String WEBSITE) {
-        this.WEBSITE = WEBSITE;
+    public void setWebsite(String website) {
+        this.website = website;
     }
+
+    
 
     @Override
     public String toString() {
