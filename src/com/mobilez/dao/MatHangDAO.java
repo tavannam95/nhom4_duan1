@@ -18,21 +18,13 @@ import java.sql.*;
  *
  * @author Admin
  */
-  /*Kế thừa lớp MainDAO:
-    Các phương thức:
-    insert: thêm một dòng dữ liệu vào bảng MATHANG
-    delete: xóa một dòng dữ liệu trong bảng MATHANG theo id tương ứng
-    update: cập nhật một dòng MATHANG
-    selectById: truy vấn một đối tượng theo ID tương ứng trong bảng MATHANG trả về MatHang
-    selectAll: truy vấn tất cả đối tượng trong bảng MATHANG trả về list<MatHang>
-    selectBySql: truy vấn đối tượng theo ID hỗ trợ phương thức selectById trả về list<MatHang>*/
-//    Loại mặt hàng: Mã loại, tên loại
+
     
 public class MatHangDAO extends MainDAO<MatHang, String>{
 
     String INSERT_SQL = "INSERT INTO MATHANG (MAMH ,MAQH ,MAHSX ,TENMH ,HINHMH ,DONVITINH ,SOLUONG ,TGBH ) VALUES(?,?,?,?,?,?,?,?)";
     String UPDATE_SQL = "UPDATE MATHANG SET MAQH=?, MAHSX=?, TENMH=?, HINHMH=?, DONVITINH=?, SOLUONG=?, TGBH=? WHERE MaMH=?";
-    String DELETE_SQL = "DELETE FROM ChuyenDe WHERE MAMH=?";
+    String DELETE_SQL = "DELETE FROM MATHANG WHERE MAMH=?";
     String SELECT_ALL_SQL = "SELECT*FROM MATHANG";
     String SELECT_BY_ID_SQL = "SELECT*FROM MATHANG WHERE MAMH=?";
     
@@ -44,7 +36,7 @@ public class MatHangDAO extends MainDAO<MatHang, String>{
 
     @Override
     public void update(MatHang entity) {
-        JdbcHelper.update(INSERT_SQL, 
+        JdbcHelper.update(UPDATE_SQL, 
                 entity.getMaMH(),entity.getMaQH(),entity.getMaHSX(),entity.getTenMH(),entity.getHinhMH(),entity.getDonViTinh(),entity.getSoluong(),entity.getThoiGIanBaoHanh());
     }
 
@@ -81,7 +73,6 @@ public class MatHangDAO extends MainDAO<MatHang, String>{
                 mh.setHinhMH(rs.getString("hinhMH"));
                 mh.setDonViTinh(rs.getString("donViTinh"));
                 mh.setSoluong(rs.getInt("soluong"));
-                mh.setThoiGIanBaoHanh(rs.getString("thoiGIanBaoHanh"));
                 list.add(mh);
                 
             }
