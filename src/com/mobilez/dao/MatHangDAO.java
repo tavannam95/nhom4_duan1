@@ -73,7 +73,7 @@ public class MatHangDAO extends MainDAO<MatHang, String>{
                 mh.setHinhMH(rs.getString("hinhMH"));
                 mh.setDonViTinh(rs.getString("donViTinh"));
                 mh.setSoluong(rs.getInt("soluong"));
-                mh.setThoiGIanBaoHanh(rs.getString("thoiGIanBaoHanh"));
+                mh.setThoiGIanBaoHanh(rs.getString("TGBH"));
                 list.add(mh);
                 
             }
