@@ -1602,7 +1602,7 @@ public class FrmHome extends javax.swing.JFrame {
         chkpnlTT =  !chkpnlTT;
         
         if (chkpnlTT) {
-            FrmGioiThieu f = new FrmGioiThieu();
+            FrmGioiThieu2 f = new FrmGioiThieu2();
             this.showPnl(f);
         }else{
             this.removeAllPnlShow();

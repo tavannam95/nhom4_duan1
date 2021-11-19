@@ -9,12 +9,12 @@ package com.mobilez.ui;
  *
  * @author uhtku
  */
-public class FrmGioiThieu extends javax.swing.JPanel {
+public class FrmGioiThieu2 extends javax.swing.JPanel {
 
     /**
      * Creates new form FrmGioiThieu
      */
-    public FrmGioiThieu() {
+    public FrmGioiThieu2() {
         initComponents();
     }
 
