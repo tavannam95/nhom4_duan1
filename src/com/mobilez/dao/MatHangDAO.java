@@ -37,7 +37,7 @@ public class MatHangDAO extends MainDAO<MatHang, String>{
     @Override
     public void update(MatHang entity) {
         JdbcHelper.update(UPDATE_SQL, 
-                entity.getMaMH(),entity.getMaQH(),entity.getMaHSX(),entity.getTenMH(),entity.getHinhMH(),entity.getDonViTinh(),entity.getSoluong(),entity.getThoiGIanBaoHanh());
+                entity.getMaQH(),entity.getMaHSX(),entity.getTenMH(),entity.getHinhMH(),entity.getDonViTinh(),entity.getSoluong(),entity.getThoiGIanBaoHanh(),entity.getMaMH());
     }
 
     @Override
