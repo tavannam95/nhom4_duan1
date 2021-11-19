@@ -67,12 +67,17 @@ public class NhaCungCapDao extends MainDAO<NhaCungCap, String>{
                 ncc.setWEBSITE(rs.getString("WEBSITE"));
                 
                 list.add(ncc);
+                
             }
+            rs.close();
+            return list;
+            
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException();
         }
-        return list;
+        
     }
+
     
 }
