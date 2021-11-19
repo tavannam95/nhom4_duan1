@@ -97,6 +97,9 @@
               <Image iconType="3" name="/com/mobilez/icon/user_32px.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblUserMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblWelcome">
           <Properties>

@@ -69,7 +69,7 @@
               <Component id="jLabel2" alignment="1" pref="133" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel8" max="32767" attributes="0"/>
+                  <Component id="lblPhieuGiaoCa" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -78,7 +78,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel8" max="32767" attributes="0"/>
+                  <Component id="lblPhieuGiaoCa" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -98,7 +98,7 @@
             <Property name="text" type="java.lang.String" value="Phi&#x1ebf;u Giao Ca"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel8">
+        <Component class="javax.swing.JLabel" name="lblPhieuGiaoCa">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -126,7 +126,7 @@
               <Component id="jLabel7" alignment="1" pref="133" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel9" max="32767" attributes="0"/>
+                  <Component id="lblPhieuBaoHanh" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -135,7 +135,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel9" max="32767" attributes="0"/>
+                  <Component id="lblPhieuBaoHanh" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -155,7 +155,7 @@
             <Property name="text" type="java.lang.String" value="Phi&#x1ebf;u B&#x1ea3;o H&#xe0;nh"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel9">
+        <Component class="javax.swing.JLabel" name="lblPhieuBaoHanh">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">

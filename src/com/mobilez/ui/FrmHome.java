@@ -6,6 +6,7 @@
 package com.mobilez.ui;
 
 import com.mobilez.menuitem.PanelMenuBH;
+import com.mobilez.menuitem.PanelMenuHT;
 import com.mobilez.menuitem.PanelMenuQLK;
 import com.mobilez.menuitem.PanelMenuQLDM;
 import com.mobilez.menuitem.PanelMenuQLQ;
@@ -35,6 +36,7 @@ public class FrmHome extends javax.swing.JFrame {
     boolean chkBH = false;
     boolean chkTK = false;
     boolean chkTG = false;
+    boolean chkHT = false;
 
     public FrmHome() {
         initComponents();
@@ -120,6 +122,11 @@ public class FrmHome extends javax.swing.JFrame {
 
         lblUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mobilez/icon/user_32px.png"))); // NOI18N
+        lblUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUserMouseClicked(evt);
+            }
+        });
 
         lblWelcome.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 18)); // NOI18N
         lblWelcome.setForeground(new java.awt.Color(255, 255, 255));
@@ -377,6 +384,7 @@ public class FrmHome extends javax.swing.JFrame {
         chkBH = false;
         chkTK = false;
         chkTG = false;
+        chkHT = false;
         if (chkQLDM) {
             PanelMenuQLDM p = new PanelMenuQLDM();
             p.setSize(pnlMain.getSize());
@@ -390,6 +398,7 @@ public class FrmHome extends javax.swing.JFrame {
             lblBanHang.setForeground(Color.WHITE);
             lblThongKe.setForeground(Color.WHITE);
             lblTroGiup.setForeground(Color.WHITE);
+            lblWelcome.setForeground(Color.WHITE);
             
         } else {
 
@@ -410,6 +419,7 @@ public class FrmHome extends javax.swing.JFrame {
         chkBH = false;
         chkTK = false;
         chkTG = false;
+        chkHT = false;
         if (chkQLK) {
             PanelMenuQLK p = new PanelMenuQLK();
             p.setSize(pnlMain.getSize());
@@ -423,6 +433,7 @@ public class FrmHome extends javax.swing.JFrame {
             lblBanHang.setForeground(Color.WHITE);
             lblThongKe.setForeground(Color.WHITE);
             lblTroGiup.setForeground(Color.WHITE);
+            lblWelcome.setForeground(Color.WHITE);
         } else {
             pnlMain.removeAll();
             pnlMain.validate();
@@ -439,6 +450,7 @@ public class FrmHome extends javax.swing.JFrame {
         chkBH = false;
         chkTK = false;
         chkTG = false;
+        chkHT = false;
         if (chkQuay) {
             PanelMenuQLQ p = new PanelMenuQLQ();
             p.setSize(pnlMain.getSize());
@@ -452,6 +464,7 @@ public class FrmHome extends javax.swing.JFrame {
             lblBanHang.setForeground(Color.WHITE);
             lblThongKe.setForeground(Color.WHITE);
             lblTroGiup.setForeground(Color.WHITE);
+            lblWelcome.setForeground(Color.WHITE);
         }else{
             pnlMain.removeAll();
             pnlMain.validate();
@@ -468,6 +481,7 @@ public class FrmHome extends javax.swing.JFrame {
         chkQuay = false;
         chkTK = false;
         chkTG = false;
+        chkHT = false;
         if (chkBH) {
             PanelMenuBH p = new PanelMenuBH();
             p.setSize(pnlMain.getSize());
@@ -481,6 +495,7 @@ public class FrmHome extends javax.swing.JFrame {
             lblQLQuay.setForeground(Color.WHITE);
             lblThongKe.setForeground(Color.WHITE);
             lblTroGiup.setForeground(Color.WHITE);
+            lblWelcome.setForeground(Color.WHITE);
         }else{
             pnlMain.removeAll();
             pnlMain.validate();
@@ -497,6 +512,7 @@ public class FrmHome extends javax.swing.JFrame {
         chkQuay = false;
         chkBH = false;
         chkTG = false;
+        chkHT = false;
         if (chkTK) {
             pnlMain.removeAll();
             pnlMain.validate();
@@ -507,6 +523,7 @@ public class FrmHome extends javax.swing.JFrame {
             lblQLQuay.setForeground(Color.WHITE);
             lblBanHang.setForeground(Color.WHITE);
             lblTroGiup.setForeground(Color.WHITE);
+            lblWelcome.setForeground(Color.WHITE);
         }else{
             pnlMain.removeAll();
             pnlMain.validate();
@@ -523,6 +540,7 @@ public class FrmHome extends javax.swing.JFrame {
         chkQuay = false;
         chkBH = false;
         chkTK = false;
+        chkHT = false;
         if (chkTG) {
             PanelMenuTG p = new PanelMenuTG();
             p.setSize(pnlMain.getSize());
@@ -536,6 +554,7 @@ public class FrmHome extends javax.swing.JFrame {
             lblQLQuay.setForeground(Color.WHITE);
             lblBanHang.setForeground(Color.WHITE);
             lblThongKe.setForeground(Color.WHITE);
+            lblWelcome.setForeground(Color.WHITE);
         }else{
             pnlMain.removeAll();
             pnlMain.validate();
@@ -544,6 +563,38 @@ public class FrmHome extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_lblTroGiupMouseClicked
+
+    private void lblUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUserMouseClicked
+        // TODO add your handling code here:
+        chkHT = !chkHT;
+        chkQLDM = false;
+        chkQLK = false;
+        chkQuay = false;
+        chkBH = false;
+        chkTK = false;
+        chkTG = false;
+        if (chkHT) {
+            PanelMenuHT p = new PanelMenuHT();
+            p.setSize(pnlMain.getSize());
+            pnlMain.removeAll();
+            pnlMain.add(p);
+            pnlMain.validate();
+            pnlMain.repaint();
+            lblWelcome.setForeground(Color.ORANGE);
+            lblQLDanhMuc.setForeground(Color.WHITE);
+            lblQLKho.setForeground(Color.WHITE);
+            lblQLQuay.setForeground(Color.WHITE);
+            lblBanHang.setForeground(Color.WHITE);
+            lblThongKe.setForeground(Color.WHITE);
+            lblTroGiup.setForeground(Color.WHITE);
+        }else{
+            pnlMain.removeAll();
+            pnlMain.validate();
+            pnlMain.repaint();
+            lblUser.setForeground(Color.WHITE);
+            
+        }
+    }//GEN-LAST:event_lblUserMouseClicked
 
     /**
      * @param args the command line arguments
