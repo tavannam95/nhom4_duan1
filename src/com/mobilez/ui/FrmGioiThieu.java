@@ -9,12 +9,12 @@ package com.mobilez.ui;
  *
  * @author uhtku
  */
-public class FrmNhaCungCap extends javax.swing.JPanel {
+public class FrmGioiThieu extends javax.swing.JPanel {
 
     /**
-     * Creates new form FrmNhaCungCap
+     * Creates new form FrmGioiThieu
      */
-    public FrmNhaCungCap() {
+    public FrmGioiThieu() {
         initComponents();
     }
 
@@ -31,23 +31,23 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(34, 116, 173));
 
-        jLabel1.setText("NhaCC");
+        jLabel1.setText("Gioi thieu");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(395, 395, 395)
+                .addGap(416, 416, 416)
                 .addComponent(jLabel1)
-                .addContainerGap(802, Short.MAX_VALUE))
+                .addContainerGap(623, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(45, 45, 45)
                 .addComponent(jLabel1)
-                .addContainerGap(565, Short.MAX_VALUE))
+                .addContainerGap(549, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
