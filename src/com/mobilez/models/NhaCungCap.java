@@ -17,19 +17,23 @@ public class NhaCungCap {
         private String fax;
         private String email;
         private String website;
+        private String hinh;
 
     public NhaCungCap() {
     }
 
-    public NhaCungCap(String maNcc, String tenNcc, String diaChi, String sodt, String fax, String email, String website) {
+    public NhaCungCap(String maNcc, String tenNcc, String diaChi, String soDT, String fax, String email, String website, String hinh) {
         this.maNcc = maNcc;
         this.tenNcc = tenNcc;
         this.diaChi = diaChi;
-        this.soDT = sodt;
+        this.soDT = soDT;
         this.fax = fax;
         this.email = email;
         this.website = website;
+        this.hinh = hinh;
     }
+
+    
 
     public String getMaNcc() {
         return maNcc;
@@ -55,12 +59,12 @@ public class NhaCungCap {
         this.diaChi = diaChi;
     }
 
-    public String getSodt() {
+    public String getSoDT() {
         return soDT;
     }
 
-    public void setSodt(String sodt) {
-        this.soDT = sodt;
+    public void setSoDT(String soDT) {
+        this.soDT = soDT;
     }
 
     public String getFax() {
@@ -87,7 +91,17 @@ public class NhaCungCap {
         this.website = website;
     }
 
-    
+    public String getHinh() {
+        return hinh;
+    }
+
+    public void setHinh(String hinh) {
+        this.hinh = hinh;
+    }
+
+  
+
+   
 
     @Override
     public String toString() {
