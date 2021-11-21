@@ -370,7 +370,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
                 lblGB.setForeground(Color.white);
             }
             //validate hinh mh
-            if (lblHinhMH.getToolTipText().trim().equals("")) {
+            if (lblHinhMH.getToolTipText()==null) {
                 Msgbox.alert(null, "Bạn chưa chọn ảnh!");
                 lblHMH.setForeground(Color.red);
                 return;
@@ -550,7 +550,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
                 txtGiaMua.setText("");
                 txtGiaBan.setText("");
                 txtBaoHanh.setText("");
-                lblHinhMH.setToolTipText("");
+                lblHinhMH.setToolTipText(null);
                 lblHinhMH.setIcon(null);
                 cboHSX.setSelectedIndex(0);
                 cboQuocGia.setSelectedIndex(0);
@@ -1096,8 +1096,8 @@ public class FrmHangHoa extends javax.swing.JPanel {
                             .addComponent(lblBH)
                             .addComponent(lblGB1)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(lblHinhMH, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(116, 116, 116)
+                        .addComponent(lblHinhMH, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(8, 8, 8)
                         .addComponent(lblHMH)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1105,7 +1105,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
                     .addComponent(btnThemMH)
                     .addComponent(btnSuaMH)
                     .addComponent(btnClear))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
