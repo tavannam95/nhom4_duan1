@@ -269,7 +269,7 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
         if (this.txtmancc.getText().trim().length() == 0 || this.txttenncc.getText().trim().length() == 0 || this.txtdiachi.getText().trim().length() == 0 || this.txtsodt.getText().trim().length() == 0
                 || this.txtsofax.getText().trim().length() == 0 || this.txtwebsite.getText().trim().length() == 0 || this.txtemail.getText().trim().length() == 0) {
             Msgbox.alert(this, "Không được để trống");
-        } else if (this.txtemail.equals(reEmail)) {
+        } else if (this.txtemail.getText().matches(reEmail)) {
             Msgbox.alert(this, "Email phải đúng định dạng");
 
         }
@@ -292,12 +292,12 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
         if (this.txtmancc.getText().trim().length() == 0 || this.txttenncc.getText().trim().length() == 0 || this.txtdiachi.getText().trim().length() == 0 || this.txtsodt.getText().trim().length() == 0
                 || this.txtsofax.getText().trim().length() == 0 || this.txtwebsite.getText().trim().length() == 0 || this.txtemail.getText().trim().length() == 0) {
             Msgbox.alert(this, "Không được để trống");
-        } else if (this.txtemail.equals(reEmail)) {
+        } else if (this.txtemail.getText().matches(reEmail)) {
             Msgbox.alert(this, "Email phải đúng định dạng");
 
         }
 
-        NhaCungCap nc = new NhaCungCap();
+       
         nc.setMaNcc(this.txtmancc.getText());
         nc.setTenNcc(this.txttenncc.getText());
         nc.setDiaChi(this.txtdiachi.getText());
