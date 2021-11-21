@@ -37,6 +37,7 @@ public class FrmHome extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon("src/com/mobilez/icon/logoM_32px.png").getImage());
+        this.setResizable(false);
         setTimeLbl();
         pnlParent.removeAll();
         pnlParent.revalidate();
