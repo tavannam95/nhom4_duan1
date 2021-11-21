@@ -91,7 +91,7 @@ public class NhaCungCap {
 
     @Override
     public String toString() {
-        return maNcc;
+        return tenNcc;
     }
         
         

@@ -120,6 +120,6 @@ public class NhanVien {
 
     @Override
     public String toString() {
-        return maNV;
+        return hoTen;
     }
 }

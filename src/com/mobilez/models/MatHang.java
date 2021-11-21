@@ -125,7 +125,7 @@ public class MatHang {
 
     @Override
     public String toString() {
-        return maMH;
+        return tenMH;
     }
     
     

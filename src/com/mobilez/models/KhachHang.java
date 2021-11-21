@@ -23,7 +23,7 @@ public class KhachHang {
     }
      @Override
     public String toString() {
-        return this.MaKH;
+        return this.TenKH;
     }
 
     public String getMaKH() {
