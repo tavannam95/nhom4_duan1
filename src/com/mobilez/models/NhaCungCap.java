@@ -10,14 +10,14 @@ package com.mobilez.models;
  * @author ASUS
  */
 public class NhaCungCap {
-        private String maNcc;
-        private String tenNcc;
-        private String diaChi;
-        private String soDT;
-        private String fax;
-        private String email;
-        private String website;
-        private String hinh;
+
+    private String maNcc;
+    private String tenNcc;
+    private String diaChi;
+    private String soDT;
+    private String fax;
+    private String email;
+    private String website;
 
     public NhaCungCap() {
     }
@@ -30,10 +30,8 @@ public class NhaCungCap {
         this.fax = fax;
         this.email = email;
         this.website = website;
-        this.hinh = hinh;
-    }
 
-    
+    }
 
     public String getMaNcc() {
         return maNcc;
@@ -91,26 +89,9 @@ public class NhaCungCap {
         this.website = website;
     }
 
-    public String getHinh() {
-        return hinh;
-    }
-
-    public void setHinh(String hinh) {
-        this.hinh = hinh;
-    }
-
-  
-
-   
-
     @Override
     public String toString() {
         return maNcc;
     }
-        
-        
 
-   
-         
-        
 }
