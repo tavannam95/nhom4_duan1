@@ -29,7 +29,7 @@ public class ManHinhChao extends java.awt.Dialog {
                   try {
                       i++;
                       prg.setValue(i);
-                      if(i==20)lblStatus.setText("   Đang khởi tạo cái modun...");
+                      if(i==20)lblStatus.setText("   Đang khởi tạo...");
                       if(i==50)lblStatus.setText("   Đang kết nối CSDL...");
                       if(i==90)lblStatus.setText("   Chuẩn bị vào chương trình...");
                       if(i==100){
