@@ -387,6 +387,13 @@ public class FrmHangHoa extends javax.swing.JPanel {
             CapNhatGiaDAO cngDAO = new CapNhatGiaDAO();
             cngDAO.insert(cng);
             fillTable();
+            for (int i = 0; i < tblList.getRowCount(); i++) {
+                if (tblList.getValueAt(i, 0).toString().trim().equalsIgnoreCase(txtMaMH.getText())) {
+                    index=i;
+                    break;
+                }
+            }
+            showDetail();
             Msgbox.alert(null, "Thêm thành công!");
         } catch (Exception e) {
             e.printStackTrace();
