@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class HangSanXuatDao extends MainDAO<HangSanXuat, String> {
 
     String insertSQL = "INSERT INTO HANGSANXUAT (MAHSX, TENHSX) VALUES (?,?)";
-    String updateSQL = "UPDATE HANGSANXUAT SET  TENHSX = ? WHERE MAHSX = ?";
+    String updateSQL = "UPDATE HANGSANXUAT SET TENHSX = ? WHERE MAHSX = ?";
     String deleteSQL = "DELETE HANGSANXUAT WHERE MAHSX = ?";
     String selectAllSQL = "SELECT * FROM HANGSANXUAT";
     String selectByIdSQL = "SELECT * FROM HANGSANXUAT WHERE MAHSX = ?";
@@ -31,7 +31,7 @@ public class HangSanXuatDao extends MainDAO<HangSanXuat, String> {
 
     @Override
     public void update(HangSanXuat entity) {
-        JdbcHelper.update(updateSQL,  entity.getTenHSX(), entity.getMaHSX());
+        JdbcHelper.update(updateSQL, entity.getTenHSX(), entity.getMaHSX());
     }
 
     @Override
@@ -71,5 +71,10 @@ public class HangSanXuatDao extends MainDAO<HangSanXuat, String> {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+    
+    public List<HangSanXuat> selectByMAHSX(String keyword) {
+        String sql = "SELECT * FROM HANGSANXUAT WHERE MAHSX LIKE ?";
+        return selectBySql(sql, "%" + keyword + "%");
     }
 }
