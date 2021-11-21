@@ -509,7 +509,8 @@ public class FrmHangHoa extends javax.swing.JPanel {
             }
             MatHangDAO dao = new MatHangDAO();
             dao.update(this.getMatHang());
-            fillTable();
+            this.fillTable();
+            this.showDetail();
             Msgbox.alert(null, "Sửa thành công!");
         } catch (Exception e) {
             e.printStackTrace();
