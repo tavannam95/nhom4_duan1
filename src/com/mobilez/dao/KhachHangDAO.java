@@ -15,16 +15,17 @@ import java.util.List;
  *
  * @author LAPTOP
  */
-public class KhachHangDAO extends MainDAO<KhachHang, String>{
+public class KhachHangDAO extends MainDAO<KhachHang, String> {
+
     String INSERT_SQL = "INSERT INTO KHACHHANG(MAKH,TENKH,DIACHI,SODT) VALUES (?,?,?,?)";
     String UPDATE_SQL = "UPDATE KHACHHANG SET TENKH = ?, DIACHI = ? , SODT = ? WHERE MAKH = ?";
     String DELETE_SQL = "DELETE KHACHHANG WHERE MAKH = ?";
     String SELECT_ALL_SQL = "SELECT * FROM KHACHHANG";
     String SELECT_BY_ID_SQl = "SELECT * FROM KHACHHANG WHERE MAKH = ?";
-
+   
     @Override
     public void insert(KhachHang entity) {
-            JdbcHelper.update(INSERT_SQL, entity.getMaKH(), entity.getTenKH(), entity.getDiaChi(), entity.getSoDienThoai()); 
+        JdbcHelper.update(INSERT_SQL, entity.getMaKH(), entity.getTenKH(), entity.getDiaChi(), entity.getSoDienThoai());
     }
 
     @Override
@@ -69,5 +70,17 @@ public class KhachHangDAO extends MainDAO<KhachHang, String>{
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public List<KhachHang> selectByKeyWork(String keywork) {
+         String SELECT_BY_KeyWork = "SELECT * FROM KHACHHANG WHERE MAKH like '%"+keywork+"%' or TENKH like '%"+keywork+"%' or SODT like '%"+keywork+"%'";
+        return this.selectBySql(SELECT_BY_KeyWork);
+    }
+    public  boolean checkDuplicate(String maKH) {
+        KhachHang khachHang = selectById(maKH);
+        if (khachHang == null) {
+            return true;
+        }
+        return false;
     }
 }
