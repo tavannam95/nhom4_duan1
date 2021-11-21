@@ -37,7 +37,7 @@ public class FrmHome extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon("src/com/mobilez/icon/logoM_32px.png").getImage());
-        this.setResizable(false);
+//        this.setResizable(false);
         setTimeLbl();
         pnlParent.removeAll();
         pnlParent.revalidate();
@@ -1439,175 +1439,91 @@ public class FrmHome extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_lblUserMouseClicked
-    boolean chkPnlNcc = false;
+
     private void lblNCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNCCMouseClicked
         // TODO add your handling code here:
-        chkPnlNcc =  !chkPnlNcc;
-        
-        if (chkPnlNcc) {
-            FrmNhaCungCap f = new FrmNhaCungCap();
-            this.showPnl(f);
-        }else{
-            this.removeAllPnlShow();
-        }
+
+        FrmNhaCungCap f = new FrmNhaCungCap();
+        this.showPnl(f);
+
 
     }//GEN-LAST:event_lblNCCMouseClicked
-    boolean chkPnlNV = false;
     private void lblNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNVMouseClicked
         // TODO add your handling code here:
-        chkPnlNV =  !chkPnlNV;
-        
-        if (chkPnlNV) {
-            FrmNhanVien f = new FrmNhanVien();
-            this.showPnl(f);
-        }else{
-            this.removeAllPnlShow();
-        }
+        FrmNhanVien f = new FrmNhanVien();
+        this.showPnl(f);
+
     }//GEN-LAST:event_lblNVMouseClicked
-    boolean chkPnlKH = false;
     private void lblKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKHMouseClicked
         // TODO add your handling code here:
-        chkPnlKH =  !chkPnlKH;
-        
-        if (chkPnlKH) {
-            FrmKhachHang f = new FrmKhachHang();
-            this.showPnl(f);
-        }else{
-            this.removeAllPnlShow();
-        }
+        FrmKhachHang f = new FrmKhachHang();
+        this.showPnl(f);
+
     }//GEN-LAST:event_lblKHMouseClicked
-    boolean chkpnlMH = false;
     private void lblMHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMHMouseClicked
         // TODO add your handling code here:
-        chkpnlMH =  !chkpnlMH;
-        
-        if (chkpnlMH) {
-            FrmHangHoa f = new FrmHangHoa();
-            this.showPnl(f);
-        }else{
-            this.removeAllPnlShow();
-        }
+        FrmHangHoa f = new FrmHangHoa();
+        this.showPnl(f);
+
     }//GEN-LAST:event_lblMHMouseClicked
-    boolean chkpnlHSX = false;
     private void lblHSXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHSXMouseClicked
         // TODO add your handling code here:
-        chkpnlHSX =  !chkpnlHSX;
-        
-        if (chkpnlHSX) {
-            FrmHangSanXuat f = new FrmHangSanXuat();
-            this.showPnl(f);
-        }else{
-            this.removeAllPnlShow();
-        }
+        FrmHangSanXuat f = new FrmHangSanXuat();
+        this.showPnl(f);
     }//GEN-LAST:event_lblHSXMouseClicked
-    boolean chkpnlPNK = false;
     private void lblPhieuNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPhieuNhapMouseClicked
         // TODO add your handling code here:
-        chkpnlPNK =  !chkpnlPNK;
-        
-        if (chkpnlPNK) {
-            FrmPhieuNhap f = new FrmPhieuNhap();
-            this.showPnl(f);
-        }else{
-            this.removeAllPnlShow();
-        }
+        FrmPhieuNhap f = new FrmPhieuNhap();
+        this.showPnl(f);
     }//GEN-LAST:event_lblPhieuNhapMouseClicked
-    boolean chkpnlPX = false;
     private void lblPhieuXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPhieuXuatMouseClicked
         // TODO add your handling code here:
-        chkpnlPX =  !chkpnlPX;
-        
-        if (chkpnlPX) {
-            FrmPhieuXuat f = new FrmPhieuXuat();
-            this.showPnl(f);
-        }else{
-            this.removeAllPnlShow();
-        }
+        FrmPhieuXuat f = new FrmPhieuXuat();
+        this.showPnl(f);
+
     }//GEN-LAST:event_lblPhieuXuatMouseClicked
-    boolean chkpnlXP = false;
     private void lblXemPhieuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblXemPhieuMouseClicked
         // TODO add your handling code here:
-        chkpnlXP =  !chkpnlXP;
-        
-        if (chkpnlXP) {
-            FrmXemPhieu f = new FrmXemPhieu();
-            this.showPnl(f);
-        }else{
-            this.removeAllPnlShow();
-        }
+        FrmXemPhieu f = new FrmXemPhieu();
+        this.showPnl(f);
+
     }//GEN-LAST:event_lblXemPhieuMouseClicked
-    boolean chkpnlPGC = false;
     private void lblPhieuGiaoCaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPhieuGiaoCaMouseClicked
         // TODO add your handling code here:
-        chkpnlPGC =  !chkpnlPGC;
-        
-        if (chkpnlPGC) {
-            FrmPhieuGiaoCa f = new FrmPhieuGiaoCa();
-            this.showPnl(f);
-        }else{
-            this.removeAllPnlShow();
-        }
+        FrmPhieuGiaoCa f = new FrmPhieuGiaoCa();
+        this.showPnl(f);
+
     }//GEN-LAST:event_lblPhieuGiaoCaMouseClicked
-    boolean chkpnlPBH = false;
     private void lblPhieuBaoHanhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPhieuBaoHanhMouseClicked
         // TODO add your handling code here:
-        chkpnlPBH =  !chkpnlPBH;
-        
-        if (chkpnlPBH) {
-            FrmPhieuBaoHanh f = new FrmPhieuBaoHanh();
-            this.showPnl(f);
-        }else{
-            this.removeAllPnlShow();
-        }
+        FrmPhieuBaoHanh f = new FrmPhieuBaoHanh();
+        this.showPnl(f);
+
     }//GEN-LAST:event_lblPhieuBaoHanhMouseClicked
-    boolean chkpnlHDBS = false;
     private void lblHDBSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDBSMouseClicked
         // TODO add your handling code here:
-        chkpnlHDBS =  !chkpnlHDBS;
-        
-        if (chkpnlHDBS) {
-            FrmHoaDonBanSi f = new FrmHoaDonBanSi();
-            this.showPnl(f);
-        }else{
-            this.removeAllPnlShow();
-        }
+        FrmHoaDonBanSi f = new FrmHoaDonBanSi();
+        this.showPnl(f);
+
     }//GEN-LAST:event_lblHDBSMouseClicked
-    boolean chkpnlHDBL = false;
     private void lblHDBLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDBLMouseClicked
         // TODO add your handling code here:
-        chkpnlHDBL =  !chkpnlHDBL;
-        
-        if (chkpnlHDBL) {
-            FrmHoaDonBanLe f = new FrmHoaDonBanLe();
-            this.showPnl(f);
-        }else{
-            this.removeAllPnlShow();
-        }
-        
+        FrmHoaDonBanLe f = new FrmHoaDonBanLe();
+        this.showPnl(f);
+
+
     }//GEN-LAST:event_lblHDBLMouseClicked
-    boolean chkpnlCNG = false;
     private void lblCapNhatGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCapNhatGiaMouseClicked
         // TODO add your handling code here:    
-        chkpnlCNG =  !chkpnlCNG;
-        
-        if (chkpnlCNG) {
-            FrmCapNhatGiaHang f = new FrmCapNhatGiaHang();
-            this.showPnl(f);
-        }else{
-            this.removeAllPnlShow();
-        }
+        FrmCapNhatGiaHang f = new FrmCapNhatGiaHang();
+        this.showPnl(f);
+
     }//GEN-LAST:event_lblCapNhatGiaMouseClicked
-    boolean chkpnlTT = false;
     private void lblThongTinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongTinMouseClicked
         // TODO add your handling code here:
-        chkpnlTT =  !chkpnlTT;
-        
-        if (chkpnlTT) {
-            FrmGioiThieu2 f = new FrmGioiThieu2();
-            this.showPnl(f);
-        }else{
-            this.removeAllPnlShow();
-        }
+        FrmGioiThieu2 f = new FrmGioiThieu2();
+        this.showPnl(f);
+
     }//GEN-LAST:event_lblThongTinMouseClicked
 
     /**
