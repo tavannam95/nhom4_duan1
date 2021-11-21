@@ -55,18 +55,13 @@ public class FrmHangHoa extends javax.swing.JPanel {
         showBtnThem();
     }
     //My method
-    
-    private void chkThem(){
-        //validate txtMaMH
-        if (txtMaMH.getText().trim().equals("")) {
-            Msgbox.alert(null, "Không được để trống mã mặt hàng!");
-            txtMaMH.setText("");
-            txtMaMH.requestFocus();
-            lblMaMH.setForeground(Color.red);
-            return;
-        }else{
-            lblMaMH.setForeground(Color.white);
-        }
+
+    private void chkThem() {
+
+    }
+
+    private void chkSua() {
+
         //validate txtTenMH
         if (txtTenMH.getText().trim().equals("")) {
             Msgbox.alert(null, "Không được để trống tên mặt hàng!");
@@ -74,7 +69,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             txtTenMH.requestFocus();
             lblTenMH.setForeground(Color.red);
             return;
-        }else{
+        } else {
             lblTenMH.setForeground(Color.white);
         }
         //validate RAm
@@ -84,7 +79,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             txtRAM.requestFocus();
             lblRAM.setForeground(Color.red);
             return;
-        }else{
+        } else {
             lblRAM.setForeground(Color.white);
         }
         //validate dung luong
@@ -94,7 +89,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             txtDungLuong.requestFocus();
             lblDL.setForeground(Color.red);
             return;
-        }else{
+        } else {
             lblDL.setForeground(Color.white);
         }
         //validate mau sac
@@ -104,7 +99,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             txtDungLuong.requestFocus();
             lblDL.setForeground(Color.red);
             return;
-        }else{
+        } else {
             lblDL.setForeground(Color.white);
         }
         //validate don vi
@@ -114,38 +109,10 @@ public class FrmHangHoa extends javax.swing.JPanel {
             txtDVT.requestFocus();
             lblDVT.setForeground(Color.red);
             return;
-        }else{
+        } else {
             lblDVT.setForeground(Color.white);
         }
-        //validate so luong
-        if (txtSoLuong.getText().trim().equals("")) {
-            Msgbox.alert(null, "Không được để trống số lượng!");
-            txtSoLuong.setText("");
-            txtSoLuong.requestFocus();
-            lblSL.setForeground(Color.red);
-            return;
-        }else{
-            lblSL.setForeground(Color.white);
-        }
-        try {
-            Integer.parseInt(txtSoLuong.getText());
-        } catch (Exception e) {
-            Msgbox.alert(null, "Số lượng phải là số!");
-            txtSoLuong.setText("");
-            txtSoLuong.requestFocus();
-            lblSL.setForeground(Color.red);
-            return;
-        }
-        lblSL.setForeground(Color.white);
-        if (Integer.parseInt(txtSoLuong.getText())<=0) {
-            Msgbox.alert(null, "Số lượng phải lơn hơn 0!");
-            txtSoLuong.setText("");
-            txtSoLuong.requestFocus();
-            lblSL.setForeground(Color.red);
-            return;
-        }else{
-            lblSL.setForeground(Color.white);
-        }
+
         //validate bao hanh
         if (txtBaoHanh.getText().trim().equals("")) {
             Msgbox.alert(null, "Không được để trống thời gian bảo hành!");
@@ -153,7 +120,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             txtBaoHanh.requestFocus();
             lblBH.setForeground(Color.red);
             return;
-        }else{
+        } else {
             lblBH.setForeground(Color.white);
         }
         try {
@@ -166,177 +133,27 @@ public class FrmHangHoa extends javax.swing.JPanel {
             return;
         }
         lblBH.setForeground(Color.white);
-        if (Integer.parseInt(txtBaoHanh.getText())<=0) {
+        if (Integer.parseInt(txtBaoHanh.getText()) <= 0) {
             Msgbox.alert(null, "Thời gian bảo hành phải lơn hơn 0!");
             txtBaoHanh.setText("");
             txtBaoHanh.requestFocus();
             lblBH.setForeground(Color.red);
             return;
-        }else{
+        } else {
             lblBH.setForeground(Color.white);
         }
-        //validate gia mua
-        if (txtGiaMua.getText().trim().equals("")) {
-            Msgbox.alert(null, "Không được để trống giá mua!");
-            txtGiaMua.setText("");
-            txtGiaMua.requestFocus();
-            lblGM.setForeground(Color.red);
-            return;
-        }else{
-            lblGM.setForeground(Color.white);
-        }
-        try {
-            Integer.parseInt(txtGiaMua.getText());
-        } catch (Exception e) {
-            Msgbox.alert(null, "Giá mua phải là số!");
-            txtGiaMua.setText("");
-            txtGiaMua.requestFocus();
-            lblGM.setForeground(Color.red);
-            return;
-        }
-        lblGM.setForeground(Color.white);
-        if (Integer.parseInt(txtGiaMua.getText())<=0) {
-            Msgbox.alert(null, "Giá mua phải lơn hơn 0!");
-            txtGiaMua.setText("");
-            txtGiaMua.requestFocus();
-            lblGM.setForeground(Color.red);
-            return;
-        }else{
-            lblGM.setForeground(Color.white);
-        }
-        //validate gia ban
-        if (txtGiaBan.getText().trim().equals("")) {
-            Msgbox.alert(null, "Không được để trống giá mua!");
-            txtGiaBan.setText("");
-            txtGiaBan.requestFocus();
-            lblGB.setForeground(Color.red);
-            return;
-        }else{
-            lblGB.setForeground(Color.white);
-        }
-        try {
-            Integer.parseInt(txtGiaBan.getText());
-        } catch (Exception e) {
-            Msgbox.alert(null, "Giá mua phải là số!");
-            txtGiaBan.setText("");
-            txtGiaBan.requestFocus();
-            lblGB.setForeground(Color.red);
-            return;
-        }
-        lblGB.setForeground(Color.white);
-        if (Integer.parseInt(txtGiaBan.getText())<=0) {
-            Msgbox.alert(null, "Giá mua phải lơn hơn 0!");
-            txtGiaBan.setText("");
-            txtGiaBan.requestFocus();
-            lblGB.setForeground(Color.red);
-            return;
-        }else{
-            lblGB.setForeground(Color.white);
-        }
+
         //validate hinh mh
         if (lblHinhMH.getToolTipText().trim().equals("")) {
             Msgbox.alert(null, "Bạn chưa chọn ảnh!");
             lblHMH.setForeground(Color.red);
             return;
-        }else{
+        } else {
             lblHMH.setForeground(Color.white);
         }
     }
-    
-    private void chkSua(){
-        
-        //validate txtTenMH
-        if (txtTenMH.getText().trim().equals("")) {
-            Msgbox.alert(null, "Không được để trống tên mặt hàng!");
-            txtTenMH.setText("");
-            txtTenMH.requestFocus();
-            lblTenMH.setForeground(Color.red);
-            return;
-        }else{
-            lblTenMH.setForeground(Color.white);
-        }
-        //validate RAm
-        if (txtRAM.getText().trim().equals("")) {
-            Msgbox.alert(null, "Không được để trống RAM!");
-            txtRAM.setText("");
-            txtRAM.requestFocus();
-            lblRAM.setForeground(Color.red);
-            return;
-        }else{
-            lblRAM.setForeground(Color.white);
-        }
-        //validate dung luong
-        if (txtDungLuong.getText().trim().equals("")) {
-            Msgbox.alert(null, "Không được để trống dung lượng!");
-            txtDungLuong.setText("");
-            txtDungLuong.requestFocus();
-            lblDL.setForeground(Color.red);
-            return;
-        }else{
-            lblDL.setForeground(Color.white);
-        }
-        //validate mau sac
-        if (txtDungLuong.getText().trim().equals("")) {
-            Msgbox.alert(null, "Không được để trống màu sắc!");
-            txtDungLuong.setText("");
-            txtDungLuong.requestFocus();
-            lblDL.setForeground(Color.red);
-            return;
-        }else{
-            lblDL.setForeground(Color.white);
-        }
-        //validate don vi
-        if (txtDVT.getText().trim().equals("")) {
-            Msgbox.alert(null, "Không được để trống màu sắc!");
-            txtDVT.setText("");
-            txtDVT.requestFocus();
-            lblDVT.setForeground(Color.red);
-            return;
-        }else{
-            lblDVT.setForeground(Color.white);
-        }
-        
-        //validate bao hanh
-        if (txtBaoHanh.getText().trim().equals("")) {
-            Msgbox.alert(null, "Không được để trống thời gian bảo hành!");
-            txtBaoHanh.setText("");
-            txtBaoHanh.requestFocus();
-            lblBH.setForeground(Color.red);
-            return;
-        }else{
-            lblBH.setForeground(Color.white);
-        }
-        try {
-            Integer.parseInt(txtBaoHanh.getText());
-        } catch (Exception e) {
-            Msgbox.alert(null, "Thời gian bảo hành phải là số!");
-            txtBaoHanh.setText("");
-            txtBaoHanh.requestFocus();
-            lblBH.setForeground(Color.red);
-            return;
-        }
-        lblBH.setForeground(Color.white);
-        if (Integer.parseInt(txtBaoHanh.getText())<=0) {
-            Msgbox.alert(null, "Thời gian bảo hành phải lơn hơn 0!");
-            txtBaoHanh.setText("");
-            txtBaoHanh.requestFocus();
-            lblBH.setForeground(Color.red);
-            return;
-        }else{
-            lblBH.setForeground(Color.white);
-        }
-        
-        //validate hinh mh
-        if (lblHinhMH.getToolTipText().trim().equals("")) {
-            Msgbox.alert(null, "Bạn chưa chọn ảnh!");
-            lblHMH.setForeground(Color.red);
-            return;
-        }else{
-            lblHMH.setForeground(Color.white);
-        }
-    }
-    
-    private void showBtnThem(){
+
+    private void showBtnThem() {
         btnThemMH.setEnabled(true);
         btnSuaMH.setEnabled(false);
 //        btnXoaMH.setEnabled(false);
@@ -349,8 +166,8 @@ public class FrmHangHoa extends javax.swing.JPanel {
         txtGiaBan.setForeground(Color.WHITE);
         txtSoLuong.setForeground(Color.WHITE);
     }
-    
-    private void hideBtnThem(){
+
+    private void hideBtnThem() {
         btnThemMH.setEnabled(false);
         btnSuaMH.setEnabled(true);
 //        btnXoaMH.setEnabled(true);
@@ -363,10 +180,203 @@ public class FrmHangHoa extends javax.swing.JPanel {
         txtGiaBan.setForeground(Color.ORANGE);
         txtSoLuong.setForeground(Color.ORANGE);
     }
-    
+
     private void them() {
         try {
-            chkThem();
+//            chkThem();
+            //validate txtMaMH
+            if (txtMaMH.getText().trim().equals("")) {
+                Msgbox.alert(null, "Không được để trống mã mặt hàng!");
+                txtMaMH.setText("");
+                txtMaMH.requestFocus();
+                lblMaMH.setForeground(Color.red);
+                return;
+            } else {
+                lblMaMH.setForeground(Color.white);
+            }
+            for (int i = 0; i < tblList.getRowCount(); i++) {
+                if (tblList.getValueAt(i, 0).toString().equalsIgnoreCase(txtMaMH.getText())) {
+                    Msgbox.alert(null, "Mã mặt hàng đã tồn tại!");
+                    lblMaMH.setForeground(Color.red);
+                    return;
+                } else {
+                    lblMaMH.setForeground(Color.white);
+                }
+            }
+            //validate txtTenMH
+            if (txtTenMH.getText().trim().equals("")) {
+                Msgbox.alert(null, "Không được để trống tên mặt hàng!");
+                txtTenMH.setText("");
+                txtTenMH.requestFocus();
+                lblTenMH.setForeground(Color.red);
+                return;
+            } else {
+                lblTenMH.setForeground(Color.white);
+            }
+            //validate RAm
+            if (txtRAM.getText().trim().equals("")) {
+                Msgbox.alert(null, "Không được để trống RAM!");
+                txtRAM.setText("");
+                txtRAM.requestFocus();
+                lblRAM.setForeground(Color.red);
+                return;
+            } else {
+                lblRAM.setForeground(Color.white);
+            }
+            //validate dung luong
+            if (txtDungLuong.getText().trim().equals("")) {
+                Msgbox.alert(null, "Không được để trống dung lượng!");
+                txtDungLuong.setText("");
+                txtDungLuong.requestFocus();
+                lblDL.setForeground(Color.red);
+                return;
+            } else {
+                lblDL.setForeground(Color.white);
+            }
+            //validate mau sac
+            if (txtDungLuong.getText().trim().equals("")) {
+                Msgbox.alert(null, "Không được để trống màu sắc!");
+                txtDungLuong.setText("");
+                txtDungLuong.requestFocus();
+                lblDL.setForeground(Color.red);
+                return;
+            } else {
+                lblDL.setForeground(Color.white);
+            }
+            //validate don vi
+            if (txtDVT.getText().trim().equals("")) {
+                Msgbox.alert(null, "Không được để trống đơn vị tính!");
+                txtDVT.setText("");
+                txtDVT.requestFocus();
+                lblDVT.setForeground(Color.red);
+                return;
+            } else {
+                lblDVT.setForeground(Color.white);
+            }
+            //validate so luong
+            if (txtSoLuong.getText().trim().equals("")) {
+                Msgbox.alert(null, "Không được để trống số lượng!");
+                txtSoLuong.setText("");
+                txtSoLuong.requestFocus();
+                lblSL.setForeground(Color.red);
+                return;
+            } else {
+                lblSL.setForeground(Color.white);
+            }
+            try {
+                Integer.parseInt(txtSoLuong.getText());
+            } catch (Exception e) {
+                Msgbox.alert(null, "Số lượng phải là số!");
+                txtSoLuong.setText("");
+                txtSoLuong.requestFocus();
+                lblSL.setForeground(Color.red);
+                return;
+            }
+            lblSL.setForeground(Color.white);
+            if (Integer.parseInt(txtSoLuong.getText()) <= 0) {
+                Msgbox.alert(null, "Số lượng phải lơn hơn 0!");
+                txtSoLuong.setText("");
+                txtSoLuong.requestFocus();
+                lblSL.setForeground(Color.red);
+                return;
+            } else {
+                lblSL.setForeground(Color.white);
+            }
+            //validate bao hanh
+            if (txtBaoHanh.getText().trim().equals("")) {
+                Msgbox.alert(null, "Không được để trống thời gian bảo hành!");
+                txtBaoHanh.setText("");
+                txtBaoHanh.requestFocus();
+                lblBH.setForeground(Color.red);
+                return;
+            } else {
+                lblBH.setForeground(Color.white);
+            }
+            try {
+                Integer.parseInt(txtBaoHanh.getText());
+            } catch (Exception e) {
+                Msgbox.alert(null, "Thời gian bảo hành phải là số!");
+                txtBaoHanh.setText("");
+                txtBaoHanh.requestFocus();
+                lblBH.setForeground(Color.red);
+                return;
+            }
+            lblBH.setForeground(Color.white);
+            if (Integer.parseInt(txtBaoHanh.getText()) <= 0) {
+                Msgbox.alert(null, "Thời gian bảo hành phải lơn hơn 0!");
+                txtBaoHanh.setText("");
+                txtBaoHanh.requestFocus();
+                lblBH.setForeground(Color.red);
+                return;
+            } else {
+                lblBH.setForeground(Color.white);
+            }
+            //validate gia mua
+            if (txtGiaMua.getText().trim().equals("")) {
+                Msgbox.alert(null, "Không được để trống giá mua!");
+                txtGiaMua.setText("");
+                txtGiaMua.requestFocus();
+                lblGM.setForeground(Color.red);
+                return;
+            } else {
+                lblGM.setForeground(Color.white);
+            }
+            try {
+                Integer.parseInt(txtGiaMua.getText());
+            } catch (Exception e) {
+                Msgbox.alert(null, "Giá mua phải là số!");
+                txtGiaMua.setText("");
+                txtGiaMua.requestFocus();
+                lblGM.setForeground(Color.red);
+                return;
+            }
+            lblGM.setForeground(Color.white);
+            if (Integer.parseInt(txtGiaMua.getText()) <= 0) {
+                Msgbox.alert(null, "Giá mua phải lơn hơn 0!");
+                txtGiaMua.setText("");
+                txtGiaMua.requestFocus();
+                lblGM.setForeground(Color.red);
+                return;
+            } else {
+                lblGM.setForeground(Color.white);
+            }
+            //validate gia ban
+            if (txtGiaBan.getText().trim().equals("")) {
+                Msgbox.alert(null, "Không được để trống giá mua!");
+                txtGiaBan.setText("");
+                txtGiaBan.requestFocus();
+                lblGB.setForeground(Color.red);
+                return;
+            } else {
+                lblGB.setForeground(Color.white);
+            }
+            try {
+                Integer.parseInt(txtGiaBan.getText());
+            } catch (Exception e) {
+                Msgbox.alert(null, "Giá mua phải là số!");
+                txtGiaBan.setText("");
+                txtGiaBan.requestFocus();
+                lblGB.setForeground(Color.red);
+                return;
+            }
+            lblGB.setForeground(Color.white);
+            if (Integer.parseInt(txtGiaBan.getText()) <= 0) {
+                Msgbox.alert(null, "Giá mua phải lơn hơn 0!");
+                txtGiaBan.setText("");
+                txtGiaBan.requestFocus();
+                lblGB.setForeground(Color.red);
+                return;
+            } else {
+                lblGB.setForeground(Color.white);
+            }
+            //validate hinh mh
+            if (lblHinhMH.getToolTipText().trim().equals("")) {
+                Msgbox.alert(null, "Bạn chưa chọn ảnh!");
+                lblHMH.setForeground(Color.red);
+                return;
+            } else {
+                lblHMH.setForeground(Color.white);
+            }
             MatHangDAO dao = new MatHangDAO();
             dao.insert(this.getMatHang());
             java.util.Date now = new java.util.Date();
@@ -401,6 +411,95 @@ public class FrmHangHoa extends javax.swing.JPanel {
 
     private void sua() {
         try {
+            //validate txtTenMH
+            if (txtTenMH.getText().trim().equals("")) {
+                Msgbox.alert(null, "Không được để trống tên mặt hàng!");
+                txtTenMH.setText("");
+                txtTenMH.requestFocus();
+                lblTenMH.setForeground(Color.red);
+                return;
+            } else {
+                lblTenMH.setForeground(Color.white);
+            }
+            //validate RAm
+            if (txtRAM.getText().trim().equals("")) {
+                Msgbox.alert(null, "Không được để trống RAM!");
+                txtRAM.setText("");
+                txtRAM.requestFocus();
+                lblRAM.setForeground(Color.red);
+                return;
+            } else {
+                lblRAM.setForeground(Color.white);
+            }
+            //validate dung luong
+            if (txtDungLuong.getText().trim().equals("")) {
+                Msgbox.alert(null, "Không được để trống dung lượng!");
+                txtDungLuong.setText("");
+                txtDungLuong.requestFocus();
+                lblDL.setForeground(Color.red);
+                return;
+            } else {
+                lblDL.setForeground(Color.white);
+            }
+            //validate mau sac
+            if (txtDungLuong.getText().trim().equals("")) {
+                Msgbox.alert(null, "Không được để trống màu sắc!");
+                txtDungLuong.setText("");
+                txtDungLuong.requestFocus();
+                lblDL.setForeground(Color.red);
+                return;
+            } else {
+                lblDL.setForeground(Color.white);
+            }
+            //validate don vi
+            if (txtDVT.getText().trim().equals("")) {
+                Msgbox.alert(null, "Không được để trống màu sắc!");
+                txtDVT.setText("");
+                txtDVT.requestFocus();
+                lblDVT.setForeground(Color.red);
+                return;
+            } else {
+                lblDVT.setForeground(Color.white);
+            }
+
+            //validate bao hanh
+            if (txtBaoHanh.getText().trim().equals("")) {
+                Msgbox.alert(null, "Không được để trống thời gian bảo hành!");
+                txtBaoHanh.setText("");
+                txtBaoHanh.requestFocus();
+                lblBH.setForeground(Color.red);
+                return;
+            } else {
+                lblBH.setForeground(Color.white);
+            }
+            try {
+                Integer.parseInt(txtBaoHanh.getText());
+            } catch (Exception e) {
+                Msgbox.alert(null, "Thời gian bảo hành phải là số!");
+                txtBaoHanh.setText("");
+                txtBaoHanh.requestFocus();
+                lblBH.setForeground(Color.red);
+                return;
+            }
+            lblBH.setForeground(Color.white);
+            if (Integer.parseInt(txtBaoHanh.getText()) <= 0) {
+                Msgbox.alert(null, "Thời gian bảo hành phải lơn hơn 0!");
+                txtBaoHanh.setText("");
+                txtBaoHanh.requestFocus();
+                lblBH.setForeground(Color.red);
+                return;
+            } else {
+                lblBH.setForeground(Color.white);
+            }
+
+            //validate hinh mh
+            if (lblHinhMH.getToolTipText().trim().equals("")) {
+                Msgbox.alert(null, "Bạn chưa chọn ảnh!");
+                lblHMH.setForeground(Color.red);
+                return;
+            } else {
+                lblHMH.setForeground(Color.white);
+            }
             MatHangDAO dao = new MatHangDAO();
             dao.update(this.getMatHang());
             fillTable();
@@ -409,9 +508,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             e.printStackTrace();
         }
     }
-    
-    
-    
+
     private MatHang getMatHang() {
         HangSanXuat hsx = (HangSanXuat) cboHSX.getSelectedItem();
         QuocGia qg = (QuocGia) cboQuocGia.getSelectedItem();
@@ -454,6 +551,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
                 txtGiaBan.setText("");
                 txtBaoHanh.setText("");
                 lblHinhMH.setToolTipText("");
+                lblHinhMH.setIcon(null);
                 cboHSX.setSelectedIndex(0);
                 cboQuocGia.setSelectedIndex(0);
                 index = -1;
@@ -472,7 +570,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
                 lblRAM.setForeground(Color.white);
                 lblSL.setForeground(Color.white);
                 lblTenMH.setForeground(Color.white);
-                
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -651,7 +749,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
         jLabel1.setText("DANH SÁCH MẶT HÀNG");
 
         tblList.setBackground(new java.awt.Color(34, 116, 173));
-        tblList.setFont(new java.awt.Font("Baloo 2", 0, 12)); // NOI18N
+        tblList.setFont(new java.awt.Font("Baloo 2", 0, 13)); // NOI18N
         tblList.setForeground(new java.awt.Color(255, 255, 255));
         tblList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -713,11 +811,11 @@ public class FrmHangHoa extends javax.swing.JPanel {
         txtMaMH.setForeground(new java.awt.Color(255, 255, 255));
         txtMaMH.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
-        lblMaMH.setFont(new java.awt.Font("Baloo Chettan 2", 0, 12)); // NOI18N
+        lblMaMH.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblMaMH.setForeground(new java.awt.Color(255, 255, 255));
         lblMaMH.setText("Mã mặt hàng");
 
-        lblHSX.setFont(new java.awt.Font("Baloo Chettan 2", 0, 12)); // NOI18N
+        lblHSX.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblHSX.setForeground(new java.awt.Color(255, 255, 255));
         lblHSX.setText("Hãng sản xuất");
 
@@ -725,7 +823,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
         cboHSX.setForeground(new java.awt.Color(255, 255, 255));
 
         btnThemHSX.setBackground(new java.awt.Color(34, 116, 173));
-        btnThemHSX.setFont(new java.awt.Font("Baloo 2", 0, 12)); // NOI18N
+        btnThemHSX.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
         btnThemHSX.setForeground(new java.awt.Color(255, 255, 255));
         btnThemHSX.setText("Thêm");
         btnThemHSX.addActionListener(new java.awt.event.ActionListener() {
@@ -734,7 +832,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             }
         });
 
-        lblTenMH.setFont(new java.awt.Font("Baloo Chettan 2", 0, 12)); // NOI18N
+        lblTenMH.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblTenMH.setForeground(new java.awt.Color(255, 255, 255));
         lblTenMH.setText("Tên mặt hàng");
 
@@ -758,7 +856,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
         cboQuocGia.setForeground(new java.awt.Color(255, 255, 255));
 
         btnThemQG.setBackground(new java.awt.Color(34, 116, 173));
-        btnThemQG.setFont(new java.awt.Font("Baloo 2", 0, 12)); // NOI18N
+        btnThemQG.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
         btnThemQG.setForeground(new java.awt.Color(255, 255, 255));
         btnThemQG.setText("Thêm");
         btnThemQG.addActionListener(new java.awt.event.ActionListener() {
@@ -775,31 +873,31 @@ public class FrmHangHoa extends javax.swing.JPanel {
         txtBaoHanh.setForeground(new java.awt.Color(255, 255, 255));
         txtBaoHanh.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
-        lblRAM.setFont(new java.awt.Font("Baloo Chettan 2", 0, 12)); // NOI18N
+        lblRAM.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblRAM.setForeground(new java.awt.Color(255, 255, 255));
         lblRAM.setText("RAM");
 
-        lblDL.setFont(new java.awt.Font("Baloo Chettan 2", 0, 12)); // NOI18N
+        lblDL.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblDL.setForeground(new java.awt.Color(255, 255, 255));
         lblDL.setText("Dung lượng");
 
-        lblMS.setFont(new java.awt.Font("Baloo Chettan 2", 0, 12)); // NOI18N
+        lblMS.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblMS.setForeground(new java.awt.Color(255, 255, 255));
         lblMS.setText("Màu sắc");
 
-        lblQG.setFont(new java.awt.Font("Baloo Chettan 2", 0, 12)); // NOI18N
+        lblQG.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblQG.setForeground(new java.awt.Color(255, 255, 255));
         lblQG.setText("Quốc gia");
 
-        lblDVT.setFont(new java.awt.Font("Baloo Chettan 2", 0, 12)); // NOI18N
+        lblDVT.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblDVT.setForeground(new java.awt.Color(255, 255, 255));
         lblDVT.setText("Đơn vị tính");
 
-        lblSL.setFont(new java.awt.Font("Baloo Chettan 2", 0, 12)); // NOI18N
+        lblSL.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblSL.setForeground(new java.awt.Color(255, 255, 255));
         lblSL.setText("Số lượng");
 
-        lblBH.setFont(new java.awt.Font("Baloo Chettan 2", 0, 12)); // NOI18N
+        lblBH.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblBH.setForeground(new java.awt.Color(255, 255, 255));
         lblBH.setText("Bảo hành");
 
@@ -815,11 +913,11 @@ public class FrmHangHoa extends javax.swing.JPanel {
         txtGiaBan.setForeground(new java.awt.Color(255, 255, 255));
         txtGiaBan.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
-        lblGB.setFont(new java.awt.Font("Baloo Chettan 2", 0, 12)); // NOI18N
+        lblGB.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblGB.setForeground(new java.awt.Color(255, 255, 255));
         lblGB.setText("Giá bán");
 
-        lblGM.setFont(new java.awt.Font("Baloo Chettan 2", 0, 12)); // NOI18N
+        lblGM.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblGM.setForeground(new java.awt.Color(255, 255, 255));
         lblGM.setText("Giá mua");
 
@@ -831,7 +929,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             }
         });
 
-        lblHMH.setFont(new java.awt.Font("Baloo Chettan 2", 0, 12)); // NOI18N
+        lblHMH.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblHMH.setForeground(new java.awt.Color(255, 255, 255));
         lblHMH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHMH.setText("Hình mặt hàng");
@@ -866,7 +964,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             }
         });
 
-        lblGB1.setFont(new java.awt.Font("Baloo Chettan 2", 0, 12)); // NOI18N
+        lblGB1.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblGB1.setForeground(new java.awt.Color(255, 255, 255));
         lblGB1.setText("(Tháng)");
 
@@ -900,7 +998,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(cboHSX, 0, 175, Short.MAX_VALUE)
+                                .addComponent(cboHSX, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnThemHSX))
                             .addComponent(txtMaMH)
@@ -934,7 +1032,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblHinhMH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblHMH, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))))
+                            .addComponent(lblHMH, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))))
                 .addContainerGap())
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -1046,12 +1144,12 @@ public class FrmHangHoa extends javax.swing.JPanel {
 
     private void tblListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMouseClicked
         // TODO add your handling code here:
-        if (evt.getClickCount()==2) {
+        if (evt.getClickCount() == 2) {
             index = tblList.getSelectedRow();
             this.showDetail();
         }
-             
-        
+
+
     }//GEN-LAST:event_tblListMouseClicked
 
     private void lblHinhMHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMHMouseClicked
