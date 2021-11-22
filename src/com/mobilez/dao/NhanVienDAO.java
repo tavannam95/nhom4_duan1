@@ -19,11 +19,11 @@ import javax.swing.JOptionPane;
 public class NhanVienDAO extends MainDAO<NhanVien, String> {
 
     String insertSQL = "INSERT INTO NHANVIEN\n"
-            + "VALUES (?,?,?,?,?,?,?,?,?,?)";
+            + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
     String updateSQL = "UPDATE NHANVIEN SET HOTEN = ?,\n"
             + "GIOITINH = ?, NGAYSINH = ?, SOCCCD = ?,\n"
             + "DIACHI = ?, SODT = ?, VAITRO = ?, \n"
-            + "HINHNV  = ?, MATKHAU = ? WHERE MANV = ?";
+            + "HINHNV  = ?, TRANGTHAI = ?, MATKHAU = ? WHERE MANV = ?";
     String deleteSQL = "delete NHANVIEN where MANV like ?";
     String selectAllSQL = "select * from NHANVIEN";
     String selectByIdSQL = "select * from NHANVIEN where MANV like ?";
@@ -33,7 +33,7 @@ public class NhanVienDAO extends MainDAO<NhanVien, String> {
         int s = JdbcHelper.update(insertSQL, entity.getMaNV(),entity.getHoTen(),entity.isGioiTinh(),
                 entity.getNgaysinh(),
                 entity.getSoCCCD(),entity.getDiaChi(),entity.getSoDienThoai(),
-                entity.isVaiTro(),entity.getHinhNV(),entity.getMatKhau());
+                entity.isVaiTro(),entity.getHinhNV(),entity.isTrangThai(),entity.getMatKhau());
         if (s <= 0) {
             JOptionPane.showMessageDialog(null, "Thêm thất bại!");
             return;
@@ -45,7 +45,7 @@ public class NhanVienDAO extends MainDAO<NhanVien, String> {
         int s = JdbcHelper.update(updateSQL, entity.getHoTen(),entity.isGioiTinh(),
                 entity.getNgaysinh(),
                 entity.getSoCCCD(),entity.getDiaChi(),entity.getSoDienThoai(),
-                entity.isVaiTro(),entity.getHinhNV(),entity.getMatKhau(),entity.getMaNV());
+                entity.isVaiTro(),entity.getHinhNV(),entity.isTrangThai(),entity.getMatKhau(),entity.getMaNV());
         if (s <= 0) {
             JOptionPane.showMessageDialog(null, "Cập nhật thất bại!");
             return;
@@ -86,7 +86,7 @@ public class NhanVienDAO extends MainDAO<NhanVien, String> {
                 NhanVien cd = new NhanVien(
                         rs.getString(1), rs.getString(2), rs.getBoolean(3), rs.getDate(4),
                         rs.getString(5), rs.getString(6), rs.getString(7), rs.getBoolean(8), rs.getString(9),
-                        rs.getString(10)
+                        rs.getBoolean(10),rs.getString(11)
                 );
                 lstNV.add(cd);
             }
