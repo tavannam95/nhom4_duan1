@@ -5,6 +5,8 @@
  */
 package com.mobilez.ui;
 
+import com.mobilez.utils.Auth;
+import com.mobilez.utils.Msgbox;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -38,6 +40,10 @@ public class FrmHome extends javax.swing.JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon("src/com/mobilez/icon/logoM_32px.png").getImage());
         this.setResizable(false);
+        if (!Auth.login) {
+            new ManHinhChao(this, true).setVisible(true);
+        }
+        new DangNhapJDialog(this, true).setVisible(true);
         setTimeLbl();
         pnlParent.removeAll();
         pnlParent.revalidate();
@@ -1129,6 +1135,11 @@ public class FrmHome extends javax.swing.JFrame {
 
         jPanel19.setBackground(new java.awt.Color(20, 83, 116));
         jPanel19.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel19MouseClicked(evt);
+            }
+        });
 
         jLabel19.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 16)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
@@ -1525,6 +1536,14 @@ public class FrmHome extends javax.swing.JFrame {
         this.showPnl(f);
 
     }//GEN-LAST:event_lblThongTinMouseClicked
+
+    private void jPanel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel19MouseClicked
+        if (Msgbox.confirm(this, "Bạn có muốn đăng xuất?")) {
+            Auth.clear();
+            this.dispose();
+            new FrmHome().setVisible(true);
+        }
+    }//GEN-LAST:event_jPanel19MouseClicked
 
     /**
      * @param args the command line arguments
