@@ -7,6 +7,7 @@ package com.mobilez.ui;
 
 import com.mobilez.dao.KhachHangDAO;
 import com.mobilez.models.KhachHang;
+import com.mobilez.utils.Auth;
 import com.mobilez.utils.Msgbox;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -23,8 +24,6 @@ public class FrmKhachHang extends javax.swing.JPanel {
     DefaultTableModel model = new DefaultTableModel();
     KhachHangDAO dao = new KhachHangDAO();
     int index = -1;
-    FrmHome parent = new FrmHome();
-
     public FrmKhachHang() {
         initComponents();
         model = (DefaultTableModel) tblKhachHang.getModel();
@@ -499,6 +498,10 @@ public class FrmKhachHang extends javax.swing.JPanel {
     }
 
     private void delete() {
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền xóa!");
+            return;
+        }
         String makh = (String) tblKhachHang.getValueAt(this.index, 0);
         if (Msgbox.confirm(this, "Bạn thực sự muốn xóa khách hàng này?")) {
             try {
@@ -508,7 +511,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
                 Msgbox.alert(this, "Xóa thành công!");
             } catch (Exception e) {
                 Msgbox.alert(this, "Xóa  thất bại!");
-                e.printStackTrace();
+//                e.printStackTrace();
             }
         }
     }
