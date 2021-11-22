@@ -10,29 +10,33 @@ package com.mobilez.models;
  * @author LAPTOP
  */
 public class MatHang {
-    private String maMH,maHSX,tenMH,ram,dungLuong,mauSac,maQG,hinhMH,donViTinh;
-    private int soluong;
-    private String thoiGianBaoHanh;
+    private String maMH,maHSX,tenMH;
+    private int rAM,dungLuong;
+    private String mauSac,maQG,hinhMH;
+    private int soLuong,tGBH;
+    private double giaMua,giaBanSi,giaBanLe;
+    private boolean trangThai;
 
     public MatHang() {
     }
 
-    public MatHang(String maMH, String maHSX, String tenMH, String ram, String dungLuong, String mauSac, String maQG, String hinhMH, String donViTinh, int soluong, String thoiGianBaoHanh) {
+    public MatHang(String maMH, String maHSX, String tenMH, int rAM, int dungLuong, String mauSac, String maQG, String hinhMH, int soLuong, int tGBH, double giaMua, double giaBanSi, double giaBanLe, boolean trangThai) {
         this.maMH = maMH;
         this.maHSX = maHSX;
         this.tenMH = tenMH;
-        this.ram = ram;
+        this.rAM = rAM;
         this.dungLuong = dungLuong;
         this.mauSac = mauSac;
         this.maQG = maQG;
         this.hinhMH = hinhMH;
-        this.donViTinh = donViTinh;
-        this.soluong = soluong;
-        this.thoiGianBaoHanh = thoiGianBaoHanh;
+        this.soLuong = soLuong;
+        this.tGBH = tGBH;
+        this.giaMua = giaMua;
+        this.giaBanSi = giaBanSi;
+        this.giaBanLe = giaBanLe;
+        this.trangThai = trangThai;
     }
 
-    
-    
     public String getMaMH() {
         return maMH;
     }
@@ -57,19 +61,19 @@ public class MatHang {
         this.tenMH = tenMH;
     }
 
-    public String getRam() {
-        return ram;
+    public int getrAM() {
+        return rAM;
     }
 
-    public void setRam(String ram) {
-        this.ram = ram;
+    public void setrAM(int rAM) {
+        this.rAM = rAM;
     }
 
-    public String getDungLuong() {
+    public int getDungLuong() {
         return dungLuong;
     }
 
-    public void setDungLuong(String dungLuong) {
+    public void setDungLuong(int dungLuong) {
         this.dungLuong = dungLuong;
     }
 
@@ -97,29 +101,55 @@ public class MatHang {
         this.hinhMH = hinhMH;
     }
 
-    public String getDonViTinh() {
-        return donViTinh;
+    public int getSoLuong() {
+        return soLuong;
     }
 
-    public void setDonViTinh(String donViTinh) {
-        this.donViTinh = donViTinh;
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
     }
 
-    public int getSoluong() {
-        return soluong;
+    public int gettGBH() {
+        return tGBH;
     }
 
-    public void setSoluong(int soluong) {
-        this.soluong = soluong;
+    public void settGBH(int tGBH) {
+        this.tGBH = tGBH;
     }
 
-    public String getThoiGianBaoHanh() {
-        return thoiGianBaoHanh;
+    public double getGiaMua() {
+        return giaMua;
     }
 
-    public void setThoiGianBaoHanh(String thoiGianBaoHanh) {
-        this.thoiGianBaoHanh = thoiGianBaoHanh;
+    public void setGiaMua(double giaMua) {
+        this.giaMua = giaMua;
     }
+
+    public double getGiaBanSi() {
+        return giaBanSi;
+    }
+
+    public void setGiaBanSi(double giaBanSi) {
+        this.giaBanSi = giaBanSi;
+    }
+
+    public double getGiaBanLe() {
+        return giaBanLe;
+    }
+
+    public void setGiaBanLe(double giaBanLe) {
+        this.giaBanLe = giaBanLe;
+    }
+
+    public boolean isTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(boolean trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    
 
     
 

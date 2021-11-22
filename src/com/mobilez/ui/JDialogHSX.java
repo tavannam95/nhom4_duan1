@@ -8,6 +8,7 @@ package com.mobilez.ui;
 
 import com.mobilez.utils.JdbcHelper;
 import com.mobilez.utils.Msgbox;
+import java.awt.event.KeyEvent;
 import java.sql.*;
 /**
  *
@@ -55,6 +56,11 @@ public class JDialogHSX extends javax.swing.JDialog {
 
         txtTen.setBackground(new java.awt.Color(34, 116, 173));
         txtTen.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        txtTen.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTenKeyPressed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Baloo Chettan 2", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -137,6 +143,25 @@ public class JDialogHSX extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_btnThemActionPerformed
+
+    private void txtTenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTenKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()== KeyEvent.VK_ENTER) {
+            try {
+            String sql = "INSERT INTO HANGSANXUAT\n"
+                    + "VALUES (?,?)";
+            int s = JdbcHelper.update(sql, txtMa.getText(),txtTen.getText());
+            if (s>0) {
+                Msgbox.alert(null, "Thêm thành công!");
+                this.setVisible(false);
+            }else{
+                Msgbox.alert(null, "Thêm thất bại!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        }
+    }//GEN-LAST:event_txtTenKeyPressed
 
     /**
      * @param args the command line arguments
