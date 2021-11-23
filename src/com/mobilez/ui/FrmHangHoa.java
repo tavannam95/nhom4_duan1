@@ -1149,7 +1149,10 @@ public class FrmHangHoa extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblList.setToolTipText("");
+        tblList.setGridColor(new java.awt.Color(255, 255, 255));
         tblList.setRowHeight(25);
+        tblList.setSelectionBackground(new java.awt.Color(51, 51, 51));
         tblList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblList.setShowGrid(true);
         tblList.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1465,8 +1468,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(btnSuaMH)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(btnClear)
-                                                .addGap(21, 21, 21))
+                                                .addComponent(btnClear))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                     .addComponent(lblTrangThai, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
