@@ -96,5 +96,4 @@ public class NhanVienDAO extends MainDAO<NhanVien, String> {
             throw new RuntimeException(e);
         }
     }
-
 }
