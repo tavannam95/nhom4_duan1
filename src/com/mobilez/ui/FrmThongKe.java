@@ -29,7 +29,7 @@ public class FrmThongKe extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(34, 116, 173));
+        setBackground(new java.awt.Color(85, 159, 198));
 
         jLabel1.setText("TK");
 
