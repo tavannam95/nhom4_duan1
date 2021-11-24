@@ -14,13 +14,14 @@ import com.mobilez.utils.XDate;
 import com.mobilez.utils.XImage;
 import java.awt.Color;
 import static java.awt.Color.pink;
-import static java.awt.Color.white;
 import java.io.File;
 import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.Icon;
 
 /**
@@ -30,7 +31,7 @@ import javax.swing.Icon;
 public class FrmNhanVien extends javax.swing.JPanel {
 
     DefaultTableModel modelTbl = new DefaultTableModel();
-    int index;
+    int index =0;
     NhanVienDAO dao = new NhanVienDAO();
     JFileChooser fileChooser = new JFileChooser();
     ArrayList<NhanVien> lstNhanVien = new ArrayList<>();
@@ -45,24 +46,32 @@ public class FrmNhanVien extends javax.swing.JPanel {
     }
     
     
-    public void check(){
+    public boolean check(){
         //manv
         if (txtMaNV.getText().trim().equals("")) {
             Msgbox.alert(null, "Mã nhân viên không được để trống");
             txtMaNV.setText("");
             txtMaNV.requestFocus();
             txtMaNV.setBackground(pink);
-            return;
+            return false;
        
         }
         //ngày sinh
          if (txtNgaySinh.getText().trim().equals("")) {
-            Msgbox.alert(null, "Tên nhân viên không được để trống");
+            Msgbox.alert(null, "Ngày sinh không được để trống");
             txtNgaySinh.setText("");
             txtNgaySinh.requestFocus();
             txtNgaySinh.setBackground(pink);
-            return;
+            return false;
       
+        }
+         
+         try {
+            String ns = txtNgaySinh.getText();
+         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-YYYY");
+         Date d = sdf.parse(ns);
+        } catch (Exception e) {
+            Msgbox.alert(this, "Nhập đúng định dạng dd-MM-YYYY");
         }
          //sdt
           if (txtSDT.getText().trim().equals("")) {
@@ -70,7 +79,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
             txtSDT.setText("");
             txtSDT.requestFocus();
             txtSDT.setBackground(pink);
-            return;
+            return false;
        
 
         }
@@ -80,7 +89,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
             txtMatKhau.setText("");
             txtMatKhau.requestFocus();
             txtMatKhau.setBackground(pink);
-            return;
+            return false;
        
         }
            //cmnd
@@ -89,10 +98,10 @@ public class FrmNhanVien extends javax.swing.JPanel {
             txtCMND.setText("");
             txtCMND.requestFocus();
             txtCMND.setBackground(pink);
-            return;
+            return false;
         
         }
-         // chech số   
+         // check số   
         try {
             Integer.parseInt(txtCMND.getText());
         } catch (Exception e) {
@@ -100,7 +109,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
             txtCMND.setText("");
             txtCMND.requestFocus();
             txtCMND.setBackground(pink);
-            return;
+            return false;
         }
          try {
             Integer.parseInt(txtSDT.getText());
@@ -109,7 +118,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
             txtSDT.setText("");
             txtSDT.requestFocus();
             txtSDT.setBackground(pink);
-            return;
+            return false;
         }
 
             //tên
@@ -118,7 +127,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
             txtTen.setText("");
             txtTen.requestFocus();
             txtTen.setBackground(pink);
-            return;
+            return false;
         
         }
              //địa chỉ
@@ -127,9 +136,10 @@ public class FrmNhanVien extends javax.swing.JPanel {
             txtDiaChi.setText("");
             txtDiaChi.requestFocus();
             txtDiaChi.setBackground(pink);
-            return;
+            return false;
        
         }
+              return true;
     }
     
     void fillToTable(){
@@ -141,8 +151,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
                     nhanVien.getMaNV(),
                     nhanVien.getHoTen(),
                     nhanVien.isGioiTinh() ? "Nam" : "Nữ",
-//                    XDate.toString(nhanVien.getNgaysinh()),
-                    nhanVien.getNgaysinh(),
+                    XDate.DateString(nhanVien.getNgaysinh()),
                     nhanVien.getSoCCCD(),
                     nhanVien.getDiaChi(),
                     nhanVien.getSoDienThoai(),
@@ -161,7 +170,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
     void them(){
         NhanVien nv = new NhanVien();
         try {
-            dao.insert(nv);
+            dao.insert(this.getNhanVien());
             this.fillToTable();
             this.clear();
             Msgbox.alert(this, "Thêm mới thành công");
@@ -174,7 +183,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
     void CapNhat(){
         NhanVien nv = new NhanVien();
         try {
-            dao.update(nv);
+            dao.update(this.getNhanVien());
             this.fillToTable();
             this.clear();
             Msgbox.alert(this, "Cập nhật thành công");
@@ -218,27 +227,32 @@ public class FrmNhanVien extends javax.swing.JPanel {
     }
     
     void clear(){
-//        txtTen.setText("");
-//        txtCMND.setText("");
-//        txtDiaChi.setText("");
-//        txtMaNV.setText("");
-//        txtMatKhau.setText("");
-//        txtSDT.setText("");
-//        txtNgaySinh.setText("");
-           this.setModel(new NhanVien());
-          this.setStatus(true);
+        txtTen.setText("");
+        txtCMND.setText("");
+        txtDiaChi.setText("");
+        txtMaNV.setText("");
+        txtMatKhau.setText("");
+        txtSDT.setText("");
+        txtNgaySinh.setText("");
+        this.setStatus(true);
         
     }
 
-
+    private NhanVien getNhanVien(){
+        NhanVien nv = new NhanVien(txtMaNV.getText(), txtTen.getText(), rdoNam.isSelected(),
+                XDate.StringDate(txtNgaySinh.getText()), 
+                txtCMND.getText(), 
+                txtDiaChi.getText(), txtSDT.getText(), rdoQuanLy.isSelected(), 
+                lblHinhNV.getToolTipText(), txtMatKhau.getText());
+        return nv;
+    }
 
     void setModel(NhanVien model){
         txtMaNV.setText(model.getMaNV());
         txtTen.setText(model.getHoTen());
-        boolean tt = model.isGioiTinh();
         rdoNam.setSelected(model.isGioiTinh());
         rdoNu.setSelected(!model.isGioiTinh());
-//        txtNgaySinh.setText(XDate.toString(model.getNgaysinh()));
+        txtNgaySinh.setText(XDate.DateString(model.getNgaysinh()));
         txtCMND.setText(model.getSoCCCD());
         txtDiaChi.setText(model.getDiaChi());
         txtSDT.setText(model.getSoDienThoai());
@@ -258,7 +272,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
         model.setMaNV(txtMaNV.getText());
         model.setHoTen(txtTen.getText());
         model.setGioiTinh(rdoNam.isSelected());
-//        model.setNgaysinh(XDate.toDate(txtNgaySinh.getText()));
+        model.setNgaysinh(XDate.StringDate(txtNgaySinh.getText()));
         model.setSoCCCD(txtCMND.getText());
         model.setDiaChi(txtDiaChi.getText());
         model.setSoDienThoai(txtSDT.getText());
@@ -279,31 +293,31 @@ public class FrmNhanVien extends javax.swing.JPanel {
     }
 
     void setStatus(boolean inserttable){
-        btnSuaNV.setEnabled(!inserttable);
         btnThemNV.setEnabled(inserttable);
+        btnSuaNV.setEnabled(!inserttable);
         btnXoa.setEnabled(!inserttable);
     }
     
-//    public boolean checkNullHinh(){
-//        if (lblHinhNV.getToolTipText() != null) {
-//            return true;
-//        } else {
-//            Msgbox.alert(this, "Không được để trống hình");
-//            return false;
-//        }
-//    }
-//    
-//    public void chẹckTrungMa(){
-//        for (int i = 0; i < tblList.getRowCount(); i++) {
-//            if (tblList.getValueAt(i, 0).toString().equalsIgnoreCase(txtMaNV.getText())) {
-//                 Msgbox.alert(this, "Mã đã tồn tại");
-//                txtMaNV.setBackground(Color.red);
-//            }
-//            else{
-//                txtMaNV.setBackground(Color.white);
-//            }
-//        }
-//    }
+    public boolean checkNullHinh(){
+        if (lblHinhNV.getToolTipText() != null) {
+            return true;
+        } else {
+            Msgbox.alert(this, "Không được để trống hình");
+            return false;
+        }
+    }
+    
+    public void checkTrungMa(){
+        for (int i = 0; i < tblList.getRowCount(); i++) {
+            if (tblList.getValueAt(i, 0).toString().equalsIgnoreCase(txtMaNV.getText())) {
+                 Msgbox.alert(this, "Mã đã tồn tại");
+                txtMaNV.setBackground(Color.red);
+            }
+            else{
+                txtMaNV.setBackground(Color.white);
+            }
+        }
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -703,23 +717,30 @@ public class FrmNhanVien extends javax.swing.JPanel {
 
     private void btnThemNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemNVActionPerformed
         // TODO add your handling code here:
-        this.check();
-        this.them();
+        if (this.check()) {
+            checkTrungMa();
+            them();
+        } else {
+        }
     }//GEN-LAST:event_btnThemNVActionPerformed
 
     private void btnSuaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaNVActionPerformed
         // TODO add your handling code here:
-        this.check();
-        this.CapNhat();
+        if (this.check()) {
+            checkTrungMa();
+            CapNhat();
+        } else {
+        }
     }//GEN-LAST:event_btnSuaNVActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-        if (Auth.user.isVaiTro()) {
-            xoa();
-        } else {
-            Msgbox.alert(this, "Chỉ trưởng phòng mới có thể xóa");
-        }
+//        if (Auth.user.isVaiTro()) {
+//            xoa();
+//        } else {
+//            Msgbox.alert(this, "Chỉ trưởng phòng mới có thể xóa");
+//        }
+        xoa();
     }//GEN-LAST:event_btnXoaActionPerformed
 
 
