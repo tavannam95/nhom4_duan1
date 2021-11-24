@@ -464,6 +464,7 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
         // TODO add your handling code here:
+        index=-1;
         searchMH();
         this.removeList();
     }//GEN-LAST:event_txtSearchKeyReleased
