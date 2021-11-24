@@ -95,11 +95,11 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="104" pref="104" max="-2" attributes="0"/>
-                                              <Component id="btnThemMH" linkSize="2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnThemMH" linkSize="3" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="btnSuaMH" linkSize="2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnSuaMH" linkSize="3" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="btnClear" linkSize="2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnClear" linkSize="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -690,6 +690,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtSoLuong">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ad" green="74" red="22" type="rgb"/>
         </Property>
@@ -808,7 +809,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Clear"/>
+        <Property name="text" type="java.lang.String" value="T&#x1ea1;o m&#x1edb;i"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearActionPerformed"/>
