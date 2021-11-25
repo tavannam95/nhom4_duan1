@@ -447,7 +447,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             }
             lblRAM.setForeground(Color.white);
             if (Integer.parseInt(txtRAM.getText()) <= 0) {
-                Msgbox.alert(null, "Thời gian bảo hành phải lơn hơn 0!");
+                Msgbox.alert(null, "RAM phải lơn hơn 0!");
                 txtRAM.setText("");
                 txtRAM.requestFocus();
                 lblRAM.setForeground(Color.red);
@@ -468,7 +468,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             try {
                 Integer.parseInt(txtDungLuong.getText());
             } catch (Exception e) {
-                Msgbox.alert(null, "Số lượng phải là số!");
+                Msgbox.alert(null, "Dunglượng phải là số!");
                 txtDungLuong.setText("");
                 txtDungLuong.requestFocus();
                 lblDL.setForeground(Color.red);
@@ -476,7 +476,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             }
             lblDL.setForeground(Color.white);
             if (Integer.parseInt(txtDungLuong.getText()) <= 0) {
-                Msgbox.alert(null, "Thời gian bảo hành phải lơn hơn 0!");
+                Msgbox.alert(null, "Dung lượng phải lơn hơn 0!");
                 txtDungLuong.setText("");
                 txtDungLuong.requestFocus();
                 lblDL.setForeground(Color.red);
@@ -537,15 +537,14 @@ public class FrmHangHoa extends javax.swing.JPanel {
             try {
                 Integer.parseInt(txtGiaMua.getText());
             } catch (Exception e) {
-                Msgbox.alert(null, "Số lượng phải là số!");
+                Msgbox.alert(null, "Giá mua phải là số!");
                 txtGiaMua.setText("");
                 txtGiaMua.requestFocus();
                 lblGM.setForeground(Color.red);
                 return;
             }
-            lblGM.setForeground(Color.white);
             if (Integer.parseInt(txtGiaMua.getText()) <= 0) {
-                Msgbox.alert(null, "Số lượng phải lơn hơn 0!");
+                Msgbox.alert(null, "Giá mua phải lơn hơn 0!");
                 txtGiaMua.setText("");
                 txtGiaMua.requestFocus();
                 lblGM.setForeground(Color.red);
@@ -553,6 +552,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             } else {
                 lblGM.setForeground(Color.white);
             }
+            lblGM.setForeground(Color.white);
             //validate gia si
             if (txtGiaBanSi.getText().trim().equals("")) {
                 Msgbox.alert(null, "Không được để trống giá bán sỉ!");
@@ -720,7 +720,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             }
             lblRAM.setForeground(Color.white);
             if (Integer.parseInt(txtRAM.getText()) <= 0) {
-                Msgbox.alert(null, "Thời gian bảo hành phải lơn hơn 0!");
+                Msgbox.alert(null, "RAM phải lơn hơn 0!");
                 txtRAM.setText("");
                 txtRAM.requestFocus();
                 lblRAM.setForeground(Color.red);
@@ -741,7 +741,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             try {
                 Integer.parseInt(txtDungLuong.getText());
             } catch (Exception e) {
-                Msgbox.alert(null, "Số lượng phải là số!");
+                Msgbox.alert(null, "Dung lượng phải là số!");
                 txtDungLuong.setText("");
                 txtDungLuong.requestFocus();
                 lblDL.setForeground(Color.red);
@@ -749,7 +749,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             }
             lblDL.setForeground(Color.white);
             if (Integer.parseInt(txtDungLuong.getText()) <= 0) {
-                Msgbox.alert(null, "Thời gian bảo hành phải lơn hơn 0!");
+                Msgbox.alert(null, "Dung lượng phải lơn hơn 0!");
                 txtDungLuong.setText("");
                 txtDungLuong.requestFocus();
                 lblDL.setForeground(Color.red);

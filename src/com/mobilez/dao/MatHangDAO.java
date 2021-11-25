@@ -27,17 +27,28 @@ public class MatHangDAO extends MainDAO<MatHang, String> {
     String deleteSQL = "delete MATHANG where MAMH like ?";
     String selectAllSQL = "select * from MATHANG";
     String selectByIdSQL = "select * from MATHANG where MAMH like ?";
-
+    String insertKhoHang = "insert into KHOHANG values(?,?,?)";
+    String selectAllKho = "select * from kho";
     @Override
     public void insert(MatHang entity) {
         int s = JdbcHelper.update(insertSQL, entity.getMaMH(),entity.getMaHSX(),entity.getTenMH(),
                 entity.getrAM(), entity.getDungLuong(),entity.getMauSac(),entity.getMaQG(),
                 entity.getHinhMH(),entity.getSoLuong(),entity.gettGBH(),entity.getGiaMua(),
                 entity.getGiaBanSi(),entity.getGiaBanLe(),entity.isTrangThai());
+        try {
+            ResultSet rs = JdbcHelper.query(selectAllKho);
+            while (rs.next()) {                
+                JdbcHelper.update(insertKhoHang, entity.getMaMH(),rs.getString("MAK"),0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         if (s <= 0) {
             Msgbox.alert(null, "Thêm thất bại!");
             return;
         }
+        
     }
 
     @Override
@@ -94,5 +105,12 @@ public class MatHangDAO extends MainDAO<MatHang, String> {
             throw new RuntimeException(e);
         }
     }
-
+    
+    public  boolean checkDuplicate(String maMH) {
+        MatHang matHang = selectById(maMH);
+        if (matHang == null) {
+            return true;
+        }
+        return false;
+    }
 }

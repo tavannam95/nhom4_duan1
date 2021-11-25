@@ -73,7 +73,7 @@ public class KhachHangDAO extends MainDAO<KhachHang, String> {
     }
 
     public List<KhachHang> selectByKeyWork(String keywork) {
-         String SELECT_BY_KeyWork = "SELECT * FROM KHACHHANG WHERE MAKH like '%"+keywork+"%' or TENKH like '%"+keywork+"%' or SODT like '%"+keywork+"%'";
+         String SELECT_BY_KeyWork = "SELECT * FROM KHACHHANG WHERE MAKH like N'%"+keywork+"%' or TENKH like N'%"+keywork+"%' or SODT like N'%"+keywork+"%'";
         return this.selectBySql(SELECT_BY_KeyWork);
     }
     public  boolean checkDuplicate(String maKH) {

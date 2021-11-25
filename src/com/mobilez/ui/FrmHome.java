@@ -42,6 +42,7 @@ public class FrmHome extends javax.swing.JFrame {
         this.setIconImage(new ImageIcon("src/com/mobilez/icon/logoM_32px.png").getImage());
         this.setResizable(false);
         setTimeLbl();
+        new DangNhapJDialog(this, true).setVisible(true);
         pnlParent.removeAll();
         pnlParent.revalidate();
         pnlParent.repaint();
