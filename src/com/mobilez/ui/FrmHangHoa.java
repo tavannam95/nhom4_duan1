@@ -852,6 +852,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
     private void clear() {
         try {
             if (Msgbox.confirm(null, "Bạn có muốn tạo mới không?")) {
+                txtSoLuong.setEnabled(false);
                 txtMaMH.setText("");
                 txtTenMH.setText("");
                 txtRAM.setText("");
@@ -892,7 +893,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
 
     private void showDetail() {
         try {
-
+            txtSoLuong.setEnabled(true);
             txtMaMH.setText(tblList.getValueAt(index, 0).toString());
             txtTenMH.setText(tblList.getValueAt(index, 2).toString());
             String ram, dl;
@@ -1309,10 +1310,10 @@ public class FrmHangHoa extends javax.swing.JPanel {
         lblBH.setForeground(new java.awt.Color(255, 255, 255));
         lblBH.setText("Bảo hành");
 
-        txtSoLuong.setEditable(false);
         txtSoLuong.setBackground(new java.awt.Color(34, 116, 173));
         txtSoLuong.setForeground(new java.awt.Color(255, 255, 255));
         txtSoLuong.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        txtSoLuong.setEnabled(false);
         txtSoLuong.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtDungLuongKeyPressed(evt);
