@@ -5,10 +5,11 @@
  */
 package com.mobilez.ui;
 
-
 import com.mobilez.utils.JdbcHelper;
 import com.mobilez.utils.Msgbox;
+import java.awt.Color;
 import java.sql.*;
+
 /**
  *
  * @author uhtku
@@ -24,6 +25,36 @@ public class JDialogQuocGia extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
     }
 
+    private void them() {
+        try {
+            String sql = "INSERT INTO QUOCGIA\n"
+                    + "VALUES (?,?)";
+            int s = JdbcHelper.update(sql, txtMaQG.getText(), txtTenQG.getText());
+            if (s > 0) {
+                Msgbox.alert(null, "Thêm thành công!");
+                this.setVisible(false);
+            } else {
+                Msgbox.alert(null, "Thêm thất bại!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private boolean chkTrung(){
+        try {
+            String sql ="select * from QUOCGIA where MAQG like ?";
+            ResultSet rs = JdbcHelper.query(sql, txtMaQG.getText());
+            while (rs.next()) {                
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,10 +66,11 @@ public class JDialogQuocGia extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         txtMaQG = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        lblMa = new javax.swing.JLabel();
         txtTenQG = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        lblTen = new javax.swing.JLabel();
         btnThem = new javax.swing.JButton();
+        btnThem1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Thêm Quốc Gia");
@@ -49,16 +81,16 @@ public class JDialogQuocGia extends javax.swing.JDialog {
         txtMaQG.setBackground(new java.awt.Color(34, 116, 173));
         txtMaQG.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
-        jLabel7.setFont(new java.awt.Font("Baloo Chettan 2", 0, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Mã Quốc Gia");
+        lblMa.setFont(new java.awt.Font("Baloo Chettan 2", 0, 12)); // NOI18N
+        lblMa.setForeground(new java.awt.Color(255, 255, 255));
+        lblMa.setText("Mã Quốc Gia");
 
         txtTenQG.setBackground(new java.awt.Color(34, 116, 173));
         txtTenQG.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
-        jLabel8.setFont(new java.awt.Font("Baloo Chettan 2", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Tên Quốc Gia");
+        lblTen.setFont(new java.awt.Font("Baloo Chettan 2", 0, 12)); // NOI18N
+        lblTen.setForeground(new java.awt.Color(255, 255, 255));
+        lblTen.setText("Tên Quốc Gia");
 
         btnThem.setBackground(new java.awt.Color(34, 116, 173));
         btnThem.setFont(new java.awt.Font("Baloo 2", 0, 12)); // NOI18N
@@ -70,6 +102,16 @@ public class JDialogQuocGia extends javax.swing.JDialog {
             }
         });
 
+        btnThem1.setBackground(new java.awt.Color(34, 116, 173));
+        btnThem1.setFont(new java.awt.Font("Baloo 2", 0, 12)); // NOI18N
+        btnThem1.setForeground(new java.awt.Color(255, 255, 255));
+        btnThem1.setText("Hủy");
+        btnThem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThem1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -78,16 +120,18 @@ public class JDialogQuocGia extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addComponent(lblMa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtMaQG, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addComponent(lblTen)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtTenQG, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnThem)))
+                        .addComponent(btnThem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnThem1)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -96,14 +140,16 @@ public class JDialogQuocGia extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMaQG, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(lblMa))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTenQG, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(lblTen))
                 .addGap(18, 18, 18)
-                .addComponent(btnThem)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnThem)
+                    .addComponent(btnThem1))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -122,21 +168,44 @@ public class JDialogQuocGia extends javax.swing.JDialog {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        try {
-            String sql = "INSERT INTO QUOCGIA\n"
-                    + "VALUES (?,?)";
-            int s = JdbcHelper.update(sql, txtMaQG.getText(),txtTenQG.getText());
-            if (s>0) {
-                Msgbox.alert(null, "Thêm thành công!");
-                this.setVisible(false);
-            }else{
-                Msgbox.alert(null, "Thêm thất bại!");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        //validate ma QG
+        if (txtMaQG.getText().trim().equals("")) {
+            Msgbox.alert(null, "Mã quốc gia không được để trống!");
+            txtMaQG.setText("");
+            txtMaQG.requestFocus();
+            lblMa.setForeground(Color.red);
+            return;
+        }else{
+            lblMa.setForeground(Color.white);
         }
-
+        if (chkTrung()) {
+            Msgbox.alert(null, "Mã quốc gia đã tồn tại!");
+            txtMaQG.setText("");
+            txtMaQG.requestFocus();
+            lblMa.setForeground(Color.red);
+            return;
+        }else{
+            lblMa.setForeground(Color.white);
+        }
+        
+        //validate ten qg
+        if (txtTenQG.getText().trim().equals("")) {
+            Msgbox.alert(null, "Tên quốc gia không được để trống!");
+            txtTenQG.setText("");
+            txtTenQG.requestFocus();
+            lblTen.setForeground(Color.red);
+            return;
+        }else{
+            lblTen.setForeground(Color.white);
+        }
+        //insert here
+        this.them();
     }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnThem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_btnThem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,9 +251,10 @@ public class JDialogQuocGia extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnThem;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JButton btnThem1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblMa;
+    private javax.swing.JLabel lblTen;
     private javax.swing.JTextField txtMaQG;
     private javax.swing.JTextField txtTenQG;
     // End of variables declaration//GEN-END:variables

@@ -24,17 +24,7 @@ public class FrmXemPhieu extends javax.swing.JPanel {
        
     }
 
-        public boolean cboXuat(){
-            try {
-                String sql = "select Mapxk,Manv,NgayXK,TongGia from PHIEUXUATKHO";
-                String ma = (String) cboPhieu.getSelectedItem();
-                ResultSet rs = JdbcHelper.query(sql);
-                while (rs.next()) {                    
-                    
-                }
-            } catch (Exception e) {
-            }
-        }
+       
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

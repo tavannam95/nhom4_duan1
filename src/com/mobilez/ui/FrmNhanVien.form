@@ -146,17 +146,25 @@
               <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
               <Component id="jLabel12" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="lblHSX" alignment="0" max="32767" attributes="0"/>
-                      <Component id="lblMaMH" alignment="0" max="32767" attributes="0"/>
-                      <Component id="lblTenMH" alignment="0" max="32767" attributes="0"/>
-                      <Component id="lblRAM" alignment="1" max="32767" attributes="0"/>
-                      <Component id="lblDL" alignment="1" max="32767" attributes="0"/>
-                      <Component id="lblMS" alignment="1" max="32767" attributes="0"/>
-                      <Component id="lblQG" alignment="1" max="32767" attributes="0"/>
-                      <Component id="lblDVT" alignment="1" max="32767" attributes="0"/>
-                      <Component id="lblGM" alignment="1" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="lblHSX" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblMaMH" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblTenMH" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblRAM" alignment="1" max="32767" attributes="0"/>
+                              <Component id="lblDL" alignment="1" max="32767" attributes="0"/>
+                              <Component id="lblMS" alignment="1" max="32767" attributes="0"/>
+                              <Component id="lblQG" alignment="1" max="32767" attributes="0"/>
+                              <Component id="lblDVT" alignment="1" max="32767" attributes="0"/>
+                              <Component id="lblGM" alignment="1" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnThemNV" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -190,8 +198,7 @@
                                   <Component id="rdoNhanVien" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="btnThemNV" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                                   <Component id="btnSuaNV" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                   <Component id="btnXoa" min="-2" max="-2" attributes="0"/>
@@ -274,7 +281,7 @@
                       <Component id="btnClear" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnXoa" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="77" max="32767" attributes="0"/>
+                  <EmptySpace pref="80" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
