@@ -690,7 +690,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtSoLuong">
       <Properties>
-        <Property name="editable" type="boolean" value="false"/>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ad" green="74" red="22" type="rgb"/>
         </Property>
@@ -704,6 +703,7 @@
             </MatteColorBorder>
           </Border>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDungLuongKeyPressed"/>
