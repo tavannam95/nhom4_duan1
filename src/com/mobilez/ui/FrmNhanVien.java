@@ -68,10 +68,10 @@ public class FrmNhanVien extends javax.swing.JPanel {
          
          try {
             String ns = txtNgaySinh.getText();
-         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-YYYY");
+         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
          Date d = sdf.parse(ns);
         } catch (Exception e) {
-            Msgbox.alert(this, "Nhập đúng định dạng dd-MM-YYYY");
+            Msgbox.alert(this, "Nhập đúng định dạng dd/MM/YYYY");
         }
          //sdt
           if (txtSDT.getText().trim().equals("")) {
@@ -240,7 +240,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
 
     private NhanVien getNhanVien(){
         NhanVien nv = new NhanVien(txtMaNV.getText(), txtTen.getText(), rdoNam.isSelected(),
-                XDate.StringDate(txtNgaySinh.getText()), 
+                XDate.StringDate(txtNgaySinh.getText(),"dd/MM/yyyy"), 
                 txtCMND.getText(), 
                 txtDiaChi.getText(), txtSDT.getText(), rdoQuanLy.isSelected(), 
                 lblHinhNV.getToolTipText(), txtMatKhau.getText());
