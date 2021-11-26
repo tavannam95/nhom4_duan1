@@ -435,7 +435,7 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
         this.txtsofax.setText("");
         this.txtwebsite.setText("");
         this.txtemail.setText("");
-        this.index = -1;
+        this.index=-1;
        
     }
 
