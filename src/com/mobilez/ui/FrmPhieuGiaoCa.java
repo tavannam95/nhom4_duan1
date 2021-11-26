@@ -505,6 +505,10 @@ public class FrmPhieuGiaoCa extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLuu1ActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        if (txtMaPGC.getText().equals("")) {
+            Msgbox.alert(this, "Bạn cần chọn phiếu ở bảng trên!");
+            return;
+        }
         delete();
     }//GEN-LAST:event_btnXoaActionPerformed
 
