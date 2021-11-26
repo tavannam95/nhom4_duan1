@@ -48,7 +48,7 @@ public class FrmHome extends javax.swing.JFrame {
         TextAffect.colorText(lblMobileZ);
         
         //Test 
-        new DangNhapJDialog(this, true).setVisible(true);
+//        new DangNhapJDialog(this, true).setVisible(true);
     }
 
     class jPanelGradient extends JPanel {
