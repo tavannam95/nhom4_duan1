@@ -400,6 +400,10 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
     private void insert() {
         NhaCungCap nc = getform();
         try {
+            if(!ncdao.checkma(this.txtmancc.getText().trim())){
+                Msgbox.alert(this, "Mã đã tồn tại");
+                return;
+            }
             ncdao.insert(nc);
             this.filltable();
             Msgbox.alert(this, "Thêm mới thành công");
