@@ -78,6 +78,13 @@ public class NhaCungCapDao extends MainDAO<NhaCungCap, String>{
         }
         
     }
+        public  boolean checkma(String maNcc) {
+        NhaCungCap nc = selectById(maNcc);
+        if (nc == null) {
+            return true;
+        }
+        return false;
+    }
 
     
 }
