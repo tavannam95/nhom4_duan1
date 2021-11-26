@@ -335,12 +335,14 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         String matKhau = new String(txtMatKhau.getPassword());
         if (txtTaiKhoan.getText().trim().equals("")) {
             Msgbox.alert(this, "Tài khoản không được để trống!");
+            txtTaiKhoan.setText("");
             txtTaiKhoan.requestFocus();
             return false;
         }
         if (matKhau.trim().equals("")) {
             Msgbox.alert(this, "Mật khẩu không được để trống!");
-            txtTaiKhoan.requestFocus();
+            txtMatKhau.setText("");
+            txtMatKhau.requestFocus();
             return false;
         }
         return true;
