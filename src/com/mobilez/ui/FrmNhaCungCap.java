@@ -68,7 +68,8 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(20, 83, 116));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("QUẢN LÝ NHÀ CUNG CẤP");
 
@@ -101,6 +102,7 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblncc);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Danh Sách Nhà Cung Cấp");
 
