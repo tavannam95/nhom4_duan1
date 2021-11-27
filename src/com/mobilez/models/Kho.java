@@ -7,7 +7,6 @@ package com.mobilez.models;
 
 /**
  *
-
  * @author uhtku
  */
 public class Kho {
@@ -16,7 +15,6 @@ public class Kho {
 
     public Kho() {
     }
-
 
     public Kho(String maK, String tenK, String diaChi) {
         this.maK = maK;
@@ -52,4 +50,5 @@ public class Kho {
     public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
     }
+
 }
