@@ -189,7 +189,6 @@ public class FrmHoaDonBanSi extends javax.swing.JPanel {
             String maMH = tblHoaDonChiTiet.getValueAt(indexHDCT, 0).toString();
             ResultSet rs = JdbcHelper.query(sql, maMH);
             String giaBanSi;
-            modelList.setRowCount(0);
             while (rs.next()) {
                 giaBanSi = rs.getString(8);
                 int gbs = giaBanSi.indexOf(".");
@@ -685,6 +684,7 @@ public class FrmHoaDonBanSi extends javax.swing.JPanel {
     private void tblListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMouseClicked
         // TODO add your handling code here:
         indexList = tblList.getSelectedRow();
+        tblList.setRowSelectionAllowed(true);
         tblList.setRowSelectionInterval(indexList, indexList);
     }//GEN-LAST:event_tblListMouseClicked
 
@@ -708,6 +708,7 @@ public class FrmHoaDonBanSi extends javax.swing.JPanel {
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
+        btnInHoaDon.setEnabled(false);
         if (tblHoaDonChiTiet.getRowCount() <= 0) {
             Msgbox.alert(null, "Danh sách trống!");
             return;
@@ -724,9 +725,12 @@ public class FrmHoaDonBanSi extends javax.swing.JPanel {
             lblRsTongGia.setText("");
             btnInHoaDon.setEnabled(false);
         }
-        if (tblHoaDonChiTiet.getRowCount() == indexList) {
+        if (tblHoaDonChiTiet.getRowCount() == indexHDCT) {
             indexHDCT--;
-            this.tblHoaDonChiTiet.setRowSelectionInterval(indexList, indexList);
+            this.tblHoaDonChiTiet.setRowSelectionInterval(indexHDCT, indexHDCT);
+        }
+        if (indexHDCT>=0) {
+            this.tblList.setRowSelectionInterval(indexHDCT, indexHDCT);
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
@@ -750,11 +754,15 @@ public class FrmHoaDonBanSi extends javax.swing.JPanel {
             indexList--;
             this.tblList.setRowSelectionInterval(indexList, indexList);
         }
+        if (indexHDCT >= 0) {
+            this.tblList.setRowSelectionInterval(indexList, indexList);
+        }
     }//GEN-LAST:event_btnThemVaoHoaDonActionPerformed
 
     private void tblHoaDonChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonChiTietMouseClicked
         // TODO add your handling code here:
         indexHDCT = tblHoaDonChiTiet.getSelectedRow();
+        tblHoaDonChiTiet.setRowSelectionAllowed(true);
     }//GEN-LAST:event_tblHoaDonChiTietMouseClicked
 
     private void btnXoaTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaTatCaActionPerformed
