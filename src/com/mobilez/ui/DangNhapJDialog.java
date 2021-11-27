@@ -9,6 +9,7 @@ import com.mobilez.dao.NhanVienDAO;
 import com.mobilez.models.NhanVien;
 import com.mobilez.utils.Msgbox;
 import com.mobilez.utils.Auth;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 /**
  *
@@ -117,6 +118,11 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         txtMatKhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMatKhauActionPerformed(evt);
+            }
+        });
+        txtMatKhau.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtMatKhauKeyPressed(evt);
             }
         });
 
@@ -233,6 +239,16 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         yMouse = evt.getY();
     }//GEN-LAST:event_formMousePressed
 
+    private void txtMatKhauKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhauKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            if (checkForm()) {
+            dangNhap();
+        }
+        }
+        
+    }//GEN-LAST:event_txtMatKhauKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -319,12 +335,14 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         String matKhau = new String(txtMatKhau.getPassword());
         if (txtTaiKhoan.getText().trim().equals("")) {
             Msgbox.alert(this, "Tài khoản không được để trống!");
+            txtTaiKhoan.setText("");
             txtTaiKhoan.requestFocus();
             return false;
         }
         if (matKhau.trim().equals("")) {
             Msgbox.alert(this, "Mật khẩu không được để trống!");
-            txtTaiKhoan.requestFocus();
+            txtMatKhau.setText("");
+            txtMatKhau.requestFocus();
             return false;
         }
         return true;

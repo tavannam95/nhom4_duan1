@@ -496,34 +496,34 @@ public class FrmHangHoa extends javax.swing.JPanel {
             }
 
             //validate so luong
-            if (txtSoLuong.getText().trim().equals("")) {
-                Msgbox.alert(null, "Không được để trống số lượng!");
-                txtSoLuong.setText("");
-                txtSoLuong.requestFocus();
-                lblSL.setForeground(Color.red);
-                return;
-            } else {
-                lblSL.setForeground(Color.white);
-            }
-            try {
-                Integer.parseInt(txtSoLuong.getText());
-            } catch (Exception e) {
-                Msgbox.alert(null, "Số lượng phải là số!");
-                txtSoLuong.setText("");
-                txtSoLuong.requestFocus();
-                lblSL.setForeground(Color.red);
-                return;
-            }
-            lblSL.setForeground(Color.white);
-            if (Integer.parseInt(txtSoLuong.getText()) <= 0) {
-                Msgbox.alert(null, "Số lượng phải lơn hơn 0!");
-                txtSoLuong.setText("");
-                txtSoLuong.requestFocus();
-                lblSL.setForeground(Color.red);
-                return;
-            } else {
-                lblSL.setForeground(Color.white);
-            }
+//            if (txtSoLuong.getText().trim().equals("")) {
+//                Msgbox.alert(null, "Không được để trống số lượng!");
+//                txtSoLuong.setText("");
+//                txtSoLuong.requestFocus();
+//                lblSL.setForeground(Color.red);
+//                return;
+//            } else {
+//                lblSL.setForeground(Color.white);
+//            }
+//            try {
+//                Integer.parseInt(txtSoLuong.getText());
+//            } catch (Exception e) {
+//                Msgbox.alert(null, "Số lượng phải là số!");
+//                txtSoLuong.setText("");
+//                txtSoLuong.requestFocus();
+//                lblSL.setForeground(Color.red);
+//                return;
+//            }
+//            lblSL.setForeground(Color.white);
+//            if (Integer.parseInt(txtSoLuong.getText()) <= 0) {
+//                Msgbox.alert(null, "Số lượng phải lơn hơn 0!");
+//                txtSoLuong.setText("");
+//                txtSoLuong.requestFocus();
+//                lblSL.setForeground(Color.red);
+//                return;
+//            } else {
+//                lblSL.setForeground(Color.white);
+//            }
             //validate gia mua
             if (txtGiaMua.getText().trim().equals("")) {
                 Msgbox.alert(null, "Không được để trống giá mua!");
@@ -821,7 +821,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
         MatHang mh = new MatHang(txtMaMH.getText(), hsx.getMaHSX(), txtTenMH.getText(),
                 Integer.parseInt(txtRAM.getText()), Integer.parseInt(txtDungLuong.getText()),
                 txtMauSac.getText(), qg.getMaQG(),
-                lblHinhMH.getToolTipText(), Integer.parseInt(txtSoLuong.getText()),
+                lblHinhMH.getToolTipText(), 0,
                 Integer.parseInt(txtTGBH.getText()), Double.parseDouble(txtGiaMua.getText()),
                 Double.parseDouble(txtGiaBanSi.getText()), Double.parseDouble(txtGiaBanLe.getText()),
                 rdoTrangThai1.isSelected());
@@ -852,6 +852,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
     private void clear() {
         try {
             if (Msgbox.confirm(null, "Bạn có muốn tạo mới không?")) {
+                txtSoLuong.setEnabled(false);
                 txtMaMH.setText("");
                 txtTenMH.setText("");
                 txtRAM.setText("");
@@ -892,7 +893,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
 
     private void showDetail() {
         try {
-
+            txtSoLuong.setEnabled(true);
             txtMaMH.setText(tblList.getValueAt(index, 0).toString());
             txtTenMH.setText(tblList.getValueAt(index, 2).toString());
             String ram, dl;
@@ -1312,6 +1313,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
         txtSoLuong.setBackground(new java.awt.Color(34, 116, 173));
         txtSoLuong.setForeground(new java.awt.Color(255, 255, 255));
         txtSoLuong.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        txtSoLuong.setEnabled(false);
         txtSoLuong.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtDungLuongKeyPressed(evt);
@@ -1360,7 +1362,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
         btnClear.setBackground(new java.awt.Color(34, 116, 173));
         btnClear.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
         btnClear.setForeground(new java.awt.Color(255, 255, 255));
-        btnClear.setText("Clear");
+        btnClear.setText("Tạo mới");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearActionPerformed(evt);

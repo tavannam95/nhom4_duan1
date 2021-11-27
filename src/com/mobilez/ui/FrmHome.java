@@ -17,7 +17,7 @@ import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
+import com.mobilez.utils.Auth;
 /**
  *
  * @author uhtku
@@ -46,6 +46,9 @@ public class FrmHome extends javax.swing.JFrame {
         pnlParent.revalidate();
         pnlParent.repaint();
         TextAffect.colorText(lblMobileZ);
+        
+        //Test 
+//        new DangNhapJDialog(this, true).setVisible(true);
     }
 
     class jPanelGradient extends JPanel {
