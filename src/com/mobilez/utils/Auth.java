@@ -7,7 +7,7 @@ public class Auth {
     public static boolean login = false; 
     public static boolean giaoCa = true;
     public static int caLam = 0;
-    public static String maQuay = 1+"";
+    public static String maQuay;
     public static int maPGC;
     public static void clear(){
         Auth.user = null;
