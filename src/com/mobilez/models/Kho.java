@@ -7,36 +7,42 @@ package com.mobilez.models;
 
 /**
  *
- * @author LAPTOP
+
+ * @author uhtku
  */
 public class Kho {
-    private String maKho,tenKho,diaChi;
+
+    String maK, tenK, diaChi;
 
     public Kho() {
     }
 
-    public Kho(String maKho, String tenKho, String diaChi) {
-        this.maKho = maKho;
-        this.tenKho = tenKho;
+
+    public Kho(String maK, String tenK, String diaChi) {
+        this.maK = maK;
+        this.tenK = tenK;
         this.diaChi = diaChi;
     }
+
+    @Override
+    public String toString() {
+        return this.tenK; //To change body of generated methods, choose Tools | Templates.
+    }
     
-    
-
-    public String getMaKho() {
-        return maKho;
+    public String getMaK() {
+        return maK;
     }
 
-    public void setMaKho(String maKho) {
-        this.maKho = maKho;
+    public void setMaK(String maK) {
+        this.maK = maK;
     }
 
-    public String getTenKho() {
-        return tenKho;
+    public String getTenK() {
+        return tenK;
     }
 
-    public void setTenKho(String tenKho) {
-        this.tenKho = tenKho;
+    public void setTenK(String tenK) {
+        this.tenK = tenK;
     }
 
     public String getDiaChi() {
@@ -46,11 +52,4 @@ public class Kho {
     public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
     }
-
-    @Override
-    public String toString() {
-        return tenKho;
-    }
-    
-    
 }
