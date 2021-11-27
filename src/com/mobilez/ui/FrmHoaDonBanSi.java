@@ -104,12 +104,13 @@ public class FrmHoaDonBanSi extends javax.swing.JPanel {
 
     private void searchMH() {
         try {
-            String sql = "select MATHANG.MAMH,TENHSX,TENMH,RAM,DUNGLUONG,MAUSAC,TENQG,GIABANSI\n"
-                    + " KHOHANG.SOLUONG "
-                    + "from MATHANG join KHOHANG ON MATHANG.MAMH=KHOHANG.MAMH\n"
-                    + "join HANGSANXUAT on MATHANG.MAHSX=HANGSANXUAT.MAHSX\n"
-                    + "join QUOCGIA on MATHANG.MAQG=QUOCGIA.MAQG\n"
-                    + "where MAK like ? and (MATHANG.MAMH like ? or TENMH like ? or TENHSX like ?) and TRANGTHAI = 1";
+            String sql = "select MATHANG.MAMH,TENHSX,TENMH,RAM,DUNGLUONG,MAUSAC,TENQG,GIABANSI,\n" +
+"                    KHOHANG.SOLUONG\n" +
+"                    from MATHANG \n" +
+"					join KHOHANG ON MATHANG.MAMH=KHOHANG.MAMH\n" +
+"                    join HANGSANXUAT on MATHANG.MAHSX=HANGSANXUAT.MAHSX\n" +
+"                    join QUOCGIA on MATHANG.MAQG=QUOCGIA.MAQG\n" +
+"                    where MAK like ? and (MATHANG.MAMH like ? or TENMH like ? or TENHSX like ?) and TRANGTHAI = 1";
             Kho k = (Kho) cboKho.getSelectedItem();
             String search = "%" + txtSearch.getText() + "%";
             ResultSet rs = JdbcHelper.query(sql, k.getMaK(), search, search, search);
@@ -188,7 +189,6 @@ public class FrmHoaDonBanSi extends javax.swing.JPanel {
             String maMH = tblHoaDonChiTiet.getValueAt(indexHDCT, 0).toString();
             ResultSet rs = JdbcHelper.query(sql, maMH);
             String giaBanSi;
-            modelList.setRowCount(0);
             while (rs.next()) {
                 giaBanSi = rs.getString(8);
                 int gbs = giaBanSi.indexOf(".");
@@ -572,11 +572,11 @@ public class FrmHoaDonBanSi extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnOKKH)
-                        .addGap(8, 8, 8)
-                        .addComponent(btnTaoMoiKH))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnOKKH)
+                                .addGap(8, 8, 8)
+                                .addComponent(btnTaoMoiKH))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(lblSearch)
@@ -684,6 +684,7 @@ public class FrmHoaDonBanSi extends javax.swing.JPanel {
     private void tblListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMouseClicked
         // TODO add your handling code here:
         indexList = tblList.getSelectedRow();
+        tblList.setRowSelectionAllowed(true);
         tblList.setRowSelectionInterval(indexList, indexList);
     }//GEN-LAST:event_tblListMouseClicked
 
@@ -702,10 +703,12 @@ public class FrmHoaDonBanSi extends javax.swing.JPanel {
         this.insertHDBS();
         this.insertCTHDBS();
         Msgbox.alert(null, "In hóa đơn thành công!");
+        this.resetAll();
     }//GEN-LAST:event_btnInHoaDonActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
+        btnInHoaDon.setEnabled(false);
         if (tblHoaDonChiTiet.getRowCount() <= 0) {
             Msgbox.alert(null, "Danh sách trống!");
             return;
@@ -722,9 +725,12 @@ public class FrmHoaDonBanSi extends javax.swing.JPanel {
             lblRsTongGia.setText("");
             btnInHoaDon.setEnabled(false);
         }
-        if (tblHoaDonChiTiet.getRowCount() == indexList) {
+        if (tblHoaDonChiTiet.getRowCount() == indexHDCT) {
             indexHDCT--;
-            this.tblHoaDonChiTiet.setRowSelectionInterval(indexList, indexList);
+            this.tblHoaDonChiTiet.setRowSelectionInterval(indexHDCT, indexHDCT);
+        }
+        if (indexHDCT>=0) {
+            this.tblList.setRowSelectionInterval(indexHDCT, indexHDCT);
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
@@ -748,11 +754,15 @@ public class FrmHoaDonBanSi extends javax.swing.JPanel {
             indexList--;
             this.tblList.setRowSelectionInterval(indexList, indexList);
         }
+        if (indexHDCT >= 0) {
+            this.tblList.setRowSelectionInterval(indexList, indexList);
+        }
     }//GEN-LAST:event_btnThemVaoHoaDonActionPerformed
 
     private void tblHoaDonChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonChiTietMouseClicked
         // TODO add your handling code here:
         indexHDCT = tblHoaDonChiTiet.getSelectedRow();
+        tblHoaDonChiTiet.setRowSelectionAllowed(true);
     }//GEN-LAST:event_tblHoaDonChiTietMouseClicked
 
     private void btnXoaTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaTatCaActionPerformed
@@ -765,23 +775,9 @@ public class FrmHoaDonBanSi extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnXoaTatCaActionPerformed
 
-    private void txtSearchKHKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKHKeyReleased
-        // TODO add your handling code here:
-        this.searchKH();
-    }//GEN-LAST:event_txtSearchKHKeyReleased
-
-    private void tblKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKHMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblKHMouseClicked
-
-    private void btnTaoMoiKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoMoiKHActionPerformed
-        // TODO add your handling code here:
-        new FrmNewKH(null, true).setVisible(true);
-    }//GEN-LAST:event_btnTaoMoiKHActionPerformed
-
     private void cboKhoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboKhoItemStateChanged
         // TODO add your handling code here:
-
+        this.fillTablePr();
     }//GEN-LAST:event_cboKhoItemStateChanged
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
@@ -807,10 +803,24 @@ public class FrmHoaDonBanSi extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnOKActionPerformed
 
+    private void btnTaoMoiKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoMoiKHActionPerformed
+        // TODO add your handling code here:
+        new FrmNewKH(null, true).setVisible(true);
+    }//GEN-LAST:event_btnTaoMoiKHActionPerformed
+
     private void btnOKKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKKHActionPerformed
         // TODO add your handling code here:
         indexKH = tblKH.getSelectedRow();
     }//GEN-LAST:event_btnOKKHActionPerformed
+
+    private void tblKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKHMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblKHMouseClicked
+
+    private void txtSearchKHKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKHKeyReleased
+        // TODO add your handling code here:
+        this.searchKH();
+    }//GEN-LAST:event_txtSearchKHKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
