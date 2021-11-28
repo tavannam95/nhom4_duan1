@@ -65,7 +65,6 @@ public class FrmKhachHang extends javax.swing.JPanel {
         lblDSKH = new javax.swing.JLabel();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
-        btnXoa = new javax.swing.JButton();
         btnMoi = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(34, 116, 173));
@@ -257,7 +256,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(140, Short.MAX_VALUE)
                 .addComponent(lblDSKH, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(128, 128, 128))
         );
@@ -286,16 +285,6 @@ public class FrmKhachHang extends javax.swing.JPanel {
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuaActionPerformed(evt);
-            }
-        });
-
-        btnXoa.setBackground(new java.awt.Color(85, 136, 163));
-        btnXoa.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 18)); // NOI18N
-        btnXoa.setForeground(new java.awt.Color(255, 255, 255));
-        btnXoa.setText("Xóa");
-        btnXoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoaActionPerformed(evt);
             }
         });
 
@@ -345,13 +334,11 @@ public class FrmKhachHang extends javax.swing.JPanel {
                         .addGap(15, 15, 15)
                         .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnXoa)
-                        .addGap(18, 18, 18)
                         .addComponent(btnMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(40, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnMoi, btnSua, btnThem, btnXoa});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnMoi, btnSua, btnThem});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,7 +357,6 @@ public class FrmKhachHang extends javax.swing.JPanel {
                     .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -379,7 +365,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnMoi, btnSua, btnThem, btnXoa});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnMoi, btnSua, btnThem});
 
         getAccessibleContext().setAccessibleParent(this);
     }// </editor-fold>//GEN-END:initComponents
@@ -398,10 +384,6 @@ public class FrmKhachHang extends javax.swing.JPanel {
             this.insert();
         }
     }//GEN-LAST:event_btnThemActionPerformed
-
-    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        delete();
-    }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         if (checkform()) {
@@ -438,7 +420,6 @@ public class FrmKhachHang extends javax.swing.JPanel {
     private javax.swing.JButton btnPrew;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -494,7 +475,6 @@ public class FrmKhachHang extends javax.swing.JPanel {
         boolean edit = (this.index >= 0);
         txtMaKH.setEnabled(!edit);
         btnSua.setEnabled(edit);
-        btnXoa.setEnabled(edit);
         btnThem.setEnabled(!edit);
     }
 
@@ -551,10 +531,10 @@ public class FrmKhachHang extends javax.swing.JPanel {
     
     private KhachHang getForm() {
         KhachHang kh = new KhachHang();
-        kh.setMaKH(txtMaKH.getText());
-        kh.setTenKH(txtTenKH.getText());
-        kh.setSoDienThoai(txtSDT.getText());
-        kh.setDiaChi(txtDiaChi.getText());
+        kh.setMaKH(txtMaKH.getText().trim());
+        kh.setTenKH(txtTenKH.getText().trim());
+        kh.setSoDienThoai(txtSDT.getText().trim());
+        kh.setDiaChi(txtDiaChi.getText().trim());
         return kh;
     }
     

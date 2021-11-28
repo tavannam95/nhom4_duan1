@@ -75,4 +75,12 @@ public class NhaCungCapDao extends MainDAO<NhaCungCap, String>{
         return list;
     }
     
+    public  boolean checkDuplicate(String maNCC) {
+        NhaCungCap nhaCC = selectById(maNCC);
+        if (nhaCC == null) {
+            return true;
+        }
+        return false;
+    }
+    
 }
