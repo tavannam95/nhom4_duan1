@@ -726,7 +726,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
                         + "join KHOHANG on MATHANG.MAMH = KHOHANG.MAMH\n"
                         + "join KHO on KHOHANG.MAK = KHO.MAK\n"
                         + "where KHOHANG.MAK = ? and TRANGTHAI = 1";
-                ResultSet rs = JdbcHelper.query(sql, kho.getMaKho());
+                ResultSet rs = JdbcHelper.query(sql, kho.getMaK());
                 while (rs.next()) {
                     modeltblMatHang.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4) + "GB", rs.getString(5) + "GB", rs.getString(6), rs.getString(7), rs.getInt(8)});
                 }
@@ -835,7 +835,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
                     + "join KHO on KHOHANG.MAK = KHO.MAK\n"
                     + "where KHOHANG.MAK = ? and TRANGTHAI = 1 and (KHOHANG.MAMH like N'%" + keywork + "%'"
                     + " or TENMH like N'%" + keywork + "%' or TENHSX like N'%" + keywork + "%'" + " or TENQG like N'%" + keywork + "%')";
-            ResultSet rs = JdbcHelper.query(sql, kho.getMaKho());
+            ResultSet rs = JdbcHelper.query(sql, kho.getMaK());
             while (rs.next()) {
                 modeltblMatHang.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4) + "GB", rs.getString(5) + "GB", rs.getString(6), rs.getString(7), rs.getInt(8)});
             }
@@ -898,7 +898,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
             String updateSoluongFromMatHang = "update MatHang set soluong = soluong + ? where mamh = ?";
             NhaCungCap ncc = (NhaCungCap) cboNCC.getSelectedItem();
             Kho kho = (Kho) cboMaKho.getSelectedItem();
-            JdbcHelper.update(insertPNK, ncc.getMaNcc(), kho.getMaKho(), Auth.user.getMaNV(), sdf.parse(txtNgayNhap.getText()), tongTien);
+            JdbcHelper.update(insertPNK, ncc.getMaNcc(), kho.getMaK(), Auth.user.getMaNV(), sdf.parse(txtNgayNhap.getText()), tongTien);
             for (int i = 0; i < modeltblPhieuNhap.getRowCount(); i++) {
                 String mamh = (String) tblNhapHang.getValueAt(i, 0).toString();
                 int soluong = (int) tblNhapHang.getValueAt(i, 2);
@@ -906,7 +906,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
                 if (rs.next()) {
                     int maPNK = rs.getInt("IDPNK");
                     JdbcHelper.update(insertCTPNK, maPNK, mamh, soluong);
-                    JdbcHelper.update(updateSoLuongFromKhoHang, soluong, mamh, kho.getMaKho());
+                    JdbcHelper.update(updateSoLuongFromKhoHang, soluong, mamh, kho.getMaK());
                     JdbcHelper.update(updateSoluongFromMatHang, soluong, mamh);
                 }
             }
