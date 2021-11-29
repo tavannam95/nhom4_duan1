@@ -1602,7 +1602,7 @@ public class FrmHome extends javax.swing.JFrame {
 
     private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
         // TODO add your handling code here:
-        if (!Auth.giaoCa) {
+        if (!Auth.giaoCa && !Auth.isManager()) {
             Msgbox.alert(this, "Bạn phải giao ca trước khi thoát!!");
             return;
         }
@@ -1616,7 +1616,7 @@ public class FrmHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel17MouseClicked
 
     private void jPanel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel18MouseClicked
-        if (!Auth.giaoCa) {
+        if (!Auth.giaoCa && !Auth.isManager()) {
             Msgbox.alert(this, "Bạn phải giao ca trước khi thoát!!");
             return;
         }
@@ -1626,7 +1626,7 @@ public class FrmHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel18MouseClicked
 
     private void jPanel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel19MouseClicked
-        if (!Auth.giaoCa) {
+        if (!Auth.giaoCa && !Auth.isManager()) {
             Msgbox.alert(this, "Bạn phải giao ca trước khi đăng xuất!!");
             return;
         }

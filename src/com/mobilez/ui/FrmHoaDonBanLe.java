@@ -587,8 +587,11 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
                     JdbcHelper.update(updateMatHang, soLuong, maMH);
                 }
             }
-            Msgbox.alert(this, "In thành công");
             modelHoaDon.setRowCount(0);
+            lblTongTien.setText("0 VND");
+            filltoTableMatHang();
+            clear();
+            Msgbox.alert(this, "In thành công");
         } catch (Exception e) {
             e.printStackTrace();
             Msgbox.alert(this, "In thất bại");
@@ -606,5 +609,12 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    private void clear(){
+        txtMaMH.setText("");
+        txtGiaBanLe.setText("");
+        txtSoLuong.setText("");
+        txtTenMatHang.setText("");
     }
 }
