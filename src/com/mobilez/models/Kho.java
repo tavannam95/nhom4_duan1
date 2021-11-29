@@ -50,4 +50,5 @@ public class Kho {
     public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
     }
+}
 
