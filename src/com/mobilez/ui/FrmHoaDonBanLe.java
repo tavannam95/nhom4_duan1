@@ -34,8 +34,8 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         initComponents();
         modelMatHang = (DefaultTableModel) tblMatHang.getModel();
         modelHoaDon = (DefaultTableModel) tblHoaDonChiTiet.getModel();
-        lblQuayHang.setText(Auth.maQuay);
         filltoTableMatHang();
+        selectQuayHang();
     }
 
     /**
@@ -328,10 +328,10 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
                 .addComponent(lblDSMH)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblQuayHang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblKhachHang1)
-                        .addComponent(lblQuayHang, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblDSMH1)
                         .addComponent(lblKho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -519,6 +519,7 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         txtMaMH.setText(tblMatHang.getValueAt(indexMatHang, 0).toString());
         txtTenMatHang.setText(tblMatHang.getValueAt(indexMatHang, 2).toString());
         txtGiaBanLe.setText(tblMatHang.getValueAt(indexMatHang, 7).toString());
+        txtSoLuong.setText("");
     }
 
     private void filltoHoaDon() {
@@ -541,6 +542,10 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         }
         if (indexMatHang == -1) {
             Msgbox.alert(null, "Bạn chưa chọn mặt hàng cần thêm!");
+            return false;
+        }
+        if (txtSoLuong.getText().trim().equals("")) {
+            Msgbox.alert(null, "Số lượng không được để trống");
             return false;
         }
         int soLuongtrongQuay = Integer.parseInt(tblMatHang.getValueAt(indexMatHang, 8).toString());
@@ -571,19 +576,35 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
                 String insertCTHDBL = "insert into CHITIETHOADONBANLE values (?,?,?,?)";
                 String updateQuayHang = "Update ChiTietQuayHang set soluong = soluong - ? where maQH = ? and maMH = ?";
                 String insertCTPGC = "insert into CHITIETPHIEUGIAOCA values (?,?,?)";
+                String updateMatHang = "Update MatHang set soluong = soluong - ? where mamh = ?";
                 for (int i = 0; i < modelHoaDon.getRowCount(); i++) {
                     String maMH = tblHoaDonChiTiet.getValueAt(i, 0).toString();
                     int soLuong = Integer.parseInt(tblHoaDonChiTiet.getValueAt(i, 3).toString());
                     int donGia = Integer.parseInt(tblHoaDonChiTiet.getValueAt(i, 2).toString());
                     JdbcHelper.update(insertCTHDBL, maHDBL, maMH, soLuong, donGia);
                     JdbcHelper.update(updateQuayHang, soLuong, Auth.maQuay, maMH);
-                    JdbcHelper.update(insertCTPGC,Auth.maPGC, maMH,  soLuong);
+                    JdbcHelper.update(insertCTPGC, Auth.maPGC, maMH, soLuong);
+                    JdbcHelper.update(updateMatHang, soLuong, maMH);
                 }
             }
             Msgbox.alert(this, "In thành công");
+            modelHoaDon.setRowCount(0);
         } catch (Exception e) {
             e.printStackTrace();
             Msgbox.alert(this, "In thất bại");
+        }
+    }
+
+    private void selectQuayHang() {
+        try {
+            String query = "Select tenQH from QUAYHANG where MaQH = ?";
+            ResultSet rs = JdbcHelper.query(query, Auth.maQuay);
+            if (rs.next()) {
+                lblQuayHang.setText(rs.getString("TenQH"));
+            }
+            rs.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
