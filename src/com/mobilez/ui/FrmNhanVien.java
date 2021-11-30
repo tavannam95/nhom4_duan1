@@ -303,6 +303,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
                 this.setStatus(false);
             }
         } catch (Exception e) {
+            e.printStackTrace();
             Msgbox.alert(this, "Lỗi truy vấn dữ liệu");
         }
     }
@@ -464,7 +465,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
         jLabel1.setText("DANH SÁCH NHÂN VIÊN");
 
         tblList.setBackground(new java.awt.Color(34, 116, 173));
-        tblList.setFont(new java.awt.Font("Baloo 2", 0, 13)); // NOI18N
+        tblList.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
         tblList.setForeground(new java.awt.Color(255, 255, 255));
         tblList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -522,31 +523,34 @@ public class FrmNhanVien extends javax.swing.JPanel {
         jLabel12.setText("CẬP NHẬT");
 
         txtMaNV.setBackground(new java.awt.Color(34, 116, 173));
-        txtMaNV.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtMaNV.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
         txtMaNV.setForeground(new java.awt.Color(255, 255, 255));
         txtMaNV.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
-        lblMaMH.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
+        lblMaMH.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         lblMaMH.setForeground(new java.awt.Color(255, 255, 255));
         lblMaMH.setText("Mã nhân viên");
 
-        lblHSX.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
+        lblHSX.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         lblHSX.setForeground(new java.awt.Color(255, 255, 255));
         lblHSX.setText("Tên nhân viên");
 
-        lblTenMH.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
+        lblTenMH.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         lblTenMH.setForeground(new java.awt.Color(255, 255, 255));
         lblTenMH.setText("Giới tính");
 
         txtNgaySinh.setBackground(new java.awt.Color(34, 116, 173));
+        txtNgaySinh.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
         txtNgaySinh.setForeground(new java.awt.Color(255, 255, 255));
         txtNgaySinh.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
         txtCMND.setBackground(new java.awt.Color(34, 116, 173));
+        txtCMND.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
         txtCMND.setForeground(new java.awt.Color(255, 255, 255));
         txtCMND.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
         txtDiaChi.setBackground(new java.awt.Color(34, 116, 173));
+        txtDiaChi.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
         txtDiaChi.setForeground(new java.awt.Color(255, 255, 255));
         txtDiaChi.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
         txtDiaChi.addActionListener(new java.awt.event.ActionListener() {
@@ -555,27 +559,27 @@ public class FrmNhanVien extends javax.swing.JPanel {
             }
         });
 
-        lblRAM.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
+        lblRAM.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         lblRAM.setForeground(new java.awt.Color(255, 255, 255));
         lblRAM.setText("Ngày sinh");
 
-        lblDL.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
+        lblDL.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         lblDL.setForeground(new java.awt.Color(255, 255, 255));
         lblDL.setText("Số CCCD");
 
-        lblMS.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
+        lblMS.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         lblMS.setForeground(new java.awt.Color(255, 255, 255));
         lblMS.setText("Địa chỉ");
 
-        lblQG.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
+        lblQG.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         lblQG.setForeground(new java.awt.Color(255, 255, 255));
         lblQG.setText("SĐT");
 
-        lblDVT.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
+        lblDVT.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         lblDVT.setForeground(new java.awt.Color(255, 255, 255));
         lblDVT.setText("Vai trò");
 
-        lblGM.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
+        lblGM.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         lblGM.setForeground(new java.awt.Color(255, 255, 255));
         lblGM.setText("Mật khẩu");
 
@@ -587,13 +591,13 @@ public class FrmNhanVien extends javax.swing.JPanel {
             }
         });
 
-        lblHMH.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
+        lblHMH.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         lblHMH.setForeground(new java.awt.Color(255, 255, 255));
         lblHMH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHMH.setText("Hình nhân viên");
 
         btnClear.setBackground(new java.awt.Color(34, 116, 173));
-        btnClear.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
+        btnClear.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
         btnClear.setForeground(new java.awt.Color(255, 255, 255));
         btnClear.setText("Clear");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
@@ -603,7 +607,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
         });
 
         btnThemNV.setBackground(new java.awt.Color(34, 116, 173));
-        btnThemNV.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
+        btnThemNV.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
         btnThemNV.setForeground(new java.awt.Color(255, 255, 255));
         btnThemNV.setText("Thêm");
         btnThemNV.addActionListener(new java.awt.event.ActionListener() {
@@ -613,7 +617,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
         });
 
         btnSuaNV.setBackground(new java.awt.Color(34, 116, 173));
-        btnSuaNV.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
+        btnSuaNV.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
         btnSuaNV.setForeground(new java.awt.Color(255, 255, 255));
         btnSuaNV.setText("Sửa");
         btnSuaNV.addActionListener(new java.awt.event.ActionListener() {
@@ -623,18 +627,21 @@ public class FrmNhanVien extends javax.swing.JPanel {
         });
 
         txtTen.setBackground(new java.awt.Color(34, 116, 173));
-        txtTen.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtTen.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
         txtTen.setForeground(new java.awt.Color(255, 255, 255));
         txtTen.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
         buttonGroup1.add(rdoNam);
+        rdoNam.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         rdoNam.setSelected(true);
         rdoNam.setText("Nam");
 
         buttonGroup1.add(rdoNu);
+        rdoNu.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         rdoNu.setText("Nữ");
 
         txtSDT.setBackground(new java.awt.Color(34, 116, 173));
+        txtSDT.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
         txtSDT.setForeground(new java.awt.Color(255, 255, 255));
         txtSDT.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
         txtSDT.addActionListener(new java.awt.event.ActionListener() {
@@ -644,25 +651,29 @@ public class FrmNhanVien extends javax.swing.JPanel {
         });
 
         buttonGroup2.add(rdoQuanLy);
+        rdoQuanLy.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         rdoQuanLy.setSelected(true);
         rdoQuanLy.setText("Quản lý");
 
         buttonGroup2.add(rdoNhanVien);
+        rdoNhanVien.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         rdoNhanVien.setText("Nhân viên");
 
         txtMatKhau.setBackground(new java.awt.Color(34, 116, 173));
         txtMatKhau.setForeground(new java.awt.Color(255, 255, 255));
         txtMatKhau.setText("jPasswordField1");
 
-        lblDVT1.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
+        lblDVT1.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         lblDVT1.setForeground(new java.awt.Color(255, 255, 255));
         lblDVT1.setText("Trạng Thái");
 
         buttonGroup3.add(rdoDangLam);
+        rdoDangLam.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         rdoDangLam.setSelected(true);
         rdoDangLam.setText("Đang làm");
 
         buttonGroup3.add(rdoNghiViec);
+        rdoNghiViec.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         rdoNghiViec.setText("Đã nghỉ việc");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -793,7 +804,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
                     .addComponent(btnThemNV)
                     .addComponent(btnSuaNV)
                     .addComponent(btnClear))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

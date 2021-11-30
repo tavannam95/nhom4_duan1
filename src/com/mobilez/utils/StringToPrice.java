@@ -9,7 +9,7 @@ package com.mobilez.utils;
  *
  * @author LAPTOP
  */
-public class priceToString {
+public class StringToPrice {
     public static String getPrice(String price){
         String tongtien2 = "";
         if (price.length() > 3) {
@@ -46,4 +46,11 @@ public class priceToString {
             return price + " VND";
         }
     }
+    
+    public static String getStringPriceToMoney(String priceString){
+        String rs = priceString;
+        rs = rs.replace(".", "");
+        return rs;
+    }
+    
 }

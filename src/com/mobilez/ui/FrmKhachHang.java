@@ -23,7 +23,6 @@ public class FrmKhachHang extends javax.swing.JPanel {
     DefaultTableModel model = new DefaultTableModel();
     KhachHangDAO dao = new KhachHangDAO();
     int index = -1;
-    FrmHome parent = new FrmHome();
 
     public FrmKhachHang() {
         initComponents();
@@ -105,7 +104,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
             tblKhachHang.getColumnModel().getColumn(3).setPreferredWidth(200);
         }
 
-        jPanel1.setBackground(new java.awt.Color(85, 136, 163));
+        jPanel1.setBackground(new java.awt.Color(34, 116, 173));
 
         lblDSKH1.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 36)); // NOI18N
         lblDSKH1.setForeground(new java.awt.Color(255, 255, 255));
@@ -138,7 +137,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(85, 136, 163));
+        jPanel2.setBackground(new java.awt.Color(34, 116, 173));
 
         lblMaKH4.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 18)); // NOI18N
         lblMaKH4.setForeground(new java.awt.Color(255, 255, 255));
@@ -156,6 +155,13 @@ public class FrmKhachHang extends javax.swing.JPanel {
         lblMaKH3.setForeground(new java.awt.Color(255, 255, 255));
         lblMaKH3.setText("Địa chỉ:");
 
+        txtMaKH.setBackground(new java.awt.Color(34, 116, 173));
+
+        txtSDT.setBackground(new java.awt.Color(34, 116, 173));
+
+        txtTenKH.setBackground(new java.awt.Color(34, 116, 173));
+
+        txtDiaChi.setBackground(new java.awt.Color(34, 116, 173));
         jScrollPane3.setViewportView(txtDiaChi);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -245,7 +251,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
             }
         });
 
-        jPanel3.setBackground(new java.awt.Color(85, 136, 163));
+        jPanel3.setBackground(new java.awt.Color(34, 116, 173));
 
         lblDSKH.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 36)); // NOI18N
         lblDSKH.setForeground(new java.awt.Color(255, 255, 255));
