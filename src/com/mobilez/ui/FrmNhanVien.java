@@ -16,6 +16,7 @@ import java.awt.Color;
 import static java.awt.Color.blue;
 import static java.awt.Color.pink;
 import static java.awt.Color.white;
+import java.awt.Image;
 import java.io.File;
 import java.util.List;
 import javax.swing.JFileChooser;
@@ -387,6 +388,9 @@ public class FrmNhanVien extends javax.swing.JPanel {
                 File file = fileChooser.getSelectedFile();
                 XImage.save(file);
                 ImageIcon icon = XImage.read(file.getName());
+                Image image = icon.getImage(); // transform it 
+                Image newimg = image.getScaledInstance(lblHinhNV.getWidth(), lblHinhNV.getHeight(), java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                icon = new ImageIcon(newimg);
                 lblHinhNV.setIcon(icon);
                 lblHinhNV.setToolTipText(file.getName());
             }
