@@ -257,7 +257,7 @@ public class FrmThongKe extends javax.swing.JPanel {
                 cboMonth.addItem(rs.getString(1));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }
 
