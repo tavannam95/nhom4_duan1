@@ -29,6 +29,9 @@ public class MatHangDAO extends MainDAO<MatHang, String> {
     String selectByIdSQL = "select * from MATHANG where MAMH like ?";
     String insertKhoHang = "insert into KHOHANG values(?,?,?)";
     String selectAllKho = "select * from kho";
+    String selectAllQH = "select * from QuayHang";
+    String insertCTQuayHang ="insert into CHITIETQUAYHANG values (?,?,?)";
+    
     @Override
     public void insert(MatHang entity) {
         int s = JdbcHelper.update(insertSQL, entity.getMaMH(),entity.getMaHSX(),entity.getTenMH(),
@@ -39,11 +42,15 @@ public class MatHangDAO extends MainDAO<MatHang, String> {
             ResultSet rs = JdbcHelper.query(selectAllKho);
             while (rs.next()) {                
                 JdbcHelper.update(insertKhoHang, entity.getMaMH(),rs.getString("MAK"),0);
+                
+            }
+            ResultSet rs2 = JdbcHelper.query(selectAllQH);
+            while (rs2.next()) {                
+                JdbcHelper.update(insertCTQuayHang,rs2.getString("MaQH"), entity.getMaMH(),0);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         if (s <= 0) {
             Msgbox.alert(null, "Thêm thất bại!");
             return;

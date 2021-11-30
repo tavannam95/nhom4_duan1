@@ -491,7 +491,6 @@ public class FrmThongKe extends javax.swing.JPanel {
         tblDS.setGridColor(new java.awt.Color(255, 255, 255));
         tblDS.setRowHeight(25);
         tblDS.setSelectionBackground(new java.awt.Color(51, 51, 51));
-        tblDS.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tblDS.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblDS.setShowGrid(true);
         jScrollPane1.setViewportView(tblDS);
@@ -565,15 +564,16 @@ public class FrmThongKe extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lblTitle)
                 .addGap(18, 18, 18)
-                .addGroup(pnlDoanhSoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
+                .addGroup(pnlDoanhSoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDoanhSoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cboThangDS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2))
                     .addGroup(pnlDoanhSoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cboNamDS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3)
-                        .addGroup(pnlDoanhSoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cboThangDS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))))
+                        .addComponent(jLabel3))
+                    .addGroup(pnlDoanhSoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cboSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE))
         );
@@ -603,7 +603,6 @@ public class FrmThongKe extends javax.swing.JPanel {
         tblSPBC.setGridColor(new java.awt.Color(255, 255, 255));
         tblSPBC.setRowHeight(25);
         tblSPBC.setSelectionBackground(new java.awt.Color(51, 51, 51));
-        tblSPBC.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tblSPBC.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblSPBC.setShowGrid(true);
         jScrollPane2.setViewportView(tblSPBC);
@@ -693,7 +692,6 @@ public class FrmThongKe extends javax.swing.JPanel {
         tblSPTK.setGridColor(new java.awt.Color(255, 255, 255));
         tblSPTK.setRowHeight(25);
         tblSPTK.setSelectionBackground(new java.awt.Color(51, 51, 51));
-        tblSPTK.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tblSPTK.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblSPTK.setShowGrid(true);
         jScrollPane3.setViewportView(tblSPTK);
@@ -783,7 +781,6 @@ public class FrmThongKe extends javax.swing.JPanel {
         tblSPHH.setGridColor(new java.awt.Color(255, 255, 255));
         tblSPHH.setRowHeight(25);
         tblSPHH.setSelectionBackground(new java.awt.Color(51, 51, 51));
-        tblSPHH.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tblSPHH.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblSPHH.setShowGrid(true);
         jScrollPane4.setViewportView(tblSPHH);
@@ -838,7 +835,6 @@ public class FrmThongKe extends javax.swing.JPanel {
         tblDTBL.setGridColor(new java.awt.Color(255, 255, 255));
         tblDTBL.setRowHeight(25);
         tblDTBL.setSelectionBackground(new java.awt.Color(51, 51, 51));
-        tblDTBL.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tblDTBL.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblDTBL.setShowGrid(true);
         jScrollPane6.setViewportView(tblDTBL);
@@ -869,7 +865,6 @@ public class FrmThongKe extends javax.swing.JPanel {
         tblDTBS.setGridColor(new java.awt.Color(255, 255, 255));
         tblDTBS.setRowHeight(25);
         tblDTBS.setSelectionBackground(new java.awt.Color(51, 51, 51));
-        tblDTBS.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tblDTBS.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblDTBS.setShowGrid(true);
         jScrollPane7.setViewportView(tblDTBS);
@@ -962,16 +957,17 @@ public class FrmThongKe extends javax.swing.JPanel {
                     .addComponent(lblTitle6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTitle7, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addGroup(pnlDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboNamDTBL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(cboThangDTBL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
+                .addGroup(pnlDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cboNamDTBS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel11)
                         .addComponent(cboThangDTBS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel12)))
+                        .addComponent(jLabel12))
+                    .addGroup(pnlDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cboNamDTBL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9)
+                        .addComponent(cboThangDTBL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)

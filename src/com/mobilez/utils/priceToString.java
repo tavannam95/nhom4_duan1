@@ -9,7 +9,7 @@ package com.mobilez.utils;
  *
  * @author LAPTOP
  */
-public class priceToString {
+public class PriceToString {
     public static String getPrice(String price){
         String tongtien2 = "";
         if (price.length() > 3) {
