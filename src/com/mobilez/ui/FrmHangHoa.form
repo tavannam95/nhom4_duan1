@@ -60,19 +60,23 @@
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="lblTenMH" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="lblDL" alignment="1" min="-2" pref="92" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtTenMH" max="32767" attributes="0"/>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="txtDungLuong" pref="102" max="32767" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="lblRAM" min="-2" pref="41" max="-2" attributes="0"/>
+                                          <Component id="lblTenMH" min="-2" pref="92" max="-2" attributes="0"/>
+                                          <Component id="lblRAM" alignment="0" min="-2" pref="41" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="txtRAM" min="-2" pref="95" max="-2" attributes="0"/>
+                                              <Component id="txtTenMH" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                              <Component id="txtRAM" min="-2" pref="89" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="lblDL" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="txtDungLuong" min="-2" pref="89" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -150,7 +154,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblHMH" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="0" pref="5" max="32767" attributes="0"/>
                                       <Component id="lblHinhMH" min="-2" pref="129" max="-2" attributes="0"/>
                                   </Group>
@@ -201,9 +205,9 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtRAM" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="lblRAM" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblDL" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtDungLuong" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="lblRAM" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
