@@ -35,9 +35,13 @@ public class FrmHome extends javax.swing.JFrame {
     boolean chkTK = false;
     boolean chkTG = false;
     boolean chkHT = false;
-
+    
     public FrmHome() {
         initComponents();
+        //Test 
+        new DangNhapJDialog(this, true).setVisible(true);
+        new JDialogChonCaLam(this, true).setVisible(true);
+        
         this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon("src/com/mobilez/icon/logoM_32px.png").getImage());
@@ -47,14 +51,12 @@ public class FrmHome extends javax.swing.JFrame {
         pnlParent.revalidate();
         pnlParent.repaint();
         TextAffect.colorText(lblMobileZ);
-
-        //Test 
-        new DangNhapJDialog(this, true).setVisible(true);
-        new JDialogChonCaLam(this, true).setVisible(true);
+        lblWelcome.setText("Xin chào " + Auth.user.getHoTen() + "!");
+        
     }
-
+    
     class jPanelGradient extends JPanel {
-
+        
         protected void paintComponent(Graphics g) {
             Graphics2D g2 = (Graphics2D) g;
             int width = getWidth();
@@ -66,7 +68,7 @@ public class FrmHome extends javax.swing.JFrame {
             g2.fillRect(0, 0, width, height);
         }
     }
-
+    
     private void setTimeLbl() {
         Thread t = new Thread() {
             @Override
@@ -82,17 +84,17 @@ public class FrmHome extends javax.swing.JFrame {
                     }
                 }
             }
-
+            
         };
         t.start();
     }
-
+    
     private void removeAllPnlShow() {
         pnlShow.removeAll();
         pnlShow.validate();
         pnlShow.repaint();
     }
-
+    
     private void showPnl(JPanel p) {
         p.setSize(pnlShow.getSize());
         pnlShow.removeAll();
@@ -1214,15 +1216,15 @@ public class FrmHome extends javax.swing.JFrame {
             lblThongKe.setForeground(Color.WHITE);
             lblTroGiup.setForeground(Color.WHITE);
             lblWelcome.setForeground(Color.WHITE);
-
+            
         } else {
-
+            
             pnlParent.removeAll();
             pnlParent.validate();
             pnlParent.repaint();
             lblQLDanhMuc.setForeground(Color.WHITE);
         }
-
+        
 
     }//GEN-LAST:event_lblQLDanhMucMouseClicked
 
@@ -1391,7 +1393,7 @@ public class FrmHome extends javax.swing.JFrame {
             pnlParent.validate();
             pnlParent.repaint();
             lblTroGiup.setForeground(Color.WHITE);
-
+            
         }
     }//GEN-LAST:event_lblTroGiupMouseClicked
 
@@ -1422,7 +1424,7 @@ public class FrmHome extends javax.swing.JFrame {
             pnlParent.validate();
             pnlParent.repaint();
             lblUser.setForeground(Color.WHITE);
-
+            
         }
     }//GEN-LAST:event_lblUserMouseClicked
 
@@ -1439,13 +1441,17 @@ public class FrmHome extends javax.swing.JFrame {
         lblHSX2.setForeground(Color.WHITE);
         FrmNhaCungCap f = new FrmNhaCungCap();
         this.showPnl(f);
-
+        
 
     }//GEN-LAST:event_lblNCCMouseClicked
     private void lblNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNVMouseClicked
         // TODO add your handling code here:
         if (Auth.giaoCa) {
             Msgbox.alert(this, "Bạn phải chọn quầy và ca làm mới dùng được chức năng!!");
+            return;
+        }
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền sử dụng chức năng này!");
             return;
         }
         lblNV2.setForeground(Color.ORANGE);
@@ -1583,7 +1589,7 @@ public class FrmHome extends javax.swing.JFrame {
         lblCNG.setForeground(Color.WHITE);
         FrmHoaDonBanLe f = new FrmHoaDonBanLe();
         this.showPnl(f);
-
+        
 
     }//GEN-LAST:event_lblHDBLMouseClicked
     private void lblCapNhatGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCapNhatGiaMouseClicked
@@ -1651,7 +1657,7 @@ public class FrmHome extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-
+                    
                 }
             }
         } catch (ClassNotFoundException ex) {

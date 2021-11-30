@@ -36,10 +36,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class FrmNhanVien extends javax.swing.JPanel {
 
     DefaultTableModel modelTbl = new DefaultTableModel();
-    int index =0;
+    int index = 0;
     NhanVienDAO dao = new NhanVienDAO();
     JFileChooser fileChooser = new JFileChooser();
     ArrayList<NhanVien> lstNhanVien = new ArrayList<>();
+
     /**
      * Creates new form FrmNhanVien
      */
@@ -49,9 +50,8 @@ public class FrmNhanVien extends javax.swing.JPanel {
         fillToTable();
         setStatus(true);
     }
-    
-    
-    public boolean check(){
+
+    public boolean check() {
         //manv
         if (txtMaNV.getText().trim().equals("")) {
             Msgbox.alert(null, "Mã nhân viên không được để trống");
@@ -59,51 +59,50 @@ public class FrmNhanVien extends javax.swing.JPanel {
             txtMaNV.requestFocus();
             txtMaNV.setBackground(pink);
             return false;
-        }
-        else{
+        } else {
             txtMaNV.setBackground(cl);
         }
-        
+
         //check độ dài chữ
-         if (txtMaNV.getText().matches("[a-zA-Z0-9]{5,10}")) {
+        if (txtMaNV.getText().matches("[a-zA-Z0-9]{5,10}")) {
             txtMaNV.setBackground(cl);
-        }
-        else{
-             Msgbox.alert(null, "Mã nhân viên phải có từ 5 - 10 ký tự \n Không được có ký tự đặc biệt");
+        } else {
+            Msgbox.alert(null, "Mã nhân viên phải có từ 5 - 10 ký tự \n Không được có ký tự đặc biệt");
             txtMaNV.setText("");
             txtMaNV.requestFocus();
             txtMaNV.setBackground(pink);
             return false;
-            
+
         }
 
         //check trùng
-         for (int i = 0; i < tblList.getRowCount(); i++) {
-                if (tblList.getValueAt(i, 0).toString().equalsIgnoreCase(txtMaNV.getText())) {
-                    Msgbox.alert(null, "Mã nhân viên đã tồn tại!");
-                    txtMaNV.setText("");
-                    txtMaNV.requestFocus();
-                    txtMaNV.setBackground(pink);
-                    return false;
-            }else
+        for (int i = 0; i < tblList.getRowCount(); i++) {
+            if (tblList.getValueAt(i, 0).toString().equalsIgnoreCase(txtMaNV.getText())) {
+                Msgbox.alert(null, "Mã nhân viên đã tồn tại!");
+                txtMaNV.setText("");
+                txtMaNV.requestFocus();
+                txtMaNV.setBackground(pink);
+                return false;
+            } else {
                 txtMaNV.setBackground(cl);
-         }
+            }
+        }
         //ngày sinh
-         if (txtNgaySinh.getText().trim().equals("")) {
+        if (txtNgaySinh.getText().trim().equals("")) {
             Msgbox.alert(null, "Ngày sinh không được để trống");
             txtNgaySinh.setText("");
             txtNgaySinh.requestFocus();
             txtNgaySinh.setBackground(pink);
             return false;
-      
-        }else{
-             txtNgaySinh.setBackground(cl);
-         }
-         //check ngày
-         try {
+
+        } else {
+            txtNgaySinh.setBackground(cl);
+        }
+        //check ngày
+        try {
             String ns = txtNgaySinh.getText();
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
-             Date d = sdf.parse(ns);
+            Date d = sdf.parse(ns);
         } catch (Exception e) {
             Msgbox.alert(this, "Vui lòng nhập đúng định dạng dd/MM/YYYY");
             txtNgaySinh.setText("");
@@ -111,114 +110,106 @@ public class FrmNhanVien extends javax.swing.JPanel {
             txtNgaySinh.setBackground(pink);
             return false;
         }
-         //sdt
-          if (txtSDT.getText().trim().equals("")) {
+        //sdt
+        if (txtSDT.getText().trim().equals("")) {
             Msgbox.alert(null, "Số điện thoại không được để trống");
             txtSDT.setText("");
             txtSDT.requestFocus();
             txtSDT.setBackground(pink);
             return false;
-        }else{
-              txtSDT.setBackground(cl);
-          }
-          //check sdt
-           if (txtSDT.getText().matches("(09|08|07|05|03)[0-9]{8}")) {
+        } else {
             txtSDT.setBackground(cl);
         }
-        else{
+        //check sdt
+        if (txtSDT.getText().matches("(09|08|07|05|03)[0-9]{8}")) {
+            txtSDT.setBackground(cl);
+        } else {
             Msgbox.alert(null, "SDT phải có 10 số bắt đầu từ 09,08,07,05,03");
             txtSDT.setText("");
             txtSDT.requestFocus();
             txtSDT.setBackground(pink);
             return false;
-               
+
         }
-          
-          
-          //mat khau
-           if (txtMatKhau.getText().trim().equals("")) {
+
+        //mat khau
+        if (txtMatKhau.getText().trim().equals("")) {
             Msgbox.alert(null, "Mật khẩu không được để trống");
             txtMatKhau.setText("");
             txtMatKhau.requestFocus();
             txtMatKhau.setBackground(pink);
             return false;
-        }else{
-               txtMatKhau.setBackground(cl);
-           }
-        if (txtMatKhau.getText().matches("^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ!@#$%^&*,-_./0-9]{6,25}$")) {
-           txtMatKhau.setBackground(cl);
+        } else {
+            txtMatKhau.setBackground(cl);
         }
-        else{
-             Msgbox.alert(null, "Mật khẩu phải có ít nhất 6 ký tự \n Không được để khoảng trống");
+        if (txtMatKhau.getText().matches("^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ!@#$%^&*,-_./0-9]{6,25}$")) {
+            txtMatKhau.setBackground(cl);
+        } else {
+            Msgbox.alert(null, "Mật khẩu phải có ít nhất 6 ký tự \n Không được để khoảng trống");
             txtMatKhau.setText("");
             txtMatKhau.requestFocus();
             txtMatKhau.setBackground(pink);
             return false;
-            
-        }  
-           
-           
-           //cmnd
-            if (txtCMND.getText().trim().equals("")) {
+
+        }
+
+        //cmnd
+        if (txtCMND.getText().trim().equals("")) {
             Msgbox.alert(null, "Số CMND không được để trống");
             txtCMND.setText("");
             txtCMND.requestFocus();
             txtCMND.setBackground(pink);
-            return false; 
+            return false;
+        } else {
+            txtCMND.setBackground(cl);
         }
-            else{
-                txtCMND.setBackground(cl);
-            }
-         // check số   
-        if (txtCMND.getText().matches("(\\d+)[9,12]")) {
+        // check số   
+        if (txtCMND.getText().matches("(\\d+){9,12}")) {
             txtMatKhau.setBackground(cl);
-        }
-        else{
+        } else {
             Msgbox.alert(null, "Độ dài số CCCD từ 9 - 12 số, không được để khoảng trống");
             txtCMND.setText("");
             txtCMND.requestFocus();
             txtCMND.setBackground(pink);
             return false;
-            
-        } 
 
-        
-            //tên
+        }
+
+        //tên
         if (txtTen.getText().trim().equals("")) {
             Msgbox.alert(null, "Tên nhân viên không được để trống");
             txtTen.setText("");
             txtTen.requestFocus();
             txtTen.setBackground(pink);
             return false;
-        
-        }else{
-                 txtTen.setBackground(cl);
-             }
-             //check tên
-        if (txtTen.getText().matches("^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ ]{1,25}$")) {
+
+        } else {
             txtTen.setBackground(cl);
         }
-        else{
+        //check tên
+        if (txtTen.getText().matches("^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ ]{1,25}$")) {
+            txtTen.setBackground(cl);
+        } else {
             Msgbox.alert(null, "Tên nhân viên không được chứa số, ký tự đặc biệt");
             txtTen.setText("");
             txtTen.requestFocus();
             txtTen.setBackground(pink);
             return false;
-            
+
         }
-                
-             //địa chỉ
+
+        //địa chỉ
         if (txtDiaChi.getText().trim().equals("")) {
             Msgbox.alert(null, "Địa chỉ không được để trống");
             txtDiaChi.setText("");
             txtDiaChi.requestFocus();
             txtDiaChi.setBackground(pink);
             return false;
-       
-        }else{
+
+        } else {
             txtDiaChi.setBackground(cl);
         }
-        
+
 //         if (txtDiaChi.getText().matches("^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ!@#$%^&*,-_./0-9 ]{1,25}$")) {
 //            txtDiaChi.setBackground(cl);
 //        }
@@ -229,23 +220,21 @@ public class FrmNhanVien extends javax.swing.JPanel {
 //            txtDiaChi.setBackground(pink);
 //            return false;
 //        }
-        
-              //hinh
-        if(lblHinhNV.getToolTipText()==null){
+        //hinh
+        if (lblHinhNV.getToolTipText() == null) {
             Msgbox.alert(null, "Bạn chưa chọn ảnh");
             lblHinhNV.setForeground(pink);
             return false;
-        }
-        else{
+        } else {
             lblHinhNV.setForeground(cl);
         }
-              return true;
+        return true;
     }
-    
-    void fillToTable(){
+
+    void fillToTable() {
         modelTbl.setRowCount(0);
         try {
-            List<NhanVien>  list = dao.selectAll();
+            List<NhanVien> list = dao.selectAll();
             for (NhanVien nhanVien : list) {
                 Object[] row = {
                     nhanVien.getMaNV(),
@@ -257,7 +246,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
                     nhanVien.getSoDienThoai(),
                     nhanVien.isVaiTro() ? "Quản lý" : "Nhân Viên",
                     nhanVien.getHinhNV(),
-                    nhanVien.isTrangThai()?"Đang làm" : "Đã nghỉ việc",
+                    nhanVien.isTrangThai() ? "Đang làm" : "Đã nghỉ việc",
                     nhanVien.getMatKhau()
                 };
                 modelTbl.addRow(row);
@@ -267,7 +256,8 @@ public class FrmNhanVien extends javax.swing.JPanel {
             Msgbox.alert(this, "Lỗi truy vấn dữ liệu");
         }
     }
-    void them(){
+
+    void them() {
         NhanVien nv = new NhanVien();
         try {
             dao.insert(this.getNhanVien());
@@ -279,8 +269,8 @@ public class FrmNhanVien extends javax.swing.JPanel {
             Msgbox.alert(this, "Lỗi truy vấn dữ liệu");
         }
     }
-    
-    void CapNhat(){
+
+    void CapNhat() {
         NhanVien nv = new NhanVien();
         try {
             dao.update(this.getNhanVien());
@@ -292,9 +282,8 @@ public class FrmNhanVien extends javax.swing.JPanel {
             Msgbox.alert(this, "Lỗi truy vấn dữ liệu");
         }
     }
-    
 
-    void edit(){
+    void edit() {
         try {
             String manv = (String) tblList.getValueAt(this.index, 0);
             NhanVien model = dao.selectById(manv);
@@ -309,8 +298,8 @@ public class FrmNhanVien extends javax.swing.JPanel {
     }
 
     private static final Color cl = new Color(34, 116, 173);
-     
-    void clear(){
+
+    void clear() {
         txtTen.setText("");
         txtCMND.setText("");
         txtDiaChi.setText("");
@@ -330,17 +319,17 @@ public class FrmNhanVien extends javax.swing.JPanel {
         txtMatKhau.setBackground(cl);
         txtSDT.setBackground(cl);
         txtNgaySinh.setBackground(cl);
-        this.setStatus(true); 
-        
+        this.setStatus(true);
+
     }
 
-    private NhanVien getNhanVien(){
-        NhanVien nv = new NhanVien(txtMaNV.getText(), txtTen.getText(), rdoNam.isSelected(), XDate.toDate(txtNgaySinh.getText(),"dd/MM/yyyy"), 
+    private NhanVien getNhanVien() {
+        NhanVien nv = new NhanVien(txtMaNV.getText(), txtTen.getText(), rdoNam.isSelected(), XDate.toDate(txtNgaySinh.getText(), "dd/MM/yyyy"),
                 txtCMND.getText(), txtDiaChi.getText(), txtSDT.getText(), rdoQuanLy.isSelected(), lblHinhNV.getToolTipText(), rdoDangLam.isSelected(), txtMatKhau.getText());
         return nv;
     }
-    
-    void setModel(NhanVien model){
+
+    void setModel(NhanVien model) {
         txtMaNV.setText(model.getMaNV());
         txtTen.setText(model.getHoTen());
         rdoNam.setSelected(model.isGioiTinh());
@@ -351,19 +340,24 @@ public class FrmNhanVien extends javax.swing.JPanel {
         txtSDT.setText(model.getSoDienThoai());
         rdoNhanVien.setSelected(!model.isVaiTro());
         rdoQuanLy.setSelected(model.isVaiTro());
+        rdoDangLam.setSelected(model.isTrangThai());
+        rdoNghiViec.setSelected(!model.isTrangThai());
 //        if (model.getHinhNV() != null ) {
 //            lblHinhNV.setIcon(XImage.read(model.getHinhNV()));
 //        } else {
 //            lblHinhNV.setIcon(XImage.read("logoM_128px.png"));
 //        }
         lblHinhNV.setToolTipText(model.getHinhNV());
-        Icon ic = XImage.read(lblHinhNV.getToolTipText());
-        lblHinhNV.setIcon(ic);
+        ImageIcon icon = XImage.read(lblHinhNV.getToolTipText());
+        Image image = icon.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(lblHinhNV.getWidth(), lblHinhNV.getHeight(), java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        icon = new ImageIcon(newimg);  // transform it back
+        lblHinhNV.setIcon(icon);
         rdoDangLam.setSelected(model.isTrangThai());
         txtMatKhau.setText(model.getMatKhau());
     }
-    
-    NhanVien getModel(){
+
+    NhanVien getModel() {
         NhanVien model = new NhanVien();
         model.setMaNV(txtMaNV.getText());
         model.setHoTen(txtTen.getText());
@@ -378,8 +372,8 @@ public class FrmNhanVien extends javax.swing.JPanel {
         model.setMatKhau(txtMatKhau.getText());
         return model;
     }
-    
-    void selectImage(){
+
+    void selectImage() {
         try {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setAcceptAllFileFilterUsed(false);
@@ -400,12 +394,11 @@ public class FrmNhanVien extends javax.swing.JPanel {
         }
     }
 
-    void setStatus(boolean inserttable){
+    void setStatus(boolean inserttable) {
         btnThemNV.setEnabled(inserttable);
         btnSuaNV.setEnabled(!inserttable);
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -633,11 +626,13 @@ public class FrmNhanVien extends javax.swing.JPanel {
 
         buttonGroup1.add(rdoNam);
         rdoNam.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
+        rdoNam.setForeground(new java.awt.Color(255, 255, 255));
         rdoNam.setSelected(true);
         rdoNam.setText("Nam");
 
         buttonGroup1.add(rdoNu);
         rdoNu.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
+        rdoNu.setForeground(new java.awt.Color(255, 255, 255));
         rdoNu.setText("Nữ");
 
         txtSDT.setBackground(new java.awt.Color(34, 116, 173));
@@ -652,16 +647,17 @@ public class FrmNhanVien extends javax.swing.JPanel {
 
         buttonGroup2.add(rdoQuanLy);
         rdoQuanLy.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
+        rdoQuanLy.setForeground(new java.awt.Color(255, 255, 255));
         rdoQuanLy.setSelected(true);
         rdoQuanLy.setText("Quản lý");
 
         buttonGroup2.add(rdoNhanVien);
         rdoNhanVien.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
+        rdoNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         rdoNhanVien.setText("Nhân viên");
 
         txtMatKhau.setBackground(new java.awt.Color(34, 116, 173));
         txtMatKhau.setForeground(new java.awt.Color(255, 255, 255));
-        txtMatKhau.setText("jPasswordField1");
 
         lblDVT1.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         lblDVT1.setForeground(new java.awt.Color(255, 255, 255));
@@ -669,11 +665,13 @@ public class FrmNhanVien extends javax.swing.JPanel {
 
         buttonGroup3.add(rdoDangLam);
         rdoDangLam.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
+        rdoDangLam.setForeground(new java.awt.Color(255, 255, 255));
         rdoDangLam.setSelected(true);
         rdoDangLam.setText("Đang làm");
 
         buttonGroup3.add(rdoNghiViec);
         rdoNghiViec.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
+        rdoNghiViec.setForeground(new java.awt.Color(255, 255, 255));
         rdoNghiViec.setText("Đã nghỉ việc");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -737,7 +735,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
                                 .addComponent(lblHMH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(lblHinhNV, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblHinhNV, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))))
         );
         jPanel5Layout.setVerticalGroup(
@@ -804,7 +802,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
                     .addComponent(btnThemNV)
                     .addComponent(btnSuaNV)
                     .addComponent(btnClear))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -826,10 +824,11 @@ public class FrmNhanVien extends javax.swing.JPanel {
 
     private void tblListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMouseClicked
         // TODO add your handling code here:
-        if (evt.getClickCount() ==2) {
+        if (evt.getClickCount() == 2) {
             this.index = tblList.rowAtPoint(evt.getPoint());
             if (this.index >= 0) {
-                this.edit(); 
+                this.edit();
+                
             }
         }
 
@@ -854,159 +853,151 @@ public class FrmNhanVien extends javax.swing.JPanel {
 
     private void btnSuaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaNVActionPerformed
         // TODO add your handling code here:
-          if (txtMaNV.getText().trim().equals("")) {
+        if (txtMaNV.getText().trim().equals("")) {
             Msgbox.alert(null, "Mã nhân viên không được để trống");
             txtMaNV.setText("");
             txtMaNV.requestFocus();
             txtMaNV.setBackground(pink);
-            return ;
-        }
-        else{
+            return;
+        } else {
             txtMaNV.setBackground(cl);
         }
-        
+
         //check độ dài chữ
-         if (txtMaNV.getText().matches("[a-zA-Z0-9]{5,10}")) {
+        if (txtMaNV.getText().matches("[a-zA-Z0-9]{5,10}")) {
             txtMaNV.setBackground(cl);
-        }
-        else{
-             Msgbox.alert(null, "Mã nhân viên phải có từ 5 - 10 ký tự \n Không được có ký tự đặc biệt");
+        } else {
+            Msgbox.alert(null, "Mã nhân viên phải có từ 5 - 10 ký tự \n Không được có ký tự đặc biệt");
             txtMaNV.setText("");
             txtMaNV.requestFocus();
             txtMaNV.setBackground(pink);
-            return ;
-            
+            return;
+
         }
 
         //ngày sinh
-         if (txtNgaySinh.getText().trim().equals("")) {
+        if (txtNgaySinh.getText().trim().equals("")) {
             Msgbox.alert(null, "Ngày sinh không được để trống");
             txtNgaySinh.setText("");
             txtNgaySinh.requestFocus();
             txtNgaySinh.setBackground(pink);
-            return ;
-      
-        }else{
-             txtNgaySinh.setBackground(cl);
-         }
-         //check ngày
-         try {
+            return;
+
+        } else {
+            txtNgaySinh.setBackground(cl);
+        }
+        //check ngày
+        try {
             String ns = txtNgaySinh.getText();
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
-             Date d = sdf.parse(ns);
+            Date d = sdf.parse(ns);
         } catch (Exception e) {
             Msgbox.alert(this, "Vui lòng nhập đúng định dạng dd/MM/YYYY");
             txtNgaySinh.setText("");
             txtNgaySinh.requestFocus();
             txtNgaySinh.setBackground(pink);
-            return ;
+            return;
         }
-         //sdt
-          if (txtSDT.getText().trim().equals("")) {
+        //sdt
+        if (txtSDT.getText().trim().equals("")) {
             Msgbox.alert(null, "Số điện thoại không được để trống");
             txtSDT.setText("");
             txtSDT.requestFocus();
             txtSDT.setBackground(pink);
-            return ;
-        }else{
-              txtSDT.setBackground(cl);
-          }
-          //check sdt
-        if (txtSDT.getText().matches("(09|08|07|05|03)[0-9]{8}")) {
+            return;
+        } else {
             txtSDT.setBackground(cl);
         }
-        else{
+        //check sdt
+        if (txtSDT.getText().matches("(09|08|07|05|03)[0-9]{8}")) {
+            txtSDT.setBackground(cl);
+        } else {
             Msgbox.alert(null, "SDT phải có 10 số bắt đầu từ 09,08,07,05,03");
             txtSDT.setText("");
             txtSDT.requestFocus();
             txtSDT.setBackground(pink);
-            return ;
-            
+            return;
+
         }
-         
-          
-          //mat khau
-           if (txtMatKhau.getText().trim().equals("")) {
+
+        //mat khau
+        if (txtMatKhau.getText().trim().equals("")) {
             Msgbox.alert(null, "Mật khẩu không được để trống");
             txtMatKhau.setText("");
             txtMatKhau.requestFocus();
             txtMatKhau.setBackground(pink);
-            return ;
-        }else{
-               txtMatKhau.setBackground(cl);
-           }
-        if (txtMatKhau.getText().matches("^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ!@#$%^&*,-_./0-9]{6,25}$")) {
-           txtMatKhau.setBackground(cl);
+            return;
+        } else {
+            txtMatKhau.setBackground(cl);
         }
-        else{
-             Msgbox.alert(null, "Mật khẩu phải có ít nhất 6 ký tự \n Không được để khoảng trống");
+        if (txtMatKhau.getText().matches("^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ!@#$%^&*,-_./0-9]{6,25}$")) {
+            txtMatKhau.setBackground(cl);
+        } else {
+            Msgbox.alert(null, "Mật khẩu phải có ít nhất 6 ký tự \n Không được để khoảng trống");
             txtMatKhau.setText("");
             txtMatKhau.requestFocus();
             txtMatKhau.setBackground(pink);
-            return ;
-            
-        } 
- 
-           //cmnd
-            if (txtCMND.getText().trim().equals("")) {
+            return;
+
+        }
+
+        //cmnd
+        if (txtCMND.getText().trim().equals("")) {
             Msgbox.alert(null, "Số CMND không được để trống");
             txtCMND.setText("");
             txtCMND.requestFocus();
             txtCMND.setBackground(pink);
-            return ; 
+            return;
+        } else {
+            txtCMND.setBackground(cl);
         }
-            else{
-                txtCMND.setBackground(cl);
-            }
-         // check số   
+        // check số   
         if (txtCMND.getText().matches("(\\d+){9,12}")) {
             txtMatKhau.setBackground(cl);
-        }
-        else{
+        } else {
             Msgbox.alert(null, "Độ dài số CCCD từ 9 - 12 số, không được để khoảng trống");
             txtCMND.setText("");
             txtCMND.requestFocus();
             txtCMND.setBackground(pink);
-            return ;
-            
+            return;
+
         }
-        
-            //tên
+
+        //tên
         if (txtTen.getText().trim().equals("")) {
             Msgbox.alert(null, "Tên nhân viên không được để trống");
             txtTen.setText("");
             txtTen.requestFocus();
             txtTen.setBackground(pink);
-            return ;
-        
-        }else{
-                 txtTen.setBackground(cl);
-             }
-             //check tên
-        if (txtTen.getText().matches("^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ ]{1,25}$")) {
+            return;
+
+        } else {
             txtTen.setBackground(cl);
         }
-        else{
+        //check tên
+        if (txtTen.getText().matches("^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ ]{1,25}$")) {
+            txtTen.setBackground(cl);
+        } else {
             Msgbox.alert(null, "Tên nhân viên không được chứa số, để khoảng trống, ký tự đặc biệt");
             txtTen.setText("");
             txtTen.requestFocus();
             txtTen.setBackground(pink);
             return;
-            
+
         }
-                
-             //địa chỉ
+
+        //địa chỉ
         if (txtDiaChi.getText().trim().equals("")) {
             Msgbox.alert(null, "Địa chỉ không được để trống");
             txtDiaChi.setText("");
             txtDiaChi.requestFocus();
             txtDiaChi.setBackground(pink);
-            return ;
-       
-        }else{
+            return;
+
+        } else {
             txtDiaChi.setBackground(cl);
         }
-        
+
 //        if (txtDiaChi.getText().matches("^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ!@#$%^&*,-_./0-9]{1,25}$")) {
 //            txtDiaChi.setBackground(cl);
 //        }
@@ -1018,16 +1009,15 @@ public class FrmNhanVien extends javax.swing.JPanel {
 //            return;
 //            
 //        }
-             //hinh
-        if(lblHinhNV.getToolTipText()==null){
+        //hinh
+        if (lblHinhNV.getToolTipText() == null) {
             Msgbox.alert(null, "Bạn chưa chọn ảnh");
             lblHinhNV.setForeground(pink);
-            return ;
-        }
-        else{
+            return;
+        } else {
             lblHinhNV.setForeground(cl);
         }
-              CapNhat();
+        CapNhat();
     }//GEN-LAST:event_btnSuaNVActionPerformed
 
     private void txtDiaChiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaChiActionPerformed

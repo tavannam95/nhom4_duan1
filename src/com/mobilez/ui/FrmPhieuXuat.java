@@ -440,8 +440,9 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
             }
         });
 
-        lblRsTongGia.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
-        lblRsTongGia.setForeground(new java.awt.Color(255, 255, 255));
+        lblRsTongGia.setFont(new java.awt.Font("Baloo Chettan 2", 1, 24)); // NOI18N
+        lblRsTongGia.setForeground(new java.awt.Color(0, 0, 0));
+        lblRsTongGia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         lblKhachHang1.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblKhachHang1.setForeground(new java.awt.Color(255, 255, 255));
@@ -497,9 +498,9 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
                                                 .addComponent(btnXoa)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(btnOK)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(lblTongGia, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(lblTongGia, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(lblRsTongGia, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE)))
