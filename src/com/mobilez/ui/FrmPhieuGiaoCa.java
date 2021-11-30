@@ -115,6 +115,7 @@ public class FrmPhieuGiaoCa extends javax.swing.JPanel {
         txtNgayGiaoCa.setEditable(false);
         txtNgayGiaoCa.setBackground(new java.awt.Color(34, 116, 173));
         txtNgayGiaoCa.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
+        txtNgayGiaoCa.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -123,6 +124,7 @@ public class FrmPhieuGiaoCa extends javax.swing.JPanel {
         txtNhanVien.setEditable(false);
         txtNhanVien.setBackground(new java.awt.Color(34, 116, 173));
         txtNhanVien.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
+        txtNhanVien.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel4.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -131,6 +133,7 @@ public class FrmPhieuGiaoCa extends javax.swing.JPanel {
         txtCa.setEditable(false);
         txtCa.setBackground(new java.awt.Color(34, 116, 173));
         txtCa.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
+        txtCa.setForeground(new java.awt.Color(255, 255, 255));
         txtCa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCaActionPerformed(evt);
@@ -140,6 +143,7 @@ public class FrmPhieuGiaoCa extends javax.swing.JPanel {
         txtQuayHang.setEditable(false);
         txtQuayHang.setBackground(new java.awt.Color(34, 116, 173));
         txtQuayHang.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
+        txtQuayHang.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

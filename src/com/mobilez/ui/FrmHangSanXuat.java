@@ -63,7 +63,7 @@ public class FrmHangSanXuat extends javax.swing.JPanel {
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         txtTimKiem.setBackground(new java.awt.Color(34, 116, 173));
-        txtTimKiem.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtTimKiem.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
         txtTimKiem.setForeground(new java.awt.Color(255, 255, 255));
         txtTimKiem.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
         txtTimKiem.addActionListener(new java.awt.event.ActionListener() {
@@ -110,10 +110,12 @@ public class FrmHangSanXuat extends javax.swing.JPanel {
         );
 
         txtMaHSX.setBackground(new java.awt.Color(34, 116, 173));
+        txtMaHSX.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
         txtMaHSX.setForeground(new java.awt.Color(255, 255, 255));
         txtMaHSX.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
         txtTenHSX.setBackground(new java.awt.Color(34, 116, 173));
+        txtTenHSX.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
         txtTenHSX.setForeground(new java.awt.Color(255, 255, 255));
         txtTenHSX.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
@@ -157,6 +159,9 @@ public class FrmHangSanXuat extends javax.swing.JPanel {
             }
         });
 
+        tblHSX.setBackground(new java.awt.Color(34, 116, 173));
+        tblHSX.setFont(new java.awt.Font("Baloo 2", 0, 13)); // NOI18N
+        tblHSX.setForeground(new java.awt.Color(255, 255, 255));
         tblHSX.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -173,6 +178,10 @@ public class FrmHangSanXuat extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblHSX.setGridColor(new java.awt.Color(255, 255, 255));
+        tblHSX.setRowHeight(25);
+        tblHSX.setSelectionBackground(new java.awt.Color(51, 51, 51));
+        tblHSX.setShowGrid(true);
         tblHSX.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblHSXMouseClicked(evt);

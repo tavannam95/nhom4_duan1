@@ -1402,11 +1402,13 @@ public class FrmHangHoa extends javax.swing.JPanel {
         lblTrangThai.setText("Trạng thái");
 
         grpStatus.add(rdoTrangThai1);
+        rdoTrangThai1.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
         rdoTrangThai1.setForeground(new java.awt.Color(255, 255, 255));
         rdoTrangThai1.setSelected(true);
         rdoTrangThai1.setText("Đang kinh doanh");
 
         grpStatus.add(rdoTrangThai0);
+        rdoTrangThai0.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
         rdoTrangThai0.setForeground(new java.awt.Color(255, 255, 255));
         rdoTrangThai0.setText("Ngừng kinh doanh");
 
@@ -1438,7 +1440,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(cboHSX, 0, 184, Short.MAX_VALUE)
+                                                .addComponent(cboHSX, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(btnThemHSX))
                                             .addComponent(txtMaMH)))
@@ -1464,7 +1466,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
                                             .addComponent(lblQG, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtMauSac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                                            .addComponent(txtMauSac, javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(cboQuocGia, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
