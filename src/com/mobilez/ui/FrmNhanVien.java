@@ -48,7 +48,6 @@ public class FrmNhanVien extends javax.swing.JPanel {
         initComponents();
         modelTbl = (DefaultTableModel) tblList.getModel();
         fillToTable();
-        setStatus(true);
     }
 
     public boolean check() {
@@ -255,6 +254,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
             e.printStackTrace();
             Msgbox.alert(this, "Lỗi truy vấn dữ liệu");
         }
+        updateStatus();
     }
 
     void them() {
@@ -289,7 +289,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
             NhanVien model = dao.selectById(manv);
             if (model != null) {
                 this.setModel(model);
-                this.setStatus(false);
+                updateStatus();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -319,7 +319,8 @@ public class FrmNhanVien extends javax.swing.JPanel {
         txtMatKhau.setBackground(cl);
         txtSDT.setBackground(cl);
         txtNgaySinh.setBackground(cl);
-        this.setStatus(true);
+        index = -1;
+        updateStatus();
 
     }
 
@@ -394,9 +395,11 @@ public class FrmNhanVien extends javax.swing.JPanel {
         }
     }
 
-    void setStatus(boolean inserttable) {
-        btnThemNV.setEnabled(inserttable);
-        btnSuaNV.setEnabled(!inserttable);
+    private void updateStatus() {
+        boolean edit = (this.index >= 0);
+        txtMaNV.setEditable(!edit);
+        btnSuaNV.setEnabled(edit);
+        btnThemNV.setEnabled(!edit);
     }
 
     /**
@@ -458,7 +461,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
         jLabel1.setText("DANH SÁCH NHÂN VIÊN");
 
         tblList.setBackground(new java.awt.Color(34, 116, 173));
-        tblList.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
+        tblList.setFont(new java.awt.Font("Baloo 2", 0, 13)); // NOI18N
         tblList.setForeground(new java.awt.Color(255, 255, 255));
         tblList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -476,7 +479,9 @@ public class FrmNhanVien extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblList.setGridColor(new java.awt.Color(255, 255, 255));
         tblList.setRowHeight(25);
+        tblList.setSelectionBackground(new java.awt.Color(51, 51, 51));
         tblList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblList.setShowGrid(true);
         tblList.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -505,7 +510,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(34, 116, 173));
@@ -516,7 +521,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
         jLabel12.setText("CẬP NHẬT");
 
         txtMaNV.setBackground(new java.awt.Color(34, 116, 173));
-        txtMaNV.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
+        txtMaNV.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
         txtMaNV.setForeground(new java.awt.Color(255, 255, 255));
         txtMaNV.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
@@ -533,17 +538,17 @@ public class FrmNhanVien extends javax.swing.JPanel {
         lblTenMH.setText("Giới tính");
 
         txtNgaySinh.setBackground(new java.awt.Color(34, 116, 173));
-        txtNgaySinh.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
+        txtNgaySinh.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
         txtNgaySinh.setForeground(new java.awt.Color(255, 255, 255));
         txtNgaySinh.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
         txtCMND.setBackground(new java.awt.Color(34, 116, 173));
-        txtCMND.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
+        txtCMND.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
         txtCMND.setForeground(new java.awt.Color(255, 255, 255));
         txtCMND.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
         txtDiaChi.setBackground(new java.awt.Color(34, 116, 173));
-        txtDiaChi.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
+        txtDiaChi.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
         txtDiaChi.setForeground(new java.awt.Color(255, 255, 255));
         txtDiaChi.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
         txtDiaChi.addActionListener(new java.awt.event.ActionListener() {
@@ -590,7 +595,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
         lblHMH.setText("Hình nhân viên");
 
         btnClear.setBackground(new java.awt.Color(34, 116, 173));
-        btnClear.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
+        btnClear.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         btnClear.setForeground(new java.awt.Color(255, 255, 255));
         btnClear.setText("Clear");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
@@ -600,7 +605,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
         });
 
         btnThemNV.setBackground(new java.awt.Color(34, 116, 173));
-        btnThemNV.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
+        btnThemNV.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         btnThemNV.setForeground(new java.awt.Color(255, 255, 255));
         btnThemNV.setText("Thêm");
         btnThemNV.addActionListener(new java.awt.event.ActionListener() {
@@ -610,7 +615,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
         });
 
         btnSuaNV.setBackground(new java.awt.Color(34, 116, 173));
-        btnSuaNV.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
+        btnSuaNV.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         btnSuaNV.setForeground(new java.awt.Color(255, 255, 255));
         btnSuaNV.setText("Sửa");
         btnSuaNV.addActionListener(new java.awt.event.ActionListener() {
@@ -620,23 +625,23 @@ public class FrmNhanVien extends javax.swing.JPanel {
         });
 
         txtTen.setBackground(new java.awt.Color(34, 116, 173));
-        txtTen.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
+        txtTen.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
         txtTen.setForeground(new java.awt.Color(255, 255, 255));
         txtTen.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
         buttonGroup1.add(rdoNam);
-        rdoNam.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
+        rdoNam.setFont(new java.awt.Font("Baloo 2", 1, 14)); // NOI18N
         rdoNam.setForeground(new java.awt.Color(255, 255, 255));
         rdoNam.setSelected(true);
         rdoNam.setText("Nam");
 
         buttonGroup1.add(rdoNu);
-        rdoNu.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
+        rdoNu.setFont(new java.awt.Font("Baloo 2", 1, 14)); // NOI18N
         rdoNu.setForeground(new java.awt.Color(255, 255, 255));
         rdoNu.setText("Nữ");
 
         txtSDT.setBackground(new java.awt.Color(34, 116, 173));
-        txtSDT.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
+        txtSDT.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
         txtSDT.setForeground(new java.awt.Color(255, 255, 255));
         txtSDT.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
         txtSDT.addActionListener(new java.awt.event.ActionListener() {
@@ -646,17 +651,18 @@ public class FrmNhanVien extends javax.swing.JPanel {
         });
 
         buttonGroup2.add(rdoQuanLy);
-        rdoQuanLy.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
+        rdoQuanLy.setFont(new java.awt.Font("Baloo 2", 1, 14)); // NOI18N
         rdoQuanLy.setForeground(new java.awt.Color(255, 255, 255));
         rdoQuanLy.setSelected(true);
         rdoQuanLy.setText("Quản lý");
 
         buttonGroup2.add(rdoNhanVien);
-        rdoNhanVien.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
+        rdoNhanVien.setFont(new java.awt.Font("Baloo 2", 1, 14)); // NOI18N
         rdoNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         rdoNhanVien.setText("Nhân viên");
 
         txtMatKhau.setBackground(new java.awt.Color(34, 116, 173));
+        txtMatKhau.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
         txtMatKhau.setForeground(new java.awt.Color(255, 255, 255));
 
         lblDVT1.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
@@ -664,13 +670,13 @@ public class FrmNhanVien extends javax.swing.JPanel {
         lblDVT1.setText("Trạng Thái");
 
         buttonGroup3.add(rdoDangLam);
-        rdoDangLam.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
+        rdoDangLam.setFont(new java.awt.Font("Baloo 2", 1, 14)); // NOI18N
         rdoDangLam.setForeground(new java.awt.Color(255, 255, 255));
         rdoDangLam.setSelected(true);
         rdoDangLam.setText("Đang làm");
 
         buttonGroup3.add(rdoNghiViec);
-        rdoNghiViec.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
+        rdoNghiViec.setFont(new java.awt.Font("Baloo 2", 1, 14)); // NOI18N
         rdoNghiViec.setForeground(new java.awt.Color(255, 255, 255));
         rdoNghiViec.setText("Đã nghỉ việc");
 
@@ -681,7 +687,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
             .addComponent(jSeparator1)
             .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(lblHSX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -694,28 +700,29 @@ public class FrmNhanVien extends javax.swing.JPanel {
                         .addComponent(lblDVT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblGM, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblDVT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btnThemNV))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(btnThemNV, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(rdoQuanLy)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(rdoNhanVien))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(rdoDangLam)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(rdoNghiViec)))
-                                .addGap(82, 82, 82))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(67, 67, 67)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel5Layout.createSequentialGroup()
+                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel5Layout.createSequentialGroup()
+                                            .addComponent(rdoQuanLy)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(rdoNhanVien))
+                                        .addGroup(jPanel5Layout.createSequentialGroup()
+                                            .addComponent(rdoDangLam)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(rdoNghiViec)))
+                                    .addGap(82, 82, 82))
+                                .addComponent(txtMatKhau, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
                                 .addComponent(btnSuaNV)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnClear))
-                            .addComponent(txtMatKhau, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(53, 53, 53)
+                                .addComponent(btnClear)))
                         .addContainerGap(149, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -738,6 +745,9 @@ public class FrmNhanVien extends javax.swing.JPanel {
                                 .addComponent(lblHinhNV, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))))
         );
+
+        jPanel5Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnClear, btnSuaNV, btnThemNV});
+
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -799,11 +809,13 @@ public class FrmNhanVien extends javax.swing.JPanel {
                     .addComponent(lblGM, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnThemNV)
+                    .addComponent(btnThemNV, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSuaNV)
                     .addComponent(btnClear))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
+
+        jPanel5Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnClear, btnSuaNV, btnThemNV});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -813,7 +825,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -828,7 +840,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
             this.index = tblList.rowAtPoint(evt.getPoint());
             if (this.index >= 0) {
                 this.edit();
-                
+
             }
         }
 
