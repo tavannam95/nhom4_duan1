@@ -32,7 +32,7 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
     public FrmPhieuXuat() {
         initComponents();
         modelList = (DefaultTableModel) tblList.getModel();
-        modelHDCT = (DefaultTableModel) tblHoaDonChiTiet.getModel();
+        modelHDCT = (DefaultTableModel) tblCTPX.getModel();
         modelCboKho = (DefaultComboBoxModel) cboKho.getModel();
         this.fillCboKho();
         this.fillTablePr();
@@ -119,7 +119,7 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
                     + "join HANGSANXUAT on MATHANG.MAHSX=HANGSANXUAT.MAHSX\n"
                     + "join QUOCGIA on MATHANG.MAQG=QUOCGIA.MAQG\n"
                     + "where MATHANG.MAMH like ?";
-            String maMH = tblHoaDonChiTiet.getValueAt(indexHDCT, 0).toString();
+            String maMH = tblCTPX.getValueAt(indexHDCT, 0).toString();
             ResultSet rs = JdbcHelper.query(sql, maMH);
             String giaMua;
             while (rs.next()) {
@@ -171,20 +171,7 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
         }
     }
 
-    private double getTongGia() {
-        try {
-            double tongGia = 0;
-            for (int i = 0; i < tblHoaDonChiTiet.getRowCount(); i++) {
-                int sl = Integer.parseInt(tblHoaDonChiTiet.getValueAt(i, 8).toString());
-                double price = Double.parseDouble(tblHoaDonChiTiet.getValueAt(i, 6).toString());
-                tongGia += (sl * price);
-            }
-            return tongGia;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return 0;
-        }
-    }
+    
 
     private void insertIntoPXK() {
         try {
@@ -241,9 +228,9 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
             String sql = " update KHOHANG set SOLUONG = ?\n"
                     + " where MAMH like ? and MAK like ?";
             Kho k = (Kho) cboKho.getSelectedItem();
-            for (int i = 0; i < tblHoaDonChiTiet.getRowCount(); i++) {
-                String maMH = tblHoaDonChiTiet.getValueAt(i, 0).toString();
-                int sl = (this.getSLTrongKhoHang(maMH, k.getMaK())) - (Integer.parseInt(tblHoaDonChiTiet.getValueAt(i, 8).toString()));
+            for (int i = 0; i < tblCTPX.getRowCount(); i++) {
+                String maMH = tblCTPX.getValueAt(i, 0).toString();
+                int sl = (this.getSLTrongKhoHang(maMH, k.getMaK())) - (Integer.parseInt(tblCTPX.getValueAt(i, 8).toString()));
                 int s = JdbcHelper.update(sql, sl, maMH, k.getMaK());
             }
         } catch (Exception e) {
@@ -256,16 +243,26 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
             String sql = " update CHITIETQUAYHANG set SOLUONG = ?\n"
                     + " where MAQH like ? and MAMH like ?";
             String maQH = Auth.maQuay;
-            for (int i = 0; i < tblHoaDonChiTiet.getRowCount(); i++) {
+            for (int i = 0; i < tblCTPX.getRowCount(); i++) {
                 String maMH = tblList.getValueAt(i, 0).toString();
-                int sl = (this.getSLTrongQH(maMH, maQH)) + (Integer.parseInt(tblHoaDonChiTiet.getValueAt(i, 8).toString()));
+                int sl = (this.getSLTrongQH(maMH, maQH)) + (Integer.parseInt(tblCTPX.getValueAt(i, 8).toString()));
                 int s = JdbcHelper.update(sql, sl, maQH, maMH);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }
-
+    
+    private String getTongGia(){
+        double tongGia = 0;
+        for (int i = 0; i < tblCTPX.getRowCount(); i++) {
+            double gia = Double.parseDouble(tblCTPX.getValueAt(i, 6).toString());
+            double sl = Double.parseDouble(tblCTPX.getValueAt(i, 8).toString());
+            tongGia+= (sl*gia);
+        }
+        return tongGia+"";
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -286,7 +283,7 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
         jSeparator2 = new javax.swing.JSeparator();
         btnThemVaoHoaDon = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblHoaDonChiTiet = new javax.swing.JTable();
+        tblCTPX = new javax.swing.JTable();
         lblKho = new javax.swing.JLabel();
         lblTongGia = new javax.swing.JLabel();
         btnXoaTatCa = new javax.swing.JButton();
@@ -382,10 +379,10 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
             }
         });
 
-        tblHoaDonChiTiet.setBackground(new java.awt.Color(34, 116, 173));
-        tblHoaDonChiTiet.setFont(new java.awt.Font("Baloo 2", 0, 13)); // NOI18N
-        tblHoaDonChiTiet.setForeground(new java.awt.Color(255, 255, 255));
-        tblHoaDonChiTiet.setModel(new javax.swing.table.DefaultTableModel(
+        tblCTPX.setBackground(new java.awt.Color(34, 116, 173));
+        tblCTPX.setFont(new java.awt.Font("Baloo 2", 0, 13)); // NOI18N
+        tblCTPX.setForeground(new java.awt.Color(255, 255, 255));
+        tblCTPX.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -401,17 +398,17 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tblHoaDonChiTiet.setGridColor(new java.awt.Color(255, 255, 255));
-        tblHoaDonChiTiet.setRowHeight(25);
-        tblHoaDonChiTiet.setSelectionBackground(new java.awt.Color(51, 51, 51));
-        tblHoaDonChiTiet.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblHoaDonChiTiet.setShowGrid(true);
-        tblHoaDonChiTiet.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblCTPX.setGridColor(new java.awt.Color(255, 255, 255));
+        tblCTPX.setRowHeight(25);
+        tblCTPX.setSelectionBackground(new java.awt.Color(51, 51, 51));
+        tblCTPX.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblCTPX.setShowGrid(true);
+        tblCTPX.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblHoaDonChiTietMouseClicked(evt);
+                tblCTPXMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(tblHoaDonChiTiet);
+        jScrollPane3.setViewportView(tblCTPX);
 
         lblKho.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblKho.setForeground(new java.awt.Color(255, 255, 255));
@@ -570,7 +567,7 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         btnXuatKho.setEnabled(false);
-        if (tblHoaDonChiTiet.getRowCount() <= 0) {
+        if (tblCTPX.getRowCount() <= 0) {
             Msgbox.alert(null, "Danh sách trống!");
             return;
         }
@@ -580,14 +577,14 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
         }
         this.addToTblList();
         this.removeHDCT();
-        if (tblHoaDonChiTiet.getRowCount() <= 0) {
+        if (tblCTPX.getRowCount() <= 0) {
             indexHDCT = -1;
-            tblHoaDonChiTiet.setRowSelectionAllowed(false);
+            tblCTPX.setRowSelectionAllowed(false);
             btnXuatKho.setEnabled(false);
         }
-        if (tblHoaDonChiTiet.getRowCount() == indexHDCT) {
+        if (tblCTPX.getRowCount() == indexHDCT) {
             indexHDCT--;
-            this.tblHoaDonChiTiet.setRowSelectionInterval(indexHDCT, indexHDCT);
+            this.tblCTPX.setRowSelectionInterval(indexHDCT, indexHDCT);
         }
         if (indexHDCT>=0) {
             this.tblList.setRowSelectionInterval(indexHDCT, indexHDCT);
@@ -622,11 +619,11 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnThemVaoHoaDonActionPerformed
 
-    private void tblHoaDonChiTietMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonChiTietMouseClicked
+    private void tblCTPXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCTPXMouseClicked
         // TODO add your handling code here:
-        indexHDCT = tblHoaDonChiTiet.getSelectedRow();
-        tblHoaDonChiTiet.setRowSelectionAllowed(true);
-    }//GEN-LAST:event_tblHoaDonChiTietMouseClicked
+        indexHDCT = tblCTPX.getSelectedRow();
+        tblCTPX.setRowSelectionAllowed(true);
+    }//GEN-LAST:event_tblCTPXMouseClicked
 
     private void btnXoaTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaTatCaActionPerformed
         // TODO add your handling code here:
@@ -644,41 +641,41 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
         // TODO add your handling code here:
-        if (tblHoaDonChiTiet.getRowCount() <= 0) {
+        if (tblCTPX.getRowCount() <= 0) {
             Msgbox.alert(null, "Danh sách trống!");
             return;
         }
 
         //validate sl
-        for (int i = 0; i < tblHoaDonChiTiet.getRowCount(); i++) {
-            if (tblHoaDonChiTiet.getValueAt(i, 8).toString().trim().equals("")) {
+        for (int i = 0; i < tblCTPX.getRowCount(); i++) {
+            if (tblCTPX.getValueAt(i, 8).toString().trim().equals("")) {
                 Msgbox.alert(null, "Số lượng không được để trống!");
                 return;
             }
         }
-        for (int i = 0; i < tblHoaDonChiTiet.getRowCount(); i++) {
+        for (int i = 0; i < tblCTPX.getRowCount(); i++) {
             try {
-                Integer.parseInt(tblHoaDonChiTiet.getValueAt(i, 8).toString());
+                Integer.parseInt(tblCTPX.getValueAt(i, 8).toString());
             } catch (Exception e) {
                 Msgbox.alert(null, "Vui lòng nhập số lượng là số!");
                 return;
             }
         }
-        for (int i = 0; i < tblHoaDonChiTiet.getRowCount(); i++) {
-            if (Integer.parseInt(tblHoaDonChiTiet.getValueAt(i, 8).toString()) <= 0) {
+        for (int i = 0; i < tblCTPX.getRowCount(); i++) {
+            if (Integer.parseInt(tblCTPX.getValueAt(i, 8).toString()) <= 0) {
                 Msgbox.alert(null, "Số lượng phải lớn hơn 0!");
                 return;
             }
         }
-        for (int i = 0; i < tblHoaDonChiTiet.getRowCount(); i++) {
+        for (int i = 0; i < tblCTPX.getRowCount(); i++) {
             int slc = 0, slx = 0;
             try {
-                slc = Integer.parseInt(tblHoaDonChiTiet.getValueAt(i, 7).toString());
+                slc = Integer.parseInt(tblCTPX.getValueAt(i, 7).toString());
             } catch (Exception e) {
                 e.printStackTrace();
             }
             try {
-                slx = Integer.parseInt(tblHoaDonChiTiet.getValueAt(i, 8).toString());
+                slx = Integer.parseInt(tblCTPX.getValueAt(i, 8).toString());
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -688,6 +685,7 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
             }
 
         }
+//        lblRsTongGia.setText();
         btnXuatKho.setEnabled(true);
     }//GEN-LAST:event_btnOKActionPerformed
 
@@ -709,7 +707,7 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
     private javax.swing.JLabel lblRsTongGia;
     private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblTongGia;
-    private javax.swing.JTable tblHoaDonChiTiet;
+    private javax.swing.JTable tblCTPX;
     private javax.swing.JTable tblList;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
