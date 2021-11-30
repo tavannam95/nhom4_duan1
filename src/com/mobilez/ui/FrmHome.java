@@ -171,6 +171,9 @@ public class FrmHome extends javax.swing.JFrame {
         jPanel11 = new javax.swing.JPanel();
         lblPBH = new javax.swing.JLabel();
         lblPhieuBaoHanh = new javax.swing.JLabel();
+        jPanel13 = new javax.swing.JPanel();
+        lblPGC2 = new javax.swing.JLabel();
+        lblPhieuGiaoCa2 = new javax.swing.JLabel();
         pnlMenuTG = new javax.swing.JPanel();
         pnlMenuBH = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
@@ -843,6 +846,40 @@ public class FrmHome extends javax.swing.JFrame {
                 .addComponent(lblPBH))
         );
 
+        jPanel13.setBackground(new java.awt.Color(20, 83, 116));
+        jPanel13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lblPGC2.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 16)); // NOI18N
+        lblPGC2.setForeground(new java.awt.Color(255, 255, 255));
+        lblPGC2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPGC2.setText("Quầy hàng");
+
+        lblPhieuGiaoCa2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPhieuGiaoCa2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mobilez/icon/shop_64px.png"))); // NOI18N
+        lblPhieuGiaoCa2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblPhieuGiaoCa2MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblPGC2, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblPhieuGiaoCa2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblPhieuGiaoCa2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPGC2))
+        );
+
         javax.swing.GroupLayout pnlMenuQLQLayout = new javax.swing.GroupLayout(pnlMenuQLQ);
         pnlMenuQLQ.setLayout(pnlMenuQLQLayout);
         pnlMenuQLQLayout.setHorizontalGroup(
@@ -852,16 +889,22 @@ public class FrmHome extends javax.swing.JFrame {
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(304, Short.MAX_VALUE))
         );
+
+        pnlMenuQLQLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jPanel10, jPanel11, jPanel13});
+
         pnlMenuQLQLayout.setVerticalGroup(
             pnlMenuQLQLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMenuQLQLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlMenuQLQLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlMenuQLQLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pnlParent.add(pnlMenuQLQ, "card4");
@@ -1643,6 +1686,10 @@ public class FrmHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jPanel19MouseClicked
 
+    private void lblPhieuGiaoCa2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPhieuGiaoCa2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblPhieuGiaoCa2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1695,6 +1742,8 @@ public class FrmHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
@@ -1739,10 +1788,14 @@ public class FrmHome extends javax.swing.JFrame {
     private javax.swing.JLabel lblNV2;
     private javax.swing.JLabel lblPBH;
     private javax.swing.JLabel lblPGC;
+    private javax.swing.JLabel lblPGC1;
+    private javax.swing.JLabel lblPGC2;
     private javax.swing.JLabel lblPN;
     private javax.swing.JLabel lblPX;
     private javax.swing.JLabel lblPhieuBaoHanh;
     private javax.swing.JLabel lblPhieuGiaoCa;
+    private javax.swing.JLabel lblPhieuGiaoCa1;
+    private javax.swing.JLabel lblPhieuGiaoCa2;
     private javax.swing.JLabel lblPhieuNhap;
     private javax.swing.JLabel lblPhieuXuat;
     private javax.swing.JLabel lblQLDanhMuc;
