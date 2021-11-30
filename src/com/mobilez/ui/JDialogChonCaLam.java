@@ -9,6 +9,7 @@ import com.mobilez.models.QuayHang;
 import com.mobilez.utils.Auth;
 import com.mobilez.utils.JdbcHelper;
 import com.mobilez.utils.Msgbox;
+import java.awt.event.KeyEvent;
 import javax.swing.DefaultComboBoxModel;
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -50,6 +51,11 @@ public class JDialogChonCaLam extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(34, 116, 173));
 
@@ -164,6 +170,16 @@ public class JDialogChonCaLam extends javax.swing.JDialog {
             this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+            if (Msgbox.confirm(this, "Bạn xác nhận ca làm và quầy hàng?")) {
+            createPhieuGiaoCa();
+            this.dispose();
+        }
+        }
+    }//GEN-LAST:event_formKeyPressed
 
     /**
      * @param args the command line arguments

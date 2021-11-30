@@ -46,4 +46,11 @@ public class StringToPrice {
             return price + " VND";
         }
     }
+    
+    public static String getStringPriceToMoney(String priceString){
+        String rs = priceString;
+        rs = rs.replace(".", "");
+        return rs;
+    }
+    
 }

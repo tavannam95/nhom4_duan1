@@ -9,6 +9,7 @@ import com.mobilez.models.Kho;
 import com.mobilez.utils.Auth;
 import com.mobilez.utils.JdbcHelper;
 import com.mobilez.utils.Msgbox;
+import com.mobilez.utils.StringToPrice;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
@@ -76,7 +77,7 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
             rs.close();
 
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
     }
 
@@ -260,7 +261,10 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
             double sl = Double.parseDouble(tblCTPX.getValueAt(i, 8).toString());
             tongGia+= (sl*gia);
         }
-        return tongGia+"";
+        String tongGiaString =tongGia+"";
+        int vt = tongGiaString.indexOf(".");
+        tongGiaString = tongGiaString.substring(0,vt);
+        return tongGiaString;
     }
     
     /**
@@ -685,7 +689,7 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
             }
 
         }
-//        lblRsTongGia.setText();
+        lblRsTongGia.setText(StringToPrice.getPrice(this.getTongGia()));
         btnXuatKho.setEnabled(true);
     }//GEN-LAST:event_btnOKActionPerformed
 
