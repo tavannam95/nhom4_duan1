@@ -8,7 +8,7 @@ package com.mobilez.ui;
 import com.mobilez.utils.Auth;
 import com.mobilez.utils.JdbcHelper;
 import com.mobilez.utils.Msgbox;
-import com.mobilez.utils.priceToString;
+import com.mobilez.utils.PriceToString;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -530,7 +530,7 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         modelHoaDon.addRow(new Object[]{txtMaMH.getText(), txtTenMatHang.getText(), dongia, soluong, thanhtien});
         tongTien += thanhtien;
         String price = String.valueOf(tongTien);
-        lblTongTien.setText(priceToString.getPrice(price));
+        lblTongTien.setText(PriceToString.getPrice(price));
     }
 
     private boolean checkForm() {

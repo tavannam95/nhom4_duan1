@@ -81,10 +81,13 @@ public class JDialogChonCaLam extends javax.swing.JDialog {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("NHẬN CA");
 
-        cboQuayHang.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 24)); // NOI18N
+        cboQuayHang.setFont(new java.awt.Font("Baloo 2", 0, 24)); // NOI18N
         cboQuayHang.setForeground(new java.awt.Color(255, 255, 255));
+        cboQuayHang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "abc", " " }));
 
+        jButton1.setBackground(new java.awt.Color(34, 116, 173));
         jButton1.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Xác nhận");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
