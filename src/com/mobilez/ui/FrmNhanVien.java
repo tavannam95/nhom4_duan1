@@ -194,11 +194,11 @@ public class FrmNhanVien extends javax.swing.JPanel {
                  txtTen.setBackground(cl);
              }
              //check tên
-        if (txtTen.getText().matches("^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]{1,25}$")) {
+        if (txtTen.getText().matches("^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ ]{1,25}$")) {
             txtTen.setBackground(cl);
         }
         else{
-            Msgbox.alert(null, "Tên nhân viên không được chứa số, để khoảng trống, ký tự đặc biệt");
+            Msgbox.alert(null, "Tên nhân viên không được chứa số, ký tự đặc biệt");
             txtTen.setText("");
             txtTen.requestFocus();
             txtTen.setBackground(pink);
@@ -218,16 +218,16 @@ public class FrmNhanVien extends javax.swing.JPanel {
             txtDiaChi.setBackground(cl);
         }
         
-         if (txtDiaChi.getText().matches("^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ!@#$%^&*,-_./0-9]{1,25}$")) {
-            txtDiaChi.setBackground(cl);
-        }
-        else{
-            Msgbox.alert(null, "Địa chỉ không được để khoảng trống");
-            txtDiaChi.setText("");
-            txtDiaChi.requestFocus();
-            txtDiaChi.setBackground(pink);
-            return false;
-        }
+//         if (txtDiaChi.getText().matches("^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ!@#$%^&*,-_./0-9 ]{1,25}$")) {
+//            txtDiaChi.setBackground(cl);
+//        }
+//        else{
+//            Msgbox.alert(null, "Địa chỉ không được để khoảng trống");
+//            txtDiaChi.setText("");
+//            txtDiaChi.requestFocus();
+//            txtDiaChi.setBackground(pink);
+//            return false;
+//        }
         
               //hinh
         if(lblHinhNV.getToolTipText()==null){
@@ -495,11 +495,9 @@ public class FrmNhanVien extends javax.swing.JPanel {
             .addComponent(jSeparator2)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane2)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -687,43 +685,45 @@ public class FrmNhanVien extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtMaNV, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-                                .addComponent(txtNgaySinh)
-                                .addComponent(txtCMND)
-                                .addComponent(txtDiaChi, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtTen)
-                                .addComponent(txtSDT))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(rdoNam)
-                                .addGap(10, 10, 10)
-                                .addComponent(rdoNu)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblHMH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(lblHinhNV, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addComponent(rdoQuanLy)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(rdoNhanVien))
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addComponent(rdoDangLam)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(rdoNghiViec))
-                                .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(rdoQuanLy)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(rdoNhanVien))
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(rdoDangLam)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(rdoNghiViec)))
+                                .addGap(82, 82, 82))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(67, 67, 67)
                                 .addComponent(btnSuaNV)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnClear)))
-                        .addGap(0, 122, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(btnClear))
+                            .addComponent(txtMatKhau, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(149, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(rdoNam)
+                                .addGap(10, 10, 10)
+                                .addComponent(rdoNu))
+                            .addComponent(txtTen, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                            .addComponent(txtNgaySinh)
+                            .addComponent(txtCMND)
+                            .addComponent(txtDiaChi)
+                            .addComponent(txtSDT)
+                            .addComponent(txtMaNV))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(lblHMH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(lblHinhNV, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -736,10 +736,13 @@ public class FrmNhanVien extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(lblHinhNV, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblHMH)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblMS))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addComponent(lblMS))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblHMH))))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -797,7 +800,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -941,7 +944,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
                 txtCMND.setBackground(cl);
             }
          // check số   
-        if (txtCMND.getText().matches("(\\d+)[9,12]")) {
+        if (txtCMND.getText().matches("(\\d+){9,12}")) {
             txtMatKhau.setBackground(cl);
         }
         else{
@@ -965,7 +968,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
                  txtTen.setBackground(cl);
              }
              //check tên
-        if (txtTen.getText().matches("^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ]{1,25}$")) {
+        if (txtTen.getText().matches("^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ ]{1,25}$")) {
             txtTen.setBackground(cl);
         }
         else{
@@ -989,17 +992,17 @@ public class FrmNhanVien extends javax.swing.JPanel {
             txtDiaChi.setBackground(cl);
         }
         
-        if (txtDiaChi.getText().matches("^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ!@#$%^&*,-_./0-9]{1,25}$")) {
-            txtDiaChi.setBackground(cl);
-        }
-        else{
-            Msgbox.alert(null, "Địa chỉ không được để khoảng trống");
-            txtDiaChi.setText("");
-            txtDiaChi.requestFocus();
-            txtDiaChi.setBackground(pink);
-            return;
-            
-        }
+//        if (txtDiaChi.getText().matches("^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúýĂăĐđĨĩŨũƠơƯưẠ-ỹ!@#$%^&*,-_./0-9]{1,25}$")) {
+//            txtDiaChi.setBackground(cl);
+//        }
+//        else{
+//            Msgbox.alert(null, "Địa chỉ không được để khoảng trống");
+//            txtDiaChi.setText("");
+//            txtDiaChi.requestFocus();
+//            txtDiaChi.setBackground(pink);
+//            return;
+//            
+//        }
              //hinh
         if(lblHinhNV.getToolTipText()==null){
             Msgbox.alert(null, "Bạn chưa chọn ảnh");
