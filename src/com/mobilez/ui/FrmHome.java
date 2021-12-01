@@ -1869,6 +1869,10 @@ public class FrmHome extends javax.swing.JFrame {
             Msgbox.alert(this, "Bạn phải chọn quầy và ca làm mới dùng được chức năng!!");
             return;
         }
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền sử dụng chức năng này!");
+            return;
+        }
         lblQH2.setForeground(Color.ORANGE);
         lblNV2.setForeground(Color.WHITE);
         lblKH2.setForeground(Color.WHITE);
