@@ -372,7 +372,7 @@ public class FrmXemPhieu extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã phiếu nhập kho", "Mã nhà cung cấp", "Mã kho", "Mã nhân viên", "Ngày nhập", "Tổng giá"
+                "Mã phiếu nhập kho", "Nhà cung cấp", "Kho", "Nhân viên", "Ngày nhập", "Tổng giá"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -418,7 +418,7 @@ public class FrmXemPhieu extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã phiếu xuất kho", "Mã kho", "Mã nhân viên", "Mã quầy hàng", "Ngày xuất kho", "Tổng giá"
+                "Mã phiếu xuất kho", "Kho", "Nhân viên", "Quầy hàng", "Ngày xuất kho", "Tổng giá"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -464,7 +464,7 @@ public class FrmXemPhieu extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Số IMEI", "Mã mặt hàng", "Ngày hết hạn", "Trạng thái"
+                "Số IMEI", "Mặt hàng", "Ngày hết hạn", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -510,7 +510,7 @@ public class FrmXemPhieu extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã phiếu giao ca", "Ngày giao ca", "Mã nhân viên", "Mã quầy hàng", "Ca"
+                "Mã phiếu giao ca", "Ngày giao ca", "Nhân viên", "Quầy hàng", "Ca"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -556,7 +556,7 @@ public class FrmXemPhieu extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã HĐ bán sỉ", "Mã khách hàng", "Mã kho", "Mã nhân viên", "Ngày lập", "Tổng giá"
+                "Mã HĐ bán sỉ", "Khách hàng", "Kho", "Nhân viên", "Ngày lập", "Tổng giá"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -582,7 +582,7 @@ public class FrmXemPhieu extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã HĐ bán lẻ", "Mã nhân viên", "Ngày lập", "Tổng giá"
+                "Mã HĐ bán lẻ", "Nhân viên", "Ngày lập", "Tổng giá"
             }
         ) {
             boolean[] canEdit = new boolean [] {
