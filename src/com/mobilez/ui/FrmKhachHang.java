@@ -8,7 +8,9 @@ package com.mobilez.ui;
 import com.mobilez.dao.KhachHangDAO;
 import com.mobilez.models.KhachHang;
 import com.mobilez.utils.Msgbox;
+import com.mobilez.utils.TextAffect;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -167,6 +169,14 @@ public class FrmKhachHang extends javax.swing.JPanel {
         txtSDT.setBackground(new java.awt.Color(34, 116, 173));
         txtSDT.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
         txtSDT.setForeground(new java.awt.Color(255, 255, 255));
+        txtSDT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSDTKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSDTKeyReleased(evt);
+            }
+        });
 
         txtTenKH.setBackground(new java.awt.Color(34, 116, 173));
         txtTenKH.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
@@ -427,6 +437,25 @@ public class FrmKhachHang extends javax.swing.JPanel {
         this.last();
     }//GEN-LAST:event_btnLastActionPerformed
 
+    private void txtSDTKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSDTKeyReleased
+        // TODO add your handling code here:
+        TextAffect.convertToPhoneDot(txtSDT);
+    }//GEN-LAST:event_txtSDTKeyReleased
+
+    private void txtSDTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSDTKeyPressed
+        // TODO add your handling code here:
+        if (txtSDT.getText().length()==5) {
+            if (evt.getKeyCode()==KeyEvent.VK_BACK_SPACE) {
+                txtSDT.setText(txtSDT.getText().substring(0,4));
+            }
+        }
+        if (txtSDT.getText().length()==9) {
+            if (evt.getKeyCode()==KeyEvent.VK_BACK_SPACE) {
+                txtSDT.setText(txtSDT.getText().substring(0,8));
+            }
+        }
+    }//GEN-LAST:event_txtSDTKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFirst;
@@ -599,6 +628,11 @@ public class FrmKhachHang extends javax.swing.JPanel {
             txtMaKH.requestFocus();
             return false;
         }
+        if (txtMaKH.getText().trim().length()<4||txtMaKH.getText().trim().length()>10) {
+            Msgbox.alert(this, "Mã khách hàng từ 4 đến 10 ký tự!");
+            this.txtMaKH.requestFocus();
+            return false;
+        }
         if (txtTenKH.getText().trim().equals("")) {
             Msgbox.alert(this, "Tên khách hàng không được để trống");
             txtTenKH.requestFocus();
@@ -609,7 +643,8 @@ public class FrmKhachHang extends javax.swing.JPanel {
             txtSDT.requestFocus();
             return false;
         }
-        if (!txtSDT.getText().matches(reSDT)) {
+        String sdt = txtSDT.getText().replace(".", "");
+        if (!sdt.matches(reSDT)) {
             Msgbox.alert(this, "Số điện thoại không đúng định dạng");
             txtSDT.requestFocus();
             return false;

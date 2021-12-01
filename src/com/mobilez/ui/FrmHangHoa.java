@@ -416,6 +416,14 @@ public class FrmHangHoa extends javax.swing.JPanel {
                     lblMaMH.setForeground(Color.white);
                 }
             }
+            if (txtMaMH.getText().trim().length() < 4 || txtMaMH.getText().trim().length() > 10) {
+                Msgbox.alert(this, "Mã mặt hàng từ 4 đến 10 ký tự!");
+                this.txtMaMH.requestFocus();
+                txtMaMH.setForeground(Color.red);
+                return;
+            }else{
+                txtMaMH.setForeground(Color.white);
+            }
             //validate txtTenMH
             if (txtTenMH.getText().trim().equals("")) {
                 Msgbox.alert(null, "Không được để trống tên mặt hàng!");
@@ -831,16 +839,16 @@ public class FrmHangHoa extends javax.swing.JPanel {
     private void chonAnh() {
         try {
             JFileChooser fileChooser = new JFileChooser();
-            
+
             fileChooser.setAcceptAllFileFilterUsed(false);
             FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images", "jpg", "gif", "png", "jpeg");
             fileChooser.addChoosableFileFilter(filter);
-            
+
             if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
                 File file = fileChooser.getSelectedFile();
-                
+
                 XImage.save(file);
-                
+
                 ImageIcon icon = XImage.read(file.getName());
                 Image image = icon.getImage(); // transform it 
                 Image newimg = image.getScaledInstance(lblHinhMH.getWidth(), lblHinhMH.getHeight(), java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
@@ -923,7 +931,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             this.setSelectedComboboxHSX(tblList.getValueAt(index, 1).toString(), cboHSX);
             this.setSelectedComboboxQG(tblList.getValueAt(index, 6).toString(), cboQuocGia);
             hideBtnThem();
-            
+
             if (this.getTrangThaiMH(tblList.getValueAt(index, 13).toString())) {
                 rdoTrangThai1.setSelected(true);
             } else {
@@ -986,8 +994,8 @@ public class FrmHangHoa extends javax.swing.JPanel {
                     + "from MATHANG join HANGSANXUAT on MATHANG.MAHSX=HANGSANXUAT.MAHSX\n"
                     + "join QUOCGIA on MATHANG.MAQG= QUOCGIA.MAQG\n"
                     + "where MAMH like ? or TENMH like ? or TENHSX like ?";
-            String search = "%"+txtSearch.getText()+"%";
-            ResultSet rs = JdbcHelper.query(sql,search,search,search);
+            String search = "%" + txtSearch.getText() + "%";
+            ResultSet rs = JdbcHelper.query(sql, search, search, search);
             String giaMua, giaBanSi, giaBanLe;
             modelTbl.setRowCount(0);
             while (rs.next()) {
