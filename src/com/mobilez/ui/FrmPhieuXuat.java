@@ -226,7 +226,7 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
 
     private void updateKhoHang() {
         try {
-            String sql = " update KHOHANG set SOLUONG = ?\n"
+            String sql = "update KHOHANG set SOLUONG = ?\n"
                     + " where MAMH like ? and MAK like ?";
             Kho k = (Kho) cboKho.getSelectedItem();
             for (int i = 0; i < tblCTPX.getRowCount(); i++) {
@@ -245,7 +245,7 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
                     + " where MAQH like ? and MAMH like ?";
             String maQH = Auth.maQuay;
             for (int i = 0; i < tblCTPX.getRowCount(); i++) {
-                String maMH = tblList.getValueAt(i, 0).toString();
+                String maMH = tblCTPX.getValueAt(i, 0).toString();
                 int sl = (this.getSLTrongQH(maMH, maQH)) + (Integer.parseInt(tblCTPX.getValueAt(i, 8).toString()));
                 int s = JdbcHelper.update(sql, sl, maQH, maMH);
             }
@@ -570,6 +570,7 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
 
         this.updateKhoHang();
         this.updateQH();
+        insertIntoPXK();
         Msgbox.alert(null, "In hóa đơn thành công!");
     }//GEN-LAST:event_btnXuatKhoActionPerformed
 
