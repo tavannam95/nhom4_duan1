@@ -35,13 +35,13 @@ public class FrmHome extends javax.swing.JFrame {
     boolean chkTK = false;
     boolean chkTG = false;
     boolean chkHT = false;
-    
+
     public FrmHome() {
         initComponents();
         //Test 
         new DangNhapJDialog(this, true).setVisible(true);
         new JDialogChonCaLam(this, true).setVisible(true);
-        
+
         this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon("src/com/mobilez/icon/logoM_32px.png").getImage());
@@ -52,11 +52,11 @@ public class FrmHome extends javax.swing.JFrame {
         pnlParent.repaint();
         TextAffect.colorText(lblMobileZ);
         lblWelcome.setText("Xin chào " + Auth.user.getHoTen() + "!");
-        
+
     }
-    
+
     class jPanelGradient extends JPanel {
-        
+
         protected void paintComponent(Graphics g) {
             Graphics2D g2 = (Graphics2D) g;
             int width = getWidth();
@@ -68,7 +68,7 @@ public class FrmHome extends javax.swing.JFrame {
             g2.fillRect(0, 0, width, height);
         }
     }
-    
+
     private void setTimeLbl() {
         Thread t = new Thread() {
             @Override
@@ -84,17 +84,17 @@ public class FrmHome extends javax.swing.JFrame {
                     }
                 }
             }
-            
+
         };
         t.start();
     }
-    
+
     private void removeAllPnlShow() {
         pnlShow.removeAll();
         pnlShow.validate();
         pnlShow.repaint();
     }
-    
+
     private void showPnl(JPanel p) {
         p.setSize(pnlShow.getSize());
         pnlShow.removeAll();
@@ -154,6 +154,9 @@ public class FrmHome extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         lblNV2 = new javax.swing.JLabel();
         lblNV = new javax.swing.JLabel();
+        jPanel13 = new javax.swing.JPanel();
+        lblQH2 = new javax.swing.JLabel();
+        lblQH = new javax.swing.JLabel();
         pnlMenuQLK = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         lblPN = new javax.swing.JLabel();
@@ -171,7 +174,10 @@ public class FrmHome extends javax.swing.JFrame {
         jPanel11 = new javax.swing.JPanel();
         lblPBH = new javax.swing.JLabel();
         lblPhieuBaoHanh = new javax.swing.JLabel();
-        pnlMenuTG = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        lblXQ = new javax.swing.JLabel();
+        lblXemQuay = new javax.swing.JLabel();
+        pnlMenuTK = new javax.swing.JPanel();
         pnlMenuBH = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         lblHDS = new javax.swing.JLabel();
@@ -192,6 +198,13 @@ public class FrmHome extends javax.swing.JFrame {
         jPanel19 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         lblDangXuat = new javax.swing.JLabel();
+        pnlMenuTG = new javax.swing.JPanel();
+        jPanel20 = new javax.swing.JPanel();
+        lblHDS1 = new javax.swing.JLabel();
+        lblHDBS1 = new javax.swing.JLabel();
+        jPanel22 = new javax.swing.JPanel();
+        lblHDL1 = new javax.swing.JLabel();
+        lblHDBL1 = new javax.swing.JLabel();
         pnlShow = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -331,7 +344,7 @@ public class FrmHome extends javax.swing.JFrame {
         lblTroGiup.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 16)); // NOI18N
         lblTroGiup.setForeground(new java.awt.Color(255, 255, 255));
         lblTroGiup.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblTroGiup.setText("Thông Tin");
+        lblTroGiup.setText("Trợ giúp");
         lblTroGiup.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblTroGiupMouseClicked(evt);
@@ -604,6 +617,42 @@ public class FrmHome extends javax.swing.JFrame {
                 .addComponent(lblNV2))
         );
 
+        jPanel13.setBackground(new java.awt.Color(20, 83, 116));
+        jPanel13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lblQH2.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 16)); // NOI18N
+        lblQH2.setForeground(new java.awt.Color(255, 255, 255));
+        lblQH2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblQH2.setText("Quầy Hàng");
+
+        lblQH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblQH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mobilez/icon/shop_64px.png"))); // NOI18N
+        lblQH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblQHMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblQH2, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                    .addComponent(lblQH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblQH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblQH2))
+        );
+
         javax.swing.GroupLayout pnlMenuQLDMLayout = new javax.swing.GroupLayout(pnlMenuQLDM);
         pnlMenuQLDM.setLayout(pnlMenuQLDMLayout);
         pnlMenuQLDMLayout.setHorizontalGroup(
@@ -619,19 +668,25 @@ public class FrmHome extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
+
+        pnlMenuQLDMLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jPanel13, jPanel5, jPanel6});
+
         pnlMenuQLDMLayout.setVerticalGroup(
             pnlMenuQLDMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMenuQLDMLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlMenuQLDMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlMenuQLDMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         pnlParent.add(pnlMenuQLDM, "card2");
@@ -645,7 +700,7 @@ public class FrmHome extends javax.swing.JFrame {
         lblPN.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 16)); // NOI18N
         lblPN.setForeground(new java.awt.Color(255, 255, 255));
         lblPN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPN.setText("Phiếu Nhập");
+        lblPN.setText("Nhập Kho");
 
         lblPhieuNhap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPhieuNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mobilez/icon/signin_64px.png"))); // NOI18N
@@ -715,7 +770,7 @@ public class FrmHome extends javax.swing.JFrame {
         lblPX.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 16)); // NOI18N
         lblPX.setForeground(new java.awt.Color(255, 255, 255));
         lblPX.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPX.setText("Phiếu Xuất");
+        lblPX.setText("Xuất Kho");
 
         lblPhieuXuat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPhieuXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mobilez/icon/logout_rounded_up_64px.png"))); // NOI18N
@@ -779,7 +834,7 @@ public class FrmHome extends javax.swing.JFrame {
         lblPGC.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 16)); // NOI18N
         lblPGC.setForeground(new java.awt.Color(255, 255, 255));
         lblPGC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPGC.setText("Phiếu Giao Ca");
+        lblPGC.setText("Giao Ca");
 
         lblPhieuGiaoCa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPhieuGiaoCa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mobilez/icon/available_updates_64px.png"))); // NOI18N
@@ -814,7 +869,7 @@ public class FrmHome extends javax.swing.JFrame {
         lblPBH.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 16)); // NOI18N
         lblPBH.setForeground(new java.awt.Color(255, 255, 255));
         lblPBH.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPBH.setText("Phiếu Bảo Hành");
+        lblPBH.setText("Bảo Hành");
 
         lblPhieuBaoHanh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPhieuBaoHanh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mobilez/icon/reminders_64px.png"))); // NOI18N
@@ -843,6 +898,41 @@ public class FrmHome extends javax.swing.JFrame {
                 .addComponent(lblPBH))
         );
 
+        jPanel12.setBackground(new java.awt.Color(20, 83, 116));
+        jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lblXQ.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 16)); // NOI18N
+        lblXQ.setForeground(new java.awt.Color(255, 255, 255));
+        lblXQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblXQ.setText("Xem Quầy");
+
+        lblXemQuay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblXemQuay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mobilez/icon/shop_64px.png"))); // NOI18N
+        lblXemQuay.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblXemQuayMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblXQ, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblXemQuay, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblXemQuay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblXQ))
+        );
+
         javax.swing.GroupLayout pnlMenuQLQLayout = new javax.swing.GroupLayout(pnlMenuQLQ);
         pnlMenuQLQ.setLayout(pnlMenuQLQLayout);
         pnlMenuQLQLayout.setHorizontalGroup(
@@ -852,35 +942,41 @@ public class FrmHome extends javax.swing.JFrame {
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(465, Short.MAX_VALUE))
         );
+
+        pnlMenuQLQLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jPanel10, jPanel11, jPanel12});
+
         pnlMenuQLQLayout.setVerticalGroup(
             pnlMenuQLQLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMenuQLQLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlMenuQLQLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pnlParent.add(pnlMenuQLQ, "card4");
 
-        pnlMenuTG.setBackground(new java.awt.Color(85, 159, 198));
-        pnlMenuTG.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 0, 0, 0, new java.awt.Color(34, 116, 173)));
+        pnlMenuTK.setBackground(new java.awt.Color(85, 159, 198));
+        pnlMenuTK.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 0, 0, 0, new java.awt.Color(34, 116, 173)));
 
-        javax.swing.GroupLayout pnlMenuTGLayout = new javax.swing.GroupLayout(pnlMenuTG);
-        pnlMenuTG.setLayout(pnlMenuTGLayout);
-        pnlMenuTGLayout.setHorizontalGroup(
-            pnlMenuTGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 745, Short.MAX_VALUE)
+        javax.swing.GroupLayout pnlMenuTKLayout = new javax.swing.GroupLayout(pnlMenuTK);
+        pnlMenuTK.setLayout(pnlMenuTKLayout);
+        pnlMenuTKLayout.setHorizontalGroup(
+            pnlMenuTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 906, Short.MAX_VALUE)
         );
-        pnlMenuTGLayout.setVerticalGroup(
-            pnlMenuTGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnlMenuTKLayout.setVerticalGroup(
+            pnlMenuTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 122, Short.MAX_VALUE)
         );
 
-        pnlParent.add(pnlMenuTG, "card5");
+        pnlParent.add(pnlMenuTK, "card5");
 
         pnlMenuBH.setBackground(new java.awt.Color(85, 159, 198));
         pnlMenuBH.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 0, 0, 0, new java.awt.Color(34, 116, 173)));
@@ -891,7 +987,7 @@ public class FrmHome extends javax.swing.JFrame {
         lblHDS.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 16)); // NOI18N
         lblHDS.setForeground(new java.awt.Color(255, 255, 255));
         lblHDS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHDS.setText("Hóa Đơn Bán SỈ");
+        lblHDS.setText("Bán SỈ");
 
         lblHDBS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHDBS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mobilez/icon/money_bag_64px.png"))); // NOI18N
@@ -961,7 +1057,7 @@ public class FrmHome extends javax.swing.JFrame {
         lblHDL.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 16)); // NOI18N
         lblHDL.setForeground(new java.awt.Color(255, 255, 255));
         lblHDL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHDL.setText("Hóa Đơn Bán Lẻ");
+        lblHDL.setText("Bán Lẻ");
 
         lblHDBL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHDBL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mobilez/icon/us_dollar_64px.png"))); // NOI18N
@@ -1150,6 +1246,102 @@ public class FrmHome extends javax.swing.JFrame {
 
         pnlParent.add(pnlMenuHT, "card7");
 
+        pnlMenuTG.setBackground(new java.awt.Color(85, 159, 198));
+        pnlMenuTG.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 0, 0, 0, new java.awt.Color(34, 116, 173)));
+
+        jPanel20.setBackground(new java.awt.Color(20, 83, 116));
+        jPanel20.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lblHDS1.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 16)); // NOI18N
+        lblHDS1.setForeground(new java.awt.Color(255, 255, 255));
+        lblHDS1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHDS1.setText("Hướng Dẫn");
+
+        lblHDBS1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHDBS1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mobilez/icon/help_64px_2.png"))); // NOI18N
+        lblHDBS1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHDBS1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+        jPanel20.setLayout(jPanel20Layout);
+        jPanel20Layout.setHorizontalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblHDS1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblHDBS1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel20Layout.setVerticalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblHDBS1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblHDS1))
+        );
+
+        jPanel22.setBackground(new java.awt.Color(20, 83, 116));
+        jPanel22.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lblHDL1.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 16)); // NOI18N
+        lblHDL1.setForeground(new java.awt.Color(255, 255, 255));
+        lblHDL1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHDL1.setText("Thông Tin");
+
+        lblHDBL1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHDBL1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mobilez/icon/information_64px.png"))); // NOI18N
+        lblHDBL1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHDBL1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+        jPanel22.setLayout(jPanel22Layout);
+        jPanel22Layout.setHorizontalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblHDL1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblHDBL1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel22Layout.setVerticalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblHDBL1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblHDL1))
+        );
+
+        javax.swing.GroupLayout pnlMenuTGLayout = new javax.swing.GroupLayout(pnlMenuTG);
+        pnlMenuTG.setLayout(pnlMenuTGLayout);
+        pnlMenuTGLayout.setHorizontalGroup(
+            pnlMenuTGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMenuTGLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(614, Short.MAX_VALUE))
+        );
+        pnlMenuTGLayout.setVerticalGroup(
+            pnlMenuTGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMenuTGLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlMenuTGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(10, Short.MAX_VALUE))
+        );
+
+        pnlParent.add(pnlMenuTG, "card6");
+
         pnlShow.setBackground(new java.awt.Color(34, 116, 173));
 
         javax.swing.GroupLayout pnlShowLayout = new javax.swing.GroupLayout(pnlShow);
@@ -1216,15 +1408,15 @@ public class FrmHome extends javax.swing.JFrame {
             lblThongKe.setForeground(Color.WHITE);
             lblTroGiup.setForeground(Color.WHITE);
             lblWelcome.setForeground(Color.WHITE);
-            
+
         } else {
-            
+
             pnlParent.removeAll();
             pnlParent.validate();
             pnlParent.repaint();
             lblQLDanhMuc.setForeground(Color.WHITE);
         }
-        
+
 
     }//GEN-LAST:event_lblQLDanhMucMouseClicked
 
@@ -1265,7 +1457,6 @@ public class FrmHome extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.removeAllPnlShow();
         chkQuay = !chkQuay;
-        chkQLDM = false;
         chkQLK = false;
         chkBH = false;
         chkTK = false;
@@ -1301,7 +1492,6 @@ public class FrmHome extends javax.swing.JFrame {
         chkQLK = false;
         chkQuay = false;
         chkTK = false;
-        chkTG = false;
         chkHT = false;
         lblHDS.setForeground(Color.WHITE);
         lblHDL.setForeground(Color.WHITE);
@@ -1341,7 +1531,7 @@ public class FrmHome extends javax.swing.JFrame {
         chkHT = false;
         if (chkTK) {
             pnlParent.removeAll();
-            pnlParent.add(pnlMenuTG);
+            pnlParent.add(pnlMenuTK);
             pnlParent.revalidate();
             pnlParent.repaint();
             FrmThongKe f = new FrmThongKe();
@@ -1379,8 +1569,7 @@ public class FrmHome extends javax.swing.JFrame {
             pnlParent.add(pnlMenuTG);
             pnlParent.revalidate();
             pnlParent.repaint();
-            FrmGioiThieu f = new FrmGioiThieu();
-            this.showPnl(f);
+
             lblTroGiup.setForeground(Color.ORANGE);
             lblQLDanhMuc.setForeground(Color.WHITE);
             lblQLKho.setForeground(Color.WHITE);
@@ -1393,7 +1582,7 @@ public class FrmHome extends javax.swing.JFrame {
             pnlParent.validate();
             pnlParent.repaint();
             lblTroGiup.setForeground(Color.WHITE);
-            
+
         }
     }//GEN-LAST:event_lblTroGiupMouseClicked
 
@@ -1424,7 +1613,7 @@ public class FrmHome extends javax.swing.JFrame {
             pnlParent.validate();
             pnlParent.repaint();
             lblUser.setForeground(Color.WHITE);
-            
+
         }
     }//GEN-LAST:event_lblUserMouseClicked
 
@@ -1434,14 +1623,16 @@ public class FrmHome extends javax.swing.JFrame {
             Msgbox.alert(this, "Bạn phải chọn quầy và ca làm mới dùng được chức năng!!");
             return;
         }
+        
         lblNCC2.setForeground(Color.ORANGE);
         lblNV2.setForeground(Color.WHITE);
         lblKH2.setForeground(Color.WHITE);
         lblMH2.setForeground(Color.WHITE);
         lblHSX2.setForeground(Color.WHITE);
+        lblQH2.setForeground(Color.WHITE);
         FrmNhaCungCap f = new FrmNhaCungCap();
         this.showPnl(f);
-        
+
 
     }//GEN-LAST:event_lblNCCMouseClicked
     private void lblNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNVMouseClicked
@@ -1459,6 +1650,7 @@ public class FrmHome extends javax.swing.JFrame {
         lblKH2.setForeground(Color.WHITE);
         lblMH2.setForeground(Color.WHITE);
         lblHSX2.setForeground(Color.WHITE);
+        lblQH2.setForeground(Color.WHITE);
         FrmNhanVien f = new FrmNhanVien();
         this.showPnl(f);
 
@@ -1474,6 +1666,7 @@ public class FrmHome extends javax.swing.JFrame {
         lblNCC2.setForeground(Color.WHITE);
         lblMH2.setForeground(Color.WHITE);
         lblHSX2.setForeground(Color.WHITE);
+        lblQH2.setForeground(Color.WHITE);
         FrmKhachHang f = new FrmKhachHang();
         this.showPnl(f);
 
@@ -1489,6 +1682,7 @@ public class FrmHome extends javax.swing.JFrame {
         lblKH2.setForeground(Color.WHITE);
         lblNCC2.setForeground(Color.WHITE);
         lblHSX2.setForeground(Color.WHITE);
+        lblQH2.setForeground(Color.WHITE);
         FrmHangHoa f = new FrmHangHoa();
         this.showPnl(f);
 
@@ -1504,6 +1698,7 @@ public class FrmHome extends javax.swing.JFrame {
         lblKH2.setForeground(Color.WHITE);
         lblMH2.setForeground(Color.WHITE);
         lblNCC2.setForeground(Color.WHITE);
+        lblQH2.setForeground(Color.WHITE);
         FrmHangSanXuat f = new FrmHangSanXuat();
         this.showPnl(f);
     }//GEN-LAST:event_lblHSXMouseClicked
@@ -1549,6 +1744,7 @@ public class FrmHome extends javax.swing.JFrame {
         }
         lblPGC.setForeground(Color.ORANGE);
         lblPBH.setForeground(Color.WHITE);
+        lblXQ.setForeground(Color.white);
         FrmPhieuGiaoCa f = new FrmPhieuGiaoCa();
         this.showPnl(f);
 
@@ -1561,6 +1757,7 @@ public class FrmHome extends javax.swing.JFrame {
         }
         lblPBH.setForeground(Color.ORANGE);
         lblPGC.setForeground(Color.WHITE);
+        lblXQ.setForeground(Color.white);
         FrmPhieuBaoHanh f = new FrmPhieuBaoHanh();
         this.showPnl(f);
 
@@ -1589,7 +1786,7 @@ public class FrmHome extends javax.swing.JFrame {
         lblCNG.setForeground(Color.WHITE);
         FrmHoaDonBanLe f = new FrmHoaDonBanLe();
         this.showPnl(f);
-        
+
 
     }//GEN-LAST:event_lblHDBLMouseClicked
     private void lblCapNhatGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCapNhatGiaMouseClicked
@@ -1643,6 +1840,45 @@ public class FrmHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jPanel19MouseClicked
 
+    private void lblXemQuayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblXemQuayMouseClicked
+        // TODO add your handling code here:
+        if (Auth.giaoCa) {
+            Msgbox.alert(this, "Bạn phải chọn quầy và ca làm mới dùng được chức năng!!");
+            return;
+        }
+        lblPBH.setForeground(Color.WHITE);
+        lblPGC.setForeground(Color.WHITE);
+        lblXQ.setForeground(Color.ORANGE);
+        FrmViewQuayHang f = new FrmViewQuayHang();
+        this.showPnl(f);
+    }//GEN-LAST:event_lblXemQuayMouseClicked
+
+    private void lblHDBS1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDBS1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblHDBS1MouseClicked
+
+    private void lblHDBL1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDBL1MouseClicked
+        // TODO add your handling code here:
+        FrmGioiThieu f = new FrmGioiThieu();
+        this.showPnl(f);
+    }//GEN-LAST:event_lblHDBL1MouseClicked
+
+    private void lblQHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQHMouseClicked
+        // TODO add your handling code here:
+        if (Auth.giaoCa) {
+            Msgbox.alert(this, "Bạn phải chọn quầy và ca làm mới dùng được chức năng!!");
+            return;
+        }
+        lblQH2.setForeground(Color.ORANGE);
+        lblNV2.setForeground(Color.WHITE);
+        lblKH2.setForeground(Color.WHITE);
+        lblMH2.setForeground(Color.WHITE);
+        lblNCC2.setForeground(Color.WHITE);
+        lblHSX2.setForeground(Color.WHITE);
+        FrmQuayHang f = new FrmQuayHang();
+        this.showPnl(f);
+    }//GEN-LAST:event_lblQHMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1657,7 +1893,7 @@ public class FrmHome extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                    
+
                 }
             }
         } catch (ClassNotFoundException ex) {
@@ -1695,6 +1931,8 @@ public class FrmHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
@@ -1702,6 +1940,8 @@ public class FrmHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1722,9 +1962,13 @@ public class FrmHome extends javax.swing.JFrame {
     private javax.swing.JLabel lblDangXuat;
     private javax.swing.JLabel lblDoiMatKhau;
     private javax.swing.JLabel lblHDBL;
+    private javax.swing.JLabel lblHDBL1;
     private javax.swing.JLabel lblHDBS;
+    private javax.swing.JLabel lblHDBS1;
     private javax.swing.JLabel lblHDL;
+    private javax.swing.JLabel lblHDL1;
     private javax.swing.JLabel lblHDS;
+    private javax.swing.JLabel lblHDS1;
     private javax.swing.JLabel lblHSX;
     private javax.swing.JLabel lblHSX2;
     private javax.swing.JLabel lblIconClock;
@@ -1745,6 +1989,8 @@ public class FrmHome extends javax.swing.JFrame {
     private javax.swing.JLabel lblPhieuGiaoCa;
     private javax.swing.JLabel lblPhieuNhap;
     private javax.swing.JLabel lblPhieuXuat;
+    private javax.swing.JLabel lblQH;
+    private javax.swing.JLabel lblQH2;
     private javax.swing.JLabel lblQLDanhMuc;
     private javax.swing.JLabel lblQLKho;
     private javax.swing.JLabel lblQLQuay;
@@ -1754,7 +2000,9 @@ public class FrmHome extends javax.swing.JFrame {
     private javax.swing.JLabel lblUser;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JLabel lblXP;
+    private javax.swing.JLabel lblXQ;
     private javax.swing.JLabel lblXemPhieu;
+    private javax.swing.JLabel lblXemQuay;
     private javax.swing.JPanel pnlDashboard;
     private javax.swing.JPanel pnlMenuBH;
     private javax.swing.JPanel pnlMenuBar;
@@ -1763,6 +2011,7 @@ public class FrmHome extends javax.swing.JFrame {
     private javax.swing.JPanel pnlMenuQLK;
     private javax.swing.JPanel pnlMenuQLQ;
     private javax.swing.JPanel pnlMenuTG;
+    private javax.swing.JPanel pnlMenuTK;
     private javax.swing.JPanel pnlParent;
     private javax.swing.JPanel pnlShow;
     // End of variables declaration//GEN-END:variables

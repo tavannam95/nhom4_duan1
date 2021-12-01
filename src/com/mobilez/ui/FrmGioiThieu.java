@@ -42,10 +42,10 @@ public class FrmGioiThieu extends javax.swing.JPanel {
         jTextArea1.setEditable(false);
         jTextArea1.setBackground(new java.awt.Color(85, 159, 198));
         jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 24)); // NOI18N
+        jTextArea1.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 30)); // NOI18N
         jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea1.setRows(5);
-        jTextArea1.setText("Dự án 1. Mục tiêu thực hiện là Quản lý cửa hàng điện thoại\nĐược thực hiện bởi Nhóm 4 - IT16301\nGiáo viên giám sát : Nguyễn Hoàng Tiến\nSinh viên thực hiện :\t Tạ Văn Nam - PH13082 \n                             \t\tNguyễn Quốc Khánh - PH13545\n                             \t\tDương Văn Sơn - PH13283 \n                             \t\tNguyễn Quốc Tuấn - PH15433\n                             \t\tPhạm Công Giang - PH13293");
+        jTextArea1.setText("\n      Dự án 1. Mục tiêu thực hiện là Quản lý cửa hàng điện thoại\n      Được thực hiện bởi Nhóm 4 - IT16301\n      Giáo viên giám sát : Nguyễn Hoàng Tiến\n      Sinh viên thực hiện:  Tạ Văn Nam - PH13082 \n                                        Nguyễn Quốc Khánh - PH13545\n                                        Dương Văn Sơn - PH13283 \n                                        Nguyễn Quốc Tuấn - PH15433\n                                        Phạm Công Giang - PH13293");
         jScrollPane1.setViewportView(jTextArea1);
 
         add(jScrollPane1, java.awt.BorderLayout.CENTER);
