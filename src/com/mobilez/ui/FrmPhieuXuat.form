@@ -56,11 +56,11 @@
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="jScrollPane3" alignment="1" min="-2" pref="618" max="-2" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Component id="btnXoaTatCa" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnXoaTatCa" linkSize="1" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="btnXoa" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnXoa" linkSize="1" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="btnOK" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnOK" linkSize="1" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Component id="lblTongGia" min="-2" pref="76" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>

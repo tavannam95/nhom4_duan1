@@ -13,6 +13,7 @@ import com.mobilez.models.NhanVien;
 import com.mobilez.models.QuocGia;
 import com.mobilez.utils.JdbcHelper;
 import com.mobilez.utils.Msgbox;
+import com.mobilez.utils.StringToPrice;
 import com.mobilez.utils.XImage;
 import java.awt.Color;
 import java.awt.Image;
@@ -826,12 +827,27 @@ public class FrmHangHoa extends javax.swing.JPanel {
     private MatHang getMatHang() {
         HangSanXuat hsx = (HangSanXuat) cboHSX.getSelectedItem();
         QuocGia qg = (QuocGia) cboQuocGia.getSelectedItem();
+        String giamuaString = txtGiaMua.getText();
+        String giaBanSiString = txtGiaBanSi.getText();
+        String giaBanLeString = txtGiaBanLe.getText();
+        int vtm,vts,vtl;
+        vtm = giamuaString.indexOf(" ");
+        vts = giaBanSiString.indexOf(" ");
+        vtl = giaBanLeString.indexOf(" ");
+        giamuaString = giamuaString.substring(0, vtm);
+        giaBanSiString = giaBanSiString.substring(0, vts);
+        giaBanLeString = giaBanLeString.substring(0, vtl);
+        giamuaString = giamuaString.trim().replace(".", "");
+        giaBanSiString = giaBanSiString.trim().replace(".", "");
+        giaBanLeString = giaBanLeString.trim().replace(".", "");
+        
+        
         MatHang mh = new MatHang(txtMaMH.getText(), hsx.getMaHSX(), txtTenMH.getText(),
                 Integer.parseInt(txtRAM.getText()), Integer.parseInt(txtDungLuong.getText()),
                 txtMauSac.getText(), qg.getMaQG(),
                 lblHinhMH.getToolTipText(), 0,
-                Integer.parseInt(txtTGBH.getText()), Double.parseDouble(txtGiaMua.getText()),
-                Double.parseDouble(txtGiaBanSi.getText()), Double.parseDouble(txtGiaBanLe.getText()),
+                Integer.parseInt(txtTGBH.getText()), Double.parseDouble(giamuaString),
+                Double.parseDouble(giaBanSiString), Double.parseDouble(giaBanLeString),
                 rdoTrangThai1.isSelected());
         return mh;
     }
@@ -1040,6 +1056,9 @@ public class FrmHangHoa extends javax.swing.JPanel {
                 giaMua = giaMua.substring(0, gm);
                 giaBanSi = giaBanSi.substring(0, gbs);
                 giaBanLe = giaBanLe.substring(0, gbl);
+                giaMua = StringToPrice.getPrice(giaMua);
+                giaBanSi = StringToPrice.getPrice(giaBanSi);
+                giaBanLe = StringToPrice.getPrice(giaBanLe);
                 modelTbl.addRow(new Object[]{
                     rs.getString(1), rs.getString(2), rs.getString(3),
                     this.getDlRAM(rs.getInt(4)), this.getDlRAM(rs.getInt(5)), rs.getString(6),
@@ -1522,12 +1541,10 @@ public class FrmHangHoa extends javax.swing.JPanel {
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                         .addComponent(rdoTrangThai0)))))
                                         .addGap(0, 0, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblHMH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(0, 5, Short.MAX_VALUE)
-                                        .addComponent(lblHinhMH, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblHinhMH, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblHMH, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap())
         );
 
