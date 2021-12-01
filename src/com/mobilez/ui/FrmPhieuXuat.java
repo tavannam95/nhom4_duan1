@@ -226,12 +226,12 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
 
     private void updateKhoHang() {
         try {
-            String sql = " update KHOHANG set SOLUONG = ?\n"
+            String sql = " update KHOHANG set SOLUONG = SOLUONG - ?\n"
                     + " where MAMH like ? and MAK like ?";
             Kho k = (Kho) cboKho.getSelectedItem();
             for (int i = 0; i < tblCTPX.getRowCount(); i++) {
                 String maMH = tblCTPX.getValueAt(i, 0).toString();
-                int sl = (this.getSLTrongKhoHang(maMH, k.getMaK())) - (Integer.parseInt(tblCTPX.getValueAt(i, 8).toString()));
+                int sl = Integer.parseInt(tblCTPX.getValueAt(i, 8).toString());
                 int s = JdbcHelper.update(sql, sl, maMH, k.getMaK());
             }
         } catch (Exception e) {
@@ -241,12 +241,12 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
 
     private void updateQH() {
         try {
-            String sql = " update CHITIETQUAYHANG set SOLUONG = ?\n"
-                    + " where MAQH like ? and MAMH like ?";
+            String sql = "update CHITIETQUAYHANG set SOLUONG = SOLUONG + ?\n" +
+"                     where MAQH like ? and MAMH like ?";
             String maQH = Auth.maQuay;
             for (int i = 0; i < tblCTPX.getRowCount(); i++) {
-                String maMH = tblList.getValueAt(i, 0).toString();
-                int sl = (this.getSLTrongQH(maMH, maQH)) + (Integer.parseInt(tblCTPX.getValueAt(i, 8).toString()));
+                String maMH = tblCTPX.getValueAt(i, 0).toString();
+                int sl = Integer.parseInt(tblCTPX.getValueAt(i, 8).toString());
                 int s = JdbcHelper.update(sql, sl, maQH, maMH);
             }
         } catch (Exception e) {
@@ -570,7 +570,7 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
 
         this.updateKhoHang();
         this.updateQH();
-        Msgbox.alert(null, "In hóa đơn thành công!");
+        Msgbox.alert(null, "Xuất kho thành công!");
     }//GEN-LAST:event_btnXuatKhoActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
