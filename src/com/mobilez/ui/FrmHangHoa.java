@@ -923,12 +923,14 @@ public class FrmHangHoa extends javax.swing.JPanel {
             this.setSelectedComboboxHSX(tblList.getValueAt(index, 1).toString(), cboHSX);
             this.setSelectedComboboxQG(tblList.getValueAt(index, 6).toString(), cboQuocGia);
             hideBtnThem();
-            tblList.setRowSelectionInterval(index, index);
+            
             if (this.getTrangThaiMH(tblList.getValueAt(index, 13).toString())) {
                 rdoTrangThai1.setSelected(true);
             } else {
                 rdoTrangThai0.setSelected(true);
             }
+            tblList.setRowSelectionAllowed(true);
+            tblList.setRowSelectionInterval(index, index);
         } catch (Exception e) {
             e.printStackTrace();
         }
