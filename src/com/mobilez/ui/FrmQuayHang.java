@@ -9,6 +9,8 @@ import com.mobilez.utils.JdbcHelper;
 import com.mobilez.utils.Msgbox;
 import java.awt.Color;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -70,7 +72,10 @@ public class FrmQuayHang extends javax.swing.JPanel {
         try {
             String sql = "SELECT * FROM QUAYHANG where MAQH like ?";
             ResultSet rs = JdbcHelper.query(sql, txtMaQH.getText());
-            while (rs.next()) {                
+            while (rs.next()) {  
+                Msgbox.alert(null, "Mã quầy hàng đã tồn tại!");
+                lblMaQH.setForeground(Color.red);
+                txtMaQH.requestFocus();
                 return true;
             }
         } catch (Exception e) {
@@ -116,6 +121,33 @@ public class FrmQuayHang extends javax.swing.JPanel {
         }
     }
     
+    private List<String> getListMaMH(){
+        try {
+            String sql = "select MAMH from MATHANG";
+            ResultSet rs = JdbcHelper.query(sql);
+            List<String> lst = new ArrayList<>();
+            while (rs.next()) {                
+                lst.add(rs.getString(1));
+            }
+            return lst;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    private void themMHVaoQuay(){
+        try {
+            String sql = "insert into CHITIETQUAYHANG values (?,?,0)";
+            List<String> lstMaMH = this.getListMaMH();
+            for (int i = 0; i < lstMaMH.size(); i++) {
+                int s = JdbcHelper.update(sql, txtMaQH.getText().trim(),lstMaMH.get(i));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     private void them() {
         try {
             String sql = "insert into QUAYHANG values (?,?,?)";
@@ -125,7 +157,12 @@ public class FrmQuayHang extends javax.swing.JPanel {
             int s = JdbcHelper.update(sql, maQH, tenQH, trangThai);
             if (s > 0) {
                 Msgbox.alert(null, "Thêm thành công!");
-                this.clearForm();
+                for (int i = 0; i < tblList.getRowCount(); i++) {
+                    if (tblList.getValueAt(i, 0).toString().equalsIgnoreCase(txtMaQH.getText())) {
+                        index=i;
+                        this.showDetail();
+                    }
+                }
             } else {
                 Msgbox.alert(null, "Thêm thất bại!");
             }
@@ -454,7 +491,9 @@ public class FrmQuayHang extends javax.swing.JPanel {
             return;
         }
         this.them();
+        this.themMHVaoQuay();
         this.fillTable();
+        this.clearForm();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -464,6 +503,7 @@ public class FrmQuayHang extends javax.swing.JPanel {
         }
         this.sua();
         this.fillTable();
+        this.clearForm();
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnTaoMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoMoiActionPerformed
