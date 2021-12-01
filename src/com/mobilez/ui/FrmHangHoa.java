@@ -447,7 +447,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             }
             lblRAM.setForeground(Color.white);
             if (Integer.parseInt(txtRAM.getText()) <= 0) {
-                Msgbox.alert(null, "Thời gian bảo hành phải lơn hơn 0!");
+                Msgbox.alert(null, "RAM phải lơn hơn 0!");
                 txtRAM.setText("");
                 txtRAM.requestFocus();
                 lblRAM.setForeground(Color.red);
@@ -468,7 +468,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             try {
                 Integer.parseInt(txtDungLuong.getText());
             } catch (Exception e) {
-                Msgbox.alert(null, "Số lượng phải là số!");
+                Msgbox.alert(null, "Dunglượng phải là số!");
                 txtDungLuong.setText("");
                 txtDungLuong.requestFocus();
                 lblDL.setForeground(Color.red);
@@ -476,7 +476,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             }
             lblDL.setForeground(Color.white);
             if (Integer.parseInt(txtDungLuong.getText()) <= 0) {
-                Msgbox.alert(null, "Thời gian bảo hành phải lơn hơn 0!");
+                Msgbox.alert(null, "Dung lượng phải lơn hơn 0!");
                 txtDungLuong.setText("");
                 txtDungLuong.requestFocus();
                 lblDL.setForeground(Color.red);
@@ -496,34 +496,34 @@ public class FrmHangHoa extends javax.swing.JPanel {
             }
 
             //validate so luong
-            if (txtSoLuong.getText().trim().equals("")) {
-                Msgbox.alert(null, "Không được để trống số lượng!");
-                txtSoLuong.setText("");
-                txtSoLuong.requestFocus();
-                lblSL.setForeground(Color.red);
-                return;
-            } else {
-                lblSL.setForeground(Color.white);
-            }
-            try {
-                Integer.parseInt(txtSoLuong.getText());
-            } catch (Exception e) {
-                Msgbox.alert(null, "Số lượng phải là số!");
-                txtSoLuong.setText("");
-                txtSoLuong.requestFocus();
-                lblSL.setForeground(Color.red);
-                return;
-            }
-            lblSL.setForeground(Color.white);
-            if (Integer.parseInt(txtSoLuong.getText()) <= 0) {
-                Msgbox.alert(null, "Số lượng phải lơn hơn 0!");
-                txtSoLuong.setText("");
-                txtSoLuong.requestFocus();
-                lblSL.setForeground(Color.red);
-                return;
-            } else {
-                lblSL.setForeground(Color.white);
-            }
+//            if (txtSoLuong.getText().trim().equals("")) {
+//                Msgbox.alert(null, "Không được để trống số lượng!");
+//                txtSoLuong.setText("");
+//                txtSoLuong.requestFocus();
+//                lblSL.setForeground(Color.red);
+//                return;
+//            } else {
+//                lblSL.setForeground(Color.white);
+//            }
+//            try {
+//                Integer.parseInt(txtSoLuong.getText());
+//            } catch (Exception e) {
+//                Msgbox.alert(null, "Số lượng phải là số!");
+//                txtSoLuong.setText("");
+//                txtSoLuong.requestFocus();
+//                lblSL.setForeground(Color.red);
+//                return;
+//            }
+//            lblSL.setForeground(Color.white);
+//            if (Integer.parseInt(txtSoLuong.getText()) <= 0) {
+//                Msgbox.alert(null, "Số lượng phải lơn hơn 0!");
+//                txtSoLuong.setText("");
+//                txtSoLuong.requestFocus();
+//                lblSL.setForeground(Color.red);
+//                return;
+//            } else {
+//                lblSL.setForeground(Color.white);
+//            }
             //validate gia mua
             if (txtGiaMua.getText().trim().equals("")) {
                 Msgbox.alert(null, "Không được để trống giá mua!");
@@ -537,15 +537,14 @@ public class FrmHangHoa extends javax.swing.JPanel {
             try {
                 Integer.parseInt(txtGiaMua.getText());
             } catch (Exception e) {
-                Msgbox.alert(null, "Số lượng phải là số!");
+                Msgbox.alert(null, "Giá mua phải là số!");
                 txtGiaMua.setText("");
                 txtGiaMua.requestFocus();
                 lblGM.setForeground(Color.red);
                 return;
             }
-            lblGM.setForeground(Color.white);
             if (Integer.parseInt(txtGiaMua.getText()) <= 0) {
-                Msgbox.alert(null, "Số lượng phải lơn hơn 0!");
+                Msgbox.alert(null, "Giá mua phải lơn hơn 0!");
                 txtGiaMua.setText("");
                 txtGiaMua.requestFocus();
                 lblGM.setForeground(Color.red);
@@ -553,6 +552,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             } else {
                 lblGM.setForeground(Color.white);
             }
+            lblGM.setForeground(Color.white);
             //validate gia si
             if (txtGiaBanSi.getText().trim().equals("")) {
                 Msgbox.alert(null, "Không được để trống giá bán sỉ!");
@@ -720,7 +720,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             }
             lblRAM.setForeground(Color.white);
             if (Integer.parseInt(txtRAM.getText()) <= 0) {
-                Msgbox.alert(null, "Thời gian bảo hành phải lơn hơn 0!");
+                Msgbox.alert(null, "RAM phải lơn hơn 0!");
                 txtRAM.setText("");
                 txtRAM.requestFocus();
                 lblRAM.setForeground(Color.red);
@@ -741,7 +741,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             try {
                 Integer.parseInt(txtDungLuong.getText());
             } catch (Exception e) {
-                Msgbox.alert(null, "Số lượng phải là số!");
+                Msgbox.alert(null, "Dung lượng phải là số!");
                 txtDungLuong.setText("");
                 txtDungLuong.requestFocus();
                 lblDL.setForeground(Color.red);
@@ -749,7 +749,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             }
             lblDL.setForeground(Color.white);
             if (Integer.parseInt(txtDungLuong.getText()) <= 0) {
-                Msgbox.alert(null, "Thời gian bảo hành phải lơn hơn 0!");
+                Msgbox.alert(null, "Dung lượng phải lơn hơn 0!");
                 txtDungLuong.setText("");
                 txtDungLuong.requestFocus();
                 lblDL.setForeground(Color.red);
@@ -821,7 +821,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
         MatHang mh = new MatHang(txtMaMH.getText(), hsx.getMaHSX(), txtTenMH.getText(),
                 Integer.parseInt(txtRAM.getText()), Integer.parseInt(txtDungLuong.getText()),
                 txtMauSac.getText(), qg.getMaQG(),
-                lblHinhMH.getToolTipText(), Integer.parseInt(txtSoLuong.getText()),
+                lblHinhMH.getToolTipText(), 0,
                 Integer.parseInt(txtTGBH.getText()), Double.parseDouble(txtGiaMua.getText()),
                 Double.parseDouble(txtGiaBanSi.getText()), Double.parseDouble(txtGiaBanLe.getText()),
                 rdoTrangThai1.isSelected());
@@ -831,12 +831,16 @@ public class FrmHangHoa extends javax.swing.JPanel {
     private void chonAnh() {
         try {
             JFileChooser fileChooser = new JFileChooser();
+            
             fileChooser.setAcceptAllFileFilterUsed(false);
             FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images", "jpg", "gif", "png", "jpeg");
             fileChooser.addChoosableFileFilter(filter);
+            
             if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
                 File file = fileChooser.getSelectedFile();
+                
                 XImage.save(file);
+                
                 ImageIcon icon = XImage.read(file.getName());
                 Image image = icon.getImage(); // transform it 
                 Image newimg = image.getScaledInstance(lblHinhMH.getWidth(), lblHinhMH.getHeight(), java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
@@ -852,6 +856,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
     private void clear() {
         try {
             if (Msgbox.confirm(null, "Bạn có muốn tạo mới không?")) {
+                txtSoLuong.setEnabled(false);
                 txtMaMH.setText("");
                 txtTenMH.setText("");
                 txtRAM.setText("");
@@ -892,7 +897,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
 
     private void showDetail() {
         try {
-
+            txtSoLuong.setEnabled(true);
             txtMaMH.setText(tblList.getValueAt(index, 0).toString());
             txtTenMH.setText(tblList.getValueAt(index, 2).toString());
             String ram, dl;
@@ -1312,6 +1317,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
         txtSoLuong.setBackground(new java.awt.Color(34, 116, 173));
         txtSoLuong.setForeground(new java.awt.Color(255, 255, 255));
         txtSoLuong.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        txtSoLuong.setEnabled(false);
         txtSoLuong.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtDungLuongKeyPressed(evt);
@@ -1360,7 +1366,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
         btnClear.setBackground(new java.awt.Color(34, 116, 173));
         btnClear.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
         btnClear.setForeground(new java.awt.Color(255, 255, 255));
-        btnClear.setText("Clear");
+        btnClear.setText("Tạo mới");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearActionPerformed(evt);
@@ -1396,11 +1402,13 @@ public class FrmHangHoa extends javax.swing.JPanel {
         lblTrangThai.setText("Trạng thái");
 
         grpStatus.add(rdoTrangThai1);
+        rdoTrangThai1.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
         rdoTrangThai1.setForeground(new java.awt.Color(255, 255, 255));
         rdoTrangThai1.setSelected(true);
         rdoTrangThai1.setText("Đang kinh doanh");
 
         grpStatus.add(rdoTrangThai0);
+        rdoTrangThai0.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 12)); // NOI18N
         rdoTrangThai0.setForeground(new java.awt.Color(255, 255, 255));
         rdoTrangThai0.setText("Ngừng kinh doanh");
 
@@ -1432,30 +1440,33 @@ public class FrmHangHoa extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(cboHSX, 0, 184, Short.MAX_VALUE)
+                                                .addComponent(cboHSX, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(btnThemHSX))
                                             .addComponent(txtMaMH)))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(lblTenMH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(lblDL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtTenMH)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(txtDungLuong, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(lblRAM, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblTenMH, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblRAM, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtRAM, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(txtTenMH))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(12, 12, 12)
+                                                .addComponent(txtRAM, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lblDL)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(txtDungLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(1, 1, 1))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(lblMS, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(lblQG, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtMauSac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                                            .addComponent(txtMauSac, javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(cboQuocGia, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1504,7 +1515,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblHMH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGap(0, 5, Short.MAX_VALUE)
                                         .addComponent(lblHinhMH, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap())
@@ -1544,9 +1555,9 @@ public class FrmHangHoa extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtRAM, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblRAM)
                             .addComponent(lblDL)
-                            .addComponent(txtDungLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblRAM))
+                            .addComponent(txtDungLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtMauSac, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)

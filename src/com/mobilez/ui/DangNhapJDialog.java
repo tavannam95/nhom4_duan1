@@ -9,7 +9,9 @@ import com.mobilez.dao.NhanVienDAO;
 import com.mobilez.models.NhanVien;
 import com.mobilez.utils.Msgbox;
 import com.mobilez.utils.Auth;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
+
 /**
  *
  * @author LAPTOP
@@ -22,6 +24,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     NhanVienDAO nvDAO = new NhanVienDAO();
     int xMouse;
     int yMouse;
+
     public DangNhapJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -117,6 +120,11 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         txtMatKhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMatKhauActionPerformed(evt);
+            }
+        });
+        txtMatKhau.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtMatKhauKeyPressed(evt);
             }
         });
 
@@ -225,13 +233,23 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        this.setLocation(x - xMouse, y- yMouse);
+        this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_formMouseDragged
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_formMousePressed
+
+    private void txtMatKhauKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhauKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (checkForm()) {
+                dangNhap();
+            }
+        }
+
+    }//GEN-LAST:event_txtMatKhauKeyPressed
 
     /**
      * @param args the command line arguments
@@ -292,7 +310,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txtTaiKhoan;
     // End of variables declaration//GEN-END:variables
 
-     private void init() {
+    private void init() {
         this.setLocationRelativeTo(null);
         lbLoGo.setIcon(new ImageIcon("src/com/mobilez/icon/logoDangNhap.png"));
     }
@@ -301,7 +319,10 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         String taiKhoan = txtTaiKhoan.getText();
         String matKhau = new String(txtMatKhau.getPassword());
         NhanVien nhanVien = nvDAO.selectById(taiKhoan);
-        if (nhanVien == null) {
+        if (!nhanVien.isTrangThai()) {
+            Msgbox.alert(null, "Bạn đã nghỉ việc tại cửa hàng bạn không thể đăng nhập!");
+            return;
+        } else if (nhanVien == null) {
             Msgbox.alert(this, "Tài khoản không tồn tại");
             txtTaiKhoan.requestFocus();
             return;
@@ -314,17 +335,19 @@ public class DangNhapJDialog extends javax.swing.JDialog {
             this.dispose();
         }
     }
-    
-    private boolean checkForm(){
+
+    private boolean checkForm() {
         String matKhau = new String(txtMatKhau.getPassword());
         if (txtTaiKhoan.getText().trim().equals("")) {
             Msgbox.alert(this, "Tài khoản không được để trống!");
+            txtTaiKhoan.setText("");
             txtTaiKhoan.requestFocus();
             return false;
         }
         if (matKhau.trim().equals("")) {
             Msgbox.alert(this, "Mật khẩu không được để trống!");
-            txtTaiKhoan.requestFocus();
+            txtMatKhau.setText("");
+            txtMatKhau.requestFocus();
             return false;
         }
         return true;

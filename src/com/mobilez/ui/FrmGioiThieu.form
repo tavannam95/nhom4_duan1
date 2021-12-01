@@ -53,13 +53,13 @@
             </Property>
             <Property name="columns" type="int" value="20"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Baloo 2 ExtraBold" size="24" style="0"/>
+              <Font name="Baloo 2 ExtraBold" size="30" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="D&#x1ef1; &#xe1;n 1. M&#x1ee5;c ti&#xea;u th&#x1ef1;c hi&#x1ec7;n l&#xe0; Qu&#x1ea3;n l&#xfd; c&#x1eed;a h&#xe0;ng &#x111;i&#x1ec7;n tho&#x1ea1;i&#xa;&#x110;&#x1b0;&#x1ee3;c th&#x1ef1;c hi&#x1ec7;n b&#x1edf;i Nh&#xf3;m 4 - IT16301&#xa;Gi&#xe1;o vi&#xea;n gi&#xe1;m s&#xe1;t : Nguy&#x1ec5;n Ho&#xe0;ng Ti&#x1ebf;n&#xa;Sinh vi&#xea;n th&#x1ef1;c hi&#x1ec7;n :&#x9; T&#x1ea1; V&#x103;n Nam - PH13082 &#xa;                             &#x9;&#x9;Nguy&#x1ec5;n Qu&#x1ed1;c Kh&#xe1;nh - PH13545&#xa;                             &#x9;&#x9;D&#x1b0;&#x1a1;ng V&#x103;n S&#x1a1;n - PH13283 &#xa;                             &#x9;&#x9;Nguy&#x1ec5;n Qu&#x1ed1;c Tu&#x1ea5;n - PH15433&#xa;                             &#x9;&#x9;Ph&#x1ea1;m C&#xf4;ng Giang - PH13293"/>
+            <Property name="text" type="java.lang.String" value="&#xa;      D&#x1ef1; &#xe1;n 1. M&#x1ee5;c ti&#xea;u th&#x1ef1;c hi&#x1ec7;n l&#xe0; Qu&#x1ea3;n l&#xfd; c&#x1eed;a h&#xe0;ng &#x111;i&#x1ec7;n tho&#x1ea1;i&#xa;      &#x110;&#x1b0;&#x1ee3;c th&#x1ef1;c hi&#x1ec7;n b&#x1edf;i Nh&#xf3;m 4 - IT16301&#xa;      Gi&#xe1;o vi&#xea;n gi&#xe1;m s&#xe1;t : Nguy&#x1ec5;n Ho&#xe0;ng Ti&#x1ebf;n&#xa;      Sinh vi&#xea;n th&#x1ef1;c hi&#x1ec7;n:  T&#x1ea1; V&#x103;n Nam - PH13082 &#xa;                                        Nguy&#x1ec5;n Qu&#x1ed1;c Kh&#xe1;nh - PH13545&#xa;                                        D&#x1b0;&#x1a1;ng V&#x103;n S&#x1a1;n - PH13283 &#xa;                                        Nguy&#x1ec5;n Qu&#x1ed1;c Tu&#x1ea5;n - PH15433&#xa;                                        Ph&#x1ea1;m C&#xf4;ng Giang - PH13293"/>
           </Properties>
         </Component>
       </SubComponents>

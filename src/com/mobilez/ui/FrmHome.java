@@ -17,6 +17,7 @@ import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import com.mobilez.utils.Auth;
 
 /**
  *
@@ -34,9 +35,13 @@ public class FrmHome extends javax.swing.JFrame {
     boolean chkTK = false;
     boolean chkTG = false;
     boolean chkHT = false;
-
+    
     public FrmHome() {
         initComponents();
+        //Test 
+        new DangNhapJDialog(this, true).setVisible(true);
+        new JDialogChonCaLam(this, true).setVisible(true);
+        
         this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon("src/com/mobilez/icon/logoM_32px.png").getImage());
@@ -46,10 +51,12 @@ public class FrmHome extends javax.swing.JFrame {
         pnlParent.revalidate();
         pnlParent.repaint();
         TextAffect.colorText(lblMobileZ);
+        lblWelcome.setText("Xin chào " + Auth.user.getHoTen() + "!");
+        
     }
-
+    
     class jPanelGradient extends JPanel {
-
+        
         protected void paintComponent(Graphics g) {
             Graphics2D g2 = (Graphics2D) g;
             int width = getWidth();
@@ -61,7 +68,7 @@ public class FrmHome extends javax.swing.JFrame {
             g2.fillRect(0, 0, width, height);
         }
     }
-
+    
     private void setTimeLbl() {
         Thread t = new Thread() {
             @Override
@@ -77,17 +84,17 @@ public class FrmHome extends javax.swing.JFrame {
                     }
                 }
             }
-
+            
         };
         t.start();
     }
-
+    
     private void removeAllPnlShow() {
         pnlShow.removeAll();
         pnlShow.validate();
         pnlShow.repaint();
     }
-
+    
     private void showPnl(JPanel p) {
         p.setSize(pnlShow.getSize());
         pnlShow.removeAll();
@@ -190,11 +197,6 @@ public class FrmHome extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cửa hàng điện thoại di động MobileZ");
         setUndecorated(true);
-        addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                formKeyPressed(evt);
-            }
-        });
 
         pnlMenuBar.setBackground(new java.awt.Color(0, 51, 78));
 
@@ -1019,6 +1021,11 @@ public class FrmHome extends javax.swing.JFrame {
 
         jPanel17.setBackground(new java.awt.Color(20, 83, 116));
         jPanel17.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel17MouseClicked(evt);
+            }
+        });
 
         jLabel17.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 16)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
@@ -1049,6 +1056,11 @@ public class FrmHome extends javax.swing.JFrame {
 
         jPanel18.setBackground(new java.awt.Color(20, 83, 116));
         jPanel18.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel18MouseClicked(evt);
+            }
+        });
 
         jLabel18.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 16)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
@@ -1079,6 +1091,11 @@ public class FrmHome extends javax.swing.JFrame {
 
         jPanel19.setBackground(new java.awt.Color(20, 83, 116));
         jPanel19.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel19MouseClicked(evt);
+            }
+        });
 
         jLabel19.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 16)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
@@ -1199,15 +1216,15 @@ public class FrmHome extends javax.swing.JFrame {
             lblThongKe.setForeground(Color.WHITE);
             lblTroGiup.setForeground(Color.WHITE);
             lblWelcome.setForeground(Color.WHITE);
-
+            
         } else {
-
+            
             pnlParent.removeAll();
             pnlParent.validate();
             pnlParent.repaint();
             lblQLDanhMuc.setForeground(Color.WHITE);
         }
-
+        
 
     }//GEN-LAST:event_lblQLDanhMucMouseClicked
 
@@ -1376,7 +1393,7 @@ public class FrmHome extends javax.swing.JFrame {
             pnlParent.validate();
             pnlParent.repaint();
             lblTroGiup.setForeground(Color.WHITE);
-
+            
         }
     }//GEN-LAST:event_lblTroGiupMouseClicked
 
@@ -1407,12 +1424,16 @@ public class FrmHome extends javax.swing.JFrame {
             pnlParent.validate();
             pnlParent.repaint();
             lblUser.setForeground(Color.WHITE);
-
+            
         }
     }//GEN-LAST:event_lblUserMouseClicked
 
     private void lblNCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNCCMouseClicked
         // TODO add your handling code here:
+        if (Auth.giaoCa) {
+            Msgbox.alert(this, "Bạn phải chọn quầy và ca làm mới dùng được chức năng!!");
+            return;
+        }
         lblNCC2.setForeground(Color.ORANGE);
         lblNV2.setForeground(Color.WHITE);
         lblKH2.setForeground(Color.WHITE);
@@ -1420,11 +1441,19 @@ public class FrmHome extends javax.swing.JFrame {
         lblHSX2.setForeground(Color.WHITE);
         FrmNhaCungCap f = new FrmNhaCungCap();
         this.showPnl(f);
-
+        
 
     }//GEN-LAST:event_lblNCCMouseClicked
     private void lblNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNVMouseClicked
         // TODO add your handling code here:
+        if (Auth.giaoCa) {
+            Msgbox.alert(this, "Bạn phải chọn quầy và ca làm mới dùng được chức năng!!");
+            return;
+        }
+        if (!Auth.isManager()) {
+            Msgbox.alert(this, "Bạn không có quyền sử dụng chức năng này!");
+            return;
+        }
         lblNV2.setForeground(Color.ORANGE);
         lblNCC2.setForeground(Color.WHITE);
         lblKH2.setForeground(Color.WHITE);
@@ -1436,6 +1465,10 @@ public class FrmHome extends javax.swing.JFrame {
     }//GEN-LAST:event_lblNVMouseClicked
     private void lblKHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKHMouseClicked
         // TODO add your handling code here:
+        if (Auth.giaoCa) {
+            Msgbox.alert(this, "Bạn phải chọn quầy và ca làm mới dùng được chức năng!!");
+            return;
+        }
         lblKH2.setForeground(Color.ORANGE);
         lblNV2.setForeground(Color.WHITE);
         lblNCC2.setForeground(Color.WHITE);
@@ -1447,6 +1480,10 @@ public class FrmHome extends javax.swing.JFrame {
     }//GEN-LAST:event_lblKHMouseClicked
     private void lblMHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMHMouseClicked
         // TODO add your handling code here:
+        if (Auth.giaoCa) {
+            Msgbox.alert(this, "Bạn phải chọn quầy và ca làm mới dùng được chức năng!!");
+            return;
+        }
         lblMH2.setForeground(Color.ORANGE);
         lblNV2.setForeground(Color.WHITE);
         lblKH2.setForeground(Color.WHITE);
@@ -1458,6 +1495,10 @@ public class FrmHome extends javax.swing.JFrame {
     }//GEN-LAST:event_lblMHMouseClicked
     private void lblHSXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHSXMouseClicked
         // TODO add your handling code here:
+        if (Auth.giaoCa) {
+            Msgbox.alert(this, "Bạn phải chọn quầy và ca làm mới dùng được chức năng!!");
+            return;
+        }
         lblHSX2.setForeground(Color.ORANGE);
         lblNV2.setForeground(Color.WHITE);
         lblKH2.setForeground(Color.WHITE);
@@ -1468,6 +1509,10 @@ public class FrmHome extends javax.swing.JFrame {
     }//GEN-LAST:event_lblHSXMouseClicked
     private void lblPhieuNhapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPhieuNhapMouseClicked
         // TODO add your handling code here:
+        if (Auth.giaoCa) {
+            Msgbox.alert(this, "Bạn phải chọn quầy và ca làm mới dùng được chức năng!!");
+            return;
+        }
         lblPN.setForeground(Color.ORANGE);
         lblPX.setForeground(Color.WHITE);
         lblXP.setForeground(Color.WHITE);
@@ -1476,6 +1521,10 @@ public class FrmHome extends javax.swing.JFrame {
     }//GEN-LAST:event_lblPhieuNhapMouseClicked
     private void lblPhieuXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPhieuXuatMouseClicked
         // TODO add your handling code here:
+        if (Auth.giaoCa) {
+            Msgbox.alert(this, "Bạn phải chọn quầy và ca làm mới dùng được chức năng!!");
+            return;
+        }
         lblPX.setForeground(Color.ORANGE);
         lblPN.setForeground(Color.WHITE);
         lblXP.setForeground(Color.WHITE);
@@ -1494,6 +1543,10 @@ public class FrmHome extends javax.swing.JFrame {
     }//GEN-LAST:event_lblXemPhieuMouseClicked
     private void lblPhieuGiaoCaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPhieuGiaoCaMouseClicked
         // TODO add your handling code here:
+        if (Auth.giaoCa) {
+            Msgbox.alert(this, "Bạn phải chọn quầy và ca làm mới dùng được chức năng!!");
+            return;
+        }
         lblPGC.setForeground(Color.ORANGE);
         lblPBH.setForeground(Color.WHITE);
         FrmPhieuGiaoCa f = new FrmPhieuGiaoCa();
@@ -1502,6 +1555,10 @@ public class FrmHome extends javax.swing.JFrame {
     }//GEN-LAST:event_lblPhieuGiaoCaMouseClicked
     private void lblPhieuBaoHanhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPhieuBaoHanhMouseClicked
         // TODO add your handling code here:
+        if (Auth.giaoCa) {
+            Msgbox.alert(this, "Bạn phải chọn quầy và ca làm mới dùng được chức năng!!");
+            return;
+        }
         lblPBH.setForeground(Color.ORANGE);
         lblPGC.setForeground(Color.WHITE);
         FrmPhieuBaoHanh f = new FrmPhieuBaoHanh();
@@ -1510,6 +1567,10 @@ public class FrmHome extends javax.swing.JFrame {
     }//GEN-LAST:event_lblPhieuBaoHanhMouseClicked
     private void lblHDBSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDBSMouseClicked
         // TODO add your handling code here:
+        if (Auth.giaoCa) {
+            Msgbox.alert(this, "Bạn phải chọn quầy và ca làm mới dùng được chức năng!!");
+            return;
+        }
         lblHDS.setForeground(Color.ORANGE);
         lblHDL.setForeground(Color.WHITE);
         lblCNG.setForeground(Color.WHITE);
@@ -1519,16 +1580,24 @@ public class FrmHome extends javax.swing.JFrame {
     }//GEN-LAST:event_lblHDBSMouseClicked
     private void lblHDBLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDBLMouseClicked
         // TODO add your handling code here:
+        if (Auth.giaoCa) {
+            Msgbox.alert(this, "Bạn phải chọn quầy và ca làm mới dùng được chức năng!!");
+            return;
+        }
         lblHDL.setForeground(Color.ORANGE);
         lblHDS.setForeground(Color.WHITE);
         lblCNG.setForeground(Color.WHITE);
         FrmHoaDonBanLe f = new FrmHoaDonBanLe();
         this.showPnl(f);
-
+        
 
     }//GEN-LAST:event_lblHDBLMouseClicked
     private void lblCapNhatGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCapNhatGiaMouseClicked
         // TODO add your handling code here:    
+        if (Auth.giaoCa) {
+            Msgbox.alert(this, "Bạn phải chọn quầy và ca làm mới dùng được chức năng!!");
+            return;
+        }
         lblCNG.setForeground(Color.ORANGE);
         lblHDL.setForeground(Color.WHITE);
         lblHDS.setForeground(Color.WHITE);
@@ -1539,19 +1608,40 @@ public class FrmHome extends javax.swing.JFrame {
 
     private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
         // TODO add your handling code here:
+        if (!Auth.giaoCa && !Auth.isManager()) {
+            Msgbox.alert(this, "Bạn phải giao ca trước khi thoát!!");
+            return;
+        }
         if (Msgbox.confirm(this, "Bạn có muốn thoát không?")) {
             System.exit(0);
         }
     }//GEN-LAST:event_lblCloseMouseClicked
 
-    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-        // TODO add your handling code here:
-        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
-            if (Msgbox.confirm(this, "Bạn có muốn thoát không?")) {
-                System.exit(0);
-            }
+    private void jPanel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel17MouseClicked
+        new DoiMatKhauJDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_jPanel17MouseClicked
+
+    private void jPanel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel18MouseClicked
+        if (!Auth.giaoCa && !Auth.isManager()) {
+            Msgbox.alert(this, "Bạn phải giao ca trước khi thoát!!");
+            return;
         }
-    }//GEN-LAST:event_formKeyPressed
+        if (Msgbox.confirm(this, "Bạn có muốn thoát không?")) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jPanel18MouseClicked
+
+    private void jPanel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel19MouseClicked
+        if (!Auth.giaoCa && !Auth.isManager()) {
+            Msgbox.alert(this, "Bạn phải giao ca trước khi đăng xuất!!");
+            return;
+        }
+        if (Msgbox.confirm(this, "Bạn có muốn đăng xuất?")) {
+            Auth.clear();
+            this.dispose();
+            new FrmHome().setVisible(true);
+        }
+    }//GEN-LAST:event_jPanel19MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1567,16 +1657,21 @@ public class FrmHome extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+                    
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmHome.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmHome.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmHome.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmHome.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

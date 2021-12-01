@@ -8,6 +8,7 @@ package com.mobilez.ui;
 import com.mobilez.dao.KhachHangDAO;
 import com.mobilez.models.KhachHang;
 import com.mobilez.utils.Msgbox;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,7 +24,6 @@ public class FrmKhachHang extends javax.swing.JPanel {
     DefaultTableModel model = new DefaultTableModel();
     KhachHangDAO dao = new KhachHangDAO();
     int index = -1;
-    FrmHome parent = new FrmHome();
 
     public FrmKhachHang() {
         initComponents();
@@ -55,8 +55,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
         txtMaKH = new javax.swing.JTextField();
         txtSDT = new javax.swing.JTextField();
         txtTenKH = new javax.swing.JTextField();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtDiaChi = new javax.swing.JTextPane();
+        txtDiaChi = new javax.swing.JTextField();
         btnFirst = new javax.swing.JButton();
         btnPrew = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
@@ -65,11 +64,13 @@ public class FrmKhachHang extends javax.swing.JPanel {
         lblDSKH = new javax.swing.JLabel();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
-        btnXoa = new javax.swing.JButton();
         btnMoi = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(34, 116, 173));
 
+        tblKhachHang.setBackground(new java.awt.Color(34, 116, 173));
+        tblKhachHang.setFont(new java.awt.Font("Baloo 2", 0, 13)); // NOI18N
+        tblKhachHang.setForeground(new java.awt.Color(255, 255, 255));
         tblKhachHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -86,11 +87,12 @@ public class FrmKhachHang extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblKhachHang.setGridColor(new java.awt.Color(255, 255, 255));
         tblKhachHang.setRowHeight(25);
-        tblKhachHang.setSelectionBackground(new java.awt.Color(34, 143, 207));
+        tblKhachHang.setSelectionBackground(new java.awt.Color(51, 51, 51));
         tblKhachHang.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblKhachHang.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblKhachHang.setShowGrid(false);
+        tblKhachHang.setShowGrid(true);
         tblKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblKhachHangMouseClicked(evt);
@@ -106,7 +108,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
             tblKhachHang.getColumnModel().getColumn(3).setPreferredWidth(200);
         }
 
-        jPanel1.setBackground(new java.awt.Color(85, 136, 163));
+        jPanel1.setBackground(new java.awt.Color(34, 116, 173));
 
         lblDSKH1.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 36)); // NOI18N
         lblDSKH1.setForeground(new java.awt.Color(255, 255, 255));
@@ -133,13 +135,14 @@ public class FrmKhachHang extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Tìm kiếm:");
 
+        txtTimKiem.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
         txtTimKiem.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txtTimKiemCaretUpdate(evt);
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(85, 136, 163));
+        jPanel2.setBackground(new java.awt.Color(34, 116, 173));
 
         lblMaKH4.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 18)); // NOI18N
         lblMaKH4.setForeground(new java.awt.Color(255, 255, 255));
@@ -157,7 +160,21 @@ public class FrmKhachHang extends javax.swing.JPanel {
         lblMaKH3.setForeground(new java.awt.Color(255, 255, 255));
         lblMaKH3.setText("Địa chỉ:");
 
-        jScrollPane3.setViewportView(txtDiaChi);
+        txtMaKH.setBackground(new java.awt.Color(34, 116, 173));
+        txtMaKH.setFont(new java.awt.Font("Baloo 2", 1, 14)); // NOI18N
+        txtMaKH.setForeground(new java.awt.Color(255, 255, 255));
+
+        txtSDT.setBackground(new java.awt.Color(34, 116, 173));
+        txtSDT.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
+        txtSDT.setForeground(new java.awt.Color(255, 255, 255));
+
+        txtTenKH.setBackground(new java.awt.Color(34, 116, 173));
+        txtTenKH.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
+        txtTenKH.setForeground(new java.awt.Color(255, 255, 255));
+
+        txtDiaChi.setBackground(new java.awt.Color(34, 116, 173));
+        txtDiaChi.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
+        txtDiaChi.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -177,9 +194,9 @@ public class FrmKhachHang extends javax.swing.JPanel {
                             .addComponent(lblMaKH3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTenKH)
+                            .addComponent(txtTenKH, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
                             .addComponent(txtSDT)
-                            .addComponent(jScrollPane3))))
+                            .addComponent(txtDiaChi))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -198,15 +215,13 @@ public class FrmKhachHang extends javax.swing.JPanel {
                     .addComponent(lblMaKH2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMaKH3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(261, Short.MAX_VALUE))
         );
 
-        btnFirst.setBackground(new java.awt.Color(85, 136, 163));
+        btnFirst.setBackground(new java.awt.Color(34, 116, 173));
         btnFirst.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 18)); // NOI18N
         btnFirst.setForeground(new java.awt.Color(255, 255, 255));
         btnFirst.setText("|<");
@@ -216,7 +231,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
             }
         });
 
-        btnPrew.setBackground(new java.awt.Color(85, 136, 163));
+        btnPrew.setBackground(new java.awt.Color(34, 116, 173));
         btnPrew.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 18)); // NOI18N
         btnPrew.setForeground(new java.awt.Color(255, 255, 255));
         btnPrew.setText("<<");
@@ -226,7 +241,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
             }
         });
 
-        btnNext.setBackground(new java.awt.Color(85, 136, 163));
+        btnNext.setBackground(new java.awt.Color(34, 116, 173));
         btnNext.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 18)); // NOI18N
         btnNext.setForeground(new java.awt.Color(255, 255, 255));
         btnNext.setText(">>");
@@ -236,7 +251,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
             }
         });
 
-        btnLast.setBackground(new java.awt.Color(85, 136, 163));
+        btnLast.setBackground(new java.awt.Color(34, 116, 173));
         btnLast.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 18)); // NOI18N
         btnLast.setForeground(new java.awt.Color(255, 255, 255));
         btnLast.setText(">|");
@@ -246,7 +261,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
             }
         });
 
-        jPanel3.setBackground(new java.awt.Color(85, 136, 163));
+        jPanel3.setBackground(new java.awt.Color(34, 116, 173));
 
         lblDSKH.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 36)); // NOI18N
         lblDSKH.setForeground(new java.awt.Color(255, 255, 255));
@@ -257,7 +272,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(140, Short.MAX_VALUE)
                 .addComponent(lblDSKH, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(128, 128, 128))
         );
@@ -269,7 +284,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnThem.setBackground(new java.awt.Color(85, 136, 163));
+        btnThem.setBackground(new java.awt.Color(34, 116, 173));
         btnThem.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 18)); // NOI18N
         btnThem.setForeground(new java.awt.Color(255, 255, 255));
         btnThem.setText("Thêm");
@@ -279,7 +294,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
             }
         });
 
-        btnSua.setBackground(new java.awt.Color(85, 136, 163));
+        btnSua.setBackground(new java.awt.Color(34, 116, 173));
         btnSua.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 18)); // NOI18N
         btnSua.setForeground(new java.awt.Color(255, 255, 255));
         btnSua.setText("Sửa");
@@ -289,17 +304,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
             }
         });
 
-        btnXoa.setBackground(new java.awt.Color(85, 136, 163));
-        btnXoa.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 18)); // NOI18N
-        btnXoa.setForeground(new java.awt.Color(255, 255, 255));
-        btnXoa.setText("Xóa");
-        btnXoa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoaActionPerformed(evt);
-            }
-        });
-
-        btnMoi.setBackground(new java.awt.Color(85, 136, 163));
+        btnMoi.setBackground(new java.awt.Color(34, 116, 173));
         btnMoi.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 18)); // NOI18N
         btnMoi.setForeground(new java.awt.Color(255, 255, 255));
         btnMoi.setText("Mới");
@@ -345,13 +350,11 @@ public class FrmKhachHang extends javax.swing.JPanel {
                         .addGap(15, 15, 15)
                         .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnXoa)
-                        .addGap(18, 18, 18)
                         .addComponent(btnMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(40, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnMoi, btnSua, btnThem, btnXoa});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnMoi, btnSua, btnThem});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,16 +373,15 @@ public class FrmKhachHang extends javax.swing.JPanel {
                     .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnMoi, btnSua, btnThem, btnXoa});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnMoi, btnSua, btnThem});
 
         getAccessibleContext().setAccessibleParent(this);
     }// </editor-fold>//GEN-END:initComponents
@@ -398,10 +400,6 @@ public class FrmKhachHang extends javax.swing.JPanel {
             this.insert();
         }
     }//GEN-LAST:event_btnThemActionPerformed
-
-    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        delete();
-    }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         if (checkform()) {
@@ -438,13 +436,11 @@ public class FrmKhachHang extends javax.swing.JPanel {
     private javax.swing.JButton btnPrew;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
-    private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblDSKH;
     private javax.swing.JLabel lblDSKH1;
     private javax.swing.JLabel lblMaKH1;
@@ -452,7 +448,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
     private javax.swing.JLabel lblMaKH3;
     private javax.swing.JLabel lblMaKH4;
     private javax.swing.JTable tblKhachHang;
-    private javax.swing.JTextPane txtDiaChi;
+    private javax.swing.JTextField txtDiaChi;
     private javax.swing.JTextField txtMaKH;
     private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtTenKH;
@@ -487,14 +483,13 @@ public class FrmKhachHang extends javax.swing.JPanel {
             e.printStackTrace();
         }
         clear();
-        
+
     }
 
     private void updateStatus() {
         boolean edit = (this.index >= 0);
-        txtMaKH.setEnabled(!edit);
+        txtMaKH.setEditable(!edit);
         btnSua.setEnabled(edit);
-        btnXoa.setEnabled(edit);
         btnThem.setEnabled(!edit);
     }
 
@@ -512,8 +507,8 @@ public class FrmKhachHang extends javax.swing.JPanel {
             }
         }
     }
-    
-    private void clear(){
+
+    private void clear() {
         txtMaKH.setText("");
         txtTenKH.setText("");
         txtDiaChi.setText("");
@@ -521,7 +516,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
         this.index = -1;
         this.updateStatus();
     }
-    
+
     private void insert() {
         KhachHang kh = getForm();
         try {
@@ -537,8 +532,8 @@ public class FrmKhachHang extends javax.swing.JPanel {
             e.printStackTrace();
         }
     }
-    
-    private void update(){
+
+    private void update() {
         KhachHang kh = getForm();
         try {
             dao.update(kh);
@@ -548,23 +543,23 @@ public class FrmKhachHang extends javax.swing.JPanel {
             Msgbox.alert(this, "Cập nhật thất bại!");
         }
     }
-    
+
     private KhachHang getForm() {
         KhachHang kh = new KhachHang();
-        kh.setMaKH(txtMaKH.getText());
-        kh.setTenKH(txtTenKH.getText());
-        kh.setSoDienThoai(txtSDT.getText());
-        kh.setDiaChi(txtDiaChi.getText());
+        kh.setMaKH(txtMaKH.getText().trim());
+        kh.setTenKH(txtTenKH.getText().trim());
+        kh.setSoDienThoai(txtSDT.getText().trim());
+        kh.setDiaChi(txtDiaChi.getText().trim());
         return kh;
     }
-    
+
     private void edit() {
         String makh = (String) tblKhachHang.getValueAt(this.index, 0);
         KhachHang kh = dao.selectById(makh);
         this.setForm(kh);
         this.updateStatus();
     }
-    
+
     private void setForm(KhachHang kh) {
         txtMaKH.setText(kh.getMaKH());
         txtTenKH.setText(kh.getTenKH());
@@ -572,7 +567,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
         txtSDT.setText(kh.getSoDienThoai());
         tblKhachHang.setRowSelectionInterval(index, index);
     }
-    
+
     private void first() {
         this.index = 0;
         this.edit();
@@ -596,6 +591,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
         this.index = tblKhachHang.getRowCount() - 1;
         this.edit();
     }
+
     private boolean checkform() {
         String reSDT = "(03|05|07|08|09)\\d{8,9}";
         if (txtMaKH.getText().trim().equals("")) {
@@ -618,7 +614,7 @@ public class FrmKhachHang extends javax.swing.JPanel {
             txtSDT.requestFocus();
             return false;
         }
-        
+
         if (txtDiaChi.getText().trim().equals("")) {
             Msgbox.alert(this, "Địa chỉ không được để trống");
             txtDiaChi.requestFocus();
