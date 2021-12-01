@@ -178,6 +178,7 @@ public class FrmHome extends javax.swing.JFrame {
         lblXQ = new javax.swing.JLabel();
         lblXemQuay = new javax.swing.JLabel();
         pnlMenuTK = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         pnlMenuBH = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         lblHDS = new javax.swing.JLabel();
@@ -965,15 +966,26 @@ public class FrmHome extends javax.swing.JFrame {
         pnlMenuTK.setBackground(new java.awt.Color(85, 159, 198));
         pnlMenuTK.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 0, 0, 0, new java.awt.Color(34, 116, 173)));
 
+        jLabel1.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 72)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("THỐNG KÊ");
+
         javax.swing.GroupLayout pnlMenuTKLayout = new javax.swing.GroupLayout(pnlMenuTK);
         pnlMenuTK.setLayout(pnlMenuTKLayout);
         pnlMenuTKLayout.setHorizontalGroup(
             pnlMenuTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 906, Short.MAX_VALUE)
+            .addGroup(pnlMenuTKLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 894, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnlMenuTKLayout.setVerticalGroup(
             pnlMenuTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 122, Short.MAX_VALUE)
+            .addGroup(pnlMenuTKLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pnlParent.add(pnlMenuTK, "card5");
@@ -1930,6 +1942,7 @@ public class FrmHome extends javax.swing.JFrame {
     private javax.swing.JLabel IcQLQuay;
     private javax.swing.JLabel IcTG;
     private javax.swing.JLabel IcThongKe;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
