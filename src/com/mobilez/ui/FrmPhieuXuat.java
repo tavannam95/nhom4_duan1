@@ -276,7 +276,6 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-
         lblDSMH = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblList = new javax.swing.JTable();
@@ -459,12 +458,10 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
             }
         });
 
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -513,6 +510,9 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
                                 .addComponent(btnXuatKho, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(108, 108, 108))))))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnOK, btnXoa, btnXoaTatCa});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -548,7 +548,6 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnThemVaoHoaDon)
                 .addContainerGap())
-
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -571,6 +570,10 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
         this.updateKhoHang();
         this.updateQH();
         Msgbox.alert(null, "Xuất kho thành công!");
+            modelHDCT.setRowCount(0);
+            this.fillTablePr();
+            this.btnXuatKho.setEnabled(false);
+            lblRsTongGia.setText("");
     }//GEN-LAST:event_btnXuatKhoActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -700,7 +703,6 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-
     private javax.swing.JButton btnOK;
     private javax.swing.JButton btnThemVaoHoaDon;
     private javax.swing.JButton btnXoa;
@@ -720,6 +722,5 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
     private javax.swing.JTable tblCTPX;
     private javax.swing.JTable tblList;
     private javax.swing.JTextField txtSearch;
-
     // End of variables declaration//GEN-END:variables
 }
