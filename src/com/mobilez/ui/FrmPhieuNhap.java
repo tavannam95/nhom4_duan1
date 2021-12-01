@@ -606,6 +606,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         if (checkForm()) {
             this.themTblPhieuNhap();
+            this.clear();   
         }
 
     }//GEN-LAST:event_btnThemActionPerformed
@@ -925,5 +926,12 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
             e.printStackTrace();
 
         }
+    }
+    private void clear(){
+        txtMaMH.setText("");
+        txtTenMH.setText("");
+        txtSoLuong.setText("");
+        txtDongia.setText("");
+        indexMH = -1;
     }
 }

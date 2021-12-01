@@ -379,7 +379,7 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (checkForm()) {
             filltoHoaDon();
-            
+            clear();
         }
 
     }//GEN-LAST:event_btnThemHoaDonActionPerformed
