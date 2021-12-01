@@ -8,12 +8,24 @@ package com.mobilez.utils;
 import java.awt.Color;
 import java.util.Random;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Nobi
  */
 public class TextAffect {
+    
+   public static String convertToPhoneDot(JTextField phoneNumber){
+       if (phoneNumber.getText().length()==4) {
+            phoneNumber.setText(phoneNumber.getText()+".");
+        }
+        if (phoneNumber.getText().length()==8) {
+            phoneNumber.setText(phoneNumber.getText()+".");
+        }
+        return phoneNumber.getText();
+   }
+    
     public static String randomString(Random rng, int length) {
 
         String characters = "abcd_efghij_klm_nopqrst_uvwxyz_";

@@ -21,7 +21,7 @@ public class FrmHangSanXuat extends javax.swing.JPanel {
 
     HangSanXuatDao dao = new HangSanXuatDao();
     int index = 0;
-    
+
     public FrmHangSanXuat() {
         initComponents();
         init();
@@ -329,6 +329,11 @@ public class FrmHangSanXuat extends javax.swing.JPanel {
             Msgbox.alert(this, "Không được để trống mã HSX!");
             return;
         }
+        if (txtMaHSX.getText().trim().length() < 4 || txtMaHSX.getText().trim().length() > 10) {
+            Msgbox.alert(this, "Mã hãng sản xuất từ 4 đến 10 ký tự!");
+            this.txtMaHSX.requestFocus();
+            return;
+        }
         if (txtTenHSX.getText().trim().equals("")) {
             Msgbox.alert(this, "Không được để trống tên HSX!");
             return;
@@ -408,23 +413,23 @@ public class FrmHangSanXuat extends javax.swing.JPanel {
         txtTenHSX.setText(model.getTenHSX());
         txtTimKiem.setText("");
     }
-    
+
     public boolean checkTrungMa(JTextField txt) {
         if (dao.selectById(txt.getText()) == null) {
             return true;
         } else {
-            Msgbox.alert(this, txt.getText()+ " đã tồn tại.");
+            Msgbox.alert(this, txt.getText() + " đã tồn tại.");
             return false;
         }
     }
-    
+
     HangSanXuat getModel() {
         HangSanXuat model = new HangSanXuat();
         model.setMaHSX(txtMaHSX.getText());
         model.setTenHSX(txtTenHSX.getText());
         return model;
     }
-    
+
     private void insert() {
         HangSanXuat model = getModel();
         try {
@@ -437,12 +442,12 @@ public class FrmHangSanXuat extends javax.swing.JPanel {
             Msgbox.alert(this, "Thêm mới thất bại!");
         }
     }
-    
+
     private void clear() {
         this.setModel(new HangSanXuat());
         this.setStatus(true);
     }
-    
+
     private void update() {
         HangSanXuat model = getModel();
         try {
@@ -454,7 +459,7 @@ public class FrmHangSanXuat extends javax.swing.JPanel {
             Msgbox.alert(this, "Cập nhật thất bại!");
         }
     }
-    
+
     private void delete() {
         if (Msgbox.confirm(this, "Bạn có muốn xóa hay không?")) {
             String macd = txtMaHSX.getText();

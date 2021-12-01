@@ -8,7 +8,9 @@ package com.mobilez.ui;
 import com.mobilez.dao.NhaCungCapDao;
 import com.mobilez.models.NhaCungCap;
 import com.mobilez.utils.Msgbox;
+import com.mobilez.utils.TextAffect;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -114,7 +116,7 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
         jLabel10.setText("Email:");
 
         btnthem.setBackground(new java.awt.Color(34, 116, 173));
-        btnthem.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 24)); // NOI18N
+        btnthem.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 14)); // NOI18N
         btnthem.setForeground(new java.awt.Color(255, 255, 255));
         btnthem.setText("Thêm");
         btnthem.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +126,7 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
         });
 
         btnSua.setBackground(new java.awt.Color(34, 116, 173));
-        btnSua.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 24)); // NOI18N
+        btnSua.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 14)); // NOI18N
         btnSua.setForeground(new java.awt.Color(255, 255, 255));
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +136,7 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
         });
 
         btnMoi.setBackground(new java.awt.Color(34, 116, 173));
-        btnMoi.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 24)); // NOI18N
+        btnMoi.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 14)); // NOI18N
         btnMoi.setForeground(new java.awt.Color(255, 255, 255));
         btnMoi.setText("Mới");
         btnMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +165,14 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
         txtsodt.setBackground(new java.awt.Color(34, 116, 173));
         txtsodt.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
         txtsodt.setForeground(new java.awt.Color(255, 255, 255));
+        txtsodt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtsodtKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtsodtKeyReleased(evt);
+            }
+        });
 
         txtsofax.setBackground(new java.awt.Color(34, 116, 173));
         txtsofax.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
@@ -184,7 +194,7 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã NCC", "Tên NCC", "Địa chỉ", "Số DT", "Số Fax", "Website", "Email"
+                "Mã NCC", "Tên NCC", "Địa chỉ", "Số ĐT", "Số Fax", "Website", "Email"
             }
         ) {
             Class[] types = new Class [] {
@@ -228,7 +238,7 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 203, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane3)
@@ -250,20 +260,21 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtdiachi)
-                            .addComponent(txttenncc)
-                            .addComponent(txtsofax)
-                            .addComponent(txtwebsite)
-                            .addComponent(txtemail)
-                            .addComponent(txtsodt, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnthem, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSua)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnMoi)))
-                .addGap(15, 15, 15))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnthem, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSua)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnMoi))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtdiachi)
+                                .addComponent(txttenncc)
+                                .addComponent(txtsofax)
+                                .addComponent(txtwebsite)
+                                .addComponent(txtemail)
+                                .addComponent(txtsodt, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(11, 11, 11))
             .addComponent(jSeparator1)
         );
 
@@ -279,18 +290,17 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtmancc, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel5)
                             .addComponent(txttenncc, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -314,12 +324,12 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 461, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnthem, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnthem)
                             .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39))))
+                        .addGap(62, 62, 62))))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtdiachi, txtemail, txtmancc, txtsodt, txtsofax, txttenncc, txtwebsite});
@@ -331,6 +341,10 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
         // TODO add your handling code here:
         if (this.checkform()) {
+            if (!ncdao.checkDuplicate(this.txtmancc.getText().trim())) {
+                Msgbox.alert(this, "Mã đã tồn tại");
+                return;
+            }
             this.insert();
             this.clearform();
         }
@@ -358,6 +372,25 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
         index = tblncc.getSelectedRow();
         showDetail();
     }//GEN-LAST:event_tblnccMouseClicked
+
+    private void txtsodtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsodtKeyReleased
+        // TODO add your handling code here:
+            TextAffect.convertToPhoneDot(txtsodt);
+    }//GEN-LAST:event_txtsodtKeyReleased
+
+    private void txtsodtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsodtKeyPressed
+        // TODO add your handling code here:
+        if (txtsodt.getText().length()==5) {
+            if (evt.getKeyCode()==KeyEvent.VK_BACK_SPACE) {
+                txtsodt.setText(txtsodt.getText().substring(0,4));
+            }
+        }
+        if (txtsodt.getText().length()==9) {
+            if (evt.getKeyCode()==KeyEvent.VK_BACK_SPACE) {
+                txtsodt.setText(txtsodt.getText().substring(0,8));
+            }
+        }
+    }//GEN-LAST:event_txtsodtKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -426,10 +459,7 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
     private void insert() {
         NhaCungCap nc = getform();
         try {
-            if (!ncdao.checkDuplicate(this.txtmancc.getText().trim())) {
-                Msgbox.alert(this, "Mã đã tồn tại");
-                return;
-            }
+            
             ncdao.insert(nc);
             this.filltable();
             Msgbox.alert(this, "Thêm mới thành công");
@@ -470,11 +500,17 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
             this.txtmancc.requestFocus();
             return false;
         }
+        if (txtmancc.getText().trim().length()<4||txtmancc.getText().trim().length()>10) {
+            Msgbox.alert(this, "Mã nhà cung cấp từ 4 đến 10 ký tự!");
+            this.txtmancc.requestFocus();
+            return false;
+        }
         if (this.txttenncc.getText().trim().length() == 0) {
             Msgbox.alert(this, "Tên nhà cung cấp không được để trống");
             this.txttenncc.requestFocus();
             return false;
         }
+        
         if (this.txtdiachi.getText().trim().length() == 0) {
             Msgbox.alert(this, "Địa chỉ không được để trống");
             this.txtdiachi.requestFocus();
@@ -501,7 +537,8 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
             return false;
         }
         String reSDT = "(03|05|07|08|09)\\d{8,9}";
-        if (!this.txtsodt.getText().matches(reSDT)) {
+        String sdt = txtsodt.getText().replace(".", "");
+        if (!sdt.matches(reSDT)) {
             Msgbox.alert(this, "Số Điện Thoại Không đúng định dạng");
             return false;
         }

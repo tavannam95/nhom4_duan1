@@ -10,6 +10,7 @@ import com.mobilez.models.NhanVien;
 import com.mobilez.utils.Auth;
 import com.mobilez.utils.JdbcHelper;
 import com.mobilez.utils.Msgbox;
+import com.mobilez.utils.TextAffect;
 import com.mobilez.utils.XDate;
 import com.mobilez.utils.XImage;
 import java.awt.Color;
@@ -17,6 +18,7 @@ import static java.awt.Color.blue;
 import static java.awt.Color.pink;
 import static java.awt.Color.white;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.List;
 import javax.swing.JFileChooser;
@@ -48,6 +50,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
         initComponents();
         modelTbl = (DefaultTableModel) tblList.getModel();
         fillToTable();
+        this.clear();
     }
 
     public boolean check() {
@@ -61,13 +64,12 @@ public class FrmNhanVien extends javax.swing.JPanel {
         } else {
             txtMaNV.setBackground(cl);
         }
-
+        
         //check độ dài chữ
-        if (txtMaNV.getText().matches("[a-zA-Z0-9]{5,10}")) {
+        if (txtMaNV.getText().matches("[a-zA-Z0-9]{4,10}")) {
             txtMaNV.setBackground(cl);
         } else {
-            Msgbox.alert(null, "Mã nhân viên phải có từ 5 - 10 ký tự \n Không được có ký tự đặc biệt");
-            txtMaNV.setText("");
+            Msgbox.alert(null, "Mã nhân viên phải có từ 4 - 10 ký tự \n Không được có ký tự đặc biệt");
             txtMaNV.requestFocus();
             txtMaNV.setBackground(pink);
             return false;
@@ -104,7 +106,6 @@ public class FrmNhanVien extends javax.swing.JPanel {
             Date d = sdf.parse(ns);
         } catch (Exception e) {
             Msgbox.alert(this, "Vui lòng nhập đúng định dạng dd/MM/YYYY");
-            txtNgaySinh.setText("");
             txtNgaySinh.requestFocus();
             txtNgaySinh.setBackground(pink);
             return false;
@@ -120,11 +121,11 @@ public class FrmNhanVien extends javax.swing.JPanel {
             txtSDT.setBackground(cl);
         }
         //check sdt
-        if (txtSDT.getText().matches("(09|08|07|05|03)[0-9]{8}")) {
+        String sdt = txtSDT.getText().replace(".", "");
+        if (sdt.matches("(09|08|07|05|03)[0-9]{8}")) {
             txtSDT.setBackground(cl);
         } else {
             Msgbox.alert(null, "SDT phải có 10 số bắt đầu từ 09,08,07,05,03");
-            txtSDT.setText("");
             txtSDT.requestFocus();
             txtSDT.setBackground(pink);
             return false;
@@ -649,6 +650,14 @@ public class FrmNhanVien extends javax.swing.JPanel {
                 txtSDTActionPerformed(evt);
             }
         });
+        txtSDT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSDTKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSDTKeyReleased(evt);
+            }
+        });
 
         buttonGroup2.add(rdoQuanLy);
         rdoQuanLy.setFont(new java.awt.Font("Baloo 2", 1, 14)); // NOI18N
@@ -921,7 +930,8 @@ public class FrmNhanVien extends javax.swing.JPanel {
             txtSDT.setBackground(cl);
         }
         //check sdt
-        if (txtSDT.getText().matches("(09|08|07|05|03)[0-9]{8}")) {
+        String sdt = txtSDT.getText().replace(".", "");
+        if (sdt.matches("(09|08|07|05|03)[0-9]{8}")) {
             txtSDT.setBackground(cl);
         } else {
             Msgbox.alert(null, "SDT phải có 10 số bắt đầu từ 09,08,07,05,03");
@@ -1039,6 +1049,26 @@ public class FrmNhanVien extends javax.swing.JPanel {
     private void txtSDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSDTActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSDTActionPerformed
+
+    private void txtSDTKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSDTKeyReleased
+        // TODO add your handling code here:
+        TextAffect.convertToPhoneDot(txtSDT);
+        
+    }//GEN-LAST:event_txtSDTKeyReleased
+
+    private void txtSDTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSDTKeyPressed
+        // TODO add your handling code here:
+        if (txtSDT.getText().length()==5) {
+            if (evt.getKeyCode()==KeyEvent.VK_BACK_SPACE) {
+                txtSDT.setText(txtSDT.getText().substring(0,4));
+            }
+        }
+        if (txtSDT.getText().length()==9) {
+            if (evt.getKeyCode()==KeyEvent.VK_BACK_SPACE) {
+                txtSDT.setText(txtSDT.getText().substring(0,8));
+            }
+        }
+    }//GEN-LAST:event_txtSDTKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
