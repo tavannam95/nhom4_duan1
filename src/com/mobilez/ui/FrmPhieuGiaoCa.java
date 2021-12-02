@@ -223,6 +223,10 @@ public class FrmPhieuGiaoCa extends javax.swing.JPanel {
     }//GEN-LAST:event_tblMatHangMouseClicked
 
     private void btnGiaoCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGiaoCaActionPerformed
+        if (Auth.giaoCa) {
+            Msgbox.alert(this, "Bạn đã giao ca mời bạn nhận ca mới");
+            return;
+        }
         if (Msgbox.confirm(this, "Bạn xác nhận giao ca?")) {
             giaoCa();
             Msgbox.alert(this, "Giao ca thành công!!");
@@ -294,6 +298,7 @@ public class FrmPhieuGiaoCa extends javax.swing.JPanel {
             String query = "update PhieuGiaoCa set NgayGC = ? where MaPGC = ?";
             JdbcHelper.update(query, new Date(),Auth.maPGC);
             Auth.giaoCa();
+            model.setRowCount(0);
         } catch (Exception e) {
             e.printStackTrace();
         }
