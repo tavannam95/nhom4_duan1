@@ -61,7 +61,7 @@ public class FrmPhieuBaoHanh extends javax.swing.JPanel {
         txtNgayHetHan = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblMatHang = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        txtSearchMH = new javax.swing.JTextField();
         txtsoIMEI = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -77,7 +77,7 @@ public class FrmPhieuBaoHanh extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblBaoHanh = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtSearchPBH = new javax.swing.JTextField();
         lblDSMH1 = new javax.swing.JLabel();
         lblDSMH2 = new javax.swing.JLabel();
 
@@ -121,6 +121,12 @@ public class FrmPhieuBaoHanh extends javax.swing.JPanel {
             }
         });
         jScrollPane2.setViewportView(tblMatHang);
+
+        txtSearchMH.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchMHKeyReleased(evt);
+            }
+        });
 
         txtsoIMEI.setFont(new java.awt.Font("Baloo 2", 0, 13)); // NOI18N
 
@@ -207,6 +213,12 @@ public class FrmPhieuBaoHanh extends javax.swing.JPanel {
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mobilez/icon/search_32px.png"))); // NOI18N
 
+        txtSearchPBH.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchPBHKeyReleased(evt);
+            }
+        });
+
         lblDSMH1.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 24)); // NOI18N
         lblDSMH1.setForeground(new java.awt.Color(255, 255, 255));
         lblDSMH1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -227,13 +239,13 @@ public class FrmPhieuBaoHanh extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSearchMH, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSearchPBH, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnThem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -279,7 +291,7 @@ public class FrmPhieuBaoHanh extends javax.swing.JPanel {
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnMoi, btnSua, btnThem});
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextField1, jTextField2});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtSearchMH, txtSearchPBH});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,7 +302,7 @@ public class FrmPhieuBaoHanh extends javax.swing.JPanel {
                     .addComponent(lblDSMH2))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSearchMH, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,7 +328,7 @@ public class FrmPhieuBaoHanh extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSearchPBH, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnThem)
                         .addComponent(btnSua)
                         .addComponent(btnMoi)))
@@ -367,6 +379,14 @@ public class FrmPhieuBaoHanh extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tblBaoHanhMouseClicked
 
+    private void txtSearchMHKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchMHKeyReleased
+        this.selectMatHang(txtSearchMH.getText());
+    }//GEN-LAST:event_txtSearchMHKeyReleased
+
+    private void txtSearchPBHKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchPBHKeyReleased
+        this.selectPBH(txtSearchPBH.getText());
+    }//GEN-LAST:event_txtSearchPBHKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMoi;
@@ -381,8 +401,6 @@ public class FrmPhieuBaoHanh extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblDSMH;
     private javax.swing.JLabel lblDSMH1;
     private javax.swing.JLabel lblDSMH2;
@@ -392,6 +410,8 @@ public class FrmPhieuBaoHanh extends javax.swing.JPanel {
     private javax.swing.JTable tblMatHang;
     private javax.swing.JTextField txtMaMH;
     private javax.swing.JTextField txtNgayHetHan;
+    private javax.swing.JTextField txtSearchMH;
+    private javax.swing.JTextField txtSearchPBH;
     private javax.swing.JTextField txtsoIMEI;
     // End of variables declaration//GEN-END:variables
 
@@ -417,12 +437,49 @@ public class FrmPhieuBaoHanh extends javax.swing.JPanel {
         }
 
     }
-
+    
+    private void selectPBH(String keywork){
+        try {
+            String query = "select SOIMEI, PHIEUBAOHANH.MAMH,TENMH,NGAYHETHAN,PHIEUBAOHANH.TRANGTHAI from PHIEUBAOHANH join MATHANG on PHIEUBAOHANH.MAMH = MATHANG.MAMH"
+                    + " where SOIMEI like '%"+keywork+"%' or PHIEUBAOHANH.MAMH like '%"+keywork+"%' or PHIEUBAOHANH.trangthai like '%"+keywork+"%'"
+                    + "or TENMH like N'%"+keywork+"%'";
+            ResultSet rs = JdbcHelper.query(query);
+            modelBaoHanh.setRowCount(0);
+            while (rs.next()) {                
+                modelBaoHanh.addRow(new Object[]{rs.getString(1),rs.getString(2),
+                                                 rs.getString(3),XDate.toString(rs.getDate(4))
+                                                 ,rs.getBoolean(5)?"Đang bảo hành":"Trống"});
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     private void filltableMatHang() {
         try {
             String sql = "select MAMH,TENHSX,TENMH,RAM,DUNGLUONG,MAUSAC,TGBH\n"
                     + "                    from MATHANG join HANGSANXUAT on MATHANG.MAHSX=HANGSANXUAT.MAHSX\n"
                     + "                    join QUOCGIA on MATHANG.MAQG= QUOCGIA.MAQG where TRANGTHAI = 1";
+            ResultSet rs = JdbcHelper.query(sql);
+            modelmatHang.setRowCount(0);
+            while (rs.next()) {
+                modelmatHang.addRow(new Object[]{
+                    rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4) + "GB",
+                    rs.getString(5) + "GB", rs.getString(6),
+                    rs.getString(7) + " tháng"});
+            }
+            rs.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void selectMatHang(String keywork){
+        try {
+            String sql = "select MAMH,TENHSX,TENMH,RAM,DUNGLUONG,MAUSAC,TGBH\n"
+                    + "                    from MATHANG join HANGSANXUAT on MATHANG.MAHSX=HANGSANXUAT.MAHSX\n"
+                    + "                    join QUOCGIA on MATHANG.MAQG= QUOCGIA.MAQG where TRANGTHAI = 1 and"
+                    + "                     (mamh like '%"+keywork+"%' or tenMH like N'%"+keywork+"%' or TENHSX like N'%"+keywork+"%')";
             ResultSet rs = JdbcHelper.query(sql);
             modelmatHang.setRowCount(0);
             while (rs.next()) {
