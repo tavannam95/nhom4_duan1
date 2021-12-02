@@ -29,7 +29,10 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
     long tongTien = 0;
     int indexMatHang = -1;
     int indexHoaDon = -1;
+    long tongtienKM = 0;
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    boolean maKM = false;
+
     public FrmHoaDonBanLe() {
         initComponents();
         modelMatHang = (DefaultTableModel) tblMatHang.getModel();
@@ -73,6 +76,9 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         txtSoLuong = new javax.swing.JTextField();
         lblTongTien = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtMaKM = new javax.swing.JTextField();
+        btnApDung = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(34, 116, 173));
 
@@ -260,6 +266,23 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         lblTongTien.setForeground(new java.awt.Color(255, 0, 0));
         lblTongTien.setText("0VND");
 
+        jLabel6.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Mã khuyến mãi:");
+
+        txtMaKM.setBackground(new java.awt.Color(34, 116, 173));
+        txtMaKM.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
+
+        btnApDung.setBackground(new java.awt.Color(34, 116, 173));
+        btnApDung.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
+        btnApDung.setForeground(new java.awt.Color(255, 255, 255));
+        btnApDung.setText("Áp dụng");
+        btnApDung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApDungActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -320,6 +343,12 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtMaKM, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnApDung)
+                        .addGap(171, 171, 171)
                         .addComponent(btnInHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -371,7 +400,11 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTongGia, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnInHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMaKM, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnApDung)))
                 .addGap(63, 63, 63))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -414,6 +447,7 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         if (Msgbox.confirm(null, "Bạn có muốn làm mới danh sách hóa đơn chi tiết không?")) {
             modelHoaDon.setRowCount(0);
             lblTongTien.setText("0 VND");
+            tongTien = 0;
         }
         this.filltoTableMatHang();
     }//GEN-LAST:event_btnXoaAllActionPerformed
@@ -434,8 +468,14 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnInHoaDonActionPerformed
 
+    private void btnApDungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApDungActionPerformed
+
+        checkMKH();
+    }//GEN-LAST:event_btnApDungActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnApDung;
     private javax.swing.JButton btnInHoaDon;
     private javax.swing.JButton btnThemHoaDon;
     private javax.swing.JButton btnXoa;
@@ -444,6 +484,7 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblDSMH;
@@ -458,6 +499,7 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
     private javax.swing.JTable tblHoaDonChiTiet;
     private javax.swing.JTable tblMatHang;
     private javax.swing.JTextField txtGiaBanLe;
+    private javax.swing.JTextField txtMaKM;
     private javax.swing.JTextField txtMaMH;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtSoLuong;
@@ -485,8 +527,6 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
             e.printStackTrace();
         }
     }
-    
-    
 
     private void selectTblMatHang(String keywork) {
         try {
@@ -516,15 +556,14 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         txtGiaBanLe.setText(tblMatHang.getValueAt(indexMatHang, 7).toString());
         txtSoLuong.setText("");
     }
-    
-    
+
     private void filltoHoaDon() {
         int thanhtien;
         int soluong = Integer.parseInt(txtSoLuong.getText());
         int dongia = Integer.parseInt(txtGiaBanLe.getText());
         int soluongtrongQuay = Integer.parseInt(tblMatHang.getValueAt(indexMatHang, 8).toString());
         thanhtien = soluong * dongia;
-        modelHoaDon.addRow(new Object[]{txtMaMH.getText(), txtTenMatHang.getText(), dongia,soluongtrongQuay, soluong, thanhtien});
+        modelHoaDon.addRow(new Object[]{txtMaMH.getText(), txtTenMatHang.getText(), dongia, soluongtrongQuay, soluong, thanhtien});
         tongTien += thanhtien;
         String price = String.valueOf(tongTien);
         lblTongTien.setText(StringToPrice.getPrice(price));
@@ -564,14 +603,16 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         }
         return true;
     }
-    
-    
-    
+
     private void inHoaDon() {
         try {
             int maHDBL = 0;
             String insertHDBL = "insert into HOADONBANLE values (?,?,?)";
-            JdbcHelper.update(insertHDBL, Auth.user.getMaNV(), new Date(), tongTien);
+            if (maKM) {
+                JdbcHelper.update(insertHDBL, Auth.user.getMaNV(), new Date(), tongtienKM);
+            } else {
+                JdbcHelper.update(insertHDBL, Auth.user.getMaNV(), new Date(), tongTien);
+            }
             String querymaHDBL = "select top (1) MAHDBL from HOADONBANLE order by MaHDBL desc";
             ResultSet rs = JdbcHelper.query(querymaHDBL);
             if (rs.next()) {
@@ -580,13 +621,21 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
                 String updateQuayHang = "Update ChiTietQuayHang set soluong = soluong - ? where maQH = ? and maMH = ?";
                 String insertCTPGC = "insert into CHITIETPHIEUGIAOCA values (?,?,?)";
                 String updateMatHang = "Update MatHang set soluong = soluong - ? where mamh = ?";
+                String updateChiTietPGC = "update CHITIETPHIEUGIAOCA set soluong = soluong + ? where MAMH = ? and MAPGC = ?";
+                String queryCHITIETPGC = "select * from CHITIETPHIEUGIAOCA where MAMH = ? and MAPGC = ?";
                 for (int i = 0; i < modelHoaDon.getRowCount(); i++) {
                     String maMH = tblHoaDonChiTiet.getValueAt(i, 0).toString();
                     int soLuong = Integer.parseInt(tblHoaDonChiTiet.getValueAt(i, 4).toString());
                     int donGia = Integer.parseInt(tblHoaDonChiTiet.getValueAt(i, 2).toString());
+                    ResultSet rs2 = JdbcHelper.query(queryCHITIETPGC, maMH,Auth.maPGC);
                     JdbcHelper.update(insertCTHDBL, maHDBL, maMH, soLuong, donGia);
                     JdbcHelper.update(updateQuayHang, soLuong, Auth.maQuay, maMH);
-                    JdbcHelper.update(insertCTPGC, Auth.maPGC, maMH, soLuong);
+                    if (rs2.next()) {
+                        JdbcHelper.update(updateChiTietPGC, soLuong, maMH, Auth.maPGC);
+                    }else{
+                        JdbcHelper.update(insertCTPGC, Auth.maPGC, maMH, soLuong);
+                    }
+                    
                     JdbcHelper.update(updateMatHang, soLuong, maMH);
                 }
             }
@@ -594,6 +643,8 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
             lblTongTien.setText("0 VND");
             filltoTableMatHang();
             clear();
+            tongTien = 0;
+            tongtienKM = 0;
             Msgbox.alert(this, "In thành công");
         } catch (Exception e) {
             e.printStackTrace();
@@ -620,8 +671,8 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         txtSoLuong.setText("");
         txtTenMatHang.setText("");
     }
-    
-    private void deleteHoaDOn(){
+
+    private void deleteHoaDOn() {
         indexHoaDon = tblHoaDonChiTiet.getSelectedRow();
         if (tblHoaDonChiTiet.getRowCount() <= 0) {
             Msgbox.alert(null, "Danh sách trống!");
@@ -631,18 +682,18 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
             Msgbox.alert(null, "Bạn chưa chọn mặt hàng cần xóa!");
             return;
         }
-        tongTien -= Integer.parseInt(tblHoaDonChiTiet.getValueAt(indexHoaDon, 4).toString());
+        tongTien -= Integer.parseInt(tblHoaDonChiTiet.getValueAt(indexHoaDon, 5).toString());
         lblTongTien.setText(tongTien + " VND");
 
         try {
-            
+
             String query = "select MATHANG.MAMH,TENHSX,TENMH,RAM,DUNGLUONG,MAUSAC,TENQG,GIABANLE, CHITIETQUAYHANG.SOLUONG\n"
                     + "                    from MATHANG join CHITIETQUAYHANG ON MATHANG.MAMH=CHITIETQUAYHANG.MAMH\n"
                     + "                    join HANGSANXUAT on MATHANG.MAHSX=HANGSANXUAT.MAHSX\n"
                     + "                    join QUOCGIA on MATHANG.MAQG=QUOCGIA.MAQG\n"
                     + "                    where MAQH = ? and MATHANG.MAMH = ?";
             String maMH = tblHoaDonChiTiet.getValueAt(indexHoaDon, 0).toString();
-            ResultSet rs = JdbcHelper.query(query, Auth.maQuay,maMH);
+            ResultSet rs = JdbcHelper.query(query, Auth.maQuay, maMH);
             if (rs.next()) {
                 int ram = rs.getInt("RAM");
                 int dungLuong = rs.getInt("DungLuong");
@@ -655,5 +706,53 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
             e.printStackTrace();
         }
         modelHoaDon.removeRow(indexHoaDon);
+    }
+
+    private void checkMKH() {
+        long khuyenmai = 0;
+        try {
+            String query = "select * from KhuyenMai where MAKM = ?";
+            ResultSet rs = JdbcHelper.query(query, txtMaKM.getText().trim());
+            if (rs.next()) {
+                int mucKM = rs.getInt("MucKM");
+                Date now = new Date();
+                Date ngayBD = rs.getDate("NgayBD");
+                Date ngayKT = rs.getDate("NgayKT");
+                if (now.compareTo(ngayBD) >= 0 && now.compareTo(ngayKT) <= 0) {
+                    if (tongTien >= rs.getInt("DIEUKIEN")) {
+                        if (rs.getBoolean("KIEUKM")) {
+                            khuyenmai = tongTien * mucKM / 100;
+                            if (khuyenmai > rs.getInt("GIAMTOIDA")) {
+                                khuyenmai = rs.getInt("GIAMTOIDA");
+                            }
+                            tongtienKM = tongTien - khuyenmai;
+                            Msgbox.alert(this, "Áp dụng mã thành công hóa đơn đã được giảm " + khuyenmai + " VND");
+                        } else {
+                            tongtienKM = tongTien - mucKM;
+                            Msgbox.alert(this, "Áp dụng mã thành công hóa đơn đã được giảm " + mucKM + " VND");
+                        }
+                        lblTongTien.setText(StringToPrice.getPrice(String.valueOf(tongtienKM)));
+                        maKM = true;
+                    } else {
+                        Msgbox.alert(this, "Mã chỉ áp dụng cho tổng tiền trên " + rs.getInt("DIEUKIEN") + " VND");
+                        txtMaKM.requestFocus();
+                        lblTongTien.setText(StringToPrice.getPrice(String.valueOf(tongTien)));
+                        return;
+                    }
+                } else {
+                    Msgbox.alert(this, "Mã giảm giá đã hết hạn!!");
+                    lblTongTien.setText(StringToPrice.getPrice(String.valueOf(tongTien)));
+                    txtMaKM.requestFocus();
+                }
+            } else {
+                Msgbox.alert(this, "Mã khuyến mãi không tồn tại");
+                lblTongTien.setText(StringToPrice.getPrice(String.valueOf(tongTien)));
+                txtMaKM.requestFocus();
+                return;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
     }
 }
