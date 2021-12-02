@@ -74,7 +74,7 @@ public class HangSanXuatDao extends MainDAO<HangSanXuat, String> {
     }
     
     public List<HangSanXuat> selectByMAHSX(String keyword) {
-        String sql = "SELECT * FROM HANGSANXUAT WHERE MAHSX LIKE ?";
-        return selectBySql(sql, "%" + keyword + "%");
+        String sql = "SELECT * FROM HANGSANXUAT WHERE MAHSX like N'%"+keyword+"%' or TENHSX like N'%"+keyword+"%'";
+        return selectBySql(sql);
     }
 }
