@@ -18,23 +18,23 @@ import java.util.List;
  */
 public class PhieuBaoHanhDao {
 
-    String insert = " insert into PHIEUBAOHANH values ?, ?, ?, ?";
+    String insert = " insert into PHIEUBAOHANH values (?, ?, ?, ?)";
 
     public void insert(PhieuBaoHanh ph) {
         int s = JdbcHelper.update(insert, ph.getSoIMEI(),
                 ph.getMaMH(),
                 ph.getNgayHetHan(),
-                ph.getTrangThai());
+                ph.isTrangThai());
     }
-    String Update = "Update PHIEUBAOHANH set SOIMEI = ?, NGAYHETHAN = ? , TRANGTHAI=? , where MAMH=?";
+    String Update = "Update PHIEUBAOHANH set TRANGTHAI=? where SOIMEI=?";
 
     public void update(PhieuBaoHanh ph) {
         JdbcHelper.update(Update, ph.getSoIMEI(),
                 ph.getNgayHetHan(),
-                ph.getTrangThai(),
+                ph.isTrangThai(),
                 ph.getMaMH());
     }
-    String selectbyid = "Select * from PHIEUBAOHANH where MAMH=?";
+    String selectbyid = "Select * from PHIEUBAOHANH where SOIMEI =?";
 
     public PhieuBaoHanh selectbyID(String id) {
         List<PhieuBaoHanh> list = selectbysql(selectbyid, id);
@@ -56,10 +56,10 @@ public class PhieuBaoHanhDao {
             ResultSet rs = JdbcHelper.query(sql, args);
             while (rs.next()) {
                 PhieuBaoHanh ph = new PhieuBaoHanh();
-                ph.setSoIMEI(rs.getInt("SOIMEI"));
+                ph.setSoIMEI(rs.getString("SOIMEI"));
                 ph.setMaMH(rs.getString("MAMH"));
                 ph.setNgayHetHan(rs.getDate("NGAYHETHAN"));
-                ph.setTrangThai(rs.getString("TRANGTHAI"));
+                ph.setTrangThai(rs.getBoolean("TRANGTHAI"));
                 list.add(ph);
             }
 
@@ -67,5 +67,13 @@ public class PhieuBaoHanhDao {
             e.printStackTrace();
         }
         return list;
+    }
+    
+    public  boolean checkDuplicate(String maPBH) {
+        PhieuBaoHanh pbh = selectbyID(maPBH);
+        if (pbh == null) {
+            return true;
+        }
+        return false;
     }
 }

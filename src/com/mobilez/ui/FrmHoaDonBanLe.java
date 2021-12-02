@@ -137,9 +137,9 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         lblKhachHang1.setForeground(new java.awt.Color(255, 255, 255));
         lblKhachHang1.setText("Mặt hàng");
 
-        lblKho.setFont(new java.awt.Font("Baloo Chettan 2", 1, 18)); // NOI18N
+        lblKho.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 18)); // NOI18N
         lblKho.setForeground(new java.awt.Color(255, 255, 255));
-        lblKho.setText("Quầy hàng:");
+        lblKho.setText("Quầy:");
 
         lblDSMH.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 24)); // NOI18N
         lblDSMH.setForeground(new java.awt.Color(255, 255, 255));
@@ -221,8 +221,9 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         lblDSMH1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDSMH1.setText("Cập nhật");
 
-        lblQuayHang.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 18)); // NOI18N
+        lblQuayHang.setFont(new java.awt.Font("Baloo 2", 0, 18)); // NOI18N
         lblQuayHang.setForeground(new java.awt.Color(255, 255, 255));
+        lblQuayHang.setText("Quầy hàng 1");
 
         jLabel2.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -329,12 +330,12 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
                 .addComponent(lblDSMH)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblQuayHang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblKhachHang1)
                         .addComponent(lblDSMH1)
-                        .addComponent(lblKho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(lblKho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblQuayHang, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -575,7 +576,6 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
             ResultSet rs = JdbcHelper.query(querymaHDBL);
             if (rs.next()) {
                 maHDBL = rs.getInt("MAHDBL");
-
                 String insertCTHDBL = "insert into CHITIETHOADONBANLE values (?,?,?,?)";
                 String updateQuayHang = "Update ChiTietQuayHang set soluong = soluong - ? where maQH = ? and maMH = ?";
                 String insertCTPGC = "insert into CHITIETPHIEUGIAOCA values (?,?,?)";
