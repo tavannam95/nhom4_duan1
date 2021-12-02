@@ -18,6 +18,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import com.mobilez.utils.Auth;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 
 /**
  *
@@ -101,6 +104,14 @@ public class FrmHome extends javax.swing.JFrame {
         pnlShow.add(p);
         pnlShow.validate();
         pnlShow.repaint();
+    }
+    
+    void openHDSD() {
+        try {
+            Desktop.getDesktop().browse(new File("help/homeScreen.html").toURI());
+        } catch (IOException ex) {
+            Msgbox.alert(this, "Không tìm thấy file hướng dẫn!");
+        }
     }
 
     /**
@@ -1866,7 +1877,7 @@ public class FrmHome extends javax.swing.JFrame {
     }//GEN-LAST:event_lblXemQuayMouseClicked
 
     private void lblHDBS1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDBS1MouseClicked
-        // TODO add your handling code here:
+        openHDSD();
     }//GEN-LAST:event_lblHDBS1MouseClicked
 
     private void lblHDBL1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHDBL1MouseClicked
