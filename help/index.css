@@ -1,0 +1,121 @@
+*{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px auto;
+}
+@font-face {
+    src: url(font/BalooChettan2-ExtraBold.ttf);
+    font-family: baloo;
+}
+.container{
+    min-height: 400px;
+    width: 1000px;
+}
+header{
+    position: relative;
+    height: 260px;
+    background-color: #00334e;
+}
+header img {
+    float: left;
+}
+header h1{
+    font-weight: bold;
+    font-size: 100px;
+    margin-left: 330px;
+    color: white;
+    font-family: baloo;
+    line-height: 220px;
+    text-shadow: black 5px 5px 5px;
+
+}
+
+nav{
+    margin-top: 15px;
+    height: 40px;
+    background-color: #0e5a85;
+    line-height: 60px;
+    font-family: baloo;
+    color: orangered;
+}
+nav>ul{
+    list-style: none;
+}
+nav>ul>li{
+    text-align: center;
+    width: 130px;
+    padding: 0 5px 0 5px;
+    height: 40px;
+    border-right: 2px solid white;
+    float: left;
+    line-height: 38px;
+}
+nav>ul>li>a{
+    text-decoration: none;
+    color: #c5cc53;
+}
+nav>ul>li>.sub{
+    display: none;
+}
+nav>ul>li:hover{
+    background-color: #2274ad;
+}
+nav>ul>li:hover>a{
+    color: #FFFF33;
+
+}
+nav>ul>li:hover>.sub{
+    display: block;
+    
+}
+.sub{
+    position: absolute;
+}
+.sub>ul{
+    list-style: none;
+}
+.sub>ul>li{
+    width: 130px;
+    background-color: #2274ad;
+}
+.sub>ul>li:hover{
+    background-color: #00334e;
+}
+.sub>ul>li:hover>a{
+    color: #dcd22e;
+}
+.sub>ul>li>a{
+    color: #e6edb7;
+    font-size: 12px;
+    text-decoration: none;
+}
+article{
+    margin-top: 15px;
+    min-height: 380px;
+    width: 65%;
+    float: center;
+}
+article>img{
+    width: 100%;
+}
+.text{
+    color: black;
+    font-family: baloo;
+    width: 100%;
+    padding: 15px;
+    line-height: 40px;
+}
+.text>b{
+    font-size: 24px;
+}
+footer{
+    height: 30px;
+    background-color: #00334e;
+    clear: both;
+    
+}
+footer>h4{
+    text-align: center;
+    color: white;
+    line-height: 30px;
+}
