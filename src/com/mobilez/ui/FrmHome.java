@@ -53,6 +53,7 @@ public class FrmHome extends javax.swing.JFrame {
         this.setIconImage(new ImageIcon("src/com/mobilez/icon/logoM_32px.png").getImage());
         this.setResizable(false);
         setTimeLbl();
+        chonCa();
         pnlParent.removeAll();
         pnlParent.revalidate();
         pnlParent.repaint();
@@ -91,6 +92,17 @@ public class FrmHome extends javax.swing.JFrame {
                 }
             }
 
+        };
+        t.start();
+    }
+    
+    private void chonCa(){
+        Thread t = new Thread(){
+            @Override
+            public void run() {
+                new JDialogChonCaLam(null,true).setVisible(true);
+            }
+            
         };
         t.start();
     }
