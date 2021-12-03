@@ -73,7 +73,7 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
     }
 
     //check
-    private boolean chkThem() {
+    private boolean chkForm() {
 
         if (txtMaKM.getText().trim().equals("")) {
             txtMaKM.setText("");
@@ -881,7 +881,7 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
             e.printStackTrace();
             lblMaKM.setForeground(Color.red);
         }
-        if (this.chkThem()) {
+        if (this.chkForm()) {
             return;
         }
         this.them();
@@ -898,7 +898,7 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
         }
         txtDieuKien.setText(StringToPrice.getPrice(txtDieuKien.getText()));
         txtGiamToiDa.setText(StringToPrice.getPrice(txtGiamToiDa.getText()));
-        if (chkThem()) {
+        if (this.chkForm()) {
             return;
         }
         this.sua();
