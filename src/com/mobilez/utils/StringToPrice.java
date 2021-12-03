@@ -5,12 +5,16 @@
  */
 package com.mobilez.utils;
 
+import javax.swing.JTextField;
+
 /**
  *
  * @author LAPTOP
  */
 public class StringToPrice {
     public static String getPrice(String price){
+        price = price.replace(" VND", "");
+        price = price.replace(".", "");
         String tongtien2 = "";
         if (price.length() > 3) {
             int tongDauCham = (int) price.length() / 3; // Tổng số dấu chấm trong thành tiền
@@ -46,6 +50,8 @@ public class StringToPrice {
             return price + " VND";
         }
     }
+    
+    
     
     public static String getStringPriceToMoney(String priceString){
         String rs = priceString;
