@@ -57,7 +57,7 @@ public class JDialogChonCaLam extends javax.swing.JDialog {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(34, 116, 173));
+        jPanel1.setBackground(new java.awt.Color(85, 136, 163));
 
         jLabel1.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
