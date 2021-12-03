@@ -46,8 +46,6 @@ public class FrmHome extends javax.swing.JFrame {
             new ManHinhChao(this, true).setVisible(true);
         }
         new DangNhapJDialog(this, true).setVisible(true);
-        new JDialogChonCaLam(this, true).setVisible(true);
-
         this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon("src/com/mobilez/icon/logoM_32px.png").getImage());
