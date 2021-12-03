@@ -529,7 +529,6 @@ public class FrmThongKe extends javax.swing.JPanel {
         pnlDoanhSo.setLayout(pnlDoanhSoLayout);
         pnlDoanhSoLayout.setHorizontalGroup(
             pnlDoanhSoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlDoanhSoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlDoanhSoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -548,6 +547,9 @@ public class FrmThongKe extends javax.swing.JPanel {
                         .addComponent(cboThangDS, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(pnlDoanhSoLayout.createSequentialGroup()
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 986, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pnlDoanhSoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cboNamDS, cboSort, cboThangDS});
