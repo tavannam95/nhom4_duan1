@@ -42,6 +42,7 @@ public class FrmHome extends javax.swing.JFrame {
     public FrmHome() {
         initComponents();
         //Test 
+        new ManHinhChao(this, true).setVisible(true);
         new DangNhapJDialog(this, true).setVisible(true);
         new JDialogChonCaLam(this, true).setVisible(true);
 
@@ -55,7 +56,7 @@ public class FrmHome extends javax.swing.JFrame {
         pnlParent.repaint();
         TextAffect.colorText(lblMobileZ);
         lblWelcome.setText("Xin chào " + Auth.user.getHoTen() + "!");
-
+        
     }
 
     class jPanelGradient extends JPanel {
