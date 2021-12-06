@@ -830,18 +830,10 @@ public class FrmHangHoa extends javax.swing.JPanel {
         String giamuaString = txtGiaMua.getText();
 //        String giaBanSiString = txtGiaBanSi.getText();
         String giaBanLeString = txtGiaBanLe.getText();
-        int vtm,vts,vtl;
-        vtm = giamuaString.indexOf(" ");
-//        vts = giaBanSiString.indexOf(" ");
-        vtl = giaBanLeString.indexOf(" ");
-        giamuaString = giamuaString.substring(0, vtm);
-//        giaBanSiString = giaBanSiString.substring(0, vts);
-        giaBanLeString = giaBanLeString.substring(0, vtl);
-        giamuaString = giamuaString.trim().replace(".", "");
-//        giaBanSiString = giaBanSiString.trim().replace(".", "");
-        giaBanLeString = giaBanLeString.trim().replace(".", "");
-        
-        
+        giamuaString = giamuaString.replace("VND", "");
+        giamuaString = giamuaString.replaceAll(" ", "");
+        giaBanLeString = giaBanLeString.replace("VND", "");
+        giaBanLeString = giaBanLeString.replace(" ", "");
         MatHang mh = new MatHang(txtMaMH.getText(), hsx.getMaHSX(), txtTenMH.getText(),
                 Integer.parseInt(txtRAM.getText()), Integer.parseInt(txtDungLuong.getText()),
                 txtMauSac.getText(), qg.getMaQG(),
@@ -937,7 +929,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             txtTGBH.setText(tblList.getValueAt(index, 9).toString());
             lblHinhMH.setToolTipText(tblList.getValueAt(index, 7).toString());
 //            txtGiaBanSi.setText(tblList.getValueAt(index, 11).toString());
-            txtGiaBanLe.setText(tblList.getValueAt(index, 12).toString());
+            txtGiaBanLe.setText(tblList.getValueAt(index, 11).toString());
 //            Icon ic = XImage.read(lblHinhMH.getToolTipText());
             ImageIcon icon = XImage.read(lblHinhMH.getToolTipText());
             Image image = icon.getImage(); // transform it 
@@ -948,7 +940,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
             this.setSelectedComboboxQG(tblList.getValueAt(index, 6).toString(), cboQuocGia);
             hideBtnThem();
 
-            if (this.getTrangThaiMH(tblList.getValueAt(index, 13).toString())) {
+            if (this.getTrangThaiMH(tblList.getValueAt(index, 12).toString())) {
                 rdoTrangThai1.setSelected(true);
             } else {
                 rdoTrangThai0.setSelected(true);
@@ -1006,30 +998,30 @@ public class FrmHangHoa extends javax.swing.JPanel {
     private void searchMH() {
         try {
             String sql = "select MAMH,TENHSX,TENMH,RAM,DUNGLUONG,MAUSAC,TENQG,HINHMH,\n"
-                    + "SOLUONG,TGBH, GIAMUA,GIABANSI,GIABANLE,TRANGTHAI\n"
+                    + "SOLUONG,TGBH, GIAMUA,GIABAN,TRANGTHAI\n"
                     + "from MATHANG join HANGSANXUAT on MATHANG.MAHSX=HANGSANXUAT.MAHSX\n"
                     + "join QUOCGIA on MATHANG.MAQG= QUOCGIA.MAQG\n"
                     + "where MAMH like ? or TENMH like ? or TENHSX like ?";
             String search = "%" + txtSearch.getText() + "%";
             ResultSet rs = JdbcHelper.query(sql, search, search, search);
-            String giaMua, giaBanSi, giaBanLe;
+            String giaMua,  giaBanLe;
             modelTbl.setRowCount(0);
             while (rs.next()) {
                 giaMua = rs.getString(11);
-                giaBanSi = rs.getString(12);
-                giaBanLe = rs.getString(13);
+//                giaBanSi = rs.getString(12);
+                giaBanLe = rs.getString(12);
                 int gm = giaMua.indexOf(".");
-                int gbs = giaBanSi.indexOf(".");
+//                int gbs = giaBanSi.indexOf(".");
                 int gbl = giaBanLe.indexOf(".");
                 giaMua = giaMua.substring(0, gm);
-                giaBanSi = giaBanSi.substring(0, gbs);
+//                giaBanSi = giaBanSi.substring(0, gbs);
                 giaBanLe = giaBanLe.substring(0, gbl);
                 modelTbl.addRow(new Object[]{
                     rs.getString(1), rs.getString(2), rs.getString(3),
                     this.getDlRAM(rs.getInt(4)), this.getDlRAM(rs.getInt(5)), rs.getString(6),
                     rs.getString(7), rs.getString(8), rs.getInt(9),
-                    rs.getInt(10), giaMua, giaBanSi,
-                    giaBanLe, this.getTrangThaiMH(rs.getBoolean(14))});
+                    rs.getInt(10), giaMua, 
+                    giaBanLe, this.getTrangThaiMH(rs.getBoolean(13))});
             }
             rs.close();
         } catch (Exception e) {
@@ -1040,31 +1032,23 @@ public class FrmHangHoa extends javax.swing.JPanel {
     private void fillTable() {
         try {
             String sql = "select MAMH,TENHSX,TENMH,RAM,DUNGLUONG,MAUSAC,TENQG,HINHMH,SOLUONG,TGBH,\n"
-                    + "                    GIAMUA,GIABANSI,GIABANLE,TRANGTHAI\n"
+                    + "                    GIAMUA,GIABAN,TRANGTHAI\n"
                     + "                    from MATHANG join HANGSANXUAT on MATHANG.MAHSX=HANGSANXUAT.MAHSX\n"
                     + "                    join QUOCGIA on MATHANG.MAQG= QUOCGIA.MAQG";
             ResultSet rs = JdbcHelper.query(sql);
-            String giaMua, giaBanSi, giaBanLe;
+            String giaMua,  giaBanLe;
             modelTbl.setRowCount(0);
             while (rs.next()) {
                 giaMua = rs.getString(11);
-                giaBanSi = rs.getString(12);
-                giaBanLe = rs.getString(13);
-                int gm = giaMua.indexOf(".");
-                int gbs = giaBanSi.indexOf(".");
-                int gbl = giaBanLe.indexOf(".");
-                giaMua = giaMua.substring(0, gm);
-                giaBanSi = giaBanSi.substring(0, gbs);
-                giaBanLe = giaBanLe.substring(0, gbl);
-                giaMua = StringToPrice.getPrice(giaMua);
-                giaBanSi = StringToPrice.getPrice(giaBanSi);
-                giaBanLe = StringToPrice.getPrice(giaBanLe);
+//                giaMua = StringToPrice.getPrice(giaMua);
+                giaBanLe = rs.getString(12);
+//                giaBanLe = StringToPrice.getPrice(giaBanLe);
                 modelTbl.addRow(new Object[]{
                     rs.getString(1), rs.getString(2), rs.getString(3),
                     this.getDlRAM(rs.getInt(4)), this.getDlRAM(rs.getInt(5)), rs.getString(6),
                     rs.getString(7), rs.getString(8), rs.getInt(9),
-                    rs.getInt(10), giaMua, giaBanSi,
-                    giaBanLe, this.getTrangThaiMH(rs.getBoolean(14))});
+                    rs.getInt(10), giaMua, 
+                    giaBanLe, this.getTrangThaiMH(rs.getBoolean(13))});
             }
             rs.close();
         } catch (Exception e) {
@@ -1170,11 +1154,11 @@ public class FrmHangHoa extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã MH", "HSX", "Tên MH", "RAM", "Dung lượng", "Màu", "Quốc gia", "Hình", "Số Lượng", "TGBH", "Giá Mua", "Giá bán sỉ", "Giá bán lẻ", "Trạng thái"
+                "Mã MH", "HSX", "Tên MH", "RAM", "Dung lượng", "Màu", "Quốc gia", "Hình", "Số Lượng", "TGBH", "Giá Mua", "Giá bán lẻ", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
