@@ -106,15 +106,15 @@
                                               <Component id="btnClear" linkSize="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="lblTrangThai" alignment="0" max="32767" attributes="0"/>
-                                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                                          <Component id="lblBH" alignment="1" max="32767" attributes="0"/>
-                                                          <Component id="lblGBS" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                      <Component id="lblTrangThai" alignment="0" max="32767" attributes="0"/>
+                                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                                          <Component id="lblBH" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
+                                                          <Component id="lblSL" min="-2" max="-2" attributes="0"/>
                                                       </Group>
-                                                      <Component id="lblSL" min="-2" max="-2" attributes="0"/>
                                                   </Group>
+                                                  <Component id="lblGBL" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
@@ -126,25 +126,16 @@
                                                       <Component id="txtGiaMua" min="-2" pref="86" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                          <Component id="txtTGBH" alignment="0" max="32767" attributes="0"/>
-                                                          <Component id="txtGiaBanSi" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
-                                                      </Group>
+                                                      <Component id="txtTGBH" min="-2" pref="92" max="-2" attributes="0"/>
                                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="lblThang" min="-2" max="-2" attributes="0"/>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="lblGBL" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace max="-2" attributes="0"/>
-                                                              <Component id="txtGiaBanLe" min="-2" pref="87" max="-2" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
+                                                      <Component id="lblThang" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="rdoTrangThai1" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Component id="rdoTrangThai0" min="-2" max="-2" attributes="0"/>
                                                   </Group>
+                                                  <Component id="txtGiaBanLe" min="-2" pref="261" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -226,9 +217,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtGiaBanSi" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="lblGBL" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblGBS" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtGiaBanLe" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -710,26 +699,6 @@
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDungLuongKeyPressed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtGiaBanSi">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ad" green="74" red="22" type="rgb"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-            <MatteColorBorder>
-              <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
-            </MatteColorBorder>
-          </Border>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDungLuongKeyPressed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JTextField" name="txtGiaBanLe">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -759,17 +728,6 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Gi&#xe1; b&#xe1;n l&#x1ebb;"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblGBS">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Baloo Chettan 2" size="14" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Gi&#xe1; b&#xe1;n s&#x1ec9;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblHinhMH">
