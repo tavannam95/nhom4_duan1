@@ -76,10 +76,8 @@ public class JDialogHangHoa extends javax.swing.JDialog {
         btnThemQG = new javax.swing.JButton();
         txtGiaMua = new javax.swing.JTextField();
         lblGM = new javax.swing.JLabel();
-        txtGiaBanSi = new javax.swing.JTextField();
         lblGBL = new javax.swing.JLabel();
         txtGiaBanLe = new javax.swing.JTextField();
-        lblGBS = new javax.swing.JLabel();
         lblBH = new javax.swing.JLabel();
         txtTGBH = new javax.swing.JTextField();
         lblThang = new javax.swing.JLabel();
@@ -188,10 +186,6 @@ public class JDialogHangHoa extends javax.swing.JDialog {
         lblGM.setForeground(new java.awt.Color(255, 255, 255));
         lblGM.setText("Giá mua");
 
-        txtGiaBanSi.setBackground(new java.awt.Color(34, 116, 173));
-        txtGiaBanSi.setForeground(new java.awt.Color(255, 255, 255));
-        txtGiaBanSi.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
-
         lblGBL.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblGBL.setForeground(new java.awt.Color(255, 255, 255));
         lblGBL.setText("Giá bán lẻ");
@@ -199,10 +193,6 @@ public class JDialogHangHoa extends javax.swing.JDialog {
         txtGiaBanLe.setBackground(new java.awt.Color(34, 116, 173));
         txtGiaBanLe.setForeground(new java.awt.Color(255, 255, 255));
         txtGiaBanLe.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
-
-        lblGBS.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
-        lblGBS.setForeground(new java.awt.Color(255, 255, 255));
-        lblGBS.setText("Giá bán sỉ");
 
         lblBH.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblBH.setForeground(new java.awt.Color(255, 255, 255));
@@ -242,9 +232,13 @@ public class JDialogHangHoa extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblGM)
-                .addGap(50, 50, 50)
-                .addComponent(txtGiaMua, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblGM)
+                    .addComponent(lblGBL))
+                .addGap(38, 38, 38)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtGiaMua, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                    .addComponent(txtGiaBanLe))
                 .addContainerGap(157, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -293,21 +287,12 @@ public class JDialogHangHoa extends javax.swing.JDialog {
                                     .addGap(83, 83, 83)
                                     .addComponent(btnClear))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(lblBH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lblGBS, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblBH, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtTGBH, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtGiaBanSi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtTGBH, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblThang)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(lblGBL)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtGiaBanLe, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGap(0, 6, Short.MAX_VALUE)))
+                                    .addComponent(lblThang)))
+                            .addGap(0, 60, Short.MAX_VALUE)))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(lblHMH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -323,7 +308,11 @@ public class JDialogHangHoa extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGM)
                     .addComponent(txtGiaMua, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(184, 184, 184))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblGBL)
+                    .addComponent(txtGiaBanLe, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(140, 140, 140))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(18, 18, 18)
@@ -357,13 +346,7 @@ public class JDialogHangHoa extends javax.swing.JDialog {
                                 .addComponent(cboQuocGia, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblQG)
                                 .addComponent(btnThemQG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(66, 66, 66)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtGiaBanSi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblGBL)
-                                .addComponent(lblGBS)
-                                .addComponent(txtGiaBanLe, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(25, 25, 25)
+                            .addGap(121, 121, 121)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtTGBH, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblBH)
@@ -478,7 +461,6 @@ public class JDialogHangHoa extends javax.swing.JDialog {
     private javax.swing.JLabel lblBH;
     private javax.swing.JLabel lblDL;
     private javax.swing.JLabel lblGBL;
-    private javax.swing.JLabel lblGBS;
     private javax.swing.JLabel lblGM;
     private javax.swing.JLabel lblHMH;
     private javax.swing.JLabel lblHSX;
@@ -491,7 +473,6 @@ public class JDialogHangHoa extends javax.swing.JDialog {
     private javax.swing.JLabel lblThang;
     private javax.swing.JTextField txtDungLuong;
     private javax.swing.JTextField txtGiaBanLe;
-    private javax.swing.JTextField txtGiaBanSi;
     private javax.swing.JTextField txtGiaMua;
     private javax.swing.JTextField txtMaMH;
     private javax.swing.JTextField txtMauSac;
@@ -643,27 +624,27 @@ public void fillCboHSX() {
             return false;
         }
         //validate gia si
-        if (txtGiaBanSi.getText().trim().equals("")) {
-            Msgbox.alert(null, "Không được để trống giá bán sỉ!");
-            txtGiaBanSi.setText("");
-            txtGiaBanSi.requestFocus();;
-            return false;
-        }
-        try {
-            Integer.parseInt(txtGiaBanSi.getText());
-        } catch (Exception e) {
-            Msgbox.alert(null, "Giá bán sỉ phải là số!");
-            txtGiaBanSi.setText("");
-            txtGiaBanSi.requestFocus();
-            return false;
-        }
-        lblGBS.setForeground(Color.white);
-        if (Integer.parseInt(txtGiaBanSi.getText()) <= 0) {
-            Msgbox.alert(null, "Giá bán sỉ phải lơn hơn 0!");
-            txtGiaBanSi.setText("");
-            txtGiaBanSi.requestFocus();
-            return false;
-        }
+//        if (txtGiaBanSi.getText().trim().equals("")) {
+//            Msgbox.alert(null, "Không được để trống giá bán sỉ!");
+//            txtGiaBanSi.setText("");
+//            txtGiaBanSi.requestFocus();;
+//            return false;
+//        }
+//        try {
+//            Integer.parseInt(txtGiaBanSi.getText());
+//        } catch (Exception e) {
+//            Msgbox.alert(null, "Giá bán sỉ phải là số!");
+//            txtGiaBanSi.setText("");
+//            txtGiaBanSi.requestFocus();
+//            return false;
+//        }
+//        lblGBS.setForeground(Color.white);
+//        if (Integer.parseInt(txtGiaBanSi.getText()) <= 0) {
+//            Msgbox.alert(null, "Giá bán sỉ phải lơn hơn 0!");
+//            txtGiaBanSi.setText("");
+//            txtGiaBanSi.requestFocus();
+//            return false;
+//        }
         //validate gia ban le
         if (txtGiaBanLe.getText().trim().equals("")) {
             Msgbox.alert(null, "Không được để trống giá bán lẻ!");
@@ -724,7 +705,6 @@ public void fillCboHSX() {
                 txtDungLuong.setText("");
                 txtMauSac.setText("");
                 txtGiaMua.setText("");
-                txtGiaBanSi.setText("");
                 txtGiaBanLe.setText("");
                 txtTGBH.setText("");
                 lblHinhMH.setToolTipText(null);
@@ -763,7 +743,7 @@ public void fillCboHSX() {
         mh.settGBH(Integer.parseInt(txtTGBH.getText()));
         mh.setGiaMua(Double.parseDouble(txtGiaMua.getText()));
         mh.setGiaBanLe(Double.parseDouble(txtGiaBanLe.getText()));
-        mh.setGiaBanSi(Double.parseDouble(txtGiaBanSi.getText()));
+//        mh.setGiaBanSi(Double.parseDouble(txtGiaBanSi.getText()));
         mh.setSoLuong(0);
         mh.setTrangThai(true);
         return mh;

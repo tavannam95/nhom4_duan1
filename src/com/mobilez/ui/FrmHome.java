@@ -71,6 +71,7 @@ public class FrmHome extends javax.swing.JFrame {
             GradientPaint gp = new GradientPaint(0, 0, color1, 180, height, color2);
             g2.setPaint(gp);
             g2.fillRect(0, 0, width, height);
+            
         }
     }
 
