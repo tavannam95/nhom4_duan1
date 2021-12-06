@@ -23,7 +23,7 @@ public class MatHangDAO extends MainDAO<MatHang, String> {
     String updateSQL = "update MATHANG set MAHSX = ?,TENMH = ?,RAM = ?,\n"
             + "DUNGLUONG = ?,MAUSAC = ?,MAQG = ?,HINHMH = ?,\n"
             + "SOLUONG = ?,TGBH = ?,GIAMUA = ?,\n"
-            + "GIABANLE = ?,TRANGTHAI = ? where MAMH like ?";
+            + "GIABAN = ?,TRANGTHAI = ? where MAMH like ?";
     String deleteSQL = "delete MATHANG where MAMH like ?";
     String selectAllSQL = "select * from MATHANG";
     String selectByIdSQL = "select * from MATHANG where MAMH like ?";
