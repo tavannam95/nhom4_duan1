@@ -14,13 +14,13 @@ public class MatHang {
     private int rAM,dungLuong;
     private String mauSac,maQG,hinhMH;
     private int soLuong,tGBH;
-    private double giaMua,giaBanSi,giaBanLe;
+    private double giaMua,giaBanLe;
     private boolean trangThai;
 
     public MatHang() {
     }
 
-    public MatHang(String maMH, String maHSX, String tenMH, int rAM, int dungLuong, String mauSac, String maQG, String hinhMH, int soLuong, int tGBH, double giaMua, double giaBanSi, double giaBanLe, boolean trangThai) {
+    public MatHang(String maMH, String maHSX, String tenMH, int rAM, int dungLuong, String mauSac, String maQG, String hinhMH, int soLuong, int tGBH, double giaMua, double giaBanLe, boolean trangThai) {
         this.maMH = maMH;
         this.maHSX = maHSX;
         this.tenMH = tenMH;
@@ -32,11 +32,11 @@ public class MatHang {
         this.soLuong = soLuong;
         this.tGBH = tGBH;
         this.giaMua = giaMua;
-        this.giaBanSi = giaBanSi;
         this.giaBanLe = giaBanLe;
         this.trangThai = trangThai;
     }
 
+    
     public String getMaMH() {
         return maMH;
     }
@@ -125,14 +125,6 @@ public class MatHang {
         this.giaMua = giaMua;
     }
 
-    public double getGiaBanSi() {
-        return giaBanSi;
-    }
-
-    public void setGiaBanSi(double giaBanSi) {
-        this.giaBanSi = giaBanSi;
-    }
-
     public double getGiaBanLe() {
         return giaBanLe;
     }
@@ -148,6 +140,8 @@ public class MatHang {
     public void setTrangThai(boolean trangThai) {
         this.trangThai = trangThai;
     }
+
+   
 
     
 

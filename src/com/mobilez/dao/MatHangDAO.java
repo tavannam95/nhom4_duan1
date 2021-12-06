@@ -19,10 +19,10 @@ import java.util.List;
  */
 public class MatHangDAO extends MainDAO<MatHang, String> {
 
-    String insertSQL = "insert into MATHANG values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    String insertSQL = "insert into MATHANG values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
     String updateSQL = "update MATHANG set MAHSX = ?,TENMH = ?,RAM = ?,\n"
             + "DUNGLUONG = ?,MAUSAC = ?,MAQG = ?,HINHMH = ?,\n"
-            + "SOLUONG = ?,TGBH = ?,GIAMUA = ?,GIABANSI = ?,\n"
+            + "SOLUONG = ?,TGBH = ?,GIAMUA = ?,\n"
             + "GIABANLE = ?,TRANGTHAI = ? where MAMH like ?";
     String deleteSQL = "delete MATHANG where MAMH like ?";
     String selectAllSQL = "select * from MATHANG";
@@ -37,7 +37,7 @@ public class MatHangDAO extends MainDAO<MatHang, String> {
         int s = JdbcHelper.update(insertSQL, entity.getMaMH(),entity.getMaHSX(),entity.getTenMH(),
                 entity.getrAM(), entity.getDungLuong(),entity.getMauSac(),entity.getMaQG(),
                 entity.getHinhMH(),entity.getSoLuong(),entity.gettGBH(),entity.getGiaMua(),
-                entity.getGiaBanSi(),entity.getGiaBanLe(),entity.isTrangThai());
+                entity.getGiaBanLe(),entity.isTrangThai());
         try {
             ResultSet rs = JdbcHelper.query(selectAllKho);
             while (rs.next()) {                
@@ -63,7 +63,7 @@ public class MatHangDAO extends MainDAO<MatHang, String> {
         int s = JdbcHelper.update(updateSQL, entity.getMaHSX(),entity.getTenMH(),
                 entity.getrAM(), entity.getDungLuong(),entity.getMauSac(),entity.getMaQG(),
                 entity.getHinhMH(),entity.getSoLuong(),entity.gettGBH(),entity.getGiaMua(),
-                entity.getGiaBanSi(),entity.getGiaBanLe(),entity.isTrangThai(), entity.getMaMH());
+                entity.getGiaBanLe(),entity.isTrangThai(), entity.getMaMH());
         if (s <= 0) {
             Msgbox.alert(null, "Cập nhật thất bại!");
             return;
@@ -103,7 +103,7 @@ public class MatHangDAO extends MainDAO<MatHang, String> {
                 MatHang mh = new MatHang(rs.getString(1), rs.getString(2), rs.getString(3),
                         rs.getInt(4), rs.getInt(5), rs.getString(6), rs.getString(7),
                         rs.getString(8), rs.getInt(9), rs.getInt(10), rs.getDouble(11),
-                        rs.getDouble(12),rs.getDouble(13),rs.getBoolean(14));
+                        rs.getDouble(12),rs.getBoolean(13));
                 lstMH.add(mh);
             }
             rs.close();
