@@ -69,7 +69,7 @@ public class FrmXemPhieu extends javax.swing.JPanel {
             modelPXK = (DefaultTableModel) tblPXK.getModel();
             modelPBH = (DefaultTableModel) tblPBH.getModel();
             modelPGC = (DefaultTableModel) tblPGC.getModel();
-            modelHDBS = (DefaultTableModel) tblHDBS.getModel();
+//            modelHDBS = (DefaultTableModel) tblHDBS.getModel();
             modelHDBL = (DefaultTableModel) tblHDBL.getModel();
         } catch (Exception e) {
             e.printStackTrace();
@@ -171,33 +171,33 @@ public class FrmXemPhieu extends javax.swing.JPanel {
         }
     }
 
-    private void fillTableHDBS() {
-        try {
-            String sql = "select MAHDBS,TENKH,TENK,HOTEN,convert(varchar,NGAYLAP,103) as NGAYLAP,TONGGIA from \n"
-                    + "HOADONBANSI join KHACHHANG on HOADONBANSI.MAKH=KHACHHANG.MAKH\n"
-                    + "			join KHO on HOADONBANSI.MAK=KHO.MAK\n"
-                    + "			join NHANVIEN on HOADONBANSI.MANV=NHANVIEN.MANV";
-            ResultSet rs = JdbcHelper.query(sql);
-            modelHDBS.setRowCount(0);
-            String tongGia;
-            while (rs.next()) {
-                tongGia = rs.getString("TONGGIA");
-                int vt = tongGia.indexOf(".");
-                tongGia = tongGia.substring(0, vt);
-                modelHDBS.addRow(new Object[]{
-                    rs.getString("MAHDBS"),
-                    rs.getString("TENKH"),
-                    rs.getString("TENK"),
-                    rs.getString("HOTEN"),
-                    rs.getString("NGAYLAP"),
-                    tongGia
-                });
-            }
-            rs.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    private void fillTableHDBS() {
+//        try {
+//            String sql = "select MAHDBS,TENKH,TENK,HOTEN,convert(varchar,NGAYLAP,103) as NGAYLAP,TONGGIA from \n"
+//                    + "HOADONBANSI join KHACHHANG on HOADONBANSI.MAKH=KHACHHANG.MAKH\n"
+//                    + "			join KHO on HOADONBANSI.MAK=KHO.MAK\n"
+//                    + "			join NHANVIEN on HOADONBANSI.MANV=NHANVIEN.MANV";
+//            ResultSet rs = JdbcHelper.query(sql);
+//            modelHDBS.setRowCount(0);
+//            String tongGia;
+//            while (rs.next()) {
+//                tongGia = rs.getString("TONGGIA");
+//                int vt = tongGia.indexOf(".");
+//                tongGia = tongGia.substring(0, vt);
+//                modelHDBS.addRow(new Object[]{
+//                    rs.getString("MAHDBS"),
+//                    rs.getString("TENKH"),
+//                    rs.getString("TENK"),
+//                    rs.getString("HOTEN"),
+//                    rs.getString("NGAYLAP"),
+//                    tongGia
+//                });
+//            }
+//            rs.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     private void fillTableHDBL() {
         try {
@@ -258,11 +258,8 @@ public class FrmXemPhieu extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         tblPGC = new javax.swing.JTable();
         pnlPBHang = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        tblHDBS = new javax.swing.JTable();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblHDBL = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(34, 116, 173));
@@ -549,32 +546,6 @@ public class FrmXemPhieu extends javax.swing.JPanel {
 
         pnlPBHang.setBackground(new java.awt.Color(34, 116, 173));
 
-        tblHDBS.setBackground(new java.awt.Color(34, 116, 173));
-        tblHDBS.setForeground(new java.awt.Color(255, 255, 255));
-        tblHDBS.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Mã HĐ bán sỉ", "Khách hàng", "Kho", "Nhân viên", "Ngày lập", "Tổng giá"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblHDBS.setGridColor(new java.awt.Color(255, 255, 255));
-        tblHDBS.setRowHeight(25);
-        tblHDBS.setSelectionBackground(new java.awt.Color(51, 51, 51));
-        tblHDBS.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        tblHDBS.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblHDBS.setShowGrid(true);
-        jScrollPane5.setViewportView(tblHDBS);
-
         tblHDBL.setBackground(new java.awt.Color(34, 116, 173));
         tblHDBL.setForeground(new java.awt.Color(255, 255, 255));
         tblHDBL.setModel(new javax.swing.table.DefaultTableModel(
@@ -601,11 +572,6 @@ public class FrmXemPhieu extends javax.swing.JPanel {
         tblHDBL.setShowGrid(true);
         jScrollPane6.setViewportView(tblHDBL);
 
-        jLabel1.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Hóa đơn bán sỉ");
-
         jLabel2.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -618,23 +584,15 @@ public class FrmXemPhieu extends javax.swing.JPanel {
             .addGroup(pnlPBHangLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlPBHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlPBHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1033, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         pnlPBHangLayout.setVerticalGroup(
             pnlPBHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPBHangLayout.createSequentialGroup()
-                .addGroup(pnlPBHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlPBHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
-                    .addComponent(jScrollPane6)))
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE))
         );
 
         pnlParentCard.add(pnlPBHang, "card2");
@@ -755,7 +713,7 @@ public class FrmXemPhieu extends javax.swing.JPanel {
             pnlParentCard.validate();
             pnlParentCard.repaint();
             //fill
-            this.fillTableHDBS();
+//            this.fillTableHDBS();
             this.fillTableHDBL();
         } catch (Exception e) {
             e.printStackTrace();
@@ -764,7 +722,6 @@ public class FrmXemPhieu extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -775,7 +732,6 @@ public class FrmXemPhieu extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JLabel lblPBH;
     private javax.swing.JLabel lblPBHang;
@@ -791,7 +747,6 @@ public class FrmXemPhieu extends javax.swing.JPanel {
     private javax.swing.JPanel pnlPXK;
     private javax.swing.JPanel pnlParentCard;
     private javax.swing.JTable tblHDBL;
-    private javax.swing.JTable tblHDBS;
     private javax.swing.JTable tblPBH;
     private javax.swing.JTable tblPGC;
     private javax.swing.JTable tblPNK;
