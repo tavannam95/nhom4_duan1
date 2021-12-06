@@ -1091,11 +1091,11 @@ public class FrmHome extends javax.swing.JFrame {
         pnlMenuBHLayout.setHorizontalGroup(
             pnlMenuBHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMenuBHLayout.createSequentialGroup()
-                .addGap(155, 155, 155)
+                .addContainerGap()
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(631, Short.MAX_VALUE))
+                .addContainerGap(780, Short.MAX_VALUE))
         );
         pnlMenuBHLayout.setVerticalGroup(
             pnlMenuBHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

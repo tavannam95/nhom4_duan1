@@ -29,7 +29,7 @@ public class FrmThongKe extends javax.swing.JPanel {
     DefaultTableModel modelSPTK;
     DefaultTableModel modelSPHH;
     DefaultTableModel modelDTBL;
-    DefaultTableModel modelDTBS;
+//    DefaultTableModel modelDTBS;
 
     public FrmThongKe() {
         initComponents();
@@ -41,38 +41,7 @@ public class FrmThongKe extends javax.swing.JPanel {
     }
 
     ///////CODE DOANH THU BAN SI
-    private int getTongSLBanSi() {
-        try {
-            int sl = 0;
-            String sql = "select sum(SOLUONG) from CHITIETHOADONBANSI \n"
-                    + "join HOADONBANSI on HOADONBANSI.MAHDBS=CHITIETHOADONBANSI.MAHDBS \n"
-                    + "where year(NGAYLAP) = ? and month(NGAYLAP) = ?";
-            ResultSet rs = JdbcHelper.query(sql, cboNamDTBS.getSelectedItem() + "", cboThangDTBS.getSelectedItem() + "");
-            while (rs.next()) {
-                sl = rs.getInt(1);
-            }
-            rs.close();
-            return sl;
-        } catch (Exception e) {
-            return 0;
-        }
-    }
-
-    private int getTongGiaBanSi() {
-        try {
-            int sl = 0;
-            String sql = "select sum(TONGGIA) from HOADONBANSI where year(NGAYLAP) = ? and month(NGAYLAP) = ?";
-            ResultSet rs = JdbcHelper.query(sql, cboNamDTBS.getSelectedItem() + "", cboThangDTBS.getSelectedItem() + "");
-            while (rs.next()) {
-                sl = rs.getInt(1);
-            }
-            rs.close();
-            return sl;
-        } catch (Exception e) {
-            return 0;
-        }
-    }
-
+    
     /////CODE DOANH THU BÁN LẺ
     private int getTongSLBanLe() {
         try {
@@ -291,7 +260,7 @@ public class FrmThongKe extends javax.swing.JPanel {
     private void getAllModel() {
         try {
             modelDS = (DefaultTableModel) tblDS.getModel();
-            modelDTBS = (DefaultTableModel) tblDTBS.getModel();
+//            modelDTBS = (DefaultTableModel) tblDTBS.getModel();
             modelDTBL = (DefaultTableModel) tblDTBL.getModel();
             modelSPBC = (DefaultTableModel) tblSPBC.getModel();
             modelSPHH = (DefaultTableModel) tblSPHH.getModel();
@@ -357,17 +326,10 @@ public class FrmThongKe extends javax.swing.JPanel {
         jScrollPane6 = new javax.swing.JScrollPane();
         tblDTBL = new javax.swing.JTable();
         lblTitle6 = new javax.swing.JLabel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        tblDTBS = new javax.swing.JTable();
-        lblTitle7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         cboNamDTBL = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         cboThangDTBL = new javax.swing.JComboBox<>();
-        jLabel11 = new javax.swing.JLabel();
-        cboNamDTBS = new javax.swing.JComboBox<>();
-        jLabel12 = new javax.swing.JLabel();
-        cboThangDTBS = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(85, 159, 198));
 
@@ -840,36 +802,6 @@ public class FrmThongKe extends javax.swing.JPanel {
         lblTitle6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle6.setText("DOANH THU BÁN LẺ");
 
-        tblDTBS.setBackground(new java.awt.Color(34, 116, 173));
-        tblDTBS.setForeground(new java.awt.Color(255, 255, 255));
-        tblDTBS.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Số lượng bán được", "Tổng tiền bán đc"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblDTBS.setGridColor(new java.awt.Color(255, 255, 255));
-        tblDTBS.setRowHeight(25);
-        tblDTBS.setSelectionBackground(new java.awt.Color(51, 51, 51));
-        tblDTBS.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblDTBS.setShowGrid(true);
-        jScrollPane7.setViewportView(tblDTBS);
-
-        lblTitle7.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 24)); // NOI18N
-        lblTitle7.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitle7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle7.setText("DOANH THU BÁN SỈ");
-
         jLabel9.setFont(new java.awt.Font("Baloo Chettan 2", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Năm");
@@ -890,82 +822,39 @@ public class FrmThongKe extends javax.swing.JPanel {
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Baloo Chettan 2", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Năm");
-
-        cboNamDTBS.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cboNamDTBSItemStateChanged(evt);
-            }
-        });
-
-        jLabel12.setFont(new java.awt.Font("Baloo Chettan 2", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Tháng");
-
-        cboThangDTBS.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cboThangDTBSItemStateChanged(evt);
-            }
-        });
-
         javax.swing.GroupLayout pnlDoanhThuLayout = new javax.swing.GroupLayout(pnlDoanhThu);
         pnlDoanhThu.setLayout(pnlDoanhThuLayout);
         pnlDoanhThuLayout.setHorizontalGroup(
             pnlDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDoanhThuLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDoanhThuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lblTitle6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE))
-                    .addGroup(pnlDoanhThuLayout.createSequentialGroup()
+                .addGroup(pnlDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblTitle6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlDoanhThuLayout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cboNamDTBL, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboThangDTBL, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTitle7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnlDoanhThuLayout.createSequentialGroup()
-                        .addGroup(pnlDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlDoanhThuLayout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cboNamDTBS, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cboThangDTBS, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 3, Short.MAX_VALUE)))
+                        .addComponent(cboThangDTBL, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 844, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlDoanhThuLayout.setVerticalGroup(
             pnlDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDoanhThuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitle6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTitle7, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblTitle6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboNamDTBL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(cboThangDTBL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(cboNamDTBS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(cboThangDTBS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
+                    .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
-                    .addComponent(jScrollPane7)))
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE))
         );
 
         pnlParentCard.add(pnlDoanhThu, "card2");
@@ -1071,17 +960,12 @@ public class FrmThongKe extends javax.swing.JPanel {
         // TODO add your handling code here:
         this.fillCboNam(cboNamDTBL);
         this.fillCboThang(cboThangDTBL, cboNamDTBL);
-        this.fillCboNamBS(cboNamDTBS);
-        this.fillCboThangBS(cboThangDTBS, cboNamDTBS);
+//        this.fillCboNamBS(cboNamDTBS);
+//        this.fillCboThangBS(cboThangDTBS, cboNamDTBS);
         modelDTBL.setRowCount(0);
         modelDTBL.addRow(new Object[]{
             this.getTongSLBanLe(),
             this.getTongGiaBanLe()
-        });
-        modelDTBS.setRowCount(0);
-        modelDTBS.addRow(new Object[]{
-            this.getTongSLBanSi(),
-            this.getTongGiaBanSi()
         });
         try {
             lblDoanhThu.setForeground(Color.orange);
@@ -1173,36 +1057,18 @@ public class FrmThongKe extends javax.swing.JPanel {
         });
     }//GEN-LAST:event_cboThangDTBLItemStateChanged
 
-    private void cboNamDTBSItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboNamDTBSItemStateChanged
-        // TODO add your handling code here:
-        this.fillCboThangBS(cboThangDTBS, cboNamDTBS);
-    }//GEN-LAST:event_cboNamDTBSItemStateChanged
-
-    private void cboThangDTBSItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboThangDTBSItemStateChanged
-        // TODO add your handling code here:
-        modelDTBS.setRowCount(0);
-        modelDTBS.addRow(new Object[]{
-            this.getTongSLBanSi(),
-            this.getTongGiaBanSi()
-        });
-    }//GEN-LAST:event_cboThangDTBSItemStateChanged
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cboNamDS;
     private javax.swing.JComboBox<String> cboNamDTBL;
-    private javax.swing.JComboBox<String> cboNamDTBS;
     private javax.swing.JComboBox<String> cboNamSPBC;
     private javax.swing.JComboBox<String> cboNamSPTK;
     private javax.swing.JComboBox<String> cboSort;
     private javax.swing.JComboBox<String> cboThangDS;
     private javax.swing.JComboBox<String> cboThangDTBL;
-    private javax.swing.JComboBox<String> cboThangDTBS;
     private javax.swing.JComboBox<String> cboThangSPBC;
     private javax.swing.JComboBox<String> cboThangSPTK;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1221,7 +1087,6 @@ public class FrmThongKe extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JLabel lblDoanhSo;
     private javax.swing.JLabel lblDoanhThu;
     private javax.swing.JLabel lblHetHang;
@@ -1232,7 +1097,6 @@ public class FrmThongKe extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitle2;
     private javax.swing.JLabel lblTitle4;
     private javax.swing.JLabel lblTitle6;
-    private javax.swing.JLabel lblTitle7;
     private javax.swing.JPanel pnlDoanhSo;
     private javax.swing.JPanel pnlDoanhThu;
     private javax.swing.JPanel pnlMenuXP;
@@ -1242,7 +1106,6 @@ public class FrmThongKe extends javax.swing.JPanel {
     private javax.swing.JPanel pnlSPTonKho;
     private javax.swing.JTable tblDS;
     private javax.swing.JTable tblDTBL;
-    private javax.swing.JTable tblDTBS;
     private javax.swing.JTable tblSPBC;
     private javax.swing.JTable tblSPHH;
     private javax.swing.JTable tblSPTK;
