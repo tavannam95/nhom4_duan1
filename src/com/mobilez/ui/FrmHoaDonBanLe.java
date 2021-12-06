@@ -508,7 +508,7 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
 
     private void filltoTableMatHang() {
         try {
-            String query = "select MATHANG.MAMH,TENHSX,TENMH,RAM,DUNGLUONG,MAUSAC,TENQG,GIABANLE, CHITIETQUAYHANG.SOLUONG\n"
+            String query = "select MATHANG.MAMH,TENHSX,TENMH,RAM,DUNGLUONG,MAUSAC,TENQG,GIABAN, CHITIETQUAYHANG.SOLUONG\n"
                     + "                    from MATHANG join CHITIETQUAYHANG ON MATHANG.MAMH=CHITIETQUAYHANG.MAMH\n"
                     + "                    join HANGSANXUAT on MATHANG.MAHSX=HANGSANXUAT.MAHSX\n"
                     + "                    join QUOCGIA on MATHANG.MAQG=QUOCGIA.MAQG\n"
@@ -530,7 +530,7 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
 
     private void selectTblMatHang(String keywork) {
         try {
-            String query = "select MATHANG.MAMH,TENHSX,TENMH,RAM,DUNGLUONG,MAUSAC,TENQG,GIABANLE, CHITIETQUAYHANG.SOLUONG\n"
+            String query = "select MATHANG.MAMH,TENHSX,TENMH,RAM,DUNGLUONG,MAUSAC,TENQG,GIABAN, CHITIETQUAYHANG.SOLUONG\n"
                     + "                    from MATHANG join CHITIETQUAYHANG ON MATHANG.MAMH=CHITIETQUAYHANG.MAMH\n"
                     + "                    join HANGSANXUAT on MATHANG.MAHSX=HANGSANXUAT.MAHSX\n"
                     + "                    join QUOCGIA on MATHANG.MAQG=QUOCGIA.MAQG\n"
