@@ -824,9 +824,12 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
         if (this.chkForm()) {
             return;
         }
-        this.them();
-        this.clearForm();
-        this.fillTable();
+        if (Msgbox.confirm(null, "Bạn có muốn thêm khuyến mãi không?")) {
+            this.them();
+            this.clearForm();
+            this.fillTable();
+        }
+        
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -835,9 +838,12 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
         if (this.chkForm()) {
             return;
         }
-        this.sua();
-        this.clearForm();
-        this.fillTable();
+        if (Msgbox.confirm(null, "Bạn có muốn sửa thông tin khuyến mãi không?")) {
+            this.sua();
+            this.clearForm();
+            this.fillTable();
+        }
+        
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnTaoMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoMoiActionPerformed
