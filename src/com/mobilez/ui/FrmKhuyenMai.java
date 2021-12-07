@@ -84,8 +84,8 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
         } else {
             lblMaKM.setForeground(Color.white);
         }
-        if (txtMaKM.getText().trim().length() < 4 || txtMaKM.getText().trim().length() > 10) {
-            Msgbox.alert(this, "Mã khuyến mãi từ 4 đến 10 ký tự!");
+        if (txtMaKM.getText().trim().length() < 4 || txtMaKM.getText().trim().length() > 25) {
+            Msgbox.alert(this, "Mã khuyến mãi từ 4 đến 25 ký tự!");
             this.txtMaKM.requestFocus();
             txtMaKM.setForeground(Color.red);
             return true;

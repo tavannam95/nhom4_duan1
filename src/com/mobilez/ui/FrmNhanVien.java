@@ -66,10 +66,10 @@ public class FrmNhanVien extends javax.swing.JPanel {
         }
         
         //check độ dài chữ
-        if (txtMaNV.getText().matches("[a-zA-Z0-9]{4,10}")) {
+        if (txtMaNV.getText().matches("[a-zA-Z0-9]{4,25}")) {
             txtMaNV.setBackground(cl);
         } else {
-            Msgbox.alert(null, "Mã nhân viên phải có từ 4 - 10 ký tự \n Không được có ký tự đặc biệt");
+            Msgbox.alert(null, "Mã nhân viên phải có từ 4 - 25 ký tự \n Không được có ký tự đặc biệt");
             txtMaNV.requestFocus();
             txtMaNV.setBackground(pink);
             return false;
@@ -885,7 +885,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
         }
 
         //check độ dài chữ
-        if (txtMaNV.getText().matches("[a-zA-Z0-9]{5,10}")) {
+        if (txtMaNV.getText().matches("[a-zA-Z0-9]{4,25}")) {
             txtMaNV.setBackground(cl);
         } else {
             Msgbox.alert(null, "Mã nhân viên phải có từ 5 - 10 ký tự \n Không được có ký tự đặc biệt");
