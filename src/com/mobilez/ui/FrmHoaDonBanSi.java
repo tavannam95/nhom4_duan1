@@ -46,7 +46,7 @@ public class FrmHoaDonBanSi extends javax.swing.JPanel {
             String sql = "select * from KHO";
             ResultSet rs = JdbcHelper.query(sql);
             while (rs.next()) {
-                Kho k = new Kho(rs.getString(1), rs.getString(2), rs.getString(3));
+                Kho k = new Kho(rs.getString(1), rs.getString(2), rs.getString(3),rs.getBoolean(4));
                 modelCboKho.addElement(k);
             }
             rs.close();

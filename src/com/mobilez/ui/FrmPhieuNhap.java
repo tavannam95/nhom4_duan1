@@ -12,16 +12,36 @@ import com.mobilez.models.HangSanXuat;
 import com.mobilez.models.Kho;
 import com.mobilez.models.MatHang;
 import com.mobilez.models.NhaCungCap;
+import com.mobilez.models.PhieuNhap;
 import com.mobilez.utils.Auth;
 import com.mobilez.utils.JdbcHelper;
 import com.mobilez.utils.Msgbox;
+import com.mobilez.utils.StringToPrice;
 import com.mobilez.utils.XDate;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.FormulaEvaluator;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 /**
  *
@@ -34,6 +54,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
      */
     int indexMH = -1; //Index bảng mặt hàng
     int indexPN = -1; // Index bảng phiếu nhập
+    int indexExcel = 0;
     DefaultTableModel modeltblMatHang = new DefaultTableModel();
     DefaultTableModel modeltblPhieuNhap = new DefaultTableModel();
     DefaultComboBoxModel modelCboNCC = new DefaultComboBoxModel();
@@ -42,11 +63,125 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
     HangSanXuatDao hsxDAO = new HangSanXuatDao();
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     long tongTien = 0;
+    String exString = "";
 
     public FrmPhieuNhap() {
         initComponents();
         init();
     }
+
+    private void chosseExcel() throws IOException {
+        File exFile;
+        FileInputStream exFIS = null;
+
+        JFileChooser exFileChooser = new JFileChooser();
+        int rsChosse = exFileChooser.showOpenDialog(null);
+        if (rsChosse == JFileChooser.APPROVE_OPTION) {
+            exFile = exFileChooser.getSelectedFile();
+            // Đọc một file XSL.
+            // Đọc một file XSL.
+            FileInputStream inputStream = new FileInputStream(exFile);
+
+            Workbook workbook = WorkbookFactory.create(inputStream);
+            Iterator<Sheet> sheetIterator = workbook.sheetIterator();
+
+            Sheet sheet = workbook.getSheetAt(0);
+
+            // Create a DataFormatter to format and get each cell's value as String
+            DataFormatter dataFormatter = new DataFormatter();
+
+            Iterator<Row> rowIterator = sheet.rowIterator();
+            while (rowIterator.hasNext()) {
+                
+                Row row = rowIterator.next();
+//                System.out.println(row);
+                // Now let's iterate over the columns of the current row
+                Iterator<Cell> cellIterator = row.cellIterator();
+                while (cellIterator.hasNext()) {
+
+                    Cell cell = cellIterator.next();
+//                    System.out.println(cell);
+                    String cellValue = dataFormatter.formatCellValue(cell);
+                    int columnIndex = cell.getColumnIndex();
+                    switch (columnIndex) {
+                        case 0:
+//                            System.out.print(cellValue + ",");
+                            exString += cellValue + ",";
+
+                            break;
+                        case 1:
+//                            System.out.print(cellValue + ",");
+                            exString += cellValue + ",";
+//                            tblNhapHang.setValueAt(cellValue, indexExcel, 1);
+                            break;
+                        case 2:
+//                            System.out.print(cellValue + ",");
+                            exString += cellValue + ",";
+//                            tblNhapHang.setValueAt(cellValue, indexExcel, 2);
+                            break;
+                        case 3:
+//                            System.out.print(cellValue + ",");
+                            exString += cellValue + ",";
+//                            tblNhapHang.setValueAt(cellValue, indexExcel, 3);
+                            break;
+                        case 4:
+//                            System.out.print(cellValue + ";");
+                            exString += cellValue + ";";
+//                            tblNhapHang.setValueAt(cellValue, indexExcel, 4);
+                            break;
+                        default:
+                            break;
+                    }
+
+                }
+//                System.out.println(exString);
+            }
+
+//            System.out.println(exString);
+            //count PN
+            int countPN = 0;
+            for (int i = 0; i < exString.length(); i++) {
+                if (exString.charAt(i) == ';') {
+                    countPN++;
+                }
+            }
+            //List PN
+            List<PhieuNhap> lstPN = new ArrayList<>();
+            
+            
+            // List String
+            List<String> testList = new ArrayList<>();
+            for (int i = 0; i < countPN; i++) {
+                int vt = exString.indexOf(";");
+                String pn = exString.substring(0,vt);
+                testList.add(pn);
+                exString = exString.substring(vt+1);
+            }
+            String [] lst1Row = new String[testList.size()];
+            testList.toArray(lst1Row);
+            for (String string : lst1Row) {
+                String [] data = string.split(",");
+                PhieuNhap pn = new PhieuNhap();
+                pn.setMaMH(data[0]);
+                pn.setTenMh(data[1]);
+                pn.setSoLuong(data[2]);
+                pn.setDonGia(data[3]);
+                pn.setThanhTien(data[4]);
+                lstPN.add(pn);
+            }
+            for (int i = 0; i < lstPN.size(); i++) {
+                modeltblPhieuNhap.addRow(new Object[]{
+                    lstPN.get(i).getMaMH().trim(),
+                    lstPN.get(i).getTenMh().trim(),
+                    lstPN.get(i).getSoLuong().trim(),
+                    lstPN.get(i).getDonGia().trim(),
+                    lstPN.get(i).getThanhTien().trim()
+                });
+            }
+        }
+    }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,6 +228,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
         cboMaKho = new javax.swing.JComboBox<>();
         btnThemKho = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
+        btnExcel = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(34, 116, 173));
 
@@ -395,6 +531,16 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
             }
         });
 
+        btnExcel.setBackground(new java.awt.Color(34, 116, 173));
+        btnExcel.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
+        btnExcel.setForeground(new java.awt.Color(255, 255, 255));
+        btnExcel.setText("Nhập bằng excel");
+        btnExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -451,7 +597,11 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnExcel))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -526,7 +676,9 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
                             .addComponent(btnClear)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addComponent(jLabel5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(btnExcel))
                 .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -603,7 +755,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         if (checkForm()) {
             this.themTblPhieuNhap();
-            this.clear();   
+            this.clear();
         }
 
     }//GEN-LAST:event_btnThemActionPerformed
@@ -661,10 +813,36 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnClearActionPerformed
 
+    private void btnExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcelActionPerformed
+        try {
+            // TODO add your handling code here:
+//        File exFile;
+//        FileInputStream exFIS = null;
+//        
+//        JFileChooser exFileChooser = new JFileChooser();
+//        int rsChosse = exFileChooser.showOpenDialog(null);
+//        if (rsChosse == JFileChooser.APPROVE_OPTION) {
+//            exFile = exFileChooser.getSelectedFile();
+//            
+//        }
+            modeltblPhieuNhap.setRowCount(0);
+            this.chosseExcel();
+            long tongGia = 0; 
+            for (int i = 0; i < tblNhapHang.getRowCount(); i++) {
+                tongGia += Integer.parseInt(tblNhapHang.getValueAt(i, 4).toString());
+            }
+            String tonGiaString = tongGia+"";
+            lblTongTien.setText(StringToPrice.getPrice(tonGiaString));
+        } catch (IOException ex) {
+            Logger.getLogger(FrmPhieuNhap.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnExcelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnClear1;
+    private javax.swing.JButton btnExcel;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnThemKho;
     private javax.swing.JButton btnThemMatHang;
@@ -723,7 +901,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
                         + "join QUOCGIA on MATHANG.MAQG= QUOCGIA.MAQG\n"
                         + "join KHOHANG on MATHANG.MAMH = KHOHANG.MAMH\n"
                         + "join KHO on KHOHANG.MAK = KHO.MAK\n"
-                        + "where KHOHANG.MAK = ? and TRANGTHAI = 1";
+                        + "where KHOHANG.MAK = ? and KHO.TRANGTHAI = 1";
                 ResultSet rs = JdbcHelper.query(sql, kho.getMaK());
                 while (rs.next()) {
                     modeltblMatHang.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4) + "GB", rs.getString(5) + "GB", rs.getString(6), rs.getString(7), rs.getInt(8)});
@@ -815,7 +993,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
             ResultSet rs = JdbcHelper.query(sql);
             modelCboKho.removeAllElements();
             while (rs.next()) {
-                modelCboKho.addElement(new Kho(rs.getString("MaK"), rs.getString("TenK"), rs.getString("DiaChi")));
+                modelCboKho.addElement(new Kho(rs.getString("MaK"), rs.getString("TenK"), rs.getString("DiaChi"),rs.getBoolean(4)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -899,7 +1077,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
             JdbcHelper.update(insertPNK, ncc.getMaNcc(), kho.getMaK(), Auth.user.getMaNV(), sdf.parse(txtNgayNhap.getText()), tongTien);
             for (int i = 0; i < modeltblPhieuNhap.getRowCount(); i++) {
                 String mamh = (String) tblNhapHang.getValueAt(i, 0).toString();
-                int soluong = (int) tblNhapHang.getValueAt(i, 2);
+                int soluong = Integer.parseInt(tblNhapHang.getValueAt(i, 2).toString()) ;
                 ResultSet rs = JdbcHelper.query(queryIDPNH);
                 if (rs.next()) {
                     int maPNK = rs.getInt("IDPNK");
@@ -924,7 +1102,8 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
 
         }
     }
-    private void clear(){
+
+    private void clear() {
         txtMaMH.setText("");
         txtTenMH.setText("");
         txtSoLuong.setText("");
