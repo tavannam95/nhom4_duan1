@@ -47,8 +47,8 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
                     + "                    convert(varchar,NGAYBD,103) as NGAYBD,\n"
                     + "                    convert(varchar,NGAYKT,103) as NGAYKT\n"
                     + "                    FROM KHUYENMAI where MAKM like ? or TENKM like ?";
-            String search = "%"+txtSearch.getText()+"%";
-            ResultSet rs = JdbcHelper.query(sql,search,search);
+            String search = "%" + txtSearch.getText() + "%";
+            ResultSet rs = JdbcHelper.query(sql, search, search);
             modelTbl.setRowCount(0);
             while (rs.next()) {
                 String dieuKien = rs.getInt("DIEUKIEN") + "";
@@ -261,19 +261,10 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
             String maKM = txtMaKM.getText();
             String tenKM = txtTenKM.getText();
             boolean kieuKM = rdoPT1.isSelected();
-            String mucKM, dieuKien, giamToiDa;
+            String mucKM = txtMucKM.getText(), dieuKien = txtDieuKien.getText(), giamToiDa = txtGiamToiDa.getText();
             String ngayBD = txtNgayBD.getText(), ngayKT = txtNgayKT.getText();
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            if (rdoPT1.isSelected()) {
-                mucKM = txtMucKM.getText().replace(" %", "");
-            } else {
-                mucKM = txtMucKM.getText().replace(" VND", "");
-                mucKM = mucKM.replace(".", "");
-            }
-            dieuKien = txtDieuKien.getText().replace(" VND", "");
-            dieuKien = dieuKien.replace(".", "");
-            giamToiDa = txtGiamToiDa.getText().replace(" VND", "");
-            giamToiDa = giamToiDa.replace(".", "");
+
             if (!kieuKM) {
                 giamToiDa = mucKM;
             }
@@ -296,19 +287,10 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
             String maKM = txtMaKM.getText();
             String tenKM = txtTenKM.getText();
             boolean kieuKM = rdoPT1.isSelected();
-            String mucKM, dieuKien, giamToiDa;
+            String mucKM = txtMucKM.getText(), dieuKien = txtDieuKien.getText(), giamToiDa = txtGiamToiDa.getText();
             String ngayBD = txtNgayBD.getText(), ngayKT = txtNgayKT.getText();
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            if (rdoPT1.isSelected()) {
-                mucKM = txtMucKM.getText().replace(" %", "");
-            } else {
-                mucKM = txtMucKM.getText().replace(" VND", "");
-                mucKM = mucKM.replace(".", "");
-            }
-            dieuKien = txtDieuKien.getText().replace(" VND", "");
-            dieuKien = dieuKien.replace(".", "");
-            giamToiDa = txtGiamToiDa.getText().replace(" VND", "");
-            giamToiDa = giamToiDa.replace(".", "");
+
             if (!kieuKM) {
                 giamToiDa = mucKM;
             }
@@ -332,9 +314,24 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
         } else {
             rdoTien0.setSelected(true);
         }
-        txtMucKM.setText(tblList.getValueAt(index, 3).toString());
-        txtDieuKien.setText(tblList.getValueAt(index, 4).toString());
-        txtGiamToiDa.setText(tblList.getValueAt(index, 5).toString());
+        String mucKM = tblList.getValueAt(index, 3).toString();
+        if (rdoPT1.isSelected()) {
+            mucKM = mucKM.replace(" %", "");
+        } else {
+            mucKM = mucKM.replace(" VND", "");
+            mucKM = mucKM.replace(".", "");
+        }
+        String dkKM = tblList.getValueAt(index, 4).toString();
+        dkKM = dkKM.replace(" VND", "");
+        dkKM = dkKM.replace(".", "");
+        
+        String giamToiDa = tblList.getValueAt(index, 5).toString();
+        giamToiDa = giamToiDa.replace(" VND", "");
+        giamToiDa = giamToiDa.replace(".", "");
+
+        txtMucKM.setText(mucKM);
+        txtDieuKien.setText(dkKM);
+        txtGiamToiDa.setText(giamToiDa);
         txtNgayBD.setText(tblList.getValueAt(index, 6).toString());
         txtNgayKT.setText(tblList.getValueAt(index, 7).toString());
         this.setButtonUpdate();
@@ -501,11 +498,6 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
         txtMaKM.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtMaKM.setForeground(new java.awt.Color(255, 255, 255));
         txtMaKM.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
-        txtMaKM.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtMaKMMouseClicked(evt);
-            }
-        });
         txtMaKM.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtMaKMtxtDungLuongKeyPressed(evt);
@@ -520,11 +512,6 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
         txtTenKM.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtTenKM.setForeground(new java.awt.Color(255, 255, 255));
         txtTenKM.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
-        txtTenKM.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtTenKMMouseClicked(evt);
-            }
-        });
         txtTenKM.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtTenKMtxtDungLuongKeyPressed(evt);
@@ -615,16 +602,6 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
         txtNgayBD.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtNgayBD.setForeground(new java.awt.Color(255, 255, 255));
         txtNgayBD.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
-        txtNgayBD.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtNgayBDMouseClicked(evt);
-            }
-        });
-        txtNgayBD.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNgayBDtxtDungLuongKeyPressed(evt);
-            }
-        });
 
         lblNgayKT.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblNgayKT.setForeground(new java.awt.Color(255, 255, 255));
@@ -634,36 +611,15 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
         txtNgayKT.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtNgayKT.setForeground(new java.awt.Color(255, 255, 255));
         txtNgayKT.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
-        txtNgayKT.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtNgayKTMouseClicked(evt);
-            }
-        });
-        txtNgayKT.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNgayKTtxtDungLuongKeyPressed(evt);
-            }
-        });
 
         txtMucKM.setBackground(new java.awt.Color(34, 116, 173));
         txtMucKM.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtMucKM.setForeground(new java.awt.Color(255, 255, 255));
-        txtMucKM.setText(" VND");
+        txtMucKM.setText(" %");
         txtMucKM.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
         txtMucKM.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtMucKMMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                txtMucKMMouseExited(evt);
-            }
-        });
-        txtMucKM.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtMucKMtxtDungLuongKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtMucKMKeyReleased(evt);
             }
         });
 
@@ -685,11 +641,6 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
                 txtDieuKienMouseClicked(evt);
             }
         });
-        txtDieuKien.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtDieuKientxtDungLuongKeyPressed(evt);
-            }
-        });
 
         lblGiamToiDa.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblGiamToiDa.setForeground(new java.awt.Color(255, 255, 255));
@@ -703,11 +654,6 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
         txtGiamToiDa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtGiamToiDaMouseClicked(evt);
-            }
-        });
-        txtGiamToiDa.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtGiamToiDatxtDungLuongKeyPressed(evt);
             }
         });
 
@@ -861,13 +807,7 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        if (rdoPT1.isSelected()) {
-            txtMucKM.setText(txtMucKM.getText().replace(" %", "") + " %");
-        } else {
-            txtMucKM.setText(StringToPrice.getPrice(txtMucKM.getText()));
-        }
-        txtDieuKien.setText(StringToPrice.getPrice(txtDieuKien.getText()));
-        txtGiamToiDa.setText(StringToPrice.getPrice(txtGiamToiDa.getText()));
+
         try {
             String sql = "SELECT * FROM KHUYENMAI where MAKM like ?";
             ResultSet rs = JdbcHelper.query(sql, txtMaKM.getText());
@@ -891,13 +831,7 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        if (rdoPT1.isSelected()) {
-            txtMucKM.setText(txtMucKM.getText().replace(" %", "") + " %");
-        } else {
-            txtMucKM.setText(StringToPrice.getPrice(txtMucKM.getText()));
-        }
-        txtDieuKien.setText(StringToPrice.getPrice(txtDieuKien.getText()));
-        txtGiamToiDa.setText(StringToPrice.getPrice(txtGiamToiDa.getText()));
+        
         if (this.chkForm()) {
             return;
         }
@@ -914,41 +848,6 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnTaoMoiActionPerformed
 
-    private void txtNgayBDtxtDungLuongKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNgayBDtxtDungLuongKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNgayBDtxtDungLuongKeyPressed
-
-    private void txtNgayKTtxtDungLuongKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNgayKTtxtDungLuongKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNgayKTtxtDungLuongKeyPressed
-
-    private void txtMucKMtxtDungLuongKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMucKMtxtDungLuongKeyPressed
-        // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_TAB) {
-            txtMucKM.setText(StringToPrice.getPrice(txtMucKM.getText()));
-            txtDieuKien.setText(StringToPrice.getPrice(txtDieuKien.getText()));
-            txtGiamToiDa.setText(StringToPrice.getPrice(txtGiamToiDa.getText()));
-        }
-    }//GEN-LAST:event_txtMucKMtxtDungLuongKeyPressed
-
-    private void txtDieuKientxtDungLuongKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDieuKientxtDungLuongKeyPressed
-        // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_TAB) {
-            txtMucKM.setText(StringToPrice.getPrice(txtMucKM.getText()));
-            txtDieuKien.setText(StringToPrice.getPrice(txtDieuKien.getText()));
-            txtGiamToiDa.setText(StringToPrice.getPrice(txtGiamToiDa.getText()));
-        }
-    }//GEN-LAST:event_txtDieuKientxtDungLuongKeyPressed
-
-    private void txtGiamToiDatxtDungLuongKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGiamToiDatxtDungLuongKeyPressed
-        // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_TAB) {
-            txtMucKM.setText(StringToPrice.getPrice(txtMucKM.getText()));
-            txtDieuKien.setText(StringToPrice.getPrice(txtDieuKien.getText()));
-            txtGiamToiDa.setText(StringToPrice.getPrice(txtGiamToiDa.getText()));
-        }
-    }//GEN-LAST:event_txtGiamToiDatxtDungLuongKeyPressed
-
     private void rdoTien0ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_rdoTien0ItemStateChanged
         // TODO add your handling code here:
         txtGiamToiDa.setEnabled(false);
@@ -959,131 +858,38 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
         txtGiamToiDa.setEnabled(true);
     }//GEN-LAST:event_rdoPT1ItemStateChanged
 
-    private void txtMucKMKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMucKMKeyReleased
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_txtMucKMKeyReleased
-
-    private void txtMucKMMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMucKMMouseExited
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_txtMucKMMouseExited
     private void txtDieuKienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDieuKienMouseClicked
         // TODO add your handling code here:
-        String mucGiam = txtMucKM.getText();
-        if (rdoPT1.isSelected()) {
-            txtMucKM.setText("");
-            mucGiam = mucGiam.replace(" %", "");
-            txtMucKM.setText(mucGiam + " %");
-        } else {
-            txtMucKM.setText("");
-            mucGiam = mucGiam.replace(" VND", "");
-            txtMucKM.setText(StringToPrice.getPrice(mucGiam));
-        }
-        txtGiamToiDa.setText(StringToPrice.getPrice(txtGiamToiDa.getText()));
-        txtDieuKien.setText(txtDieuKien.getText().replace(" VND", ""));
+        txtDieuKien.setText("");
     }//GEN-LAST:event_txtDieuKienMouseClicked
 
     private void txtMucKMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMucKMMouseClicked
         // TODO add your handling code here:
-        if (rdoPT1.isSelected()) {
-            txtDieuKien.setText(StringToPrice.getPrice(txtDieuKien.getText()));
-            txtGiamToiDa.setText(StringToPrice.getPrice(txtGiamToiDa.getText()));
-            txtMucKM.setText(txtMucKM.getText().replace(" %", ""));
-        } else {
-            txtDieuKien.setText(StringToPrice.getPrice(txtDieuKien.getText()));
-            txtGiamToiDa.setText(StringToPrice.getPrice(txtGiamToiDa.getText()));
-            txtMucKM.setText(txtMucKM.getText().replace(" VND", ""));
-        }
+        txtMucKM.setText("");
 
     }//GEN-LAST:event_txtMucKMMouseClicked
 
     private void txtGiamToiDaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGiamToiDaMouseClicked
         // TODO add your handling code here:
-        String mucGiam = txtMucKM.getText();
-        if (rdoPT1.isSelected()) {
-            txtMucKM.setText("");
-            mucGiam = mucGiam.replace(" %", "");
-            txtMucKM.setText(mucGiam + " %");
-        } else {
-            txtMucKM.setText("");
-            mucGiam = mucGiam.replace(" VND", "");
-            txtMucKM.setText(StringToPrice.getPrice(mucGiam));
-        }
-
-        txtDieuKien.setText(StringToPrice.getPrice(txtDieuKien.getText()));
-        txtGiamToiDa.setText(txtGiamToiDa.getText().replace(" VND", ""));
+        txtGiamToiDa.setText("");
     }//GEN-LAST:event_txtGiamToiDaMouseClicked
-
-    private void txtMaKMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMaKMMouseClicked
-        // TODO add your handling code here:
-        if (rdoPT1.isSelected()) {
-
-            txtMucKM.setText(txtMucKM.getText().replace(" %", "") + " %");
-        } else {
-            txtMucKM.setText(StringToPrice.getPrice(txtMucKM.getText()));
-        }
-        txtDieuKien.setText(StringToPrice.getPrice(txtDieuKien.getText()));
-        txtGiamToiDa.setText(StringToPrice.getPrice(txtGiamToiDa.getText()));
-    }//GEN-LAST:event_txtMaKMMouseClicked
 
     private void btnTaoMoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTaoMoiMouseClicked
         // TODO add your handling code here:
         this.clearForm();
     }//GEN-LAST:event_btnTaoMoiMouseClicked
 
-    private void txtTenKMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTenKMMouseClicked
+    private void rdoPT1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdoPT1MouseClicked
         // TODO add your handling code here:
-        if (rdoPT1.isSelected()) {
-            txtMucKM.setText(txtMucKM.getText().replace(" %", "") + " %");
-        } else {
-            txtMucKM.setText(StringToPrice.getPrice(txtMucKM.getText()));
-        }
-        txtDieuKien.setText(StringToPrice.getPrice(txtDieuKien.getText()));
-        txtGiamToiDa.setText(StringToPrice.getPrice(txtGiamToiDa.getText()));
-
-    }//GEN-LAST:event_txtTenKMMouseClicked
-
-    private void txtNgayBDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNgayBDMouseClicked
-        // TODO add your handling code here:
-        if (rdoPT1.isSelected()) {
-            txtMucKM.setText(txtMucKM.getText().replace(" %", "") + " %");
-        } else {
-            txtMucKM.setText(StringToPrice.getPrice(txtMucKM.getText()));
-        }
-        txtDieuKien.setText(StringToPrice.getPrice(txtDieuKien.getText()));
-        txtGiamToiDa.setText(StringToPrice.getPrice(txtGiamToiDa.getText()));
-
-    }//GEN-LAST:event_txtNgayBDMouseClicked
-
-    private void txtNgayKTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNgayKTMouseClicked
-        // TODO add your handling code here:
-        if (rdoPT1.isSelected()) {
-            txtMucKM.setText(txtMucKM.getText().replace(" %", "") + " %");
-        } else {
-            txtMucKM.setText(StringToPrice.getPrice(txtMucKM.getText()));
-        }
-        txtDieuKien.setText(StringToPrice.getPrice(txtDieuKien.getText()));
-        txtGiamToiDa.setText(StringToPrice.getPrice(txtGiamToiDa.getText()));
-
-    }//GEN-LAST:event_txtNgayKTMouseClicked
+        txtMucKM.setText("");
+        txtMucKM.setText(" %");
+    }//GEN-LAST:event_rdoPT1MouseClicked
 
     private void rdoTien0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdoTien0MouseClicked
         // TODO add your handling code here:
         txtMucKM.setText("");
         txtMucKM.setText(" VND");
-        txtGiamToiDa.setEnabled(false);
-        txtDieuKien.setText(StringToPrice.getPrice(txtDieuKien.getText()));
     }//GEN-LAST:event_rdoTien0MouseClicked
-
-    private void rdoPT1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdoPT1MouseClicked
-        // TODO add your handling code here:
-        txtMucKM.setText("");
-        txtMucKM.setText(" %");
-
-        txtGiamToiDa.setEnabled(true);
-        txtDieuKien.setText(StringToPrice.getPrice(txtDieuKien.getText()));
-    }//GEN-LAST:event_rdoPT1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

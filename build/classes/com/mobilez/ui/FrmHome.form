@@ -68,11 +68,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblWelcome" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblMobileZ" min="-2" pref="809" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblIconClock" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblMobileZ" min="-2" pref="709" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                  <Component id="lblIconClock" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="lblClock" min="-2" pref="118" max="-2" attributes="0"/>
+                  <Component id="lblClock" min="-2" pref="134" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblClose" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>

@@ -13,8 +13,6 @@ import javax.swing.JTextField;
  */
 public class StringToPrice {
     public static String getPrice(String price){
-        price = price.replace(" VND", "");
-        price = price.replace(".", "");
         String tongtien2 = "";
         if (price.length() > 3) {
             int tongDauCham = (int) price.length() / 3; // Tổng số dấu chấm trong thành tiền
