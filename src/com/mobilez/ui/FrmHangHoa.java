@@ -625,21 +625,24 @@ public class FrmHangHoa extends javax.swing.JPanel {
             } else {
                 lblHMH.setForeground(Color.white);
             }
-            MatHangDAO dao = new MatHangDAO();
-            dao.insert(this.getMatHang());
-            java.util.Date now = new java.util.Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            String nowString = sdf.format(now);
-            now = sdf.parse(nowString);
-            fillTable();
-            for (int i = 0; i < tblList.getRowCount(); i++) {
-                if (tblList.getValueAt(i, 0).toString().trim().equalsIgnoreCase(txtMaMH.getText())) {
-                    index = i;
-                    break;
+            if (Msgbox.confirm(null, "Bạn có muốn thêm mặt hàng không?")) {
+                MatHangDAO dao = new MatHangDAO();
+                dao.insert(this.getMatHang());
+                java.util.Date now = new java.util.Date();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                String nowString = sdf.format(now);
+                now = sdf.parse(nowString);
+                fillTable();
+                for (int i = 0; i < tblList.getRowCount(); i++) {
+                    if (tblList.getValueAt(i, 0).toString().trim().equalsIgnoreCase(txtMaMH.getText())) {
+                        index = i;
+                        break;
+                    }
                 }
+                showDetail();
+                Msgbox.alert(null, "Thêm thành công!");
             }
-            showDetail();
-            Msgbox.alert(null, "Thêm thành công!");
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -782,11 +785,15 @@ public class FrmHangHoa extends javax.swing.JPanel {
             } else {
                 lblHMH.setForeground(Color.white);
             }
-            MatHangDAO dao = new MatHangDAO();
-            dao.update(this.getMatHang());
-            this.fillTable();
-            this.showDetail();
-            Msgbox.alert(null, "Sửa thành công!");
+            if (Msgbox.confirm(null, "Bạn có muốn sửa thông tin mặt hàng không?")) {
+                MatHangDAO dao = new MatHangDAO();
+                dao.update(this.getMatHang());
+                this.fillTable();
+                this.showDetail();
+                Msgbox.alert(null, "Sửa thành công!");
+            }
+            
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1563,7 +1570,10 @@ public class FrmHangHoa extends javax.swing.JPanel {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
-        this.clear();
+        if (Msgbox.confirm(null, "Bạn có muốn tạo mới không?")) {
+            this.clear();
+        }
+        
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void tblListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblListMouseClicked
@@ -1583,6 +1593,7 @@ public class FrmHangHoa extends javax.swing.JPanel {
 
     private void btnThemMHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMHActionPerformed
         // TODO add your handling code here:
+        
         this.them();
     }//GEN-LAST:event_btnThemMHActionPerformed
 

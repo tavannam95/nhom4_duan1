@@ -498,10 +498,13 @@ public class FrmQuayHang extends javax.swing.JPanel {
         if (this.chkThem()) {
             return;
         }
-        this.them();
-        this.themMHVaoQuay();
-        this.fillTable();
-        this.clearForm();
+        if (Msgbox.confirm(null, "Bạn có muốn thêm quầy hàng không?")) {
+            this.them();
+            this.themMHVaoQuay();
+            this.fillTable();
+            this.clearForm();
+        }
+        
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -509,15 +512,18 @@ public class FrmQuayHang extends javax.swing.JPanel {
         if (chkSua()) {
             return;
         }
-        this.sua();
-        this.fillTable();
-        this.clearForm();
+        if (Msgbox.confirm(null, "Bạn có muốn sửa thông tin quầy hàng không?")) {
+            this.sua();
+            this.fillTable();
+            this.clearForm();
+        }
+        
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnTaoMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoMoiActionPerformed
         // TODO add your handling code here:
         if (Msgbox.confirm(null, "Bạn có muốn tạo mới không?")) {
-            clearForm();            
+            this.clearForm();            
         }
         
     }//GEN-LAST:event_btnTaoMoiActionPerformed

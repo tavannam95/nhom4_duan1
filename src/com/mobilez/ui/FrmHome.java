@@ -1057,7 +1057,7 @@ public class FrmHome extends javax.swing.JFrame {
         lblHDL.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 16)); // NOI18N
         lblHDL.setForeground(new java.awt.Color(255, 255, 255));
         lblHDL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHDL.setText("Bán Lẻ");
+        lblHDL.setText("Bán Hàng");
 
         lblHDBL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHDBL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mobilez/icon/us_dollar_64px.png"))); // NOI18N

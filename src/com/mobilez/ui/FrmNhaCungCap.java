@@ -138,7 +138,7 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
         btnMoi.setBackground(new java.awt.Color(34, 116, 173));
         btnMoi.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 14)); // NOI18N
         btnMoi.setForeground(new java.awt.Color(255, 255, 255));
-        btnMoi.setText("Mới");
+        btnMoi.setText("Tạo Mới");
         btnMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMoiActionPerformed(evt);
@@ -345,23 +345,32 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
                 Msgbox.alert(this, "Mã đã tồn tại");
                 return;
             }
-            this.insert();
-            this.clearform();
+            if (Msgbox.confirm(null, "Bạn có muốn thêm nhà cung cấp không?")) {
+                this.insert();
+                this.clearform();
+            }
+            
         }
     }//GEN-LAST:event_btnthemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
         if (this.checkform()) {
-            this.update();
-            this.clearform();
-            this.filltable();
+            if (Msgbox.confirm(null, "Bạn có muốn sửa thông tin nhà cung cấp không?")) {
+                this.update();
+                this.clearform();
+                this.filltable(); 
+            }
+            
         }
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
         // TODO add your handling code here:
-        this.clearform();
+        if (Msgbox.confirm(null, "Bạn có muốn tạo mới không?")) {
+            this.clearform();
+        }
+        
     }//GEN-LAST:event_btnMoiActionPerformed
 
     private void txttennccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttennccActionPerformed

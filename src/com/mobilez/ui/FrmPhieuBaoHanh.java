@@ -354,7 +354,10 @@ public class FrmPhieuBaoHanh extends javax.swing.JPanel {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
         if (this.checkform()) {
-            this.insert();
+            if (Msgbox.confirm(null, "Bạn có muốn thêm phiếu bảo hành?")) {
+                this.insert();
+            }
+            
         }
     }//GEN-LAST:event_btnThemActionPerformed
 

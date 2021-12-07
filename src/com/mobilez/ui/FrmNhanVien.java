@@ -606,7 +606,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
         btnClear.setBackground(new java.awt.Color(34, 116, 173));
         btnClear.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         btnClear.setForeground(new java.awt.Color(255, 255, 255));
-        btnClear.setText("Clear");
+        btnClear.setText("Tạo Mới");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearActionPerformed(evt);
@@ -870,13 +870,19 @@ public class FrmNhanVien extends javax.swing.JPanel {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
-        this.clear();
+        if (Msgbox.confirm(null, "Bạn có muốn tạo mới không?")) {
+            this.clear();
+        }
+        
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnThemNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemNVActionPerformed
         // TODO add your handling code here:
         if (this.check()) {
-            them();
+            if (Msgbox.confirm(null, "Bạn có muốn thêm nhân viên không?")) {
+                them();
+            }
+            
         }
     }//GEN-LAST:event_btnThemNVActionPerformed
 
@@ -1047,7 +1053,10 @@ public class FrmNhanVien extends javax.swing.JPanel {
         } else {
             lblHinhNV.setForeground(cl);
         }
-        CapNhat();
+        if (Msgbox.confirm(null, "Bạn có muốn cập nhật thông tin của nhân viên không?")) {
+            CapNhat();
+        }
+        
     }//GEN-LAST:event_btnSuaNVActionPerformed
 
     private void txtDiaChiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaChiActionPerformed
