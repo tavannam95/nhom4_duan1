@@ -319,12 +319,12 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         String taiKhoan = txtTaiKhoan.getText();
         String matKhau = new String(txtMatKhau.getPassword());
         NhanVien nhanVien = nvDAO.selectById(taiKhoan);
-        if (!nhanVien.isTrangThai()) {
-            Msgbox.alert(null, "Bạn đã nghỉ việc tại cửa hàng bạn không thể đăng nhập!");
-            return;
-        } else if (nhanVien == null) {
+        if (nhanVien == null) {
             Msgbox.alert(this, "Tài khoản không tồn tại");
             txtTaiKhoan.requestFocus();
+            return;
+        } else if (!nhanVien.isTrangThai()) {
+            Msgbox.alert(null, "Bạn đã nghỉ việc tại cửa hàng bạn không thể đăng nhập!");
             return;
         } else if (!matKhau.equalsIgnoreCase(nhanVien.getMatKhau())) {
             Msgbox.alert(this, "Mật khẩu không chính xác");
