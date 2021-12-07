@@ -259,7 +259,11 @@ public class FrmNhanVien extends javax.swing.JPanel {
     }
 
     void them() {
-        NhanVien nv = new NhanVien();
+        String mk =  new String(txtMatKhau.getPassword());
+        NhanVien nv = new NhanVien(txtMaNV.getText(), txtTen.getText(), rdoNam.isSelected(), 
+                XDate.toDate(txtNgaySinh.getText(), "dd/MM/yyyy") , txtCMND.getText(), 
+                txtDiaChi.getText(), txtSDT.getText(), rdoQuanLy.isSelected(), lblHinhNV.getToolTipText(), 
+                rdoDangLam.isSelected(), mk);
         try {
             dao.insert(this.getNhanVien());
             this.fillToTable();
@@ -272,7 +276,11 @@ public class FrmNhanVien extends javax.swing.JPanel {
     }
 
     void CapNhat() {
-        NhanVien nv = new NhanVien();
+        String mk =  new String(txtMatKhau.getPassword());
+        NhanVien nv = new NhanVien(txtMaNV.getText(), txtTen.getText(), rdoNam.isSelected(), 
+                XDate.toDate(txtNgaySinh.getText(), "dd/MM/yyyy") , txtCMND.getText(), 
+                txtDiaChi.getText(), txtSDT.getText(), rdoQuanLy.isSelected(), lblHinhNV.getToolTipText(), 
+                rdoDangLam.isSelected(), mk);
         try {
             dao.update(this.getNhanVien());
             this.fillToTable();
