@@ -484,8 +484,8 @@ public class FrmHangSanXuat extends javax.swing.JPanel {
             txtMaHSX.requestFocus();
             return false;
         }
-        if (txtMaHSX.getText().trim().length() < 4 || txtMaHSX.getText().trim().length() > 10) {
-            Msgbox.alert(this, "Mã hãng sản xuất từ 4 đến 10 ký tự!");
+        if (txtMaHSX.getText().trim().length() < 4 || txtMaHSX.getText().trim().length() > 25) {
+            Msgbox.alert(this, "Mã hãng sản xuất từ 4 đến 25 ký tự!");
             this.txtMaHSX.requestFocus();
             return false;
         }

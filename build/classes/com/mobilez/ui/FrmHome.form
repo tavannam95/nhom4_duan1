@@ -66,9 +66,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblUser" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblWelcome" min="-2" pref="186" max="-2" attributes="0"/>
+                  <Component id="lblWelcome" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblMobileZ" max="32767" attributes="0"/>
+                  <Component id="lblMobileZ" min="-2" pref="809" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblIconClock" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>

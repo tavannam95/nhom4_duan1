@@ -500,8 +500,8 @@ public class FrmNhaCungCap extends javax.swing.JPanel {
             this.txtmancc.requestFocus();
             return false;
         }
-        if (txtmancc.getText().trim().length()<4||txtmancc.getText().trim().length()>10) {
-            Msgbox.alert(this, "Mã nhà cung cấp từ 4 đến 10 ký tự!");
+        if (txtmancc.getText().trim().length()<4||txtmancc.getText().trim().length()>25) {
+            Msgbox.alert(this, "Mã nhà cung cấp từ 4 đến 25 ký tự!");
             this.txtmancc.requestFocus();
             return false;
         }

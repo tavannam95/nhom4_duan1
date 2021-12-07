@@ -417,8 +417,8 @@ public class FrmHangHoa extends javax.swing.JPanel {
                     lblMaMH.setForeground(Color.white);
                 }
             }
-            if (txtMaMH.getText().trim().length() < 4 || txtMaMH.getText().trim().length() > 10) {
-                Msgbox.alert(this, "Mã mặt hàng từ 4 đến 10 ký tự!");
+            if (txtMaMH.getText().trim().length() < 4 || txtMaMH.getText().trim().length() > 25) {
+                Msgbox.alert(this, "Mã mặt hàng từ 4 đến 25 ký tự!");
                 this.txtMaMH.requestFocus();
                 txtMaMH.setForeground(Color.red);
                 return;
