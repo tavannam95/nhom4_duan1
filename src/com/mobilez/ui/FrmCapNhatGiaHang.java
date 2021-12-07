@@ -77,8 +77,8 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
                 tblList.getValueAt(index, 6).toString(),
                 tblList.getValueAt(index, 7).toString(),
                 tblList.getValueAt(index, 8).toString(),
-                tblList.getValueAt(index, 9).toString(),
-                tblList.getValueAt(index, 10).toString(),});
+                tblList.getValueAt(index, 9).toString()
+                });
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -107,7 +107,7 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
     private void fillTablePr() {
         try {
             String sql = "select MAMH,TENHSX,TENMH,RAM,DUNGLUONG,MAUSAC,TENQG,\n"
-                    + "                    GIAMUA,GIABANSI,GIABANLE,TRANGTHAI\n"
+                    + "                    GIAMUA,GIABAN,TRANGTHAI\n"
                     + "                    from MATHANG join HANGSANXUAT on MATHANG.MAHSX=HANGSANXUAT.MAHSX\n"
                     + "                    join QUOCGIA on MATHANG.MAQG= QUOCGIA.MAQG";
             ResultSet rs = JdbcHelper.query(sql);
@@ -115,19 +115,16 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
             modelList.setRowCount(0);
             while (rs.next()) {
                 giaMua = rs.getString(8);
-                giaBanSi = rs.getString(9);
-                giaBanLe = rs.getString(10);
+                giaBanLe = rs.getString(9);
                 int gm = giaMua.indexOf(".");
-                int gbs = giaBanSi.indexOf(".");
                 int gbl = giaBanLe.indexOf(".");
                 giaMua = giaMua.substring(0, gm);
-                giaBanSi = giaBanSi.substring(0, gbs);
                 giaBanLe = giaBanLe.substring(0, gbl);
                 modelList.addRow(new Object[]{
                     rs.getString(1), rs.getString(2), rs.getString(3),
                     this.getDlRAM(rs.getInt(4)), this.getDlRAM(rs.getInt(5)), rs.getString(6),
-                    rs.getString(7), giaMua, giaBanSi,
-                    giaBanLe, this.getTrangThaiMH(rs.getBoolean(11))});
+                    rs.getString(7), giaMua, 
+                    giaBanLe, this.getTrangThaiMH(rs.getBoolean(10))});
             }
             rs.close();
 
@@ -169,7 +166,7 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
     private void updatePrice() {
         try {
             String sql = "update MATHANG set \n"
-                    + "GIABANLE = ? where MAMH like ?";
+                    + "GIABAN = ? where MAMH like ?";
             double giaBanLe = Double.parseDouble(txtGiaBanLe.getText());
             String maMH = "";
             for (int i = 0; i < tblCapNhat.getRowCount(); i++) {
@@ -223,11 +220,11 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã MH", "HSX", "Tên MH", "RAM", "Dung lượng", "Màu", "Quốc gia", "Giá Mua", "Giá bán sỉ", "Giá bán lẻ", "Trạng thái"
+                "Mã MH", "HSX", "Tên MH", "RAM", "Dung lượng", "Màu", "Quốc gia", "Giá Mua", "Giá bán", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -302,11 +299,11 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã MH", "HSX", "Tên MH", "RAM", "Dung lượng", "Màu", "Quốc gia", "Giá Mua", "Giá bán sỉ", "Giá bán lẻ", "Trạng thái"
+                "Mã MH", "HSX", "Tên MH", "RAM", "Dung lượng", "Màu", "Quốc gia", "Giá Mua", "Giá bán", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

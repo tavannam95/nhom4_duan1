@@ -225,8 +225,8 @@ public class JDialogKho extends javax.swing.JDialog {
     private void insert(){
         try {
             MatHangDAO dao = new MatHangDAO();
-            String insertKho = "insert into KHO values (?,?,?)";
-            JdbcHelper.update(insertKho, txtMakho.getText(), txtTenKho.getText(), txtDiaChi.getText());
+            String insertKho = "insert into KHO values (?,?,?,?)";
+            JdbcHelper.update(insertKho, txtMakho.getText(), txtTenKho.getText(), txtDiaChi.getText(),1);
             List<MatHang> lstMH = dao.selectAll();
             String insertKhoHang = "insert into KHOHANG values(?,?,0)";
             for (MatHang mh : lstMH) {
