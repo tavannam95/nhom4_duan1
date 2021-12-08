@@ -71,7 +71,7 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="btnThem" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnThemPN" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnXoaPN" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -183,7 +183,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnThem" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnThemPN" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnXoaPN" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnClear" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -617,7 +617,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemMatHangActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnThem">
+    <Component class="javax.swing.JButton" name="btnThemPN">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ad" green="74" red="22" type="rgb"/>
@@ -631,7 +631,7 @@
         <Property name="text" type="java.lang.String" value="Th&#xea;m v&#xe0;o phi&#x1ebf;u nh&#x1ead;p"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemPNActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnXoaPN">

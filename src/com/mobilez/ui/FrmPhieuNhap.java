@@ -214,7 +214,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
         lblSL = new javax.swing.JLabel();
         txtSoLuong = new javax.swing.JTextField();
         btnThemMatHang = new javax.swing.JButton();
-        btnThem = new javax.swing.JButton();
+        btnThemPN = new javax.swing.JButton();
         btnXoaPN = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNhapHang = new javax.swing.JTable();
@@ -402,13 +402,13 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
             }
         });
 
-        btnThem.setBackground(new java.awt.Color(34, 116, 173));
-        btnThem.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
-        btnThem.setForeground(new java.awt.Color(255, 255, 255));
-        btnThem.setText("Thêm vào phiếu nhập");
-        btnThem.addActionListener(new java.awt.event.ActionListener() {
+        btnThemPN.setBackground(new java.awt.Color(34, 116, 173));
+        btnThemPN.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
+        btnThemPN.setForeground(new java.awt.Color(255, 255, 255));
+        btnThemPN.setText("Thêm vào phiếu nhập");
+        btnThemPN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemActionPerformed(evt);
+                btnThemPNActionPerformed(evt);
             }
         });
 
@@ -588,7 +588,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
                                     .addComponent(txtSoLuong)
                                     .addComponent(txtDongia)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnThem)
+                                .addComponent(btnThemPN)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnXoaPN)
                                 .addGap(18, 18, 18)
@@ -671,7 +671,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
                             .addComponent(txtDongia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnThem)
+                            .addComponent(btnThemPN)
                             .addComponent(btnXoaPN)
                             .addComponent(btnClear)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -752,13 +752,13 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
         this.filltoTblMatHang();
     }//GEN-LAST:event_btnThemMatHangActionPerformed
 
-    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+    private void btnThemPNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemPNActionPerformed
         if (checkForm()) {
             this.themTblPhieuNhap();
             this.clear();
         }
 
-    }//GEN-LAST:event_btnThemActionPerformed
+    }//GEN-LAST:event_btnThemPNActionPerformed
 
     private void btnXoaPNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaPNActionPerformed
         indexPN = tblNhapHang.getSelectedRow();
@@ -777,6 +777,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
         }
         if (Msgbox.confirm(this, "Bạn có muốn nhập kho?")) {
             nhapKho();
+            
         }
 
     }//GEN-LAST:event_btnClear1ActionPerformed
@@ -833,6 +834,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
             }
             String tonGiaString = tongGia+"";
             lblTongTien.setText(StringToPrice.getPrice(tonGiaString));
+            btnThemPN.setEnabled(false);
         } catch (IOException ex) {
             Logger.getLogger(FrmPhieuNhap.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -843,10 +845,10 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnClear1;
     private javax.swing.JButton btnExcel;
-    private javax.swing.JButton btnThem;
     private javax.swing.JButton btnThemKho;
     private javax.swing.JButton btnThemMatHang;
     private javax.swing.JButton btnThemNCC;
+    private javax.swing.JButton btnThemPN;
     private javax.swing.JButton btnXoaPN;
     private javax.swing.JComboBox<String> cboMaKho;
     private javax.swing.JComboBox<String> cboNCC;
@@ -1096,6 +1098,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
             txtTenMH.setText("");
             txtSoLuong.setText("");
             txtDongia.setText("");
+            btnThemPN.setEnabled(true);
         } catch (Exception e) {
             Msgbox.alert(this, "Nhập kho thất bại");
             e.printStackTrace();
