@@ -567,6 +567,7 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
         if (Msgbox.confirm(null, "Bạn có muốn xuất kho không?")) {
             this.updateKhoHang();
             this.updateQH();
+            this.insertIntoPXK();
             Msgbox.alert(null, "Xuất kho thành công!");
             modelHDCT.setRowCount(0);
             this.fillTablePr();
