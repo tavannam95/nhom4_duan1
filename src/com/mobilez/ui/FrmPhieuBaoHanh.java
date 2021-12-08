@@ -535,7 +535,7 @@ public class FrmPhieuBaoHanh extends javax.swing.JPanel {
     private PhieuBaoHanh setform() {
         PhieuBaoHanh ph = new PhieuBaoHanh();
         try {
-            ph.setSoIMEI(Integer.parseInt(txtsoIMEI.getText()));
+            ph.setSoIMEI(txtsoIMEI.getText());
             ph.setMaMH(txtMaMH.getText());
             ph.setNgayHetHan(XDate.toDate(this.txtNgayHetHan.getText(), "dd/MM/yyyy"));
             ph.setTrangThai(rdoDangBaoHanh.isSelected());

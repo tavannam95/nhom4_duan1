@@ -12,7 +12,7 @@ import java.util.Date;
  * @author ASUS
  */
 public class PhieuBaoHanh {
-    private  int soIMEI;
+    private  String soIMEI;
     private String maMH;
     private Date ngayHetHan;
     private boolean trangThai;
@@ -20,19 +20,18 @@ public class PhieuBaoHanh {
     public PhieuBaoHanh() {
     }
 
-    public PhieuBaoHanh(int soIMEI, String maMH, Date ngayHetHan, boolean trangThai) {
+    public PhieuBaoHanh(String soIMEI, String maMH, Date ngayHetHan, boolean trangThai) {
         this.soIMEI = soIMEI;
         this.maMH = maMH;
         this.ngayHetHan = ngayHetHan;
         this.trangThai = trangThai;
     }
-    
-    
-    public int getSoIMEI() {
+
+    public String getSoIMEI() {
         return soIMEI;
     }
 
-    public void setSoIMEI(int soIMEI) {
+    public void setSoIMEI(String soIMEI) {
         this.soIMEI = soIMEI;
     }
 

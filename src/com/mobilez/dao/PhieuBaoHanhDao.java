@@ -56,7 +56,7 @@ public class PhieuBaoHanhDao {
             ResultSet rs = JdbcHelper.query(sql, args);
             while (rs.next()) {
                 PhieuBaoHanh ph = new PhieuBaoHanh();
-                ph.setSoIMEI(rs.getInt("SOIMEI"));
+                ph.setSoIMEI(rs.getString("SOIMEI"));
                 ph.setMaMH(rs.getString("MAMH"));
                 ph.setNgayHetHan(rs.getDate("NGAYHETHAN"));
                 ph.setTrangThai(rs.getBoolean("TRANGTHAI"));
