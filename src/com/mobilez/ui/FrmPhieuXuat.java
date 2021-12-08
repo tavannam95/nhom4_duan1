@@ -253,15 +253,15 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
     }
 
     private String getTongGia() {
-        double tongGia = 0;
+        long tongGia = 0;
         for (int i = 0; i < tblCTPX.getRowCount(); i++) {
-            double gia = Double.parseDouble(tblCTPX.getValueAt(i, 6).toString());
-            double sl = Double.parseDouble(tblCTPX.getValueAt(i, 8).toString());
+            long gia = Long.parseLong(tblCTPX.getValueAt(i, 6).toString());
+            int sl = Integer.parseInt(tblCTPX.getValueAt(i, 8).toString());
             tongGia += (sl * gia);
         }
         String tongGiaString = tongGia + "";
-        int vt = tongGiaString.indexOf(".");
-        tongGiaString = tongGiaString.substring(0, vt);
+//        int vt = tongGiaString.indexOf(".");
+//        tongGiaString = tongGiaString.substring(0, vt);
         return tongGiaString;
     }
 
