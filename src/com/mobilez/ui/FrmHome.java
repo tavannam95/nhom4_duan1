@@ -42,9 +42,9 @@ public class FrmHome extends javax.swing.JFrame {
     public FrmHome() {
         initComponents();
         //Test 
-//        if (!Auth.login) {
-//            new ManHinhChao(this, true).setVisible(true);
-//        }
+        if (!Auth.login) {
+            new ManHinhChao(this, true).setVisible(true);
+        }
         new DangNhapJDialog(this, true).setVisible(true);
         this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
