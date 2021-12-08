@@ -432,6 +432,10 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
             clear();
         }
 
+//        if (indexMatHang<0) {
+//                Msgbox.alert(null, "Bạn chưa chọn mặt hàng!");
+//                return;
+//            }
     }//GEN-LAST:event_btnThemHoaDonActionPerformed
 
     private void tblMatHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMatHangMouseClicked
@@ -590,14 +594,14 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
     }
 
     private boolean checkForm() {
+        if (indexMatHang == -1) {
+            Msgbox.alert(null, "Bạn chưa chọn mặt hàng cần thêm!");
+            return false;
+        }
         int soluongtrongquay = Integer.parseInt(tblMatHang.getValueAt(indexMatHang, 8).toString());
         int soluongnhap;
         if (tblMatHang.getRowCount() <= 0) {
             Msgbox.alert(null, "Danh sách trống!");
-            return false;
-        }
-        if (indexMatHang == -1) {
-            Msgbox.alert(null, "Bạn chưa chọn mặt hàng cần thêm!");
             return false;
         }
         if (txtSoLuong.getText().trim().equals("")) {
