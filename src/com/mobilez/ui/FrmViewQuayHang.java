@@ -38,7 +38,7 @@ public class FrmViewQuayHang extends javax.swing.JPanel {
     //search
     private void searchQH() {
         try {
-            String sql = "select TENMH,RAM,DUNGLUONG,MAUSAC,TGBH,GIABANLE,CHITIETQUAYHANG.SOLUONG\n"
+            String sql = "select TENMH,RAM,DUNGLUONG,MAUSAC,TGBH,GIABAN,CHITIETQUAYHANG.SOLUONG\n"
                     + "from CHITIETQUAYHANG join MATHANG on CHITIETQUAYHANG.MAMH=MATHANG.MAMH\n"
                     + "where MAQH like ? and TRANGTHAI = 1 and TENMH like ?";
             QuayHang qh = (QuayHang) cboQH.getSelectedItem();
@@ -46,7 +46,7 @@ public class FrmViewQuayHang extends javax.swing.JPanel {
             ResultSet rs = JdbcHelper.query(sql, qh.getMaQH(),search);
             modelTbl.setRowCount(0);
             while (rs.next()) {
-                String giaBan = rs.getString("GIABANLE");
+                String giaBan = rs.getString("GIABAN");
                 int vt = giaBan.indexOf(".");
                 giaBan = giaBan.substring(0, vt);
                 modelTbl.addRow(new Object[]{
@@ -97,14 +97,14 @@ public class FrmViewQuayHang extends javax.swing.JPanel {
     //fill table
     private void fillTable() {
         try {
-            String sql = "select TENMH,RAM,DUNGLUONG,MAUSAC,TGBH,GIABANLE,CHITIETQUAYHANG.SOLUONG\n"
+            String sql = "select TENMH,RAM,DUNGLUONG,MAUSAC,TGBH,GIABAN,CHITIETQUAYHANG.SOLUONG\n"
                     + "from CHITIETQUAYHANG join MATHANG on CHITIETQUAYHANG.MAMH=MATHANG.MAMH\n"
                     + "where MAQH like ?  and TRANGTHAI = 1";
             QuayHang qh = (QuayHang) cboQH.getSelectedItem();
             ResultSet rs = JdbcHelper.query(sql, qh.getMaQH());
             modelTbl.setRowCount(0);
             while (rs.next()) {
-                String giaBan = rs.getString("GIABANLE");
+                String giaBan = rs.getString("GIABAN");
                 int vt = giaBan.indexOf(".");
                 giaBan = giaBan.substring(0, vt);
                 modelTbl.addRow(new Object[]{

@@ -903,7 +903,8 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
                         + "join QUOCGIA on MATHANG.MAQG= QUOCGIA.MAQG\n"
                         + "join KHOHANG on MATHANG.MAMH = KHOHANG.MAMH\n"
                         + "join KHO on KHOHANG.MAK = KHO.MAK\n"
-                        + "where KHOHANG.MAK = ? and KHO.TRANGTHAI = 1";
+                        + "where KHOHANG.MAK = ? and MATHANG.TRANGTHAI = 1";
+
                 ResultSet rs = JdbcHelper.query(sql, kho.getMaK());
                 while (rs.next()) {
                     modeltblMatHang.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4) + "GB", rs.getString(5) + "GB", rs.getString(6), rs.getString(7), rs.getInt(8)});
