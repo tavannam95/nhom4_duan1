@@ -334,13 +334,19 @@ public class FrmHangSanXuat extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoiActionPerformed
-        clear();
+        if (Msgbox.confirm(null, "Bạn có muốn tạo mới không?")) {
+            clear();
+        }
+        
     }//GEN-LAST:event_btnMoiActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         if (check()) {
             if (checkTrungMa(txtMaHSX)) {
-            insert();
+                if (Msgbox.confirm(null, "Bạn có muốn thêm hãng sản xuất không?")) {
+                    insert();
+                }
+            
         }
         }
     }//GEN-LAST:event_btnThemActionPerformed
@@ -360,7 +366,10 @@ public class FrmHangSanXuat extends javax.swing.JPanel {
             Msgbox.alert(this, "Không được để trống tên HSX!");
             return;
         }
-        update();
+        if (Msgbox.confirm(null, "Bạn có muốn sửa thông tin hãng sản xuất không?")) {
+            update(); 
+        }
+       
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
@@ -484,8 +493,8 @@ public class FrmHangSanXuat extends javax.swing.JPanel {
             txtMaHSX.requestFocus();
             return false;
         }
-        if (txtMaHSX.getText().trim().length() < 4 || txtMaHSX.getText().trim().length() > 10) {
-            Msgbox.alert(this, "Mã hãng sản xuất từ 4 đến 10 ký tự!");
+        if (txtMaHSX.getText().trim().length() < 4 || txtMaHSX.getText().trim().length() > 25) {
+            Msgbox.alert(this, "Mã hãng sản xuất từ 4 đến 25 ký tự!");
             this.txtMaHSX.requestFocus();
             return false;
         }

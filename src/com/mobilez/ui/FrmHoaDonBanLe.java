@@ -5,15 +5,30 @@
  */
 package com.mobilez.ui;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.mobilez.utils.Auth;
 import com.mobilez.utils.JdbcHelper;
 import com.mobilez.utils.Msgbox;
 import com.mobilez.utils.StringToPrice;
 import com.mobilez.utils.StringToPrice;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -344,11 +359,11 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
                         .addComponent(lblTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtMaKM, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnApDung)
-                        .addGap(171, 171, 171)
+                        .addGap(12, 12, 12)
+                        .addComponent(txtMaKM, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(258, 258, 258)
                         .addComponent(btnInHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -397,14 +412,15 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTongGia, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtMaKM, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnApDung)))
+                        .addComponent(btnApDung))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblTongGia, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnInHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(63, 63, 63))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -463,7 +479,10 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
             Msgbox.alert(null, "Danh sách trống!");
             return;
         }
-        inHoaDon();
+        if (Msgbox.confirm(null, "Bạn có muốn in hóa đơn không?")) {
+            inHoaDon();
+        }
+        
 
 
     }//GEN-LAST:event_btnInHoaDonActionPerformed
@@ -608,11 +627,10 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         try {
             int maHDBL = 0;
             String insertHDBL = "insert into HOADONBANLE values (?,?,?)";
-            if (maKM) {
-                JdbcHelper.update(insertHDBL, Auth.user.getMaNV(), new Date(), tongtienKM);
-            } else {
-                JdbcHelper.update(insertHDBL, Auth.user.getMaNV(), new Date(), tongTien);
+            if (!maKM) {
+                tongtienKM = tongTien;
             }
+            JdbcHelper.update(insertHDBL, Auth.user.getMaNV(), new Date(), tongtienKM);
             String querymaHDBL = "select top (1) MAHDBL from HOADONBANLE order by MaHDBL desc";
             ResultSet rs = JdbcHelper.query(querymaHDBL);
             if (rs.next()) {
@@ -627,24 +645,27 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
                     String maMH = tblHoaDonChiTiet.getValueAt(i, 0).toString();
                     int soLuong = Integer.parseInt(tblHoaDonChiTiet.getValueAt(i, 4).toString());
                     int donGia = Integer.parseInt(tblHoaDonChiTiet.getValueAt(i, 2).toString());
-                    ResultSet rs2 = JdbcHelper.query(queryCHITIETPGC, maMH,Auth.maPGC);
+                    ResultSet rs2 = JdbcHelper.query(queryCHITIETPGC, maMH, Auth.maPGC);
                     JdbcHelper.update(insertCTHDBL, maHDBL, maMH, soLuong, donGia);
                     JdbcHelper.update(updateQuayHang, soLuong, Auth.maQuay, maMH);
                     if (rs2.next()) {
                         JdbcHelper.update(updateChiTietPGC, soLuong, maMH, Auth.maPGC);
-                    }else{
+                    } else {
                         JdbcHelper.update(insertCTPGC, Auth.maPGC, maMH, soLuong);
                     }
-                    
+
                     JdbcHelper.update(updateMatHang, soLuong, maMH);
                 }
             }
+            inHoaDonPDF();
             modelHoaDon.setRowCount(0);
             lblTongTien.setText("0 VND");
             filltoTableMatHang();
+            txtMaKM.setText("");
             clear();
             tongTien = 0;
             tongtienKM = 0;
+            maKM = false;
             Msgbox.alert(this, "In thành công");
         } catch (Exception e) {
             e.printStackTrace();
@@ -687,7 +708,7 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
 
         try {
 
-            String query = "select MATHANG.MAMH,TENHSX,TENMH,RAM,DUNGLUONG,MAUSAC,TENQG,GIABANLE, CHITIETQUAYHANG.SOLUONG\n"
+            String query = "select MATHANG.MAMH,TENHSX,TENMH,RAM,DUNGLUONG,MAUSAC,TENQG,GIABAN, CHITIETQUAYHANG.SOLUONG\n"
                     + "                    from MATHANG join CHITIETQUAYHANG ON MATHANG.MAMH=CHITIETQUAYHANG.MAMH\n"
                     + "                    join HANGSANXUAT on MATHANG.MAHSX=HANGSANXUAT.MAHSX\n"
                     + "                    join QUOCGIA on MATHANG.MAQG=QUOCGIA.MAQG\n"
@@ -753,6 +774,140 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         } catch (Exception e) {
             e.printStackTrace();
 
+        }
+    }
+
+    private void inHoaDonPDF() {
+        try {
+            SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy hh:mm:aa");
+            Font f = new Font(BaseFont.createFont("font\\SVN-Arial 2.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
+            f.setColor(BaseColor.BLACK);
+            f.setSize(40);
+            f.setStyle(Font.BOLD);
+            Document document = new Document();
+            document.setMargins(60, 60, 60, 60);
+            // Tạo đối tượng PdfWriter
+            PdfWriter.getInstance(document, new FileOutputStream("HoaDon.pdf"));
+            // Mở file để thực hiện ghi
+            document.open();
+            Paragraph tieuDe = new Paragraph("MOBILEZ", f);
+            tieuDe.setSpacingAfter(30); // 
+            tieuDe.setAlignment(1); // Căn giữa
+            document.add(tieuDe);
+            f.setSize(22);
+            Paragraph hoaDon = new Paragraph("HÓA ĐƠN BÁN HÀNG", f);
+            hoaDon.setAlignment(1);
+            document.add(hoaDon);
+            f.setSize(15);
+            Paragraph thongTin = new Paragraph("Ngày: " + sdf2.format(new Date()) + "\nQuầy: " + lblQuayHang.getText()
+                    + "\nNhân viên: " + Auth.user.getHoTen(), f);
+            thongTin.setSpacingBefore(30);
+            document.add(thongTin);
+            f.setSize(20);
+            Paragraph keNgang = new Paragraph("- - - - - - - - - - - - - - - - - - - - - - - - -"
+                    + " - - - - - - - - - - - - - -", f);
+            document.add(keNgang);
+            PdfPTable table = new PdfPTable(3);
+            table.setWidthPercentage(100);
+            f.setSize(15);
+            PdfPCell c1 = new PdfPCell(new Phrase("   SL", f));
+            c1.setFixedHeight(30);
+            c1.setBorder(0);
+            table.addCell(c1);
+            PdfPCell c2 = new PdfPCell(new Phrase("Đơn giá", f));
+            c2.setBorder(0);
+            c2.setHorizontalAlignment(1);
+            table.addCell(c2);
+            PdfPCell c3 = new PdfPCell(new Phrase("Thành tiền", f));
+            c3.setBorder(0);
+            c3.setHorizontalAlignment(2);
+            table.addCell(c3);
+
+            //for
+            for (int i = 0; i < modelHoaDon.getRowCount(); i++) {
+                String maMH = tblHoaDonChiTiet.getValueAt(i, 0).toString();
+                int soLuong = Integer.parseInt(tblHoaDonChiTiet.getValueAt(i, 4).toString());
+                int donGia = Integer.parseInt(tblHoaDonChiTiet.getValueAt(i, 2).toString());
+                String tenMH = tblHoaDonChiTiet.getValueAt(i, 1).toString();
+                PdfPCell tenSP = new PdfPCell(new Phrase(tenMH, f)); // TENSP
+                tenSP.setColspan(3);
+                tenSP.setBorder(0);
+                tenSP.setFixedHeight(30);
+                table.addCell(tenSP);
+                PdfPCell soluong = new PdfPCell(new Phrase("   "+soLuong + "", f));    // SOLUONG
+                soluong.setBorder(0);
+                String donGiaString = StringToPrice.getPrice(String.valueOf(donGia)).replace(" VND","");
+                PdfPCell donGiaHD = new PdfPCell(new Phrase(donGiaString, f)); // DON GIA
+                donGiaHD.setHorizontalAlignment(1);
+                donGiaHD.setBorder(0);
+                String thanhTienString = StringToPrice.getPrice(String.valueOf(soLuong * donGia)).replace(" VND","");
+                PdfPCell thanhtien = new PdfPCell(new Phrase(thanhTienString, f)); // THANH TIEN
+                thanhtien.setHorizontalAlignment(2);
+                thanhtien.setBorder(0);
+                table.addCell(soluong);
+                table.addCell(donGiaHD);
+                table.addCell(thanhtien);
+
+                f.setSize(20);
+            }
+            document.add(table);
+            document.add(keNgang);
+            f.setSize(15);
+
+            //TongTienHang
+            PdfPTable tblTongTien = new PdfPTable(2);
+            tblTongTien.setWidthPercentage(100);
+            PdfPCell tongTien1 = new PdfPCell(new Phrase("Tổng tiền hàng:", f));
+            tongTien1.setFixedHeight(30);
+            tongTien1.setBorder(0);
+            String tongTienHD = StringToPrice.getPrice(String.valueOf(tongTien));
+            PdfPCell tongTien2 = new PdfPCell(new Phrase(tongTienHD, f));
+            tongTien2.setHorizontalAlignment(2);
+            tongTien2.setFixedHeight(30);
+            tongTien2.setBorder(0);
+            tblTongTien.addCell(tongTien1);
+            tblTongTien.addCell(tongTien2);
+            // KhuyenMai
+            PdfPCell khuyenMai1 = new PdfPCell(new Phrase("Khuyến mãi:", f));
+            khuyenMai1.setFixedHeight(30);
+            khuyenMai1.setBorder(0);
+            String KhuyenMaiHD = StringToPrice.getPrice(String.valueOf(tongTien-tongtienKM));
+            PdfPCell khuyenMai2 = new PdfPCell(new Phrase(KhuyenMaiHD, f));
+            khuyenMai2.setHorizontalAlignment(2);
+            khuyenMai2.setFixedHeight(30);
+            khuyenMai2.setBorder(0);
+            tblTongTien.addCell(khuyenMai1);
+            tblTongTien.addCell(khuyenMai2);
+            // TongThanhToan
+            PdfPCell tongTT1 = new PdfPCell(new Phrase("Tổng thanh toán:", f));
+            tongTT1.setFixedHeight(30);
+            tongTT1.setBorder(0);
+            String tongTTHD = StringToPrice.getPrice(String.valueOf(tongtienKM));
+            PdfPCell tongTT2 = new PdfPCell(new Phrase(tongTTHD, f));
+            tongTT2.setHorizontalAlignment(2);
+            tongTT2.setFixedHeight(30);
+            tongTT2.setBorder(0);
+            tblTongTien.addCell(tongTT1);
+            tblTongTien.addCell(tongTT2);
+            document.add(tblTongTien);
+            f.setSize(20);
+            document.add(keNgang);
+            f.setSize(15);
+
+            //Footer
+            Paragraph fooTer = new Paragraph("Quý khách vui lòng kiểm tra hàng trước khi rời khỏi cửa hàng"
+                    + "\n - - - - - - - - - - - - -"
+                    + "\n Cảm ơn quý khách, hẹn gặp lại!", f);
+            fooTer.setSpacingBefore(15);
+            fooTer.setAlignment(1);
+            document.add(fooTer);
+
+            document.close();
+            System.out.println("Write file succes!");
+        } catch (FileNotFoundException | DocumentException e) {
+            e.printStackTrace();
+        } catch (IOException ex) {
+            Logger.getLogger(Runnable.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

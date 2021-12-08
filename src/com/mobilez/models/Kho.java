@@ -11,16 +11,28 @@ package com.mobilez.models;
  */
 public class Kho {
 
-    String maK, tenK, diaChi;
+    private String maK, tenK, diaChi ;
+    private boolean trangThai ;
 
     public Kho() {
     }
 
-    public Kho(String maK, String tenK, String diaChi) {
+    public Kho(String maK, String tenK, String diaChi, boolean trangThai) {
         this.maK = maK;
         this.tenK = tenK;
         this.diaChi = diaChi;
+        this.trangThai = trangThai;
     }
+
+    public boolean isTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(boolean trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    
 
     @Override
     public String toString() {

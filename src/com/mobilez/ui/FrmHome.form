@@ -66,13 +66,13 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblUser" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblWelcome" min="-2" pref="186" max="-2" attributes="0"/>
+                  <Component id="lblWelcome" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblMobileZ" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblIconClock" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblMobileZ" min="-2" pref="709" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                  <Component id="lblIconClock" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="lblClock" min="-2" pref="118" max="-2" attributes="0"/>
+                  <Component id="lblClock" min="-2" pref="134" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblClose" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -1522,7 +1522,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="B&#xe1;n L&#x1ebb;"/>
+                    <Property name="text" type="java.lang.String" value="B&#xe1;n H&#xe0;ng"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblHDBL">

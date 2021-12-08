@@ -66,10 +66,10 @@ public class FrmNhanVien extends javax.swing.JPanel {
         }
         
         //check độ dài chữ
-        if (txtMaNV.getText().matches("[a-zA-Z0-9]{4,10}")) {
+        if (txtMaNV.getText().matches("[a-zA-Z0-9]{4,25}")) {
             txtMaNV.setBackground(cl);
         } else {
-            Msgbox.alert(null, "Mã nhân viên phải có từ 4 - 10 ký tự \n Không được có ký tự đặc biệt");
+            Msgbox.alert(null, "Mã nhân viên phải có từ 4 - 25 ký tự \n Không được có ký tự đặc biệt");
             txtMaNV.requestFocus();
             txtMaNV.setBackground(pink);
             return false;
@@ -259,7 +259,11 @@ public class FrmNhanVien extends javax.swing.JPanel {
     }
 
     void them() {
-        NhanVien nv = new NhanVien();
+        String mk =  new String(txtMatKhau.getPassword());
+        NhanVien nv = new NhanVien(txtMaNV.getText(), txtTen.getText(), rdoNam.isSelected(), 
+                XDate.toDate(txtNgaySinh.getText(), "dd/MM/yyyy") , txtCMND.getText(), 
+                txtDiaChi.getText(), txtSDT.getText(), rdoQuanLy.isSelected(), lblHinhNV.getToolTipText(), 
+                rdoDangLam.isSelected(), mk);
         try {
             dao.insert(this.getNhanVien());
             this.fillToTable();
@@ -272,7 +276,11 @@ public class FrmNhanVien extends javax.swing.JPanel {
     }
 
     void CapNhat() {
-        NhanVien nv = new NhanVien();
+        String mk =  new String(txtMatKhau.getPassword());
+        NhanVien nv = new NhanVien(txtMaNV.getText(), txtTen.getText(), rdoNam.isSelected(), 
+                XDate.toDate(txtNgaySinh.getText(), "dd/MM/yyyy") , txtCMND.getText(), 
+                txtDiaChi.getText(), txtSDT.getText(), rdoQuanLy.isSelected(), lblHinhNV.getToolTipText(), 
+                rdoDangLam.isSelected(), mk);
         try {
             dao.update(this.getNhanVien());
             this.fillToTable();
@@ -598,7 +606,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
         btnClear.setBackground(new java.awt.Color(34, 116, 173));
         btnClear.setFont(new java.awt.Font("Baloo 2 ExtraBold", 1, 14)); // NOI18N
         btnClear.setForeground(new java.awt.Color(255, 255, 255));
-        btnClear.setText("Clear");
+        btnClear.setText("Tạo Mới");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearActionPerformed(evt);
@@ -862,13 +870,19 @@ public class FrmNhanVien extends javax.swing.JPanel {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
-        this.clear();
+        if (Msgbox.confirm(null, "Bạn có muốn tạo mới không?")) {
+            this.clear();
+        }
+        
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnThemNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemNVActionPerformed
         // TODO add your handling code here:
         if (this.check()) {
-            them();
+            if (Msgbox.confirm(null, "Bạn có muốn thêm nhân viên không?")) {
+                them();
+            }
+            
         }
     }//GEN-LAST:event_btnThemNVActionPerformed
 
@@ -885,7 +899,7 @@ public class FrmNhanVien extends javax.swing.JPanel {
         }
 
         //check độ dài chữ
-        if (txtMaNV.getText().matches("[a-zA-Z0-9]{5,10}")) {
+        if (txtMaNV.getText().matches("[a-zA-Z0-9]{4,25}")) {
             txtMaNV.setBackground(cl);
         } else {
             Msgbox.alert(null, "Mã nhân viên phải có từ 5 - 10 ký tự \n Không được có ký tự đặc biệt");
@@ -1039,7 +1053,10 @@ public class FrmNhanVien extends javax.swing.JPanel {
         } else {
             lblHinhNV.setForeground(cl);
         }
-        CapNhat();
+        if (Msgbox.confirm(null, "Bạn có muốn cập nhật thông tin của nhân viên không?")) {
+            CapNhat();
+        }
+        
     }//GEN-LAST:event_btnSuaNVActionPerformed
 
     private void txtDiaChiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaChiActionPerformed

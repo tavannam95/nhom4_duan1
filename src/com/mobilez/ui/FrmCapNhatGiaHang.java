@@ -77,8 +77,8 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
                 tblList.getValueAt(index, 6).toString(),
                 tblList.getValueAt(index, 7).toString(),
                 tblList.getValueAt(index, 8).toString(),
-                tblList.getValueAt(index, 9).toString(),
-                tblList.getValueAt(index, 10).toString(),});
+                tblList.getValueAt(index, 9).toString()
+                });
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -107,7 +107,7 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
     private void fillTablePr() {
         try {
             String sql = "select MAMH,TENHSX,TENMH,RAM,DUNGLUONG,MAUSAC,TENQG,\n"
-                    + "                    GIAMUA,GIABANSI,GIABANLE,TRANGTHAI\n"
+                    + "                    GIAMUA,GIABAN,TRANGTHAI\n"
                     + "                    from MATHANG join HANGSANXUAT on MATHANG.MAHSX=HANGSANXUAT.MAHSX\n"
                     + "                    join QUOCGIA on MATHANG.MAQG= QUOCGIA.MAQG";
             ResultSet rs = JdbcHelper.query(sql);
@@ -115,19 +115,16 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
             modelList.setRowCount(0);
             while (rs.next()) {
                 giaMua = rs.getString(8);
-                giaBanSi = rs.getString(9);
-                giaBanLe = rs.getString(10);
+                giaBanLe = rs.getString(9);
                 int gm = giaMua.indexOf(".");
-                int gbs = giaBanSi.indexOf(".");
                 int gbl = giaBanLe.indexOf(".");
                 giaMua = giaMua.substring(0, gm);
-                giaBanSi = giaBanSi.substring(0, gbs);
                 giaBanLe = giaBanLe.substring(0, gbl);
                 modelList.addRow(new Object[]{
                     rs.getString(1), rs.getString(2), rs.getString(3),
                     this.getDlRAM(rs.getInt(4)), this.getDlRAM(rs.getInt(5)), rs.getString(6),
-                    rs.getString(7), giaMua, giaBanSi,
-                    giaBanLe, this.getTrangThaiMH(rs.getBoolean(11))});
+                    rs.getString(7), giaMua, 
+                    giaBanLe, this.getTrangThaiMH(rs.getBoolean(10))});
             }
             rs.close();
 
@@ -168,14 +165,13 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
 
     private void updatePrice() {
         try {
-            String sql = "update MATHANG set GIABANSI = ?,\n"
-                    + "GIABANLE = ? where MAMH like ?";
-            double giaBanSi = Double.parseDouble(txtGiaBanSi.getText());
+            String sql = "update MATHANG set \n"
+                    + "GIABAN = ? where MAMH like ?";
             double giaBanLe = Double.parseDouble(txtGiaBanLe.getText());
             String maMH = "";
             for (int i = 0; i < tblCapNhat.getRowCount(); i++) {
                 maMH = tblCapNhat.getValueAt(i, 0).toString().trim();
-                int s = JdbcHelper.update(sql, giaBanSi, giaBanLe, maMH);
+                int s = JdbcHelper.update(sql,  giaBanLe, maMH);
             }
             Msgbox.alert(null, "Cập nhật giá thành công!");
         } catch (Exception e) {
@@ -205,8 +201,6 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         tblCapNhat = new javax.swing.JTable();
         lblDSCN = new javax.swing.JLabel();
-        txtGiaBanSi = new javax.swing.JTextField();
-        lblGiaBanSi = new javax.swing.JLabel();
         txtGiaBanLe = new javax.swing.JTextField();
         lblGiaBanLe = new javax.swing.JLabel();
         btnXoaTatCa = new javax.swing.JButton();
@@ -226,11 +220,11 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã MH", "HSX", "Tên MH", "RAM", "Dung lượng", "Màu", "Quốc gia", "Giá Mua", "Giá bán sỉ", "Giá bán lẻ", "Trạng thái"
+                "Mã MH", "HSX", "Tên MH", "RAM", "Dung lượng", "Màu", "Quốc gia", "Giá Mua", "Giá bán", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -305,11 +299,11 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã MH", "HSX", "Tên MH", "RAM", "Dung lượng", "Màu", "Quốc gia", "Giá Mua", "Giá bán sỉ", "Giá bán lẻ", "Trạng thái"
+                "Mã MH", "HSX", "Tên MH", "RAM", "Dung lượng", "Màu", "Quốc gia", "Giá Mua", "Giá bán", "Trạng thái"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -333,20 +327,6 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
         lblDSCN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDSCN.setText("Danh sách mặt hàng cập nhật giá");
 
-        txtGiaBanSi.setBackground(new java.awt.Color(34, 116, 173));
-        txtGiaBanSi.setForeground(new java.awt.Color(255, 255, 255));
-        txtGiaBanSi.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
-        txtGiaBanSi.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtGiaBanSi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtGiaBanSitxtDungLuongKeyPressed(evt);
-            }
-        });
-
-        lblGiaBanSi.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
-        lblGiaBanSi.setForeground(new java.awt.Color(255, 255, 255));
-        lblGiaBanSi.setText("Giá bán sỉ");
-
         txtGiaBanLe.setBackground(new java.awt.Color(34, 116, 173));
         txtGiaBanLe.setForeground(new java.awt.Color(255, 255, 255));
         txtGiaBanLe.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
@@ -359,7 +339,7 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
 
         lblGiaBanLe.setFont(new java.awt.Font("Baloo Chettan 2", 1, 14)); // NOI18N
         lblGiaBanLe.setForeground(new java.awt.Color(255, 255, 255));
-        lblGiaBanLe.setText("Giá bán lẻ");
+        lblGiaBanLe.setText("Giá bán");
 
         btnXoaTatCa.setBackground(new java.awt.Color(34, 116, 173));
         btnXoaTatCa.setFont(new java.awt.Font("Baloo 2", 1, 12)); // NOI18N
@@ -391,14 +371,10 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(lblGiaBanSi)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtGiaBanSi, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblGiaBanLe, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtGiaBanLe, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtGiaBanLe, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
                             .addComponent(lblDSCN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jSeparator2))
@@ -446,8 +422,6 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
                             .addComponent(btnXoaTatCa))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtGiaBanSi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblGiaBanSi)
                             .addComponent(txtGiaBanLe, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblGiaBanLe))
                         .addGap(18, 18, 18)
@@ -476,35 +450,7 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
             Msgbox.alert(null, "Bạn chưa thêm mặt hàng cần giảm giá!");
             return;
         }
-        //validate gia si
-        if (txtGiaBanSi.getText().trim().equals("")) {
-            Msgbox.alert(null, "Không được để trống giá bán sỉ!");
-            txtGiaBanSi.setText("");
-            txtGiaBanSi.requestFocus();
-            lblGiaBanSi.setForeground(Color.red);
-            return;
-        } else {
-            lblGiaBanSi.setForeground(Color.white);
-        }
-        try {
-            Integer.parseInt(txtGiaBanSi.getText());
-        } catch (Exception e) {
-            Msgbox.alert(null, "Giá bán sỉ phải là số!");
-            txtGiaBanSi.setText("");
-            txtGiaBanSi.requestFocus();
-            lblGiaBanSi.setForeground(Color.red);
-            return;
-        }
-        lblGiaBanSi.setForeground(Color.white);
-        if (Integer.parseInt(txtGiaBanSi.getText()) <= 0) {
-            Msgbox.alert(null, "Giá bán sỉ phải lơn hơn 0!");
-            txtGiaBanSi.setText("");
-            txtGiaBanSi.requestFocus();
-            lblGiaBanSi.setForeground(Color.red);
-            return;
-        } else {
-            lblGiaBanSi.setForeground(Color.white);
-        }
+        
         //validate gia ban le
         if (txtGiaBanLe.getText().trim().equals("")) {
             Msgbox.alert(null, "Không được để trống giá bán lẻ!");
@@ -537,7 +483,6 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
         this.updatePrice();
         modelCN.setRowCount(0);
         this.fillTablePr();
-        txtGiaBanSi.setText("");
         txtGiaBanLe.setText("");
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
@@ -589,10 +534,6 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
         indexUP = tblCapNhat.getSelectedRow();
     }//GEN-LAST:event_tblCapNhatMouseClicked
 
-    private void txtGiaBanSitxtDungLuongKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGiaBanSitxtDungLuongKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtGiaBanSitxtDungLuongKeyPressed
-
     private void txtGiaBanLetxtDungLuongKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGiaBanLetxtDungLuongKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGiaBanLetxtDungLuongKeyPressed
@@ -623,12 +564,10 @@ public class FrmCapNhatGiaHang extends javax.swing.JPanel {
     private javax.swing.JLabel lblDSCN;
     private javax.swing.JLabel lblDSMH;
     private javax.swing.JLabel lblGiaBanLe;
-    private javax.swing.JLabel lblGiaBanSi;
     private javax.swing.JLabel lblSearch;
     private javax.swing.JTable tblCapNhat;
     private javax.swing.JTable tblList;
     private javax.swing.JTextField txtGiaBanLe;
-    private javax.swing.JTextField txtGiaBanSi;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

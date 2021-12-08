@@ -383,7 +383,6 @@ public class FrmXemPhieu extends javax.swing.JPanel {
         tblPNK.setGridColor(new java.awt.Color(255, 255, 255));
         tblPNK.setRowHeight(25);
         tblPNK.setSelectionBackground(new java.awt.Color(51, 51, 51));
-        tblPNK.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tblPNK.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblPNK.setShowGrid(true);
         jScrollPane1.setViewportView(tblPNK);
@@ -429,7 +428,6 @@ public class FrmXemPhieu extends javax.swing.JPanel {
         tblPXK.setGridColor(new java.awt.Color(255, 255, 255));
         tblPXK.setRowHeight(25);
         tblPXK.setSelectionBackground(new java.awt.Color(51, 51, 51));
-        tblPXK.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tblPXK.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblPXK.setShowGrid(true);
         jScrollPane2.setViewportView(tblPXK);
@@ -475,7 +473,6 @@ public class FrmXemPhieu extends javax.swing.JPanel {
         tblPBH.setGridColor(new java.awt.Color(255, 255, 255));
         tblPBH.setRowHeight(25);
         tblPBH.setSelectionBackground(new java.awt.Color(51, 51, 51));
-        tblPBH.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tblPBH.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblPBH.setShowGrid(true);
         jScrollPane3.setViewportView(tblPBH);
@@ -521,7 +518,6 @@ public class FrmXemPhieu extends javax.swing.JPanel {
         tblPGC.setGridColor(new java.awt.Color(255, 255, 255));
         tblPGC.setRowHeight(25);
         tblPGC.setSelectionBackground(new java.awt.Color(51, 51, 51));
-        tblPGC.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tblPGC.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblPGC.setShowGrid(true);
         jScrollPane4.setViewportView(tblPGC);
@@ -567,9 +563,13 @@ public class FrmXemPhieu extends javax.swing.JPanel {
         tblHDBL.setGridColor(new java.awt.Color(255, 255, 255));
         tblHDBL.setRowHeight(25);
         tblHDBL.setSelectionBackground(new java.awt.Color(51, 51, 51));
-        tblHDBL.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tblHDBL.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblHDBL.setShowGrid(true);
+        tblHDBL.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblHDBLMouseClicked(evt);
+            }
+        });
         jScrollPane6.setViewportView(tblHDBL);
 
         jLabel2.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 24)); // NOI18N
@@ -719,6 +719,15 @@ public class FrmXemPhieu extends javax.swing.JPanel {
             e.printStackTrace();
         }
     }//GEN-LAST:event_lblPBHangMouseClicked
+
+    private void tblHDBLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHDBLMouseClicked
+        if (evt.getClickCount() == 2) {
+            int index = tblHDBL.getSelectedRow();
+            String maHD = tblHDBL.getValueAt(index, 0).toString();
+            String tongTT = tblHDBL.getValueAt(index, 3).toString();
+            new JDialogHoaDonChiTiet(null, true, maHD,tongTT).setVisible(true);
+        }
+    }//GEN-LAST:event_tblHDBLMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -42,9 +42,9 @@ public class FrmHome extends javax.swing.JFrame {
     public FrmHome() {
         initComponents();
         //Test 
-//        if (!Auth.login) {
-//            new ManHinhChao(this, true).setVisible(true);
-//        }
+        if (!Auth.login) {
+            new ManHinhChao(this, true).setVisible(true);
+        }
         new DangNhapJDialog(this, true).setVisible(true);
         this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -275,13 +275,13 @@ public class FrmHome extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblUser)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblWelcome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblMobileZ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblIconClock)
+                .addComponent(lblMobileZ, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90)
+                .addComponent(lblIconClock, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblClock, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblClock, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblClose)
                 .addContainerGap())
@@ -1057,7 +1057,7 @@ public class FrmHome extends javax.swing.JFrame {
         lblHDL.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 16)); // NOI18N
         lblHDL.setForeground(new java.awt.Color(255, 255, 255));
         lblHDL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHDL.setText("Bán Lẻ");
+        lblHDL.setText("Bán Hàng");
 
         lblHDBL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHDBL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mobilez/icon/us_dollar_64px.png"))); // NOI18N

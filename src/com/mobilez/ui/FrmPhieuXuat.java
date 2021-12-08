@@ -45,7 +45,7 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
             String sql = "select * from KHO";
             ResultSet rs = JdbcHelper.query(sql);
             while (rs.next()) {
-                Kho k = new Kho(rs.getString(1), rs.getString(2), rs.getString(3));
+                Kho k = new Kho(rs.getString(1), rs.getString(2), rs.getString(3),rs.getBoolean(4));
                 modelCboKho.addElement(k);
             }
             rs.close();
@@ -172,8 +172,6 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
         }
     }
 
-    
-
     private void insertIntoPXK() {
         try {
             String sql = "insert into PHIEUXUATKHO\n"
@@ -241,8 +239,8 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
 
     private void updateQH() {
         try {
-            String sql = "update CHITIETQUAYHANG set SOLUONG = SOLUONG + ?\n" +
-"                     where MAQH like ? and MAMH like ?";
+            String sql = "update CHITIETQUAYHANG set SOLUONG = SOLUONG + ?\n"
+                    + "                     where MAQH like ? and MAMH like ?";
             String maQH = Auth.maQuay;
             for (int i = 0; i < tblCTPX.getRowCount(); i++) {
                 String maMH = tblCTPX.getValueAt(i, 0).toString();
@@ -253,20 +251,20 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
 //            e.printStackTrace();
         }
     }
-    
-    private String getTongGia(){
+
+    private String getTongGia() {
         double tongGia = 0;
         for (int i = 0; i < tblCTPX.getRowCount(); i++) {
             double gia = Double.parseDouble(tblCTPX.getValueAt(i, 6).toString());
             double sl = Double.parseDouble(tblCTPX.getValueAt(i, 8).toString());
-            tongGia+= (sl*gia);
+            tongGia += (sl * gia);
         }
-        String tongGiaString =tongGia+"";
+        String tongGiaString = tongGia + "";
         int vt = tongGiaString.indexOf(".");
-        tongGiaString = tongGiaString.substring(0,vt);
+        tongGiaString = tongGiaString.substring(0, vt);
         return tongGiaString;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -566,14 +564,16 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
 
     private void btnXuatKhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatKhoActionPerformed
         // TODO add your handling code here:
-
-        this.updateKhoHang();
-        this.updateQH();
-        Msgbox.alert(null, "Xuất kho thành công!");
+        if (Msgbox.confirm(null, "Bạn có muốn xuất kho không?")) {
+            this.updateKhoHang();
+            this.updateQH();
+            Msgbox.alert(null, "Xuất kho thành công!");
             modelHDCT.setRowCount(0);
             this.fillTablePr();
             this.btnXuatKho.setEnabled(false);
             lblRsTongGia.setText("");
+        }
+        
     }//GEN-LAST:event_btnXuatKhoActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -598,7 +598,7 @@ public class FrmPhieuXuat extends javax.swing.JPanel {
             indexHDCT--;
             this.tblCTPX.setRowSelectionInterval(indexHDCT, indexHDCT);
         }
-        if (indexHDCT>=0) {
+        if (indexHDCT >= 0) {
             this.tblList.setRowSelectionInterval(indexHDCT, indexHDCT);
         }
     }//GEN-LAST:event_btnXoaActionPerformed
