@@ -7,6 +7,7 @@ package com.mobilez.ui;
 
 import com.mobilez.models.NhanVien;
 import com.mobilez.utils.JdbcHelper;
+import com.mobilez.utils.StringToPrice;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
@@ -135,13 +136,13 @@ public class FrmThongKe extends javax.swing.JPanel {
             modelSPBC.setRowCount(0);
             ResultSet rs = JdbcHelper.query(sql, cboNamSPBC.getSelectedItem() + "", cboThangSPBC.getSelectedItem() + "");
             while (rs.next()) {
-                double tongGia = rs.getDouble("TONGTONGGIA");
+                long tongGia = rs.getLong("TONGTONGGIA");
                 int soLuong = rs.getInt("TONGSOLUONG");
                 modelSPBC.addRow(new Object[]{
                     rs.getString("MAMH"),
                     rs.getString("TENMH"),
                     soLuong,
-                    tongGia});
+                    StringToPrice.getPrice(tongGia+"")});
             }
             rs.close();
 
@@ -162,12 +163,12 @@ public class FrmThongKe extends javax.swing.JPanel {
             modelDS.setRowCount(0);
             ResultSet rs = JdbcHelper.query(sql, cboNamDS.getSelectedItem() + "", cboThangDS.getSelectedItem() + "");
             while (rs.next()) {
-                double tongGia = rs.getDouble("TONGTONGGIA");
+                long tongGia = rs.getLong("TONGTONGGIA");
                 int soLuong = rs.getInt("TONGSOLUONG");
                 modelDS.addRow(new Object[]{
                     rs.getString("MANV"),
                     rs.getString("HOTEN"),
-                    tongGia,
+                    StringToPrice.getPrice(tongGia+""),
                     soLuong});
             }
             rs.close();
@@ -188,12 +189,12 @@ public class FrmThongKe extends javax.swing.JPanel {
             modelDS.setRowCount(0);
             ResultSet rs = JdbcHelper.query(sql, cboNamDS.getSelectedItem() + "", cboThangDS.getSelectedItem() + "");
             while (rs.next()) {
-                double tongGia = rs.getDouble("TONGTONGGIA");
+                long tongGia = rs.getLong("TONGTONGGIA");
                 int soLuong = rs.getInt("TONGSOLUONG");
                 modelDS.addRow(new Object[]{
                     rs.getString("MANV"),
                     rs.getString("HOTEN"),
-                    tongGia,
+                    StringToPrice.getPrice(tongGia+""),
                     soLuong});
             }
             rs.close();
@@ -892,6 +893,7 @@ public class FrmThongKe extends javax.swing.JPanel {
             pnlParentCard.validate();
             pnlParentCard.repaint();
             //FILL TABLE
+            this.fillTableSortByQuantity();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -901,7 +903,7 @@ public class FrmThongKe extends javax.swing.JPanel {
         // TODO add your handling code here:
         this.fillCboNam(cboNamSPBC);
         this.fillCboThang(cboThangSPBC, cboNamSPBC);
-        fillTableSPBC();
+        
         try {
             lblSPBanChay.setForeground(Color.orange);
             lblDoanhSo.setForeground(Color.white);
@@ -913,6 +915,7 @@ public class FrmThongKe extends javax.swing.JPanel {
             pnlParentCard.validate();
             pnlParentCard.repaint();
             //fill table
+            fillTableSPBC();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -933,6 +936,7 @@ public class FrmThongKe extends javax.swing.JPanel {
             pnlParentCard.validate();
             pnlParentCard.repaint();
             //fill
+            this.fillTableSPTK();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -951,6 +955,7 @@ public class FrmThongKe extends javax.swing.JPanel {
             pnlParentCard.validate();
             pnlParentCard.repaint();
             //filllll
+            this.fillTableSPHH();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -965,7 +970,7 @@ public class FrmThongKe extends javax.swing.JPanel {
         modelDTBL.setRowCount(0);
         modelDTBL.addRow(new Object[]{
             this.getTongSLBanLe(),
-            this.getTongGiaBanLe()
+            StringToPrice.getPrice(this.getTongGiaBanLe()+"")
         });
         try {
             lblDoanhThu.setForeground(Color.orange);

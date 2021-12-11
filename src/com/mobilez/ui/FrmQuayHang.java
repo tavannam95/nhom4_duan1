@@ -91,8 +91,8 @@ public class FrmQuayHang extends javax.swing.JPanel {
         } else {
             lblMaQH.setForeground(Color.white);
         }
-        if (txtMaQH.getText().trim().length()<4||txtMaQH.getText().trim().length()>25) {
-            Msgbox.alert(this, "Mã khách hàng từ 4 đến 25 ký tự!");
+        if (txtMaQH.getText().trim().length()<3||txtMaQH.getText().trim().length()>25) {
+            Msgbox.alert(this, "Mã quầy hàng từ 3 đến 25 ký tự!");
             this.txtMaQH.requestFocus();
             txtMaQH.setForeground(Color.red);
             return true;

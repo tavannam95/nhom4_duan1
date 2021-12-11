@@ -141,7 +141,7 @@ public class FrmXemPhieu extends javax.swing.JPanel {
                     rs.getString("SOIMEI"),
                     rs.getString("MAMH"),
                     rs.getString("NGAYHETHAN"),
-                    rs.getString("TRANGTHAI")
+                    rs.getBoolean("TRANGTHAI")?"Đang bảo hành":"Trống"
                 });
             }
             rs.close();

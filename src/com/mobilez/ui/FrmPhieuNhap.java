@@ -767,7 +767,9 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
             Msgbox.alert(this, "Bạn chưa chọn mặt hàng cần xóa trong phiếu nhập");
             return;
         }
+        if (Msgbox.confirm(null, "Bạn có muốn xóa không?")) {
         deletePN();
+        }
     }//GEN-LAST:event_btnXoaPNActionPerformed
 
     private void btnClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClear1ActionPerformed
@@ -775,6 +777,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
             Msgbox.alert(this, "Không có dữ liệu trong phiếu nhập!!");
             return;
         }
+        
         if (Msgbox.confirm(this, "Bạn có muốn nhập kho?")) {
             nhapKho();
             
@@ -810,6 +813,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
             txtTenMH.setText("");
             txtSoLuong.setText("");
             txtDongia.setText("");
+            btnThemPN.setEnabled(true);
         }
 
     }//GEN-LAST:event_btnClearActionPerformed
@@ -835,6 +839,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
             String tonGiaString = tongGia+"";
             lblTongTien.setText(StringToPrice.getPrice(tonGiaString));
             btnThemPN.setEnabled(false);
+            tongTien = tongGia;
         } catch (IOException ex) {
             Logger.getLogger(FrmPhieuNhap.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -925,7 +930,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
     private void deletePN() {
         tongTien -= Integer.parseInt(modeltblPhieuNhap.getValueAt(indexPN, 4).toString());
         modeltblPhieuNhap.removeRow(indexPN);
-        lblTongTien.setText(tongTien + "");
+        lblTongTien.setText(StringToPrice.getPrice(tongTien+""));
         indexPN = -1;
     }
 
