@@ -100,12 +100,12 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
             lblTenKM.setForeground(Color.red);
             return true;
         } else {
-            lblMaKM.setForeground(Color.white);
+            lblTenKM.setForeground(Color.white);
         }
         //muc km
         String chkMKM = "";
         if (rdoPT1.isSelected()) {
-            chkMKM = txtMucKM.getText().replace(" %", "");
+//            chkMKM = txtMucKM.getText().replace(" %", "");
             if (txtMucKM.getText().trim().equals("%")) {
                 Msgbox.alert(null, "Mức khuyến mãi không được để trống!");
                 txtMucKM.requestFocus();
@@ -116,8 +116,8 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
                 lblMucKM.setForeground(Color.white);
             }
         } else {
-            chkMKM = txtMucKM.getText().replace(" VND", "");
-            chkMKM = chkMKM.replace(".", "");
+//            chkMKM = txtMucKM.getText().replace(" VND", "");
+//            chkMKM = chkMKM.replace(".", "");
             if (txtMucKM.getText().trim().equals("VND")) {
                 Msgbox.alert(null, "Mức khuyến mãi không được để trống!");
                 txtMucKM.requestFocus();
@@ -382,6 +382,14 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
         this.setButtonAdd();
         index = -1;
         tblList.setRowSelectionAllowed(false);
+        lblMaKM.setForeground(Color.white);
+        lblTenKM.setForeground(Color.white);
+        lblMucKM.setForeground(Color.white);
+        lblDieuKien.setForeground(Color.white);
+        lblGiamToiDa.setForeground(Color.white);
+        lblNgayBD.setForeground(Color.white);
+        lblNgayKT.setForeground(Color.white);
+        
     }
 
     private void setButtonAdd() {
