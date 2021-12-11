@@ -469,6 +469,7 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
             lblTongTien.setText("0 VND");
             tongTien = 0;
             maKM = false;
+            txtMaKM.setText("");
             this.filltoTableMatHang();
         }
     }//GEN-LAST:event_btnXoaAllActionPerformed
@@ -477,6 +478,7 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         // TODO add your handling code here:
         deleteHoaDOn();
         maKM = false;
+        txtMaKM.setText("");
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnInHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInHoaDonActionPerformed
@@ -696,6 +698,7 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         txtGiaBanLe.setText("");
         txtSoLuong.setText("");
         txtTenMatHang.setText("");
+        txtMaKM.setText("");
         maKM = false;
     }
 
