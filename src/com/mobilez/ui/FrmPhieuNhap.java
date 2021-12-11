@@ -92,7 +92,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
 
             Iterator<Row> rowIterator = sheet.rowIterator();
             while (rowIterator.hasNext()) {
-                
+
                 Row row = rowIterator.next();
 //                System.out.println(row);
                 // Now let's iterate over the columns of the current row
@@ -147,20 +147,19 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
             }
             //List PN
             List<PhieuNhap> lstPN = new ArrayList<>();
-            
-            
+
             // List String
             List<String> testList = new ArrayList<>();
             for (int i = 0; i < countPN; i++) {
                 int vt = exString.indexOf(";");
-                String pn = exString.substring(0,vt);
+                String pn = exString.substring(0, vt);
                 testList.add(pn);
-                exString = exString.substring(vt+1);
+                exString = exString.substring(vt + 1);
             }
-            String [] lst1Row = new String[testList.size()];
+            String[] lst1Row = new String[testList.size()];
             testList.toArray(lst1Row);
             for (String string : lst1Row) {
-                String [] data = string.split(",");
+                String[] data = string.split(",");
                 PhieuNhap pn = new PhieuNhap();
                 pn.setMaMH(data[0]);
                 pn.setTenMh(data[1]);
@@ -180,8 +179,6 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
             }
         }
     }
-
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -780,7 +777,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
         
         if (Msgbox.confirm(this, "Bạn có muốn nhập kho?")) {
             nhapKho();
-            
+
         }
 
     }//GEN-LAST:event_btnClear1ActionPerformed
@@ -832,11 +829,11 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
 //        }
             modeltblPhieuNhap.setRowCount(0);
             this.chosseExcel();
-            long tongGia = 0; 
+            long tongGia = 0;
             for (int i = 0; i < tblNhapHang.getRowCount(); i++) {
                 tongGia += Integer.parseInt(tblNhapHang.getValueAt(i, 4).toString());
             }
-            String tonGiaString = tongGia+"";
+            String tonGiaString = tongGia + "";
             lblTongTien.setText(StringToPrice.getPrice(tonGiaString));
             btnThemPN.setEnabled(false);
             tongTien = tongGia;
@@ -1001,7 +998,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
             ResultSet rs = JdbcHelper.query(sql);
             modelCboKho.removeAllElements();
             while (rs.next()) {
-                modelCboKho.addElement(new Kho(rs.getString("MaK"), rs.getString("TenK"), rs.getString("DiaChi"),rs.getBoolean(4)));
+                modelCboKho.addElement(new Kho(rs.getString("MaK"), rs.getString("TenK"), rs.getString("DiaChi"), rs.getBoolean(4)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -1080,16 +1077,23 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
             String insertCTPNK = "insert into CHITIETPHIEUNHAPKHO values (?,?,?)";
             String updateSoLuongFromKhoHang = "update khohang set soluong = soluong + ? where mamh = ? and mak = ?";
             String updateSoluongFromMatHang = "update MatHang set soluong = soluong + ? where mamh = ?";
+            String queryCTPNK = "select * from CHITIETPHIEUNHAPKHO where MAPNK = ? and MAMH = ?";
+            String updateCTPNK = "Update CHITIETPHIEUNHAPKHO set soluong = soluong + ? where MAPNK = ? and MAMH = ?";
             NhaCungCap ncc = (NhaCungCap) cboNCC.getSelectedItem();
             Kho kho = (Kho) cboMaKho.getSelectedItem();
             JdbcHelper.update(insertPNK, ncc.getMaNcc(), kho.getMaK(), Auth.user.getMaNV(), sdf.parse(txtNgayNhap.getText()), tongTien);
             for (int i = 0; i < modeltblPhieuNhap.getRowCount(); i++) {
                 String mamh = (String) tblNhapHang.getValueAt(i, 0).toString();
-                int soluong = Integer.parseInt(tblNhapHang.getValueAt(i, 2).toString()) ;
+                int soluong = Integer.parseInt(tblNhapHang.getValueAt(i, 2).toString());
                 ResultSet rs = JdbcHelper.query(queryIDPNH);
                 if (rs.next()) {
                     int maPNK = rs.getInt("IDPNK");
-                    JdbcHelper.update(insertCTPNK, maPNK, mamh, soluong);
+                    ResultSet rs2 = JdbcHelper.query(queryCTPNK, maPNK, mamh);
+                    if (rs2.next()) {
+                        JdbcHelper.update(updateCTPNK, soluong, maPNK, mamh);
+                    } else {
+                        JdbcHelper.update(insertCTPNK, maPNK, mamh, soluong);
+                    }
                     JdbcHelper.update(updateSoLuongFromKhoHang, soluong, mamh, kho.getMaK());
                     JdbcHelper.update(updateSoluongFromMatHang, soluong, mamh);
                 }
@@ -1105,6 +1109,7 @@ public class FrmPhieuNhap extends javax.swing.JPanel {
             txtSoLuong.setText("");
             txtDongia.setText("");
             btnThemPN.setEnabled(true);
+            
         } catch (Exception e) {
             Msgbox.alert(this, "Nhập kho thất bại");
             e.printStackTrace();
