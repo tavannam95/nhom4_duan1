@@ -468,13 +468,15 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
             modelHoaDon.setRowCount(0);
             lblTongTien.setText("0 VND");
             tongTien = 0;
+            maKM = false;
+            this.filltoTableMatHang();
         }
-        this.filltoTableMatHang();
     }//GEN-LAST:event_btnXoaAllActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
         deleteHoaDOn();
+        maKM = false;
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnInHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInHoaDonActionPerformed
@@ -486,7 +488,6 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         if (Msgbox.confirm(null, "Bạn có muốn in hóa đơn không?")) {
             inHoaDon();
         }
-        
 
 
     }//GEN-LAST:event_btnInHoaDonActionPerformed
@@ -695,6 +696,7 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         txtGiaBanLe.setText("");
         txtSoLuong.setText("");
         txtTenMatHang.setText("");
+        maKM = false;
     }
 
     private void deleteHoaDOn() {
@@ -709,7 +711,6 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
         }
         tongTien -= Integer.parseInt(tblHoaDonChiTiet.getValueAt(indexHoaDon, 5).toString());
         lblTongTien.setText(tongTien + " VND");
-
         try {
 
             String query = "select MATHANG.MAMH,TENHSX,TENMH,RAM,DUNGLUONG,MAUSAC,TENQG,GIABAN, CHITIETQUAYHANG.SOLUONG\n"
@@ -761,23 +762,25 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
                     } else {
                         Msgbox.alert(this, "Mã chỉ áp dụng cho tổng tiền trên " + rs.getInt("DIEUKIEN") + " VND");
                         txtMaKM.requestFocus();
+                        maKM = false;
                         lblTongTien.setText(StringToPrice.getPrice(String.valueOf(tongTien)));
                         return;
                     }
                 } else {
                     Msgbox.alert(this, "Mã giảm giá đã hết hạn!!");
+                    maKM = false;
                     lblTongTien.setText(StringToPrice.getPrice(String.valueOf(tongTien)));
                     txtMaKM.requestFocus();
                 }
             } else {
                 Msgbox.alert(this, "Mã khuyến mãi không tồn tại");
+                maKM = false;
                 lblTongTien.setText(StringToPrice.getPrice(String.valueOf(tongTien)));
                 txtMaKM.requestFocus();
                 return;
             }
         } catch (Exception e) {
             e.printStackTrace();
-
         }
     }
 
@@ -838,13 +841,13 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
                 tenSP.setBorder(0);
                 tenSP.setFixedHeight(30);
                 table.addCell(tenSP);
-                PdfPCell soluong = new PdfPCell(new Phrase("   "+soLuong + "", f));    // SOLUONG
+                PdfPCell soluong = new PdfPCell(new Phrase("   " + soLuong + "", f));    // SOLUONG
                 soluong.setBorder(0);
-                String donGiaString = StringToPrice.getPrice(String.valueOf(donGia)).replace(" VND","");
+                String donGiaString = StringToPrice.getPrice(String.valueOf(donGia)).replace(" VND", "");
                 PdfPCell donGiaHD = new PdfPCell(new Phrase(donGiaString, f)); // DON GIA
                 donGiaHD.setHorizontalAlignment(1);
                 donGiaHD.setBorder(0);
-                String thanhTienString = StringToPrice.getPrice(String.valueOf(soLuong * donGia)).replace(" VND","");
+                String thanhTienString = StringToPrice.getPrice(String.valueOf(soLuong * donGia)).replace(" VND", "");
                 PdfPCell thanhtien = new PdfPCell(new Phrase(thanhTienString, f)); // THANH TIEN
                 thanhtien.setHorizontalAlignment(2);
                 thanhtien.setBorder(0);
@@ -875,7 +878,7 @@ public class FrmHoaDonBanLe extends javax.swing.JPanel {
             PdfPCell khuyenMai1 = new PdfPCell(new Phrase("Khuyến mãi:", f));
             khuyenMai1.setFixedHeight(30);
             khuyenMai1.setBorder(0);
-            String KhuyenMaiHD = StringToPrice.getPrice(String.valueOf(tongTien-tongtienKM));
+            String KhuyenMaiHD = StringToPrice.getPrice(String.valueOf(tongTien - tongtienKM));
             PdfPCell khuyenMai2 = new PdfPCell(new Phrase(KhuyenMaiHD, f));
             khuyenMai2.setHorizontalAlignment(2);
             khuyenMai2.setFixedHeight(30);
