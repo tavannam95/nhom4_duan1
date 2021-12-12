@@ -68,6 +68,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(252, 238, 204));
 
         lbLoGo.setBackground(new java.awt.Color(102, 211, 148));
+        lbLoGo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mobilez/icon/logoDangNhap.png"))); // NOI18N
         lbLoGo.setOpaque(true);
 
         jLabel2.setFont(new java.awt.Font("Baloo 2 ExtraBold", 0, 22)); // NOI18N
@@ -312,7 +313,7 @@ public class DangNhapJDialog extends javax.swing.JDialog {
 
     private void init() {
         this.setLocationRelativeTo(null);
-        lbLoGo.setIcon(new ImageIcon("src/com/mobilez/icon/logoDangNhap.png"));
+//        lbLoGo.setIcon(new ImageIcon("src/com/mobilez/icon/logoDangNhap.png"));
     }
 
     private void dangNhap() {
