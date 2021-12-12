@@ -103,7 +103,7 @@ public class FrmKhuyenMai extends javax.swing.JPanel {
             lblTenKM.setForeground(Color.white);
         }
         //muc km
-        String chkMKM = "";
+        String chkMKM = txtMucKM.getText();
         if (rdoPT1.isSelected()) {
 //            chkMKM = txtMucKM.getText().replace(" %", "");
             if (txtMucKM.getText().trim().equals("%")) {
